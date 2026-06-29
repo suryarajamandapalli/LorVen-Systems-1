@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { PageHero } from "@/components/site/PageHero";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -78,45 +79,12 @@ function About() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero-section relative h-[90svh] w-full overflow-hidden bg-ink text-on-dark flex items-end">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroBg}
-            alt="Railway engineering facility"
-            className="h-full w-full object-cover animate-kenburns opacity-70"
-          />
-        </div>
-        <div className="absolute inset-0 z-5 bg-gradient-to-t from-ink via-ink/40 to-transparent pointer-events-none" />
-        
-        {/* Content */}
-        <div className="container-editorial hero-parallax-content relative z-10 flex w-full flex-col justify-end pb-24 pointer-events-none">
-          
-          <ul className="flex items-center gap-2 text-[9px] uppercase tracking-[0.15em] text-on-dark/50 mb-10 pointer-events-auto">
-            <li><Link to="/" className="hover:text-on-dark transition-colors duration-200">Home</Link></li>
-            <li><span>/</span></li>
-            <li className="text-on-dark/90">About</li>
-          </ul>
-
-          <h1 className="text-[clamp(2.5rem,5vw,6rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible">
-            Engineering Confidence.
-          </h1>
-          
-          <div className="mt-8 grid grid-cols-12 gap-8 items-end">
-            <div className="col-span-12 md:col-span-6">
-              <p className="text-lg md:text-xl text-on-dark/70 font-light leading-relaxed">
-                About LorVen Systems
-              </p>
-            </div>
-            <div className="col-span-12 md:col-span-6 flex md:justify-end">
-              <p className="max-w-md text-sm md:text-base text-on-dark/50 leading-relaxed text-left md:text-right">
-                Delivering mission-critical electronics and electrical integration for industries where failure is not an option.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="ABOUT"
+        title="Engineering Confidence."
+        lede="Delivering mission-critical electronics and electrical integration for industries where failure is not an option."
+        image={heroBg}
+      />
 
       {/* Who We Are */}
       <section className="bg-bg border-t border-rule py-24 md:py-32">

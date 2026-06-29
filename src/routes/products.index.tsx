@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { PageHero } from "@/components/site/PageHero";
 import { PRODUCT_INDEX } from "@/lib/site-data";
 import heroImg from "@/assets/factory-hall.jpg";
 
@@ -49,47 +50,12 @@ function ProductsIndex() {
 
   return (
     <>
-      {/* 1. Hero Section with Dark Translucent Layer and White Text */}
-      <section className="relative bg-bg pt-[64px]">
-        {/* Hero Image with Black Translucent Layer */}
-        <div className="relative h-[35vh] md:h-[45vh] w-full flex flex-col justify-end overflow-hidden">
-          <div className="absolute inset-0">
-            <img src={heroImg} alt="LorVen Factory" className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          </div>
-          
-          <div className="container-editorial relative z-10 pb-8 md:pb-12">
-            <h1 className="text-4xl md:text-5xl font-light text-white uppercase tracking-wide drop-shadow-sm">
-              Index of All Products
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90 drop-shadow-sm">
-              Explore LorVen's complete portfolio of railway engineering solutions.
-            </p>
-          </div>
-        </div>
-        
-        {/* Perfect Breadcrumb Below Image */}
-        <div className="container-editorial relative grid grid-cols-12 gap-6 pt-6 pb-8">
-          <div className="col-span-12 flex flex-col justify-start border-b border-rule pb-6">
-            <ul className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-ink-muted pointer-events-auto">
-              <li><Link to="/" className="hover:text-ink transition-colors duration-200">Home</Link></li>
-              <li>
-                <svg width="4" height="6" viewBox="0 0 4 6" fill="none" className="opacity-40">
-                  <path d="M1 1L3 3L1 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </li>
-              <li><span className="text-ink">Products</span></li>
-              <li>
-                <svg width="4" height="6" viewBox="0 0 4 6" fill="none" className="opacity-40">
-                  <path d="M1 1L3 3L1 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </li>
-              <li><span className="text-ink font-semibold">Index of All Products</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="PRODUCTS"
+        title="Index of All Products"
+        lede="Explore LorVen's complete portfolio of railway engineering solutions."
+        image={heroImg}
+      />
 
       {/* 2. Old Grid System (Simple 3-Col, Clean White Cards) */}
       <section className="pb-24 bg-bg pt-8">

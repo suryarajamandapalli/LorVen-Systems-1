@@ -222,8 +222,11 @@ function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const lastActiveSlideRef = useRef(activeSlide);
+
+  const isCurrentlyPlaying = isPlaying && !isHovered;
 
   const slides = [
     {
@@ -304,7 +307,7 @@ function Hero() {
         if (lastActiveSlideRef.current !== 0) {
           videoRef.current.currentTime = 0;
         }
-        if (isPlaying) {
+        if (isCurrentlyPlaying) {
           videoRef.current.play().catch(() => {});
         } else {
           videoRef.current.pause();
@@ -314,12 +317,12 @@ function Hero() {
       videoRef.current?.pause();
     }
     lastActiveSlideRef.current = activeSlide;
-  }, [activeSlide, isPlaying]);
+  }, [activeSlide, isCurrentlyPlaying]);
 
   // 2. Manage image slides duration and progress updates
   useEffect(() => {
     if (activeSlide === 0) return;
-    if (!isPlaying) return;
+    if (!isCurrentlyPlaying) return;
 
     setProgress(0);
     const duration = 10000; // Slowed down to 10 seconds
@@ -342,12 +345,12 @@ function Hero() {
     return () => {
       cancelAnimationFrame(animFrame);
     };
-  }, [activeSlide, slides.length, isPlaying]);
+  }, [activeSlide, slides.length, isCurrentlyPlaying]);
 
   // 3. Smooth video progress tracking
   useEffect(() => {
     if (activeSlide !== 0) return;
-    if (!isPlaying) return;
+    if (!isCurrentlyPlaying) return;
 
     let animFrame: number;
     const updateVideoProgress = () => {
@@ -360,10 +363,14 @@ function Hero() {
 
     animFrame = requestAnimationFrame(updateVideoProgress);
     return () => cancelAnimationFrame(animFrame);
-  }, [activeSlide, isPlaying]);
+  }, [activeSlide, isCurrentlyPlaying]);
 
   return (
-    <section className="relative h-[100svh] w-full overflow-hidden bg-ink text-on-dark">
+    <section
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative h-[100svh] w-full overflow-hidden bg-ink text-on-dark"
+    >
       <style dangerouslySetInnerHTML={{ __html: `
         /* Morph-blend Transition */
         .hero-slide {

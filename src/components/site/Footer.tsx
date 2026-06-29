@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-12 gap-8 text-sm">
           {/* Column 1: Logo & Address */}
           <div className="col-span-12 md:col-span-4 flex flex-col">
-            <Logo id="footer-logo" idPrefix="footer" className="text-white w-36 md:w-44 h-auto" />
+            <Logo id="footer-logo" idPrefix="footer" className="text-white w-32 md:w-44 h-auto" />
             <address className="mt-5 not-italic text-sm leading-relaxed opacity-70 max-w-xs">
               <strong>{COMPANY.legal}</strong>
               <br />

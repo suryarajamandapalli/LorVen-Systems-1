@@ -26,15 +26,15 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Logo fades in after preloader logo has faded out (~1000ms)
+  // Logo fades in after preloader has fully faded out (~2000ms)
   useEffect(() => {
-    const t = window.setTimeout(() => setLogoReady(true), 1000);
+    const t = window.setTimeout(() => setLogoReady(true), 2000);
     return () => window.clearTimeout(t);
   }, []);
 
-  // Nav items slide in just after logo appears
+  // Nav items fade in just after logo appears
   useEffect(() => {
-    const t = window.setTimeout(() => setNavReady(true), 1500);
+    const t = window.setTimeout(() => setNavReady(true), 2000);
     return () => window.clearTimeout(t);
   }, []);
 
@@ -105,8 +105,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             }`}
             style={{
               opacity: logoReady ? 1 : 0,
-              transform: logoReady ? "translateY(0)" : "translateY(-100px)",
-              transition: `opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1), color 1000ms cubic-bezier(0.16,1,0.3,1)`,
+              transition: `opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), color 1000ms cubic-bezier(0.16,1,0.3,1)`,
             }}
           />
         </Link>
@@ -140,27 +139,20 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             solid ? "text-ink" : "text-on-dark"
           }`}
         >
-          <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="group">
+          <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="group">
             <path
-              d="M 2 4 H 20 A 6 6 0 0 1 26 10 V 22"
+              d="M 2 4 H 20 A 6 6 0 0 1 26 10 V 20"
               stroke="currentColor"
               strokeWidth="1.6"
               strokeLinecap="round"
               className="transition-transform duration-300 group-hover:translate-x-[1px] group-hover:translate-y-[1px]"
             />
             <path
-              d="M 2 9 H 15 A 6 6 0 0 1 21 15 V 22"
+              d="M 2 12 H 14 A 6 6 0 0 1 20 18 V 20"
               stroke="currentColor"
               strokeWidth="1.6"
               strokeLinecap="round"
               className="transition-transform duration-300 group-hover:translate-x-[0.5px] group-hover:translate-y-[0.5px]"
-            />
-            <path
-              d="M 2 14 H 10 A 6 6 0 0 1 16 20 V 22"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              className="transition-transform duration-300"
             />
           </svg>
         </button>
@@ -204,7 +196,7 @@ function NavLink({
     ? "opacity-100"
     : active
       ? "opacity-100"
-      : "opacity-60 hover:opacity-100";
+      : "opacity-100 hover:opacity-80";
   return (
     <Link
       to={to}
@@ -233,7 +225,7 @@ function NavTrigger({
     ? "opacity-100"
     : active
       ? "opacity-100"
-      : "opacity-60 hover:opacity-100";
+      : "opacity-100 hover:opacity-80";
   return (
     <button
       type="button"
@@ -280,9 +272,6 @@ function MegaPanel({
             opacity: 0 !important;
             pointer-events: none !important;
           }
-          body.preloader-active #navbar-logo {
-            opacity: 0 !important;
-          }
           @keyframes fadeInMenu {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
@@ -308,17 +297,16 @@ function MegaPanel({
                 Index of all products
               </Link>
             </div>
-            <div className="col-span-12 md:col-span-9 grid grid-cols-2 gap-x-10 gap-y-8 md:grid-cols-4">
+            <div className="col-span-12 md:col-span-9 grid grid-cols-2 gap-x-10 gap-y-8 md:grid-cols-3">
               {PRODUCT_INDEX.map((p) => (
                 <div key={p.slug} className="flex flex-col">
                   <a href={`/products/${p.slug}`} onClick={onClose} className="group block">
-                    <span className="num-mono text-[11px] text-ink-muted">{p.number}</span>
                     <span className="mt-2 block text-lg font-medium text-ink group-hover:text-steel">
                       {p.title}
                     </span>
                   </a>
                   {p.children.length > 0 && (
-                    <ul className="mt-3 space-y-2 border-l border-rule pl-3 text-sm text-ink-muted">
+                    <ul className="mt-4 space-y-3 border-l border-rule pl-4 text-[15px] text-ink-muted">
                       {p.children.map((c) => (
                         <li key={c.slug}>
                           <a
@@ -355,8 +343,7 @@ function MegaPanel({
                   onClick={onClose}
                   className="group block border-t border-rule pt-6"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span className="num-mono text-[11px] text-ink-muted">{s.number}</span>
+                  <div className="flex items-baseline justify-end">
                     <span className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
                       Service
                     </span>

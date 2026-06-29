@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 type Props = {
   eyebrow: string;
   index?: string;
@@ -20,7 +22,12 @@ export function PageHero({ eyebrow, title, lede, image, align = "left" }: Props)
         </div>
       )}
       <div className="container-editorial relative grid grid-cols-12 gap-8 py-16 md:py-24">
-        <div className="col-span-12 flex items-baseline justify-between border-t border-rule pt-6">
+        <div className="col-span-12 flex flex-col justify-end border-t border-rule pt-6">
+          <ul className="flex items-center gap-2 text-[9px] uppercase tracking-[0.15em] text-ink-muted mb-8 pointer-events-auto">
+            <li><Link to="/" className="hover:text-ink transition-colors duration-200">Home</Link></li>
+            <li><span>/</span></li>
+            <li className="text-ink">{cleanEyebrow || title}</li>
+          </ul>
           <span className="eyebrow">{cleanEyebrow}</span>
         </div>
         <div

@@ -27,6 +27,9 @@ import { Route as ProductsWagonsRouteImport } from './routes/products.wagons'
 import { Route as ProductsSntRouteImport } from './routes/products.snt'
 import { Route as ProductsElectricLocomotiveRouteImport } from './routes/products.electric-locomotive'
 import { Route as ProductsCoachesRouteImport } from './routes/products.coaches'
+import { Route as ProductsWagonsIndexRouteImport } from './routes/products.wagons.index'
+import { Route as ProductsSntIndexRouteImport } from './routes/products.snt.index'
+import { Route as ProductsElectricLocomotiveIndexRouteImport } from './routes/products.electric-locomotive.index'
 import { Route as ProductsWagonsWliRouteImport } from './routes/products.wagons.wli'
 import { Route as ProductsWagonsAhabdRouteImport } from './routes/products.wagons.ahabd'
 import { Route as ProductsSntRdpmsRouteImport } from './routes/products.snt.rdpms'
@@ -125,6 +128,22 @@ const ProductsCoachesRoute = ProductsCoachesRouteImport.update({
   path: '/coaches',
   getParentRoute: () => ProductsRoute,
 } as any)
+const ProductsWagonsIndexRoute = ProductsWagonsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductsWagonsRoute,
+} as any)
+const ProductsSntIndexRoute = ProductsSntIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductsSntRoute,
+} as any)
+const ProductsElectricLocomotiveIndexRoute =
+  ProductsElectricLocomotiveIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProductsElectricLocomotiveRoute,
+  } as any)
 const ProductsWagonsWliRoute = ProductsWagonsWliRouteImport.update({
   id: '/wli',
   path: '/wli',
@@ -183,6 +202,9 @@ export interface FileRoutesByFullPath {
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
+  '/products/electric-locomotive/': typeof ProductsElectricLocomotiveIndexRoute
+  '/products/snt/': typeof ProductsSntIndexRoute
+  '/products/wagons/': typeof ProductsWagonsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -194,9 +216,6 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/terms': typeof TermsRoute
   '/products/coaches': typeof ProductsCoachesRoute
-  '/products/electric-locomotive': typeof ProductsElectricLocomotiveRouteWithChildren
-  '/products/snt': typeof ProductsSntRouteWithChildren
-  '/products/wagons': typeof ProductsWagonsRouteWithChildren
   '/services/design': typeof ServicesDesignRoute
   '/services/installation': typeof ServicesInstallationRoute
   '/products': typeof ProductsIndexRoute
@@ -207,6 +226,9 @@ export interface FileRoutesByTo {
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
+  '/products/electric-locomotive': typeof ProductsElectricLocomotiveIndexRoute
+  '/products/snt': typeof ProductsSntIndexRoute
+  '/products/wagons': typeof ProductsWagonsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -234,6 +256,9 @@ export interface FileRoutesById {
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
+  '/products/electric-locomotive/': typeof ProductsElectricLocomotiveIndexRoute
+  '/products/snt/': typeof ProductsSntIndexRoute
+  '/products/wagons/': typeof ProductsWagonsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -262,6 +287,9 @@ export interface FileRouteTypes {
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
     | '/products/wagons/wli'
+    | '/products/electric-locomotive/'
+    | '/products/snt/'
+    | '/products/wagons/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -273,9 +301,6 @@ export interface FileRouteTypes {
     | '/projects'
     | '/terms'
     | '/products/coaches'
-    | '/products/electric-locomotive'
-    | '/products/snt'
-    | '/products/wagons'
     | '/services/design'
     | '/services/installation'
     | '/products'
@@ -286,6 +311,9 @@ export interface FileRouteTypes {
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
     | '/products/wagons/wli'
+    | '/products/electric-locomotive'
+    | '/products/snt'
+    | '/products/wagons'
   id:
     | '__root__'
     | '/'
@@ -312,6 +340,9 @@ export interface FileRouteTypes {
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
     | '/products/wagons/wli'
+    | '/products/electric-locomotive/'
+    | '/products/snt/'
+    | '/products/wagons/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -455,6 +486,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsCoachesRouteImport
       parentRoute: typeof ProductsRoute
     }
+    '/products/wagons/': {
+      id: '/products/wagons/'
+      path: '/'
+      fullPath: '/products/wagons/'
+      preLoaderRoute: typeof ProductsWagonsIndexRouteImport
+      parentRoute: typeof ProductsWagonsRoute
+    }
+    '/products/snt/': {
+      id: '/products/snt/'
+      path: '/'
+      fullPath: '/products/snt/'
+      preLoaderRoute: typeof ProductsSntIndexRouteImport
+      parentRoute: typeof ProductsSntRoute
+    }
+    '/products/electric-locomotive/': {
+      id: '/products/electric-locomotive/'
+      path: '/'
+      fullPath: '/products/electric-locomotive/'
+      preLoaderRoute: typeof ProductsElectricLocomotiveIndexRouteImport
+      parentRoute: typeof ProductsElectricLocomotiveRoute
+    }
     '/products/wagons/wli': {
       id: '/products/wagons/wli'
       path: '/wli'
@@ -503,6 +555,7 @@ declare module '@tanstack/react-router' {
 interface ProductsElectricLocomotiveRouteChildren {
   ProductsElectricLocomotiveIftRoute: typeof ProductsElectricLocomotiveIftRoute
   ProductsElectricLocomotiveSimulatorsRoute: typeof ProductsElectricLocomotiveSimulatorsRoute
+  ProductsElectricLocomotiveIndexRoute: typeof ProductsElectricLocomotiveIndexRoute
 }
 
 const ProductsElectricLocomotiveRouteChildren: ProductsElectricLocomotiveRouteChildren =
@@ -510,6 +563,7 @@ const ProductsElectricLocomotiveRouteChildren: ProductsElectricLocomotiveRouteCh
     ProductsElectricLocomotiveIftRoute: ProductsElectricLocomotiveIftRoute,
     ProductsElectricLocomotiveSimulatorsRoute:
       ProductsElectricLocomotiveSimulatorsRoute,
+    ProductsElectricLocomotiveIndexRoute: ProductsElectricLocomotiveIndexRoute,
   }
 
 const ProductsElectricLocomotiveRouteWithChildren =
@@ -520,11 +574,13 @@ const ProductsElectricLocomotiveRouteWithChildren =
 interface ProductsSntRouteChildren {
   ProductsSntIpsRoute: typeof ProductsSntIpsRoute
   ProductsSntRdpmsRoute: typeof ProductsSntRdpmsRoute
+  ProductsSntIndexRoute: typeof ProductsSntIndexRoute
 }
 
 const ProductsSntRouteChildren: ProductsSntRouteChildren = {
   ProductsSntIpsRoute: ProductsSntIpsRoute,
   ProductsSntRdpmsRoute: ProductsSntRdpmsRoute,
+  ProductsSntIndexRoute: ProductsSntIndexRoute,
 }
 
 const ProductsSntRouteWithChildren = ProductsSntRoute._addFileChildren(
@@ -534,11 +590,13 @@ const ProductsSntRouteWithChildren = ProductsSntRoute._addFileChildren(
 interface ProductsWagonsRouteChildren {
   ProductsWagonsAhabdRoute: typeof ProductsWagonsAhabdRoute
   ProductsWagonsWliRoute: typeof ProductsWagonsWliRoute
+  ProductsWagonsIndexRoute: typeof ProductsWagonsIndexRoute
 }
 
 const ProductsWagonsRouteChildren: ProductsWagonsRouteChildren = {
   ProductsWagonsAhabdRoute: ProductsWagonsAhabdRoute,
   ProductsWagonsWliRoute: ProductsWagonsWliRoute,
+  ProductsWagonsIndexRoute: ProductsWagonsIndexRoute,
 }
 
 const ProductsWagonsRouteWithChildren = ProductsWagonsRoute._addFileChildren(

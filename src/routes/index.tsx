@@ -130,7 +130,7 @@ function Home() {
     // 5. HomeCTA background image parallax
     gsap.fromTo(
       ".cta-parallax-img",
-      { yPercent: -10 },
+      { yPercent: -5 },
       {
         scrollTrigger: {
           trigger: ".cta-section",
@@ -138,7 +138,7 @@ function Home() {
           end: "bottom top",
           scrub: true,
         },
-        yPercent: 10,
+        yPercent: 5,
         ease: "none",
       }
     );
@@ -162,7 +162,44 @@ function Home() {
       );
     });
 
-    // 7. Backup refresh timer to guarantee offsets are correct after layout hydrates and unblocks
+    // 7. VMP Section parallax (Elegant Float & Breathe)
+    gsap.utils.toArray(".vmp-img-container").forEach((container: any) => {
+      const img = container.querySelector("img");
+      
+      // Floating container effect
+      gsap.fromTo(
+        container,
+        { y: 40 },
+        {
+          scrollTrigger: {
+            trigger: container.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+          y: -40,
+          ease: "none",
+        }
+      );
+
+      // Breathing image effect (Scale up)
+      gsap.fromTo(
+        img,
+        { scale: 1 },
+        {
+          scrollTrigger: {
+            trigger: container.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+          scale: 1.15,
+          ease: "none",
+        }
+      );
+    });
+
+    // 8. Backup refresh timer to guarantee offsets are correct after layout hydrates and unblocks
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 1500);
@@ -579,6 +616,82 @@ function AboutPreview() {
             </div>
           </div>
  
+        </div>
+
+        {/* Vision, Mission, Purpose — Editorial Experience */}
+        <div className="mt-32 relative py-24 md:py-40 border-t border-rule overflow-hidden vmp-section">
+          
+          {/* Subtle Industrial Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Fine architectural grid overlay */}
+            <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+            
+            {/* Soft gradient fades */}
+            <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
+            <div className="absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg" />
+          </div>
+
+          <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-0">
+            
+            {/* Timeline Spine */}
+            <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-rule/50 -translate-x-1/2 hidden md:block" />
+
+            <div className="grid grid-cols-1 gap-y-32">
+              
+              {/* 01. VISION (Left Text, Right Image) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 relative items-center group">
+                <div className="flex flex-col justify-center gsap-reveal order-2 md:order-1">
+                  <div className="flex items-center gap-4 mb-10">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Vision</span>
+                    <span className="h-px w-12 bg-black/40"></span>
+                  </div>
+                  <h3 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-[1.15] tracking-tight text-black">
+                    To build a globally respected technology company delivering world-class systems for <span className="font-medium relative inline-block after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-black">safety-critical</span> and <span className="font-medium relative inline-block after:content-[''] after:absolute after:bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-black">mission-critical</span> industries.
+                  </h3>
+                </div>
+                <div className="vmp-img-container relative w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-xl shadow-2xl order-1 md:order-2 bg-rule/10">
+                  <img src={engineers} alt="Engineering Vision" className="w-full h-full object-cover transition-all duration-700 hover:grayscale" />
+                </div>
+                {/* Node for timeline */}
+                <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full border border-black bg-bg z-10 transition-colors duration-500 group-hover:bg-black" />
+              </div>
+
+              {/* 02. MISSION (Left Image, Right Text) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 relative items-center group">
+                <div className="vmp-img-container relative w-full aspect-[4/5] md:aspect-square overflow-hidden rounded-xl shadow-2xl bg-rule/10">
+                  <img src={electrical} alt="Engineering Mission" className="w-full h-full object-cover transition-all duration-700 hover:grayscale" />
+                </div>
+                <div className="flex flex-col justify-center gsap-reveal">
+                  <div className="flex items-center gap-4 mb-10 md:justify-end">
+                    <span className="h-px w-12 bg-black/40"></span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Mission</span>
+                  </div>
+                  <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-black md:text-right">
+                    To create reliable, innovative, and high-performance products that advance transportation, infrastructure, aerospace, and defence through <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">engineering excellence</span> and <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">disciplined execution</span>.
+                  </p>
+                </div>
+                {/* Node for timeline */}
+                <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full border border-black bg-bg z-10 transition-colors duration-500 group-hover:bg-black" />
+              </div>
+
+              {/* 03. PURPOSE (Centered Powerful Close) */}
+              <div className="flex flex-col items-center text-center gsap-reveal relative pt-16 md:pt-24 border-t border-rule/50">
+                <div className="absolute top-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-black z-10 shadow-[0_0_15px_rgba(0,0,0,0.15)]" />
+                
+                <div className="flex items-center gap-4 mb-12">
+                  <span className="h-px w-8 bg-rule"></span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Purpose</span>
+                  <span className="h-px w-8 bg-rule"></span>
+                </div>
+                
+                <p className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.2] text-black max-w-4xl">
+                  Engineering technology that improves safety, reliability, and performance <br className="hidden md:block"/>
+                  <span className="font-medium inline-block mt-4 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-black">where failure is not an option.</span>
+                </p>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1020,7 +1133,7 @@ function HomeCTA() {
         <img
           src={newBulletTrain}
           alt="High-speed bullet train"
-          className="w-full h-full object-cover object-center brightness-[0.85] contrast-100 scale-110 cta-parallax-img"
+          className="w-full h-full object-cover object-[center_80%] md:object-[center_75%] brightness-[0.85] contrast-100 scale-110 cta-parallax-img"
         />
         {/* Soft elegant gradient shading on the left & bottom to hold white text */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent z-10" />

@@ -2,7 +2,7 @@
 export const COMPANY = {
   name: "LorVen Systems",
   legal: "LorVen Systems Pvt. Ltd.",
-  tagline: "Railway electronics, manufacturing and electrical integration.",
+  tagline: "Engineering Confidence",
   founded: "Established 2008",
   hq: {
     city: "Hyderabad",
@@ -60,17 +60,10 @@ export const PRODUCT_INDEX = [
     ],
   },
   {
-    slug: "coaches",
-    number: "03",
-    title: "Coaches",
-    blurb: "Integrated electrical cabinets, wiring harnesses, and coach-level auxiliary panels.",
-    children: [],
-  },
-  {
     slug: "wagons",
-    number: "04",
-    title: "Wagons",
-    blurb: "Freight wagon safety systems including overload protection and bearing health detection.",
+    number: "03",
+    title: "Coaches & Wagons",
+    blurb: "Integrated electrical cabinets, wiring harnesses, and freight wagon safety systems.",
     children: [
       {
         slug: "wli",

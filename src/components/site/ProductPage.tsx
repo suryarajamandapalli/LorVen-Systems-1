@@ -1,240 +1,332 @@
-import { CTAStrip } from "./CTAStrip";
-import { PageHero } from "./PageHero";
 import { Link } from "@tanstack/react-router";
 
-type KeySystem = {
-  code: string;
-  name: string;
-  description: string;
+export type Advantage = {
+  title: string;
+  desc: string;
+};
+
+export type Spec = {
+  label: string;
+  value: string;
+};
+
+export type GalleryItem = {
+  src: string;
+  caption: string;
+  type: "wide" | "portrait" | "landscape";
+};
+
+export type RelatedItem = {
   href: string;
-  icons: string[];
+  title: string;
+  description: string;
+  image: string;
 };
 
 export type ProductPageProps = {
-  index: string;
-  eyebrow: string;
   title: string;
-  lede: string;
-  hero: string;
+  subtitle: string;
+  heroImage: string;
+  // Overview
   overview: string;
-  keySystemsLabel?: string;
-  keySystems?: KeySystem[];
-  applications: string[];
-  specs: { label: string; value: string }[];
-  downloads?: { label: string; file: string }[];
-  gallery: { src: string; caption: string }[];
-  related?: { href: string; number: string; title: string }[];
+  overviewSpecs: { label: string; value: string }[];
+  // Feature Image
+  featureImage: string;
+  // Key Advantages
+  advantages: Advantage[];
+  // Tech Specs
+  specs: Spec[];
+  // Gallery
+  gallery: GalleryItem[];
+  // Related
+  related: RelatedItem[];
 };
 
 export function ProductPage(p: ProductPageProps) {
   return (
-    <>
-      <PageHero eyebrow={p.eyebrow} index={p.index} title={p.title} lede={p.lede} image={p.hero} />
+    <div className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
+      {/* 1. HERO SECTION (35-45vh, Dark Overlay, Precise Breadcrumbs) */}
+      <section className="relative flex flex-col justify-end h-[40vh] min-h-[320px] max-h-[420px] overflow-hidden bg-black pt-24 pb-10">
+        <div className="absolute inset-0 z-0">
+          <img src={p.heroImage} alt={p.title} className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+        </div>
 
-      {/* Overview */}
-      <section className="border-t border-rule bg-bg">
-        <div className="container-editorial grid grid-cols-12 gap-8 py-24">
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Overview</span>
-          </div>
-          <div className="col-span-12 md:col-span-9">
-            <p className="reveal max-w-3xl text-2xl font-light leading-snug text-ink md:text-3xl">
+        <div className="container-editorial relative z-10">
+          {/* Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="mb-4 flex items-center text-[9px] font-bold uppercase tracking-[0.2em] text-white/60">
+            <ol className="flex items-center space-x-2.5">
+              <li>
+                <Link to="/" className="transition-colors hover:text-white">HOME</Link>
+              </li>
+              <li>
+                <svg width="4" height="6" viewBox="0 0 4 6" fill="none" className="opacity-40">
+                  <path d="M1 1L3 3L1 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </li>
+              <li>
+                <Link to="/products" className="transition-colors hover:text-white">PRODUCTS</Link>
+              </li>
+              <li>
+                <svg width="4" height="6" viewBox="0 0 4 6" fill="none" className="opacity-40">
+                  <path d="M1 1L3 3L1 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </li>
+              <li aria-current="page">
+                <span className="text-white">{p.title}</span>
+              </li>
+            </ol>
+          </nav>
+
+          <h1 className="text-3xl md:text-5xl font-light text-white tracking-wide uppercase">
+            {p.title}
+          </h1>
+          <p className="mt-3 max-w-2xl text-base md:text-lg text-white/80 font-light leading-relaxed">
+            {p.subtitle}
+          </p>
+        </div>
+      </section>
+
+      {/* 2. OVERVIEW SECTION (Title, Medium Paragraph, Engineering Specifications Sidebar) */}
+      <section className="py-20 md:py-24 bg-bg border-b border-rule">
+        <div className="container-editorial grid grid-cols-12 gap-8 md:gap-12">
+          {/* Left Column: Title & Overview */}
+          <div className="col-span-12 lg:col-span-8">
+            <span className="eyebrow block mb-6">SYSTEM OVERVIEW</span>
+            <h2 className="text-2xl md:text-3xl font-light leading-snug text-ink mb-6">
+              Engineering safety and reliability into mainline operations.
+            </h2>
+            <p className="text-lg md:text-xl font-light leading-relaxed text-ink-muted">
               {p.overview}
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* Key Systems — Product Details */}
-      {p.keySystems && p.keySystems.length > 0 && (
-        <section className="border-t border-rule bg-[#111] text-white overflow-hidden">
-          <div className="container-editorial py-20">
-            <div className="flex items-baseline justify-between mb-14">
-              <span className="eyebrow !text-white/40 !text-[10px]">
-                {p.keySystemsLabel ?? "Product Details"}
-              </span>
-              <span className="num-mono text-[10px] text-white/30 uppercase tracking-[0.18em]">
-                {String(p.keySystems.length).padStart(2, "0")} Systems
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {p.keySystems.map((sys, i) => (
-                <Link
-                  key={sys.code}
-                  to={sys.href}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-10 hover:bg-white/[0.07] hover:border-white/20 transition-all duration-500"
-                >
-                  {/* Ghost number */}
-                  <span
-                    className="absolute top-6 right-8 text-[80px] font-black leading-none text-white/[0.04] select-none pointer-events-none transition-all duration-500 group-hover:text-white/[0.08]"
-                    aria-hidden
-                  >
-                    {String(i + 1).padStart(2, "0")}
+          {/* Right Column: Engineering Specs Sidebar */}
+          <div className="col-span-12 lg:col-span-4 border-l border-rule pl-8 lg:pl-12">
+            <span className="eyebrow block mb-6">ENGINEERING PROFILE</span>
+            <div className="space-y-6">
+              {p.overviewSpecs.map((spec) => (
+                <div key={spec.label} className="border-b border-rule/10 pb-4">
+                  <span className="block text-[9px] font-bold uppercase tracking-[0.15em] text-ink-muted mb-1">
+                    {spec.label}
                   </span>
-
-                  {/* Top: code + name */}
-                  <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="inline-block px-3 py-1 rounded-full border border-white/20 text-[10px] uppercase tracking-[0.2em] text-white/60 font-medium">
-                        {sys.code}
-                      </span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-light text-white leading-snug mb-4">
-                      {sys.name}
-                    </h3>
-                    <p className="text-sm md:text-base text-white/55 leading-relaxed">
-                      {sys.description}
-                    </p>
-                  </div>
-
-                  {/* Bottom: icons + CTA */}
-                  <div className="mt-8 pt-6 border-t border-white/10">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {sys.icons.map((icon) => (
-                        <span
-                          key={icon}
-                          className="text-[11px] text-white/50 bg-white/5 rounded-full px-3 py-1 border border-white/10"
-                        >
-                          {icon}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/40 group-hover:text-white/80 transition-colors duration-300">
-                      <span>Product Details</span>
-                      <span className="translate-x-0 group-hover:translate-x-1.5 transition-transform duration-300">→</span>
-                    </div>
-                  </div>
-                </Link>
+                  <span className="text-sm md:text-base font-medium text-ink">
+                    {spec.value}
+                  </span>
+                </div>
               ))}
             </div>
           </div>
-        </section>
-      )}
-
-      {/* Applications */}
-      <section className="border-t border-rule bg-section">
-        <div className="container-editorial grid grid-cols-12 gap-8 py-24">
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Applications</span>
-          </div>
-          <ol className="col-span-12 divide-y divide-rule border-t border-rule md:col-span-9">
-            {p.applications.map((a, i) => (
-              <li key={a} className="reveal flex items-baseline gap-6 py-5 text-lg text-ink">
-                <span className="num-mono w-10 shrink-0 text-[11px] text-ink-muted">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span>{a}</span>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
-      {/* Specifications */}
-      <section className="border-t border-rule bg-bg">
-        <div className="container-editorial grid grid-cols-12 gap-8 py-24">
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Specifications</span>
-            <p className="mt-4 text-sm text-ink-muted">
-              Indicative values. Configurations are tailored to customer requirements and operating
-              envelope.
+      {/* 3. LARGE FEATURE IMAGE (Full width, parallax style, rounded corners, soft shadows) */}
+      <section className="py-16 md:py-20 bg-bg">
+        <div className="container-editorial">
+          <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden rounded-2xl shadow-xl border border-rule/10">
+            <img 
+              src={p.featureImage} 
+              alt="System details" 
+              className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]" 
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. KEY ADVANTAGES (Minimal cards with reveal animation) */}
+      <section className="py-20 md:py-24 bg-section border-t border-b border-rule">
+        <div className="container-editorial">
+          <div className="mb-12">
+            <span className="eyebrow block mb-4">KEY ADVANTAGES</span>
+            <h2 className="text-2xl md:text-3xl font-light text-ink uppercase tracking-wide">
+              Operational Benefits
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {p.advantages.map((adv, i) => (
+              <div 
+                key={adv.title}
+                className="bg-white border border-rule/15 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 hover:-translate-y-1"
+                style={{
+                  animation: `revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 100}ms forwards`
+                }}
+              >
+                <div className="flex items-center space-x-3 mb-4">
+                  <span className="flex items-center justify-center w-5 h-5 rounded-full bg-rule/10 text-rule text-xs font-semibold">
+                    ✓
+                  </span>
+                  <h3 className="text-lg font-medium text-ink">
+                    {adv.title}
+                  </h3>
+                </div>
+                <p className="text-sm text-ink-muted leading-relaxed">
+                  {adv.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. TECHNICAL SPECIFICATIONS (Premium two-column layout) */}
+      <section className="py-20 md:py-24 bg-bg">
+        <div className="container-editorial grid grid-cols-12 gap-8 md:gap-12">
+          <div className="col-span-12 lg:col-span-4">
+            <span className="eyebrow block mb-4">TECHNICAL SPECIFICATIONS</span>
+            <h2 className="text-2xl md:text-3xl font-light text-ink uppercase tracking-wide mb-4">
+              System Parameters
+            </h2>
+            <p className="text-sm text-ink-muted leading-relaxed">
+              Standard operating parameters. Custom configurations are engineered according to specific rolling stock and trackside infrastructure requirements.
             </p>
           </div>
-          <dl className="col-span-12 divide-y divide-rule border-t border-rule md:col-span-9">
-            {p.specs.map((s) => (
-              <div
-                key={s.label}
-                className="reveal grid grid-cols-1 gap-2 py-5 md:grid-cols-[1fr_2fr]"
-              >
-                <dt className="num-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                  {s.label}
-                </dt>
-                <dd className="text-base text-ink md:text-lg">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
 
-      {/* Gallery */}
-      <section className="border-t border-rule bg-section">
-        <div className="container-editorial py-24">
-          <div className="mb-12 flex items-baseline justify-between">
-            <span className="eyebrow">Engineering</span>
-            <span className="num-mono text-[11px] text-ink-muted">Plate / Gallery</span>
-          </div>
-          <div className="grid grid-cols-12 gap-6">
-            {p.gallery.map((g, i) => (
-              <figure
-                key={g.src}
-                className={`reveal ${i % 3 === 0 ? "col-span-12 md:col-span-8" : "col-span-12 md:col-span-4"}`}
-              >
-                <div className="overflow-hidden bg-surface">
-                  <img
-                    src={g.src}
-                    alt={g.caption}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-3 flex items-baseline justify-between text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                  <span>{g.caption}</span>
-                  <span className="num-mono">
-                    {String(i + 1).padStart(2, "0")}/{String(p.gallery.length).padStart(2, "0")}
+          <div className="col-span-12 lg:col-span-8">
+            <div className="border-t border-rule divide-y divide-rule/50">
+              {p.specs.map((spec) => (
+                <div key={spec.label} className="grid grid-cols-1 md:grid-cols-3 gap-2 py-5 items-baseline">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink-muted md:col-span-1">
+                    {spec.label}
                   </span>
-                </figcaption>
-              </figure>
+                  <span className="text-sm md:text-base text-ink font-light md:col-span-2">
+                    {spec.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. APPLICATION GALLERY (Alternating layouts for rhythm) */}
+      <section className="py-20 bg-section border-t border-b border-rule">
+        <div className="container-editorial">
+          <div className="mb-12 flex justify-between items-baseline">
+            <div>
+              <span className="eyebrow block mb-2">APPLICATIONS</span>
+              <h2 className="text-2xl md:text-3xl font-light text-ink uppercase tracking-wide">
+                System Deployments
+              </h2>
+            </div>
+            <span className="num-mono text-[11px] text-ink-muted">
+              Plates 01 – {String(p.gallery.length).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-12 gap-6 md:gap-8">
+            {p.gallery.map((item, i) => {
+              let colSpan = "col-span-12";
+              let aspectClass = "aspect-[16/9]";
+              if (item.type === "portrait") {
+                colSpan = "col-span-12 md:col-span-4";
+                aspectClass = "aspect-[3/4]";
+              } else if (item.type === "landscape") {
+                colSpan = "col-span-12 md:col-span-8";
+                aspectClass = "aspect-[4/3]";
+              }
+
+              return (
+                <figure key={item.src} className={`${colSpan} flex flex-col`}>
+                  <div className={`overflow-hidden rounded-xl border border-rule/10 bg-surface ${aspectClass}`}>
+                    <img 
+                      src={item.src} 
+                      alt={item.caption} 
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 flex justify-between text-[10px] uppercase tracking-[0.15em] text-ink-muted">
+                    <span>{item.caption}</span>
+                    <span className="num-mono">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. RELATED PRODUCTS (3 premium cards with hover zoom and animations) */}
+      <section className="py-20 md:py-24 bg-bg">
+        <div className="container-editorial">
+          <div className="mb-12">
+            <span className="eyebrow block mb-4">COMPLEMENTARY SYSTEMS</span>
+            <h2 className="text-2xl md:text-3xl font-light text-ink uppercase tracking-wide">
+              Related Solutions
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {p.related.map((rel) => (
+              <Link
+                key={rel.href}
+                to={rel.href as any}
+                className="group/card flex flex-col bg-white overflow-hidden border border-rule/15 hover:border-rule/30 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-lg"
+              >
+                {/* Thumbnail Image */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+                  <img 
+                    src={rel.image} 
+                    alt={rel.title} 
+                    className="w-full h-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/card:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 transition-colors duration-[600ms] group-hover/card:bg-black/[0.02]" />
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg font-semibold text-ink group-hover/card:text-rule transition-colors duration-300">
+                    {rel.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-muted leading-relaxed flex-grow">
+                    {rel.description}
+                  </p>
+
+                  <div className="mt-6 pt-4 flex items-center justify-between border-t border-rule/10">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink/40 group-hover/card:text-rule transition-colors duration-300">
+                      View System
+                    </span>
+                    <svg 
+                      width="16" 
+                      height="16" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      className="text-rule opacity-0 -translate-x-3 transition-all duration-[500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/card:opacity-100 group-hover/card:translate-x-0"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Downloads + related */}
-      {(p.downloads?.length || p.related?.length) && (
-        <section className="border-t border-rule bg-bg">
-          <div className="container-editorial grid grid-cols-12 gap-8 py-24">
-            {p.downloads && p.downloads.length > 0 && (
-              <div className="col-span-12 md:col-span-6">
-                <span className="eyebrow">Downloads</span>
-                <ul className="mt-8 divide-y divide-rule border-t border-rule">
-                  {p.downloads.map((d) => (
-                    <li key={d.label} className="flex items-baseline justify-between py-5">
-                      <span className="text-base text-ink">{d.label}</span>
-                      <span className="num-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                        {d.file}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {p.related && p.related.length > 0 && (
-              <div className="col-span-12 md:col-span-6">
-                <span className="eyebrow">Related Products</span>
-                <ul className="mt-8 divide-y divide-rule border-t border-rule">
-                  {p.related.map((r) => (
-                    <li key={r.href}>
-                      <a href={r.href} className="group flex items-baseline justify-between py-5">
-                        <span className="text-lg text-ink group-hover:text-steel">{r.title}</span>
-                        <span className="num-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                          →
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
-
-      <CTAStrip
-        eyebrow="Enquire"
-        title="Specify a configuration for your programme."
-        cta="Contact engineering"
-      />
-    </>
+      {/* 8. CALL TO ACTION (Dark background, minimalist B2B consultation CTA) */}
+      <section className="bg-ink text-on-dark py-24 border-t border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
+        <div className="container-editorial relative z-10 text-center max-w-3xl mx-auto flex flex-col items-center">
+          <span className="eyebrow !text-white/40 block mb-6">ENGINEERING CONSULTATION</span>
+          <h2 className="text-3xl md:text-4xl font-light leading-snug text-white uppercase tracking-wide mb-6">
+            Need a tailored configuration?
+          </h2>
+          <p className="text-base md:text-lg text-white/70 font-light leading-relaxed mb-10">
+            Our engineers can customize these systems to align with your specific railway program, rolling stock interfaces, and local standards.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center px-8 py-4 border border-white/20 hover:border-white text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-ink transition-all duration-500 rounded-sm shadow-md"
+          >
+            Request Consultation
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

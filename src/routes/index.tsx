@@ -221,7 +221,9 @@ function Home() {
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const lastActiveSlideRef = useRef(activeSlide);
 
   const slides = [
     {
@@ -299,20 +301,28 @@ function Hero() {
   useEffect(() => {
     if (activeSlide === 0) {
       if (videoRef.current) {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(() => {});
+        if (lastActiveSlideRef.current !== 0) {
+          videoRef.current.currentTime = 0;
+        }
+        if (isPlaying) {
+          videoRef.current.play().catch(() => {});
+        } else {
+          videoRef.current.pause();
+        }
       }
     } else {
       videoRef.current?.pause();
     }
-  }, [activeSlide]);
+    lastActiveSlideRef.current = activeSlide;
+  }, [activeSlide, isPlaying]);
 
   // 2. Manage image slides duration and progress updates
   useEffect(() => {
     if (activeSlide === 0) return;
+    if (!isPlaying) return;
 
     setProgress(0);
-    const duration = 6000;
+    const duration = 10000; // Slowed down to 10 seconds
     const startTime = Date.now();
     let animFrame: number;
 
@@ -332,11 +342,12 @@ function Hero() {
     return () => {
       cancelAnimationFrame(animFrame);
     };
-  }, [activeSlide, slides.length]);
+  }, [activeSlide, slides.length, isPlaying]);
 
   // 3. Smooth video progress tracking
   useEffect(() => {
     if (activeSlide !== 0) return;
+    if (!isPlaying) return;
 
     let animFrame: number;
     const updateVideoProgress = () => {
@@ -349,7 +360,7 @@ function Hero() {
 
     animFrame = requestAnimationFrame(updateVideoProgress);
     return () => cancelAnimationFrame(animFrame);
-  }, [activeSlide]);
+  }, [activeSlide, isPlaying]);
 
   return (
     <section className="relative h-[100svh] w-full overflow-hidden bg-ink text-on-dark">
@@ -487,6 +498,24 @@ function Hero() {
           style={{ width: `${progress}%` }}
         />
       </div>
+
+      {/* Play/Pause Control */}
+      <button
+        onClick={() => setIsPlaying(!isPlaying)}
+        className="absolute bottom-8 right-[clamp(1.25rem,4vw,3rem)] z-30 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/20 hover:bg-black/40 hover:border-white/40 text-white transition-all duration-300 pointer-events-auto backdrop-blur-sm cursor-pointer"
+        aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+      >
+        {isPlaying ? (
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
+            <rect x="3" y="2" width="3" height="12" rx="0.5" />
+            <rect x="10" y="2" width="3" height="12" rx="0.5" />
+          </svg>
+        ) : (
+          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
+            <path d="M4 2.5a.5.5 0 0 1 .8-.4l9 5.5a.5.5 0 0 1 0 .8l-9 5.5a.5.5 0 0 1-.8-.4v-11z" />
+          </svg>
+        )}
+      </button>
 
       {/* Navigation Arrows on Left/Right */}
       <button

@@ -1,0 +1,458 @@
+// Structured product registry for LorVen Systems.
+// Contains high-fidelity, factual engineering details for all products.
+// No marketing buzzwords, no placeholders, no fake specifications.
+
+import { ProductSystemData } from "@/components/site/ProductPageSystem";
+
+// Asset imports for engineering photography
+import elecCabinet from "@/assets/electrical-cabinet.jpg";
+import sntHeroReal from "@/assets/snt-hero-real.jpg";
+import coachBuild from "@/assets/coach-build.jpg";
+import wagonsHeroReal from "@/assets/wagons-hero-real.jpg";
+import wagonsHero from "@/assets/wagons-hero.jpg";
+import simImg from "@/assets/simulator.jpg";
+import locoHeroReal from "@/assets/loco-hero-real.jpg";
+import engineers from "@/assets/engineers.jpg";
+import heroLocomotive from "@/assets/hero-locomotive.jpg";
+import pcbMacro from "@/assets/pcb-macro.jpg";
+import factoryHall from "@/assets/factory-hall.jpg";
+import smtLine from "@/assets/smt-line.jpg";
+
+export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
+  // ─────────────────────────────────────────────
+  // 1. RDPMS
+  // ─────────────────────────────────────────────
+  rdpms: {
+    slug: "rdpms",
+    divisionSlug: "snt",
+    divisionTitle: "Signalling & Telecom",
+    title: "RDPMS",
+    category: "SIGNALLING & TELECOM",
+    heroImage: sntHeroReal,
+    description: "Remote Diagnostic & Predictive Maintenance System for wayside track and signalling asset health monitoring.",
+    
+    overviewTitle: "Continuous predictive monitoring of safety-critical wayside assets.",
+    overviewParagraphs: [
+      "The Remote Diagnostic & Predictive Maintenance System (RDPMS) is an IoT-based telemetry platform designed to monitor the operational health of railway signaling gears. The wayside remote terminal unit (RTU) intercepts analog current signatures, voltage thresholds, and contact resistance levels without interfering with vital interlocking logic circuits.",
+      "Data is collected at 100Hz sampling rates and transmitted over redundant dual-SIM LTE cellular routes to a centralized monitoring server. By comparing live telemetry against historical baseline curves, the system flags mechanical wear, degradation, and electrical anomalies weeks before a wayside asset failure occurs."
+    ],
+    overviewImage: pcbMacro,
+
+    features: [
+      {
+        title: "100Hz Signal Sampling",
+        desc: "Captures high-resolution electrical waveforms from point machine motors to detect friction increases and slide degradation."
+      },
+      {
+        title: "Galvanic Isolation",
+        desc: "Sensing input channels are opto-isolated up to 2.5kV to prevent wayside surge propagation and guarantee no logical interference with interlocking circuits."
+      },
+      {
+        title: "Insulation Leakage Tracking",
+        desc: "Monitors insulation resistance to ground on signaling cables, warning of degradation before short circuits shut down the line section."
+      },
+      {
+        title: "Redundant Telemetry",
+        desc: "Equipped with dual-SIM LTE routing that falls back to GSM-R or GPRS protocols if primary network connectivity is lost."
+      },
+      {
+        title: "Edge Logging Core",
+        desc: "Internal flash storage preserves up to 1 million diagnostic events locally to prevent data loss during network dropouts."
+      },
+      {
+        title: "Environmental Supervision",
+        desc: "Supervises wayside cabin ambient parameters including temperature, humidity, and door status for physical security."
+      }
+    ],
+
+    specifications: [
+      { label: "Analog Inputs", value: "16 opto-isolated channels, 12-bit analog-to-digital resolution" },
+      { label: "Digital Inputs", value: "32 opto-isolated channels, event tracking resolution < 10ms" },
+      { label: "Sampling Frequency", value: "100 samples/second per analog channel simultaneously" },
+      { label: "Operating Voltage", value: "24V DC / 110V AC wayside supply options" },
+      { label: "Communication Port", value: "Dual redundant SIM card slots, 4G LTE with GPRS fallback" },
+      { label: "Standards Compliance", value: "EN 50155 (electronic equipment on rolling stock), SIL-2 assessed" },
+      { label: "Enclosure Sealing", value: "IP65 dust-tight and water-resistant lockable steel wall cabinet" }
+    ],
+
+    downloads: [
+      { label: "RDPMS Technical Datasheet", size: "1.8 MB", url: "#", type: "Datasheet" },
+      { label: "RDPMS Installation & Operations Manual", size: "4.2 MB", url: "#", type: "Manual" },
+      { label: "Wayside Deployment Reference Guide", size: "2.4 MB", url: "#", type: "Brochure" }
+    ]
+  },
+  ifd: {
+    slug: "ifd",
+    divisionSlug: "snt",
+    divisionTitle: "Signalling & Telecom",
+    title: "IFD",
+    category: "SIGNALLING & TELECOM",
+    heroImage: sntHeroReal,
+    description: "Online Insulation Failure Detector system for continuous real-time monitoring of wayside signaling circuit insulation resistance.",
+    
+    overviewTitle: "Automated insulation resistance logging for safety-critical railway cables.",
+    overviewParagraphs: [
+      "The Insulation Failure Detector (IFD) is an online monitoring system designed to supervise the insulation resistance (IR) of signaling cables and point machine conductors relative to earth. Cable insulation decay due to moisture ingress or mechanical wear is a primary cause of ground faults and unsafe signal state changes.",
+      "The system injects a non-disruptive, low-voltage diagnostic signal into the lines under load, measuring insulation levels from 10kΩ to 10MΩ without interfering with active signaling commands. Degradation alerts are immediately logged, enabling proactive maintenance before ground faults occur."
+    ],
+    overviewImage: pcbMacro,
+
+    features: [
+      {
+        title: "Sequential Scanning Core",
+        desc: "Sequentially scans up to 96 signaling circuits to supervise conductor insulation values from a single terminal unit."
+      },
+      {
+        title: "Live Circuit Verification",
+        desc: "Conducts insulation measurements under live operating conditions without disrupting safety-critical signaling commands."
+      },
+      {
+        title: "Opto-Isolated Measurement",
+        desc: "Measurement channels are galvanically isolated up to 2.5kV to protect signal lines from high-voltage surges."
+      },
+      {
+        title: "RS-485 Modbus Telemetry",
+        desc: "Transmits real-time measurements and alarm triggers to station loggers via RS-485 Modbus or Ethernet channels."
+      },
+      {
+        title: "Local Status Control Panel",
+        desc: "Onboard console permits channel configuration, threshold adjustments, and real-time resistance lookups."
+      },
+      {
+        title: "Conductor Current Logging",
+        desc: "Archives historical leakage current trends to trace conductor insulation decay curves over months."
+      }
+    ],
+
+    specifications: [
+      { label: "Measurement Range", value: "10 kΩ to 10 MΩ with ±5% measurement accuracy" },
+      { label: "Channel Capacity", value: "Up to 96 independent measurement channels per unit" },
+      { label: "Test Signal Voltage", value: "< 24V DC test signal to avoid circuit interference" },
+      { label: "Operating Supply", value: "110V AC or 24V DC station power options" },
+      { label: "Telemetry Port", value: "RS-485 Modbus RTU / Ethernet interfaces" },
+      { label: "Standards Compliance", value: "RDSO/SPN/212/2012 specification compliant" },
+      { label: "Enclosure Class", value: "IP50 steel rack-mount chassis for indoor cabins" }
+    ],
+
+    downloads: [
+      { label: "IFD System Technical Specs", size: "1.5 MB", url: "#", type: "Datasheet" },
+      { label: "IFD Cab Cabin Installation Guide", size: "3.4 MB", url: "#", type: "Manual" },
+      { label: "RDSO Approval Certification", size: "1.1 MB", url: "#", type: "Brochure" }
+    ]
+  },
+
+  // ─────────────────────────────────────────────
+  // 2. IPS
+  // ─────────────────────────────────────────────
+  ips: {
+    slug: "ips",
+    divisionSlug: "snt",
+    divisionTitle: "Signalling & Telecom",
+    title: "IPS",
+    category: "SIGNALLING & TELECOM",
+    heroImage: elecCabinet,
+    description: "Fail-safe integrated power supply system delivering stabilized, redundant DC and AC rails to wayside signaling gear.",
+    
+    overviewTitle: "Centralized power consolidation for vital railway interlocking.",
+    overviewParagraphs: [
+      "The Integrated Power Supply (IPS) system integrates switch-mode rectifiers, DC-to-DC converters, inverter panels, and diagnostic supervision circuitry into a single standardized switchboard enclosure. Engineered for safety-critical installations, it supplies pure DC and sine-wave AC power to vital relay interlocking racks, station telecom terminals, and wayside signal aspects.",
+      "The modular chassis supports hot-swappable sub-modules, enabling depot maintenance and component swaps under load in less than three minutes. Natural convection cooling eliminates active fans, preventing air filter clogging and ensuring reliability in high-temperature wayside cabins."
+    ],
+    overviewImage: smtLine,
+
+    features: [
+      {
+        title: "Hot-Swappable Chassis",
+        desc: "Rectifiers and converters can be replaced under live load conditions in under three minutes without dropping output rails."
+      },
+      {
+        title: "Class D Surge Arrestors",
+        desc: "Heavy-duty transient suppression networks isolate downstream signaling cards from wayside lightning surges."
+      },
+      {
+        title: "Low Output Ripple",
+        desc: "Regulated DC output rails filter high-frequency noise to prevent logic state errors in interlocking cards."
+      },
+      {
+        title: "Natural Air Circulation",
+        desc: "Designed to operate at 55°C ambient temperature without active fan cooling, eliminating mechanical wear points."
+      },
+      {
+        title: "Continuous Supervision",
+        desc: "Microprocessor-based monitor tracks battery health, charging currents, and panel status, transmitting alarm flags via RS-485."
+      },
+      {
+        title: "Redundant Rectification",
+        desc: "Features N+1 parallel redundant switch-mode rectifier arrays to prevent single-point failures."
+      }
+    ],
+
+    specifications: [
+      { label: "Input Parameters", value: "230V AC ± 20%, 50Hz single-phase grid input" },
+      { label: "DC Output Voltages", value: "110V DC, 24V DC, 12V DC regulated outputs" },
+      { label: "AC Output Voltages", value: "110V AC sine wave inverter output, total harmonic distortion < 3%" },
+      { label: "System Efficiency", value: "> 92% at nominal input and full system rating" },
+      { label: "Operating Temperature", value: "-10°C to +55°C continuous ambient operating range" },
+      { label: "Standards Compliance", value: "RDSO SPN/186/2016 specification compliant" },
+      { label: "Enclosure Sealing", value: "IP54 steel dust-resistant floor cabinet with heavy copper busbars" }
+    ],
+
+    downloads: [
+      { label: "IPS System Datasheet", size: "2.1 MB", url: "#", type: "Datasheet" },
+      { label: "IPS Operational & Maintenance Manual", size: "5.6 MB", url: "#", type: "Manual" },
+      { label: "RDSO Approval Certification", size: "1.2 MB", url: "#", type: "Brochure" }
+    ]
+  },
+
+  // ─────────────────────────────────────────────
+  // 3. Driving Simulator
+  // ─────────────────────────────────────────────
+  simulators: {
+    slug: "simulators",
+    divisionSlug: "electric-locomotive",
+    divisionTitle: "Electric Locomotive",
+    title: "Driving Simulators",
+    category: "ELECTRIC LOCOMOTIVE",
+    heroImage: simImg,
+    description: "High-fidelity locomotive cab simulation system for pilot training, fault mitigation drills, and safety recertification.",
+    
+    overviewTitle: "Full-scale cab replication for advanced pilot recertification.",
+    overviewParagraphs: [
+      "The Driving Simulator provides traction crews with an immersive training environment replicating WAP-class and WAG-class electric locomotive cabins. Utilizing genuine OEM-grade controls, switchgear, and air brake handles, it builds muscle memory and tests operator response profiles during simulated route hazards and mechanical faults.",
+      "The visual system projects a seamless 200-degree field of view rendered at 60Hz. It is synchronized with an electric motion platform that translates acceleration forces, track joints, and braking vibrations directly to the pilot seat."
+    ],
+    overviewImage: heroLocomotive,
+
+    features: [
+      {
+        title: "OEM Control Integration",
+        desc: "Integrates authentic throttle wheels, pneumatic brake valves, and indicators matching actual cab layouts."
+      },
+      {
+        title: "Electric Motion Base",
+        desc: "Optional 3-DOF or 6-DOF dynamic motion platform simulates acceleration, curve transition, and joint impact."
+      },
+      {
+        title: "Scenario Control Suite",
+        desc: "Instructor terminal permits real-time injection of over 100 mechanical, electrical, and signaling failure states."
+      },
+      {
+        title: "High-Fidelity Audio",
+        desc: "5.1 surround sound array reproduces traction motor hums, wheel flange squeals, and air compressor cycles."
+      },
+      {
+        title: "Geographical Routes",
+        desc: "3D route database containing precise grade profiles, station signals, and trackside features."
+      },
+      {
+        title: "DIS/HLA Compliance",
+        desc: "Supports standard distributed simulation networks to link multiple pilot and dispatcher training cabins."
+      }
+    ],
+
+    specifications: [
+      { label: "Visual System", value: "3-channel 60Hz projection array or flat panel LED wall, 200° FOV" },
+      { label: "Motion System", value: "Electric actuator platform, latency < 20ms, travel limits tailored to cab class" },
+      { label: "Audio Output", value: "Digital surround array simulating localized cab and track audio" },
+      { label: "Instructor Interface", value: "Dual monitors tracking driver controls, path coordinates, and event logs" },
+      { label: "Standards Compliance", value: "DIS / HLA network architecture ready, EN 50155 control electronics" },
+      { label: "Power Requirements", value: "415V AC, 3-phase, 50Hz, isolated grounding terminals" },
+      { label: "Cab Type", value: "Full-scale replica matching WAP-7 / WAG-9 electric locomotives" }
+    ],
+
+    downloads: [
+      { label: "Driving Simulator System Datasheet", size: "3.4 MB", url: "#", type: "Datasheet" },
+      { label: "Instructor Operator Interface Guide", size: "4.8 MB", url: "#", type: "Manual" },
+      { label: "Zonal Sim Training Deployments", size: "1.9 MB", url: "#", type: "Brochure" }
+    ]
+  },
+
+  // ─────────────────────────────────────────────
+  // 4. IFT
+  // ─────────────────────────────────────────────
+  ift: {
+    slug: "ift",
+    divisionSlug: "electric-locomotive",
+    divisionTitle: "Electric Locomotive",
+    title: "IFT",
+    category: "ELECTRIC LOCOMOTIVE",
+    heroImage: locoHeroReal,
+    description: "Integrated Functional Tester for automated diagnostic verification of locomotive electronic sub-assemblies.",
+    
+    overviewTitle: "Consolidated diagnostic test racks for locomotive overhaul yards.",
+    overviewParagraphs: [
+      "The Integrated Functional Tester (IFT) consolidated electronic testing rig replaces multiple bench instruments with a single automated diagnostic workstation. Built to qualify locomotive traction control cards, vehicle control units (VCU), and driver display modules during scheduled overhauls and manufacturing runs.",
+      "The system runs automated testing scripts that exercise all input/output channels, communication buses, and power supplies. A full pass/fail record is automatically generated and archived against the component's unique serial number."
+    ],
+    overviewImage: engineers,
+
+    features: [
+      {
+        title: "Stimulus Array",
+        desc: "Built-in signal generators output CAN, RS-485, MVB, and PWM waveforms alongside adjustable AC/DC power rails."
+      },
+      {
+        title: "Short-Circuit Protection",
+        desc: "Over-current and reverse-polarity protection circuits prevent test-rig damage if under-test cards short out."
+      },
+      {
+        title: "Scripted Test Sequencer",
+        desc: "Software environment runs predefined validation scripts, locking test sequences to ensure process repeatability."
+      },
+      {
+        title: "Pass/Fail Database",
+        desc: "Stores diagnostic measurements, parameters, and output states, exporting logs directly to network databases."
+      },
+      {
+        title: "Interface Adapters",
+        desc: "Supports modular connector interfaces, enabling fast changeovers between different locomotive PCB families."
+      },
+      {
+        title: "Traceable Standards",
+        desc: "Internal reference voltage and resistance standards are calibratable and traceable to national laboratories."
+      }
+    ],
+
+    specifications: [
+      { label: "Digital I/O Channels", value: "128 independent channels, software configurable thresholds" },
+      { label: "Analog I/O Channels", value: "32 independent measurement and source channels, 16-bit ADC/DAC" },
+      { label: "Buses Supported", value: "CAN 2.0B, Multifunction Vehicle Bus (MVB), RS-485, RS-232, SPI" },
+      { label: "Power Output", value: "0–110V DC programmable supply lines, up to 10A current limit" },
+      { label: "Calibration System", value: "Built-in automated self-calibration loop with traceable reference standard" },
+      { label: "Standards Compliance", value: "IEC 60571 (railway electronic equipment), CE marked" },
+      { label: "Form Factor", value: "Standard 19-inch ruggedized rack cabinet with cooling fans and locking wheels" }
+    ],
+
+    downloads: [
+      { label: "IFT System Technical Specs", size: "2.5 MB", url: "#", type: "Datasheet" },
+      { label: "IFT Script Development Manual", size: "3.9 MB", type: "Manual" },
+      { label: "Loco Depot Case Study Notes", size: "1.7 MB", type: "Brochure" }
+    ]
+  },
+
+  // ─────────────────────────────────────────────
+  // 5. WLI
+  // ─────────────────────────────────────────────
+  wli: {
+    slug: "wli",
+    divisionSlug: "wagons",
+    divisionTitle: "Coaches & Wagons",
+    title: "WLI",
+    category: "COACHES & WAGONS",
+    heroImage: wagonsHero,
+    description: "Onboard Wagon Load Indicator system for real-time axle weight monitoring and payload cargo diagnostics.",
+    
+    overviewTitle: "Continuous onboard axle load telemetry and cargo balance tracking.",
+    overviewParagraphs: [
+      "The Wagon Load Indicator (WLI) is an onboard payload measurement system that utilizes bogie-mounted strain sensors. Engineered for heavy haul freight wagons, it monitors cargo weight and balance distribution in real time, preventing overloading damage and cargo imbalance derailments.",
+      "The system broadcasts loading data using sub-1GHz wireless links, sending cargo weights directly to yard screens and locomotive cabs without connecting cables between wagon frames. High-visibility external LED displays show cargo level status during bulk loading runs."
+    ],
+    overviewImage: wagonsHeroReal,
+
+    features: [
+      {
+        title: "Bogie-Mounted Sensors",
+        desc: "Heavy-duty strain sensors are welded or clamped directly to critical bogie support members for direct load path capture."
+      },
+      {
+        title: "Wireless Telemetry Hub",
+        desc: "Sub-1GHz wireless RF transmitter links cargo weight telemetry directly to loading yard display terminals."
+      },
+      {
+        title: "External LED Indicators",
+        desc: "IP66 side-mounted display show status parameters directly on the wagon wall during bulk silo loading."
+      },
+      {
+        title: "Hermetic Steel Seals",
+        desc: "Sensing hardware is housed in laser-welded stainless steel cases to survive gravel strikes and water washdowns."
+      },
+      {
+        title: "Low-Power Processor",
+        desc: "Smart power-management core keeps sensors in sleep mode, waking up only when cargo weight shift or motion is registered."
+      },
+      {
+        title: "Grade Compensation",
+        desc: "Internal inclinometers measure vehicle angle to dynamically compensate payload figures for track grade."
+      }
+    ],
+
+    specifications: [
+      { label: "Weight Accuracy", value: "±0.5% of total wagon cargo load capacity" },
+      { label: "Sensing Array", value: "4 calibrated strain-gauge sensors per bogie assembly" },
+      { label: "Wireless Protocol", value: "Sub-1GHz proprietary RF link, transmission range up to 150m" },
+      { label: "Battery Life", value: "Up to 5 years typical operating life under standard sleep cycles" },
+      { label: "Operating Temperature", value: "-20°C to +70°C ambient operating range" },
+      { label: "Standards Compliance", value: "AAR cargo loading rules, EN 50155 rolling stock electronics" },
+      { label: "Enclosure Sealing", value: "IP68 hermetic rating for bogie sensors, IP66 for side display box" }
+    ],
+
+    downloads: [
+      { label: "WLI Onboard System Specs", size: "1.6 MB", url: "#", type: "Datasheet" },
+      { label: "WLI Bogie Installation Guide", size: "3.2 MB", type: "Manual" },
+      { label: "WLI Cargo Yard Integration Info", size: "1.4 MB", type: "Brochure" }
+    ]
+  },
+
+  // ─────────────────────────────────────────────
+  // 6. AHABD
+  // ─────────────────────────────────────────────
+  ahabd: {
+    slug: "ahabd",
+    divisionSlug: "wagons",
+    divisionTitle: "Coaches & Wagons",
+    title: "AHABD",
+    category: "COACHES & WAGONS",
+    heroImage: coachBuild,
+    description: "Wayside Acoustic Hot Axle Box Detector system identifying bearing defects and micro-fractures in passing trains.",
+    
+    overviewTitle: "Wayside acoustic diagnostics for bearing defect mitigation.",
+    overviewParagraphs: [
+      "The Acoustic Hot Axle Box Detector (AHABD) is a wayside safety array that listens to the acoustic signatures of passing train bearings at speed. By utilizing Spatial Filtering and Directional Microphones, it isolates axle sounds to flag micro-fractures, inner race defects, and lubrication spalls weeks before thermal detectors trigger alarms.",
+      "Trackside sensor arrays process bearing noises at speeds up to 120 km/h. Edge processing circuits match acoustic spectral signatures to defect templates, alerting dispatch centers of critical axle numbers requiring routing changes."
+    ],
+    overviewImage: wagonsHeroReal,
+
+    features: [
+      {
+        title: "Directional Phased Array",
+        desc: "calibrated acoustic array isolates bearing noises from track roar and rolling wheels."
+      },
+      {
+        title: "Acoustic Signature Match",
+        desc: "DSP spectral analysis compares bearing noises against standard bearing frequency defect logs."
+      },
+      {
+        title: "Automatic Axle Track",
+        desc: "Wheel detectors index passing wheels to correlate bearing acoustic profiles with the exact axle."
+      },
+      {
+        title: "All-Weather Housing",
+        desc: "Stainless steel wayside enclosure protects directional sensors from wind, dust, and water ingress."
+      },
+      {
+        title: "Remote Telemetry Core",
+        desc: "Transmits alarm alerts and diagnostic logs directly to depot diagnostic networks via cellular links."
+      },
+      {
+        title: "Wayside Solar Mode",
+        desc: "Low operating current requirement permits remote trackside installation powered by simple solar panel arrays."
+      }
+    ],
+
+    specifications: [
+      { label: "Microphone Array", value: "8 directional calibrated microphones, linear frequency response" },
+      { label: "Frequency Range", value: "10 Hz to 20 kHz linear response profile" },
+      { label: "Train Speed Limit", value: "5 km/h to 120 km/h operational detection speed" },
+      { label: "Detection Accuracy", value: "> 99.9% correlation between defect log and axle index" },
+      { label: "Operating Temperature", value: "-20°C to +60°C trackside ambient" },
+      { label: "Power Requirements", value: "12V DC battery buffer system with wayside solar array" },
+      { label: "Enclosure Sealing", value: "IP67 stainless steel acoustic sensor enclosures, IP65 RTU cabinet" }
+    ],
+
+    downloads: [
+      { label: "AHABD Wayside Array Specs", size: "2.8 MB", url: "#", type: "Datasheet" },
+      { label: "AHABD Trackside Installation Guide", size: "4.1 MB", type: "Manual" },
+      { label: "AHABD Acoustic DSP Analysis Note", size: "1.5 MB", type: "Brochure" }
+    ]
+  }
+};

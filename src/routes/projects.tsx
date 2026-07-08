@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { PageHero } from "@/components/site/PageHero";
+import { PageIndex } from "@/components/site/PageIndex";
 import { CTAStrip } from "@/components/site/CTAStrip";
+import { useAutoReveal } from "@/hooks/use-reveal";
+
+// Asset imports
 import depot from "@/assets/depot.jpg";
 import sim from "@/assets/simulator.jpg";
 import coach from "@/assets/coach-build.jpg";
@@ -127,94 +131,110 @@ function Projects() {
     [sector, region],
   );
 
+  // Trigger intersection observer reveal updates when filters change
+  useAutoReveal(`${sector}-${region}`);
+
   return (
-    <>
+    <div className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
       <PageHero
-        eyebrow="W — Selected"
-        index="W/00"
+        eyebrow="PROJECTS"
         title="Selected work."
-        lede="A short index of recent programmes — across mainline, metro, freight and our own manufacturing investments. Full case histories available on request."
+        lede="A selection of recent programmes — across mainline, metro, freight and our own manufacturing investments."
+        image={depot}
+        path={[{ label: "PROJECTS" }]}
       />
 
-      {/* Filters */}
-      <section className="border-t border-rule bg-bg">
-        <div className="container-editorial grid grid-cols-12 gap-8 py-10">
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Filter — Sector</span>
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.16em]">
-              {SECTORS.map((s) => (
-                <button
-                  key={s}
-                  onClick={() => setSector(s)}
-                  className={`link-underline ${sector === s ? "text-ink" : "text-ink-muted"}`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Filter — Region</span>
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[12px] uppercase tracking-[0.16em]">
+      <PageIndex
+        columns={[
+          {
+            title: "Domestic Projects",
+            items: [
+              { label: "Railways", onClick: () => setSector("Mainline"), active: sector === "Mainline" },
+              { label: "Metro", onClick: () => setSector("Metro"), active: sector === "Metro" },
+            ],
+          },
+          {
+            title: "Specialized Projects",
+            items: [
+              { label: "Industrial / Freight", onClick: () => setSector("Freight"), active: sector === "Freight" },
+              { label: "Manufacturing", onClick: () => setSector("Manufacturing"), active: sector === "Manufacturing" },
+            ],
+          },
+          {
+            title: "Global Reach",
+            items: [
+              { label: "International (All)", onClick: () => setSector("All"), active: sector === "All" },
+            ],
+          },
+        ]}
+      />
+
+      {/* Region Status Bar */}
+      <section className="bg-bg border-b border-rule/20 py-6">
+        <div className="container-editorial flex flex-wrap items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-ink-muted">
+              Region:
+            </span>
+            <div className="flex flex-wrap gap-x-4 text-xs font-semibold uppercase tracking-[0.12em]">
               {REGIONS.map((r) => (
                 <button
                   key={r}
                   onClick={() => setRegion(r)}
-                  className={`link-underline ${region === r ? "text-ink" : "text-ink-muted"}`}
+                  className={`link-underline ${region === r ? "text-ink font-bold" : "text-ink/40 hover:text-ink"}`}
                 >
                   {r}
                 </button>
               ))}
             </div>
           </div>
-          <div className="col-span-12 flex items-end justify-end md:col-span-6">
-            <span className="num-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-              {filtered.length} / {PROJECTS.length} projects
-            </span>
-          </div>
+
+          <span className="num-mono text-[11px] uppercase tracking-[0.16em] text-ink-muted">
+            {filtered.length} / {PROJECTS.length} projects
+          </span>
         </div>
       </section>
 
-      {/* Editorial grid */}
-      <section className="border-t border-rule bg-section">
-        <div className="container-editorial py-16">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-20">
-            {filtered.map((p, i) => {
-              // Asymmetric pattern
-              const span =
-                i % 4 === 0
-                  ? "col-span-12 md:col-span-8"
-                  : i % 4 === 1
-                    ? "col-span-12 md:col-span-4 md:mt-32"
-                    : i % 4 === 2
-                      ? "col-span-12 md:col-span-5"
-                      : "col-span-12 md:col-span-6 md:col-start-7";
-              return (
-                <article key={p.n} className={`reveal ${span}`}>
-                  <div className="aspect-[4/3] overflow-hidden bg-surface">
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
+      {/* Editorial Grid (Clean, Responsive Multi-Column Matrix) */}
+      <section className="bg-white border-t border-rule/20 py-16 md:py-24">
+        <div className="container-editorial">
+          {filtered.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+              {filtered.map((p) => (
+                <article key={p.n} className="reveal flex flex-col justify-between">
+                  <div>
+                    <div className="aspect-[4/3] overflow-hidden bg-surface border border-rule/15">
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover select-none pointer-events-none"
+                      />
+                    </div>
+                    <div className="mt-5 flex items-baseline justify-between border-t border-rule/10 pt-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-ink-muted">
+                        {p.sector} · {p.region} · {p.year}
+                      </span>
+                      <span className="text-[10px] font-mono text-ink-muted/40">{p.n}</span>
+                    </div>
+                    <h3 className="mt-3 text-xl md:text-2xl font-light text-ink uppercase tracking-tight leading-tight">
+                      {p.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-ink-muted/70 font-semibold">{p.client}</p>
+                    <p className="mt-4 text-base text-ink font-light leading-relaxed">{p.copy}</p>
                   </div>
-                  <div className="mt-5 flex items-baseline justify-between border-t border-rule pt-3">
-                    <span className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                      {p.sector} · {p.region} · {p.year}
-                    </span>
-                  </div>
-                  <h2 className="mt-3 text-2xl font-light text-ink md:text-3xl">{p.title}</h2>
-                  <p className="mt-2 text-sm text-ink-muted">{p.client}</p>
-                  <p className="mt-4 max-w-md text-base text-ink">{p.copy}</p>
                 </article>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-12 border border-dashed border-rule/30 text-center">
+              <span className="text-sm text-ink-muted font-light">No projects match the selected criteria.</span>
+            </div>
+          )}
         </div>
       </section>
 
       <CTAStrip eyebrow="Engage" title="Request a full case study." cta="Contact us" />
-    </>
+    </div>
   );
 }

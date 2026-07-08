@@ -68,13 +68,13 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         }`}
       />
 
-      <div className="container-editorial flex h-[64px] items-center justify-between lg:justify-center lg:gap-x-12">
+      <div className="container-editorial flex h-[56px] items-center justify-between lg:justify-center lg:gap-x-12">
         {/* Left nav links — slide in from center → left */}
-        <nav className="hidden items-center gap-10 text-[13px] font-medium tracking-[0.08em] lg:flex">
+        <nav className="hidden items-center gap-10 text-[11px] lg:text-[13px] font-medium tracking-[0.15em] lg:flex">
           {[
-            <NavTrigger key="products" label="PRODUCTS" active={pane === "products" || pathname.startsWith("/products")} onEnter={() => openPane("products")} onClick={() => setPane(pane === "products" ? null : "products")} solid={solid} />,
-            <NavTrigger key="services" label="SERVICES" active={pane === "services" || pathname.startsWith("/services")} onEnter={() => openPane("services")} onClick={() => setPane(pane === "services" ? null : "services")} solid={solid} />,
+            <NavLink key="home" to="/" current={pathname} solid={solid}>HOME</NavLink>,
             <NavLink key="about" to="/about" current={pathname} solid={solid}>ABOUT</NavLink>,
+            <NavTrigger key="products" label="PRODUCTS" active={pane === "products" || pathname.startsWith("/products")} onEnter={() => openPane("products")} onClick={() => setPane(pane === "products" ? null : "products")} solid={solid} />,
           ].map((item, i) => (
             <div
               key={i}
@@ -95,7 +95,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
           aria-label="LorVen Systems — home"
           onMouseEnter={() => openPane(null)}
           className="relative shrink-0 flex items-center justify-center"
-          style={{ width: "clamp(120px, 10vw, 150px)", height: "auto" }}
+          style={{ width: "clamp(100px, 8vw, 120px)", height: "auto" }}
         >
           <Logo
             id="navbar-logo"
@@ -111,10 +111,10 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </Link>
 
         {/* Right nav links — slide in from center → right */}
-        <nav className="hidden items-center gap-10 text-[13px] font-medium tracking-[0.08em] lg:flex">
+        <nav className="hidden items-center gap-10 text-[11px] lg:text-[13px] font-medium tracking-[0.15em] lg:flex">
           {[
+            <NavTrigger key="services" label="SERVICES" active={pane === "services" || pathname.startsWith("/services")} onEnter={() => openPane("services")} onClick={() => setPane(pane === "services" ? null : "services")} solid={solid} />,
             <NavLink key="projects" to="/projects" current={pathname} solid={solid}>PROJECTS</NavLink>,
-            <NavLink key="careers" to="/careers" current={pathname} solid={solid}>CAREERS</NavLink>,
             <NavLink key="contact" to="/contact" current={pathname} solid={solid}>CONTACT</NavLink>,
           ].map((item, i) => (
             <div
@@ -255,7 +255,7 @@ function MegaPanel({
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`absolute top-[64px] left-0 right-0 bg-[#F5F5F7] border-b border-rule/30 shadow-md transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
+      className={`absolute top-[56px] left-0 right-0 bg-[#F5F5F7] border-b border-rule/30 shadow-md transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden ${
         open
           ? "max-h-[600px] opacity-100 pointer-events-auto"
           : "max-h-0 opacity-0 pointer-events-none"

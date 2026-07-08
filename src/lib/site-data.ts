@@ -21,42 +21,22 @@ export const PRODUCT_INDEX = [
   {
     slug: "snt",
     number: "01",
-    title: "Signalling & Telecom (SNT)",
-    blurb:
-      "Mission-critical rail signalling, station interlocking, and remote diagnostic telemetry systems.",
+    title: "Signalling & Telecom",
+    blurb: "",
     children: [
-      {
-        slug: "rdpms",
-        number: "01.1",
-        title: "RDPMS",
-        blurb: "Remote Diagnostic & Predictive Maintenance System for track and signal health.",
-      },
-      {
-        slug: "ips",
-        number: "01.2",
-        title: "IPS",
-        blurb: "Integrated Power Supply system for fail-safe signalling installations.",
-      },
+      { slug: "rdpms", number: "01.1", title: "RDPMS", blurb: "" },
+      { slug: "ips",   number: "01.2", title: "IPS",   blurb: "" },
+      { slug: "ifd",   number: "01.3", title: "IFD",   blurb: "" },
     ],
   },
   {
     slug: "electric-locomotive",
     number: "02",
     title: "Electric Locomotive",
-    blurb: "Crew training simulators, traction control systems, and locomotive diagnostic gear.",
+    blurb: "",
     children: [
-      {
-        slug: "simulators",
-        number: "02.1",
-        title: "Driving Simulators",
-        blurb: "Full-mission pilot training simulators with realistic CGI and cabin physics.",
-      },
-      {
-        slug: "ift",
-        number: "02.2",
-        title: "IFT",
-        blurb: "In-Field Testing systems for locomotive control and sensor electronics.",
-      },
+      { slug: "simulators", number: "02.1", title: "Driving Simulators", blurb: "" },
+      { slug: "ift",        number: "02.2", title: "IFT",               blurb: "" },
     ],
   },
   {
@@ -67,33 +47,23 @@ export const PRODUCT_INDEX = [
     children: [
       {
         slug: "wli",
-        number: "04.1",
+        number: "03.1",
         title: "WLI",
-        blurb: "Wagon Load Indicator for on-board axle weight and cargo balance tracking.",
+        blurb: "",
       },
       {
         slug: "ahabd",
-        number: "04.2",
+        number: "03.2",
         title: "AHABD",
-        blurb: "Acoustic Hot Axle Box Detector for warning against bearing failures in transit.",
+        blurb: "",
       },
     ],
   },
 ] as const;
 
 export const SERVICE_INDEX = [
-  {
-    slug: "design",
-    number: "S/01",
-    title: "Design",
-    blurb: "Electrical, electronics and mechanical design for rail and industry.",
-  },
-  {
-    slug: "installation",
-    number: "S/02",
-    title: "Installation",
-    blurb: "Turnkey installation, commissioning and site integration.",
-  },
+  { slug: "design",       number: "S/01", title: "Design",       blurb: "" },
+  { slug: "installation", number: "S/02", title: "Installation", blurb: "" },
 ] as const;
 
 export const PRIMARY_NAV = [

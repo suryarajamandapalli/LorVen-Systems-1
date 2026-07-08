@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { PageIndex } from "@/components/site/PageIndex";
 import { PRODUCT_INDEX } from "@/lib/site-data";
 import heroImg from "@/assets/factory-hall.jpg";
 
@@ -57,6 +58,36 @@ function ProductsIndex() {
         image={heroImg}
       />
 
+      <PageIndex
+        columns={[
+          {
+            title: "Signalling & Telecom",
+            items: [
+              { label: "All Signalling & Telecom", to: "/products/snt" },
+              { label: "RDPMS", to: "/products/snt/rdpms" },
+              { label: "IPS", to: "/products/snt/ips" },
+            ],
+          },
+          {
+            title: "Electric Locomotive",
+            items: [
+              { label: "All Locomotive", to: "/products/electric-locomotive" },
+              { label: "Driving Simulator", to: "/products/electric-locomotive/simulators" },
+              { label: "IFT", to: "/products/electric-locomotive/ift" },
+            ],
+          },
+          {
+            title: "Coaches & Wagons",
+            items: [
+              { label: "All Coaches", to: "/products/coaches" },
+              { label: "All Wagons", to: "/products/wagons" },
+              { label: "WLI", to: "/products/wagons/wli" },
+              { label: "AHABD", to: "/products/wagons/ahabd" },
+            ],
+          },
+        ]}
+      />
+
       {/* 2. Old Grid System (Simple 3-Col, Clean White Cards) */}
       <section className="pb-24 bg-bg pt-8">
         <div className="container-editorial">
@@ -78,22 +109,22 @@ function ProductsIndex() {
                 </div>
 
                 {/* Content */}
-                <div className="p-8 flex flex-col flex-grow">
+                <div className="p-10 flex flex-col flex-grow">
                   <div className="mb-6">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-rule/80 mb-3 block">
+                    <span className="text-xs tracking-[0.16em] font-semibold text-rule/80 mb-3 block">
                       {prod.divisionTitle}
                     </span>
-                    <h2 className="text-xl font-medium text-ink transition-colors duration-300 group-hover/card:text-rule">
+                    <h2 className="text-lg md:text-xl font-medium text-ink transition-colors duration-300 group-hover/card:text-rule">
                       {prod.title}
                     </h2>
-                    <p className="mt-3 text-sm text-ink-muted leading-relaxed line-clamp-2">
+                    <p className="mt-3 text-xs md:text-sm text-ink-muted leading-relaxed line-clamp-2">
                       {prod.blurb}
                     </p>
                   </div>
 
                   {/* Footer / CTA */}
                   <div className="mt-auto pt-6 flex items-center justify-between border-t border-rule/10">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink/40 group-hover/card:text-rule transition-colors duration-300">
+                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink/40 group-hover/card:text-rule transition-colors duration-300">
                       Explore Product
                     </span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-rule opacity-0 -translate-x-4 transition-all duration-[500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/card:opacity-100 group-hover/card:translate-x-0">

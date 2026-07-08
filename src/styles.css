@@ -77,6 +77,24 @@
     /* Firefox: invisible by default */
     scrollbar-width: none;
     transition: scrollbar-color 0.3s ease;
+
+    /* Minor Root Font Sizing (dynamic premium scale) */
+    font-size: 15px; /* Mobile base */
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px; /* Tablet base */
+    }
+  }
+  @media (min-width: 1024px) {
+    html {
+      font-size: 17px; /* Desktop base */
+    }
+  }
+  @media (min-width: 1440px) {
+    html {
+      font-size: 18px; /* Large display scale */
+    }
   }
   html.scrollbar-visible {
     /* Firefox: reveal thumb on hover near edge */
@@ -127,6 +145,7 @@
     font-feature-settings: "ss01";
     overflow-x: hidden;
     max-width: 100%;
+    line-height: 1.7;
   }
 
   video {
@@ -166,7 +185,7 @@
 
   /* ── TYPOGRAPHY: never clip, always wrap ──────────────── */
   .display-clamp {
-    font-size: clamp(2.5rem, 5.5vw, 6rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     line-height: 1.05;
     letter-spacing: -0.025em;
     /* CRITICAL: never clip headings */
@@ -176,7 +195,7 @@
   }
 
   .display-mega {
-    font-size: clamp(3.5rem, 10vw, 11rem);
+    font-size: clamp(3rem, 7vw, 6.5rem);
     line-height: 0.92;
     letter-spacing: -0.04em;
     overflow: visible;

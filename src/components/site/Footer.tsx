@@ -6,12 +6,12 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative mt-0 bg-ink text-on-dark border-t border-white/5">
-      <div className="container-editorial py-12 md:py-16">
-        <div className="grid grid-cols-12 gap-8 text-sm">
+      <div className="container-editorial py-10 md:py-12">
+        <div className="grid grid-cols-12 gap-8 text-xs">
           {/* Column 1: Logo & Address */}
           <div className="col-span-12 md:col-span-4 flex flex-col">
-            <Logo id="footer-logo" idPrefix="footer" className="text-white w-32 md:w-44 h-auto" />
-            <address className="mt-5 not-italic text-sm leading-relaxed opacity-70 max-w-xs">
+            <Logo id="footer-logo" idPrefix="footer" className="text-white w-28 md:w-36 h-auto" />
+            <address className="mt-4 not-italic text-xs leading-relaxed opacity-70 max-w-xs">
               <strong>{COMPANY.legal}</strong>
               <br />
               {COMPANY.hq.address}
@@ -20,13 +20,13 @@ export function Footer() {
 
           {/* Column 2: Products & Services */}
           <div className="col-span-6 md:col-span-3">
-            <p className="eyebrow !text-on-dark/60 !text-[11px] !tracking-[0.12em]">Products & Services</p>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Products & Services</p>
+            <ul className="mt-4 space-y-2 text-xs">
               {PRODUCT_INDEX.map((p) => (
                 <li key={p.slug}>
                   <a
                     href={`/products/${p.slug}`}
-                    className="link-underline opacity-80 hover:opacity-100"
+                    className="link-underline opacity-85 hover:opacity-100"
                   >
                     {p.title}
                   </a>
@@ -36,7 +36,7 @@ export function Footer() {
                 <li key={s.slug}>
                   <a
                     href={`/services/${s.slug}`}
-                    className="link-underline opacity-80 hover:opacity-100"
+                    className="link-underline opacity-85 hover:opacity-100"
                   >
                     {s.title}
                   </a>
@@ -47,25 +47,25 @@ export function Footer() {
 
           {/* Column 3: Company */}
           <div className="col-span-6 md:col-span-2">
-            <p className="eyebrow !text-on-dark/60 !text-[11px] !tracking-[0.12em]">Company</p>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Company</p>
+            <ul className="mt-4 space-y-2 text-xs">
               <li>
-                <Link to="/about" className="link-underline opacity-80 hover:opacity-100">
+                <Link to="/about" className="link-underline opacity-85 hover:opacity-100">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="link-underline opacity-80 hover:opacity-100">
+                <Link to="/projects" className="link-underline opacity-85 hover:opacity-100">
                   Projects
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="link-underline opacity-80 hover:opacity-100">
+                <Link to="/careers" className="link-underline opacity-85 hover:opacity-100">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="link-underline opacity-80 hover:opacity-100">
+                <Link to="/contact" className="link-underline opacity-85 hover:opacity-100">
                   Contact
                 </Link>
               </li>
@@ -75,8 +75,8 @@ export function Footer() {
           {/* Column 4: Enquiry & Legal */}
           <div className="col-span-12 md:col-span-3 flex flex-col justify-between">
             <div>
-              <p className="eyebrow !text-on-dark/60 !text-[11px] !tracking-[0.12em]">Enquiries</p>
-              <div className="mt-4 text-sm space-y-1.5 opacity-80">
+              <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Enquiries</p>
+              <div className="mt-4 text-xs space-y-1 opacity-85">
                 <p>{COMPANY.hq.phone}</p>
                 <p>
                   <a href={`mailto:${COMPANY.hq.email}`} className="link-underline">
@@ -90,7 +90,7 @@ export function Footer() {
         </div>
 
         {/* Bottom row: copyright & legal links */}
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.12em] text-on-dark/50">
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-[11px] font-medium tracking-[0.16em] text-on-dark/50">
           <span>
             © {year} LorVen Systems Pvt. Ltd. All rights reserved.
           </span>
@@ -101,7 +101,6 @@ export function Footer() {
             <Link to="/terms" className="link-underline">
               Terms
             </Link>
-            <span className="opacity-40 tracking-[0.08em]">Designed by Areneaden</span>
           </div>
         </div>
       </div>

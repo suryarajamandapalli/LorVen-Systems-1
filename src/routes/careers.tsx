@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { PageIndex } from "@/components/site/PageIndex";
 import { CTAStrip } from "@/components/site/CTAStrip";
 import engineers from "@/assets/engineers.jpg";
 
@@ -39,14 +40,39 @@ function Careers() {
   return (
     <>
       <PageHero
-        eyebrow="C — People"
-        index="C/00"
+        eyebrow="CAREERS"
         title="Slow work. Long careers."
         lede="LorVen is a specialist firm of engineers, technicians and machinists. We hire for patience as much as for skill. Most of our team has been with us for over a decade."
         image={engineers}
+        path={[{ label: "CAREERS" }]}
       />
 
-      <section className="border-t border-rule bg-bg">
+      <PageIndex
+        columns={[
+          {
+            title: "LorVen Culture",
+            items: [
+              { label: "Our Philosophy", href: "#culture" },
+              { label: "Benefits & Growth", href: "#culture" },
+            ],
+          },
+          {
+            title: "Join the Team",
+            items: [
+              { label: "Open Positions", href: "#openings" },
+              { label: "Graduate Program", href: "#openings" },
+            ],
+          },
+          {
+            title: "Inquiries",
+            items: [
+              { label: "Send Resume", href: "mailto:careers@lorvensystems.com" },
+            ],
+          },
+        ]}
+      />
+
+      <section id="culture" className="border-t border-rule bg-bg">
         <div className="container-editorial grid grid-cols-12 gap-8 py-24">
           <div className="col-span-12 md:col-span-3">
             <span className="eyebrow">Culture</span>
@@ -61,7 +87,7 @@ function Careers() {
         </div>
       </section>
 
-      <section className="border-t border-rule bg-section">
+      <section id="openings" className="border-t border-rule bg-section">
         <div className="container-editorial py-16">
           <div className="flex items-baseline justify-between">
             <span className="eyebrow">Open roles</span>

@@ -70,6 +70,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+import logoLight from "../assets/logo-light.png";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -83,8 +85,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "LorVen Systems" },
       { property: "og:site_name", content: "LorVen Systems" },
+      { property: "og:title", content: "LorVen Systems — Railway electronics & electrical integration" },
+      { property: "og:description", content: "LorVen Systems Pvt. Ltd. designs, manufactures and integrates electronics, electrical systems and rolling-stock components for the railway industry." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: logoLight },
+      { property: "og:image:alt", content: "LorVen Systems Logo" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: logoLight },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

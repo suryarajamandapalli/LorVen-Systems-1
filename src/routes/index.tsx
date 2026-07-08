@@ -222,153 +222,168 @@ function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const lastActiveSlideRef = useRef(activeSlide);
 
-  const isCurrentlyPlaying = isPlaying && !isHovered;
+  const isCurrentlyPlaying = isPlaying;
+
+  const touchStartXRef = useRef(0);
+  const touchStartYRef = useRef(0);
+  const touchEndXRef = useRef(0);
+  const touchEndYRef = useRef(0);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+    touchEndXRef.current = e.touches[0].clientX;
+    touchEndYRef.current = e.touches[0].clientY;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEndXRef.current = e.touches[0].clientX;
+    touchEndYRef.current = e.touches[0].clientY;
+  };
+
+  const onTouchEnd = () => {
+    const xDistance = touchStartXRef.current - touchEndXRef.current;
+    const yDistance = touchStartYRef.current - touchEndYRef.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(xDistance) > Math.abs(yDistance) && Math.abs(xDistance) > minSwipeDistance) {
+      if (xDistance > 0) {
+        setActiveSlide((prev) => (prev + 1) % slides.length);
+        setProgress(0);
+      } else {
+        setActiveSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+        setProgress(0);
+      }
+    }
+  };
 
   const slides = [
     {
       type: "video",
       src: heroVideo,
-      title: (
-        <>
-          Engineered for the
-          <br />
-          long run of the railway.
-        </>
-      ),
-      description:
-        "We design, manufacture and integrate the electronics, electrical systems and sub-assemblies that keep modern rail networks moving — quietly, precisely, for decades.",
+      label: "MISSION-CRITICAL ENGINEERING",
+      title: "Engineering Confidence for Critical Systems.",
+      description: "LorVen Systems develops high-reliability electronic systems for railway transportation, aerospace, defence and industrial infrastructure.",
+      cta: "Explore Solutions",
+      link: "/products",
     },
     {
       type: "image",
-      src: factoryHall,
-      alt: "State-of-the-art railway manufacturing facility",
-      title: (
-        <>
-          World-class manufacturing
-          <br />
-          under one roof.
-        </>
-      ),
-      description:
-        "Our state-of-the-art facilities house advanced SMT assembly lines, cleanrooms, and testing bays certified to global railway standards.",
+      src: sntHero,
+      alt: "Signal & Telecommunications systems",
+      label: "SIGNAL & TELECOMMUNICATIONS",
+      title: "Signal & Telecommunications",
+      description: "Advanced signalling technologies including RDPMS and IPS for safer, smarter and more reliable railway operations.",
+      cta: "Explore SNT Solutions",
+      link: "/products/snt",
     },
     {
       type: "image",
-      src: smtLine,
-      alt: "High-precision SMT assembly line",
-      title: (
-        <>
-          Precision electronics
-          <br />
-          built for the environment.
-        </>
-      ),
-      description:
-        "From circuit layout to final sealing, we engineer printed circuit boards that withstand extreme temperature, vibration, and duty cycles.",
+      src: locoHero,
+      alt: "Electric Locomotive driver cabin and testing simulator",
+      label: "ELECTRIC LOCOMOTIVE SOLUTIONS",
+      title: "Electric Locomotive Solutions",
+      description: "Engineering advanced locomotive simulators and Integrated Functional Test systems that improve operational readiness and maintenance efficiency.",
+      cta: "Explore Locomotive Solutions",
+      link: "/products/electric-locomotive",
     },
     {
       type: "image",
-      src: depot,
-      alt: "Railway maintenance depot",
-      title: (
-        <>
-          System integration
-          <br />
-          and turnkey installation.
-        </>
-      ),
-      description:
-        "We assemble and commission complex electrical cabinets, driver display systems, and rolling stock controls directly in national depots.",
+      src: wagonsHero,
+      alt: "Railway coaches and freight wagons",
+      label: "COACH & WAGON TECHNOLOGIES",
+      title: "Coach & Wagon Technologies",
+      description: "High-performance onboard electronics and intelligent inspection systems including WLI and AHABD designed for safer railway operations.",
+      cta: "Explore Coach & Wagon Solutions",
+      link: "/products/wagons",
     },
     {
       type: "image",
-      src: heroLocomotive,
-      alt: "Electric locomotive",
-      title: (
-        <>
-          Safety-critical systems
-          <br />
-          for modern rolling stock.
-        </>
-      ),
-      description:
-        "Designing simulator systems, train protective devices, and auxiliary electrical integration trusted by operators and OEMs alike.",
+      src: electrical,
+      alt: "Industrial electrical panels and power systems",
+      label: "INDUSTRIAL ELECTRICAL SYSTEMS",
+      title: "Industrial Electrical Systems",
+      description: "Reliable electrical engineering solutions supporting transportation, infrastructure and mission-critical industrial environments.",
+      cta: "Explore Electrical Solutions",
+      link: "/services",
+    },
+    {
+      type: "image",
+      src: engineers,
+      alt: "Engineers collaborating on system designs",
+      label: "ENGINEERING SERVICES",
+      title: "Engineering Services",
+      description: "End-to-end engineering support including system design, manufacturing, installation, testing, commissioning and lifecycle support.",
+      cta: "Our Services",
+      link: "/services",
     },
   ];
 
-  // 1. Play/Pause the background video
+  // 1. Play/Pause and reset the background video
   useEffect(() => {
-    if (activeSlide === 0) {
-      if (videoRef.current) {
+    const video = videoRef.current;
+    if (video) {
+      if (activeSlide === 0) {
         if (lastActiveSlideRef.current !== 0) {
-          videoRef.current.currentTime = 0;
+          video.currentTime = 0;
         }
-        if (isCurrentlyPlaying) {
-          videoRef.current.play().catch(() => {});
-        } else {
-          videoRef.current.pause();
-        }
+        video.play().catch(() => {});
+      } else {
+        video.pause();
       }
-    } else {
-      videoRef.current?.pause();
     }
     lastActiveSlideRef.current = activeSlide;
-  }, [activeSlide, isCurrentlyPlaying]);
+  }, [activeSlide]);
 
-  // 2. Manage image slides duration and progress updates
+  // 2. Autoplay progress tracking
   useEffect(() => {
-    if (activeSlide === 0) return;
     if (!isCurrentlyPlaying) return;
 
     setProgress(0);
-    const duration = 10000; // Slowed down to 10 seconds
-    const startTime = Date.now();
     let animFrame: number;
 
-    const updateProgress = () => {
-      const elapsed = Date.now() - startTime;
-      const currentProgress = Math.min((elapsed / duration) * 100, 100);
-      setProgress(currentProgress);
+    if (activeSlide === 0) {
+      // Video progress tracking - let video finish
+      const updateVideoProgress = () => {
+        const video = videoRef.current;
+        if (video && video.duration) {
+          setProgress((video.currentTime / video.duration) * 100);
+        }
+        animFrame = requestAnimationFrame(updateVideoProgress);
+      };
+      animFrame = requestAnimationFrame(updateVideoProgress);
+    } else {
+      // Image progress tracking (7.5 seconds)
+      const duration = 7500;
+      const startTime = Date.now();
 
-      if (elapsed < duration) {
-        animFrame = requestAnimationFrame(updateProgress);
-      } else {
-        setActiveSlide((prev) => (prev + 1) % slides.length);
-      }
-    };
+      const updateImageProgress = () => {
+        const elapsed = Date.now() - startTime;
+        const currentProgress = Math.min((elapsed / duration) * 100, 100);
+        setProgress(currentProgress);
 
-    animFrame = requestAnimationFrame(updateProgress);
+        if (elapsed < duration) {
+          animFrame = requestAnimationFrame(updateImageProgress);
+        } else {
+          setActiveSlide((prev) => (prev + 1) % slides.length);
+        }
+      };
+      animFrame = requestAnimationFrame(updateImageProgress);
+    }
+
     return () => {
       cancelAnimationFrame(animFrame);
     };
   }, [activeSlide, slides.length, isCurrentlyPlaying]);
 
-  // 3. Smooth video progress tracking
-  useEffect(() => {
-    if (activeSlide !== 0) return;
-    if (!isCurrentlyPlaying) return;
-
-    let animFrame: number;
-    const updateVideoProgress = () => {
-      const video = videoRef.current;
-      if (video && video.duration) {
-        setProgress((video.currentTime / video.duration) * 100);
-      }
-      animFrame = requestAnimationFrame(updateVideoProgress);
-    };
-
-    animFrame = requestAnimationFrame(updateVideoProgress);
-    return () => cancelAnimationFrame(animFrame);
-  }, [activeSlide, isCurrentlyPlaying]);
-
   return (
     <section
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
       className="relative h-[100svh] w-full overflow-hidden bg-ink text-on-dark"
     >
       <style dangerouslySetInnerHTML={{ __html: `
@@ -379,20 +394,17 @@ function Hero() {
           width: 100%;
           height: 100%;
           opacity: 0;
-          transform: scale(1.04);
-          filter: brightness(0.5) blur(6px);
+          filter: brightness(0.4) blur(6px);
           transition:
-            opacity 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-            filter 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+            filter 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           z-index: 1;
           pointer-events: none;
         }
         
         .hero-slide.active {
-          opacity: 0.92;
-          transform: scale(1);
-          filter: brightness(1) blur(0px);
+          opacity: 1;
+          filter: brightness(0.85) blur(0px);
           z-index: 2;
           pointer-events: auto;
         }
@@ -403,9 +415,14 @@ function Hero() {
           object-fit: cover;
         }
 
-        /* Ken Burns only triggers on the active slide */
+        /* Ken Burns subtle zoom only triggers on the active slide image */
         .hero-slide.active img.hero-slide-media {
-          animation: kenburns 8s ease-out forwards;
+          animation: kenburns 9s ease-out forwards;
+        }
+
+        @keyframes kenburns {
+          0%   { transform: scale(1); }
+          100% { transform: scale(1.05); }
         }
 
         /* Text Focus Reveal (Fade + Blur, No sliding) */
@@ -433,7 +450,7 @@ function Hero() {
           top: 0;
           bottom: 0;
           width: 9rem; /* 144px width for wider, sleeker hover zone */
-          z-index: 30;
+          z-index: 20;
           outline: none;
           cursor: pointer;
         }
@@ -482,7 +499,13 @@ function Hero() {
                   src={slide.src}
                   muted
                   playsInline
-                  onEnded={() => setActiveSlide(1)}
+                  loop={!isPlaying}
+                  onEnded={() => {
+                    if (isPlaying) {
+                      setActiveSlide(1);
+                    }
+                  }}
+                  preload="auto"
                   className="hero-slide-media"
                 />
               ) : (
@@ -501,28 +524,53 @@ function Hero() {
       {/* Progress bar — subtle, not distracting */}
       <div className="absolute bottom-0 left-0 right-0 z-20 h-[2px] bg-white/8">
         <div
-          className="relative h-full bg-white/40 transition-all duration-75 ease-linear"
+          className="relative h-full bg-white/45 transition-all duration-75 ease-linear"
           style={{ width: `${progress}%` }}
         />
       </div>
 
-      {/* Play/Pause Control */}
-      <button
-        onClick={() => setIsPlaying(!isPlaying)}
-        className="absolute bottom-8 right-[clamp(1.25rem,4vw,3rem)] z-30 flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-black/20 hover:bg-black/40 hover:border-white/40 text-white transition-all duration-300 pointer-events-auto backdrop-blur-sm cursor-pointer"
-        aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-      >
-        {isPlaying ? (
-          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
-            <rect x="3" y="2" width="3" height="12" rx="0.5" />
-            <rect x="10" y="2" width="3" height="12" rx="0.5" />
-          </svg>
-        ) : (
-          <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 16 16">
-            <path d="M4 2.5a.5.5 0 0 1 .8-.4l9 5.5a.5.5 0 0 1 0 .8l-9 5.5a.5.5 0 0 1-.8-.4v-11z" />
-          </svg>
-        )}
-      </button>
+      {/* Navigation and Controls Bar */}
+      <div className="absolute bottom-10 right-[clamp(1.25rem,4vw,3rem)] z-40 flex items-center gap-6 pointer-events-auto select-none">
+        {/* Pagination dots */}
+        <div className="flex items-center gap-3">
+          {slides.map((_, idx) => {
+            const isActive = idx === activeSlide;
+            return (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveSlide(idx);
+                  setProgress(0);
+                }}
+                className={`h-[3px] rounded-full transition-all duration-500 cursor-pointer ${
+                  isActive ? "w-6 bg-white" : "w-[6px] bg-white/30 hover:bg-white/60"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            );
+          })}
+        </div>
+
+        {/* Play/Pause Control */}
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="w-6 h-6 flex items-center justify-center text-white/45 hover:text-white transition-colors duration-300 cursor-pointer"
+          aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+        >
+          {isPlaying ? (
+            /* Pause — two vertical bars */
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 16 16">
+              <rect x="2" y="1" width="4" height="14" rx="0.5" />
+              <rect x="10" y="1" width="4" height="14" rx="0.5" />
+            </svg>
+          ) : (
+            /* Play — solid right-pointing triangle */
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 16 16">
+              <polygon points="3,1 15,8 3,15" />
+            </svg>
+          )}
+        </button>
+      </div>
 
       {/* Navigation Arrows on Left/Right */}
       <button
@@ -571,28 +619,22 @@ function Hero() {
                   isActive ? "active-text-container pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <p className="eyebrow !text-on-dark/70 hero-text-item delay-0">LorVen Systems Pvt. Ltd.</p>
+                <p className="eyebrow !text-on-dark/70 hero-text-item delay-0">{slide.label}</p>
                 
-                <h1 className="mt-4 max-w-5xl text-[clamp(2rem,4.5vw,5rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible hero-text-item delay-1">
+                <h1 className="mt-4 max-w-5xl text-[clamp(2.25rem,5.5vw,5rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible hero-text-item delay-1">
                   <span>{slide.title}</span>
                 </h1>
 
                 <div className="mt-8 md:mt-12 grid grid-cols-12 items-end gap-8">
-                  <p className="col-span-12 max-w-xl text-base leading-relaxed text-on-dark/85 md:col-span-6 md:text-lg hero-text-item delay-2">
+                  <p className="col-span-12 max-w-xl text-sm md:text-base lg:text-lg leading-relaxed text-on-dark/85 md:col-span-6 hero-text-item delay-2">
                     {slide.description}
                   </p>
-                  <div className="col-span-12 flex items-end justify-start md:justify-end gap-8 text-[12px] uppercase tracking-[0.16em] md:col-span-6">
+                  <div className="col-span-12 flex items-end justify-start md:justify-end text-xs md:text-sm font-medium tracking-[0.12em] md:col-span-6">
                     <Link
-                      to="/products"
-                      className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-3"
+                      to={slide.link}
+                      className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer"
                     >
-                      View products →
-                    </Link>
-                    <Link
-                      to="/about"
-                      className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-4"
-                    >
-                      About us →
+                      {slide.cta} →
                     </Link>
                   </div>
                 </div>
@@ -607,55 +649,71 @@ function Hero() {
 
 function AboutPreview() {
   return (
-    <section className="border-t border-rule bg-bg pt-10 pb-20 md:pt-12 md:pb-28 overflow-hidden about-section">
+    <section className="border-t border-rule bg-bg py-20 md:py-28 overflow-hidden about-section">
       <div className="container-editorial">
-        <div className="relative w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left side: 16:9 Video banner (occupies 72% width on desktop, aligned left) */}
-          <div className="w-full xl:w-[72%] xl:mr-auto xl:ml-0 aspect-video overflow-hidden rounded-xl bg-transparent border border-rule/20 shadow-lg about-video-card">
-            <video
-              src={aboutVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="block w-full h-full object-cover scale-[1.02] bg-transparent"
-            />
-          </div>
- 
-          {/* Right side: Floating glassmorphism text card (overlaps the video on desktop, aligned right) */}
-          <div className="w-full xl:w-[36%] xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2 xl:z-10 mt-8 xl:mt-0 p-6 md:p-8 xl:p-10 bg-[#F5F5F7] border border-white/50 dark:border-white/10 rounded-xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] ring-1 ring-black/5 about-float-card">
-            <span className="eyebrow block gsap-reveal">About</span>
-            
-            <div className="mt-6 space-y-6">
-              <p className="text-base md:text-lg leading-relaxed text-ink font-light gsap-reveal">
-                For over fifteen years, LorVen Systems has built the unseen layer
-                of India's rolling stock — circuit boards that survive a million
-                cycles, cabinets that earn certification on the first attempt,
-                installations that hand over on time.
-              </p>
-              <p className="text-sm md:text-base leading-relaxed text-ink-muted gsap-reveal">
-                We work with national operators, OEMs and integrators across
-                mainline, metro and freight. Our discipline is patience: every
-                assembly is engineered for the operating envelope it will actually
-                serve.
-              </p>
+          {/* Left Column: Content (40-45% width) */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="space-y-4">
+              <span className="eyebrow block gsap-reveal">ABOUT LORVEN</span>
+              <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light tracking-tight text-ink uppercase leading-[1.1] gsap-reveal">
+                Engineering Confidence <br />
+                Since 2008
+              </h2>
             </div>
             
-            <div className="mt-8 pt-6 border-t border-rule/30 gsap-reveal">
+            <p className="text-base md:text-lg leading-relaxed text-ink font-light gsap-reveal">
+              For over fifteen years, LorVen Systems has engineered mission-critical electronics for railway transportation, industrial infrastructure and defence applications.
+            </p>
+
+            {/* Premium statistics / highlights grid */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-8 border-t border-rule/30 pt-8 gsap-reveal">
+              <div>
+                <span className="block text-3xl font-light text-ink tracking-tight">15+</span>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Years Experience</span>
+              </div>
+              <div>
+                <span className="block text-3xl font-light text-ink tracking-tight">Fail-Safe</span>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Mission-Critical</span>
+              </div>
+              <div>
+                <span className="block text-3xl font-light text-ink tracking-tight">EN 50155</span>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Railway Electronics</span>
+              </div>
+              <div>
+                <span className="block text-3xl font-light text-ink tracking-tight">Class 3</span>
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Certified Plant</span>
+              </div>
+            </div>
+            
+            <div className="gsap-reveal pt-4">
               <Link
                 to="/about"
-                className="link-underline inline-block text-[12px] font-medium uppercase tracking-[0.16em] text-ink"
+                className="link-underline inline-block text-xs md:text-sm font-semibold tracking-[0.12em] text-ink uppercase py-1"
               >
-                About LorVen →
+                Learn More →
               </Link>
             </div>
           </div>
- 
+
+          {/* Right Column: Immersive Image (55-60% width) */}
+          <div className="lg:col-span-7">
+            <div className="relative aspect-[16/10] lg:aspect-[1.4] w-full overflow-hidden rounded-xl bg-surface border border-rule/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] gsap-reveal about-video-card">
+              <img
+                src={smtLine}
+                alt="SMT PCB Production Line"
+                className="w-full h-full object-cover transition-transform duration-[1200ms] hover:scale-105"
+                loading="lazy"
+              />
+              {/* Subtle Dark Overlay to give it a cinematic grade */}
+              <div className="absolute inset-0 bg-black/[0.04] pointer-events-none" />
+            </div>
+          </div>
         </div>
 
         {/* Vision, Mission, Purpose — Editorial Experience */}
-        <div className="mt-32 relative py-24 md:py-40 border-t border-rule overflow-hidden vmp-section">
+        <div className="mt-12 relative py-14 md:py-20 border-t border-rule overflow-hidden vmp-section">
           
           {/* Subtle Industrial Background */}
           <div className="absolute inset-0 z-0 pointer-events-none">
@@ -672,7 +730,7 @@ function AboutPreview() {
             {/* Timeline Spine */}
             <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-rule/50 -translate-x-1/2 hidden md:block" />
 
-            <div className="grid grid-cols-1 gap-y-32">
+            <div className="grid grid-cols-1 gap-y-16 md:gap-y-20">
               
               {/* 01. VISION (Left Text, Right Image) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 relative items-center group">
@@ -931,10 +989,10 @@ function ProductsSection() {
             ))}
           </ul>
 
-          <div className="mt-8">
+          <div className="mt-10">
             <Link
               to="/products"
-              className="link-underline inline-flex items-center text-[12px] uppercase tracking-[0.16em] text-white/50 hover:text-white transition-colors py-3 px-4 -my-3 -mx-4 min-h-[44px]"
+              className="link-underline inline-flex items-center text-xs md:text-sm font-semibold tracking-[0.12em] text-white/50 hover:text-white transition-colors py-3 px-4 -my-3 -mx-4 min-h-[44px]"
             >
               All products →
             </Link>
@@ -943,7 +1001,7 @@ function ProductsSection() {
 
         {/* Right column — Single clean translucent information card (desktop only) */}
         <div
-          className="hidden lg:flex relative w-full lg:w-[44%] min-h-[380px] h-auto border border-white/10 rounded-xl flex-col justify-between p-10 backdrop-blur-md"
+          className="hidden lg:flex relative w-full lg:w-[44%] min-h-[400px] h-auto border border-white/10 rounded-xl flex-col justify-between p-8 md:p-10 backdrop-blur-md"
           style={{
             background: "linear-gradient(135deg, rgba(20, 20, 20, 0.3) 0%, rgba(5, 5, 5, 0.15) 100%)"
           }}
@@ -961,7 +1019,7 @@ function ProductsSection() {
               
               <p
                 key={`desc-${active}-${subActive}`}
-                className="text-sm md:text-base leading-relaxed text-white font-light tracking-wide max-w-md animate-fade-in-up min-h-[72px]"
+                className="text-sm md:text-base leading-relaxed text-white font-light tracking-wide max-w-md animate-fade-in-up min-h-[80px]"
               >
                 {PRODUCTS_LIST[active].systems[subActive].desc}
               </p>
@@ -982,7 +1040,7 @@ function ProductsSection() {
                       className="cursor-pointer group/item block"
                     >
                       <div
-                        className={`text-sm font-semibold tracking-wider uppercase transition-colors duration-300 ${
+                        className={`text-xs md:text-sm font-semibold tracking-wider uppercase transition-colors duration-300 ${
                           subActive === idx ? "text-white" : "text-white/40 group-hover/item:text-white/70"
                         }`}
                       >
@@ -1004,7 +1062,7 @@ function ProductsSection() {
                 <Link
                   key={`link-${active}-${subActive}`}
                   to={PRODUCTS_LIST[active].systems[subActive].href as any}
-                  className="link-underline inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
+                  className="link-underline inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.12em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
                 >
                   Learn More →
                 </Link>
@@ -1138,7 +1196,7 @@ function ServicesSection() {
               
               <p
                 key={`service-desc-${active}`}
-                className="text-sm md:text-base leading-relaxed text-white/70 font-light tracking-wide max-w-md animate-fade-in-up min-h-[72px] mb-6"
+                className="text-sm md:text-base leading-relaxed text-white/70 font-light tracking-wide max-w-md animate-fade-in-up min-h-[80px] mb-6"
               >
                 {SERVICES_LIST[active].desc}
               </p>
@@ -1147,7 +1205,7 @@ function ServicesSection() {
                 <Link
                   key={`service-link-${active}`}
                   to={SERVICES_LIST[active].to as any}
-                  className="link-underline inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
+                  className="link-underline inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.12em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
                 >
                   Learn More →
                 </Link>
@@ -1185,7 +1243,7 @@ function HomeCTA() {
           <div className="mt-8 gsap-reveal">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center border border-white px-6 py-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white hover:bg-white hover:text-black transition-all duration-300 rounded-none min-h-[44px]"
+              className="inline-flex items-center justify-center border border-white px-6 py-3.5 md:px-8 md:py-4.5 text-xs md:text-sm font-semibold uppercase tracking-[0.12em] text-white hover:bg-white hover:text-black transition-all duration-300 rounded-none min-h-[44px]"
             >
               Begin an enquiry →
             </Link>

@@ -459,9 +459,6 @@ function MobileNav({
                     <Link to="/products/snt/ips" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
                       IPS
                     </Link>
-                    <Link to="/products/snt/ifd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      IFD
-                    </Link>
                   </div>
                 </div>
 
@@ -474,8 +471,8 @@ function MobileNav({
                     <Link to="/products/electric-locomotive/simulators" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
                       Driving Simulators
                     </Link>
-                    <Link to="/products/electric-locomotive/ift" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      IFT
+                    <Link to="/products/electric-locomotive/ifd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      IFD
                     </Link>
                   </div>
                 </div>

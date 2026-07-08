@@ -69,10 +69,15 @@ function About() {
     <div className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
       {/* Hero */}
       <PageHero
-        eyebrow="ABOUT"
-        title="Engineering Confidence."
-        lede="Delivering mission-critical electronics and electrical integration for industries where failure is not an option."
-        image={heroBg}
+        eyebrow=""
+        title="ABOUT LORVEN"
+        lede={
+          <span className="flex items-center gap-1.5 text-sm font-medium tracking-wide">
+            <Link to="/" className="text-white/60 hover:text-white transition-colors cursor-pointer">Home</Link>
+            <span className="text-white/35">/</span>
+            <span className="text-white/90">About</span>
+          </span>
+        }
       />
 
       <PageIndex
@@ -85,17 +90,16 @@ function About() {
             ],
           },
           {
-            title: "Operations & Facilities",
+            title: "Core Focus",
             items: [
-              { label: "Manufacturing & Quality", href: "#manufacturing" },
-              { label: "Infrastructure Profile", href: "#infrastructure" },
+              { label: "Engineering Capabilities", href: "#capabilities" },
+              { label: "Core Values", href: "#values" },
             ],
           },
           {
-            title: "Governance",
+            title: "Philosophy",
             items: [
-              { label: "Certifications", href: "#certifications" },
-              { label: "Leadership Message", href: "#leadership" },
+              { label: "Leadership Philosophy", href: "#philosophy" },
             ],
           },
         ]}
@@ -105,15 +109,15 @@ function About() {
       <section id="overview" className="bg-bg border-t border-rule py-20 md:py-28">
         <div className="container-editorial grid grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="col-span-12 lg:col-span-5 gsap-reveal space-y-6">
-            <span className="eyebrow block">Company Overview</span>
+            <span className="eyebrow block">COMPANY OVERVIEW</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              A quiet practice in <br />mission-critical engineering.
+              Engineering Technology <br />for Critical Industries.
             </h2>
             <p className="text-base md:text-lg text-ink-muted leading-relaxed font-light">
-              For over fifteen years, LorVen Systems has built the unseen layer of India's rolling stock — circuit boards that survive a million cycles, cabinets that earn certification on the first attempt, and installations that hand over on time.
+              LorVen Systems develops high-reliability electronic systems that support safety-critical and mission-critical operations. By combining engineering expertise with disciplined execution, we deliver dependable technologies for transportation, industrial infrastructure, aerospace and defence applications.
             </p>
             <p className="text-base text-ink-muted leading-relaxed font-light">
-              We work with national operators, OEMs and integrators across mainline, metro, and freight. Our discipline is patience: every assembly is engineered for the operating envelope it will actually serve.
+              Every solution is designed with reliability, precision and long-term operational performance at its core.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 gsap-reveal">
@@ -130,7 +134,7 @@ function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="gsap-reveal border-t border-rule pt-6 space-y-4">
               <span className="eyebrow block">Vision</span>
-              <h3 className="text-lg font-semibold text-ink uppercase">Safety-Critical Tech</h3>
+              <h3 className="text-lg font-semibold text-ink uppercase">Vision</h3>
               <p className="text-sm md:text-base text-ink-muted leading-relaxed font-light">
                 To build a globally respected technology company delivering world-class systems for safety-critical and mission-critical industries.
               </p>
@@ -138,36 +142,36 @@ function About() {
             
             <div className="gsap-reveal border-t border-rule pt-6 space-y-4">
               <span className="eyebrow block">Mission</span>
-              <h3 className="text-lg font-semibold text-ink uppercase">Disciplined Execution</h3>
+              <h3 className="text-lg font-semibold text-ink uppercase">Mission</h3>
               <p className="text-sm md:text-base text-ink-muted leading-relaxed font-light">
-                To create reliable, innovative, and high-performance products that advance transportation, infrastructure, aerospace, and defence through engineering excellence and disciplined execution.
+                To create reliable, innovative and high-performance products that advance transportation, infrastructure, aerospace and defence through engineering excellence and disciplined execution.
               </p>
             </div>
             
             <div className="gsap-reveal border-t border-rule pt-6 space-y-4">
               <span className="eyebrow block">Purpose</span>
-              <h3 className="text-lg font-semibold text-ink uppercase">Absolute Reliability</h3>
+              <h3 className="text-lg font-semibold text-ink uppercase">Purpose</h3>
               <p className="text-sm md:text-base text-ink-muted leading-relaxed font-light">
-                Engineering technology that improves safety, reliability, and performance where failure is not an option in active daily operations.
+                Engineering technology that improves safety, reliability and performance where failure is not an option.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Manufacturing */}
-      <section id="manufacturing" className="bg-bg border-t border-rule py-20 md:py-28">
+      {/* 3. Capabilities */}
+      <section id="capabilities" className="bg-bg border-t border-rule py-20 md:py-28">
         <div className="container-editorial grid grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="col-span-12 lg:col-span-5 gsap-reveal space-y-6">
-            <span className="eyebrow block">Manufacturing</span>
+            <span className="eyebrow block">ENGINEERING CAPABILITIES</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              End-to-end capability.<br/>Absolute control.
+              Engineering Excellence.<br/>Reliable Execution.
             </h2>
             <p className="text-base md:text-lg text-ink-muted leading-relaxed font-light">
-              LorVen operates dual facilities to separate R&D from high-volume production. Our Hyderabad hub focuses on design engineering, rapid prototyping, and environmental stress testing.
+              LorVen provides end-to-end engineering capabilities spanning product development, system integration, manufacturing support, installation and commissioning for mission-critical electronic systems.
             </p>
             <p className="text-base md:text-lg text-ink-muted leading-relaxed font-light">
-              Our Bengaluru plant is a dedicated high-mix manufacturing center featuring IPC-A-610 Class 3 qualified SMT lines, cleanroom assembly, and comprehensive end-of-line functional validation bays.
+              Our multidisciplinary approach enables us to deliver solutions that meet demanding operational requirements while maintaining the highest standards of quality, reliability and performance.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 gsap-reveal">
@@ -178,57 +182,25 @@ function About() {
         </div>
       </section>
 
-      {/* 4. Infrastructure */}
-      <section id="infrastructure" className="bg-section border-t border-rule py-20 md:py-28">
+      {/* 4. Core Values */}
+      <section id="values" className="bg-section border-t border-rule py-20 md:py-28">
         <div className="container-editorial">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="gsap-reveal space-y-2">
-              <span className="eyebrow">Facility Size</span>
-              <h4 className="text-3xl font-light text-ink uppercase">40,000 SQ. FT.</h4>
-              <p className="text-sm text-ink-muted font-light leading-relaxed">Manufacturing and assembly floor space.</p>
-            </div>
-            <div className="gsap-reveal space-y-2">
-              <span className="eyebrow">Standard Compliance</span>
-              <h4 className="text-3xl font-light text-ink uppercase">Class 3</h4>
-              <p className="text-sm text-ink-muted font-light leading-relaxed">IPC-A-610 certified assembly lines.</p>
-            </div>
-            <div className="gsap-reveal space-y-2">
-              <span className="eyebrow">R&D Core</span>
-              <h4 className="text-3xl font-light text-ink uppercase">Hyderabad</h4>
-              <p className="text-sm text-ink-muted font-light leading-relaxed">Rapid prototyping & environmental testing center.</p>
-            </div>
-          </div>
-          
-          <div className="w-full h-[40vh] overflow-hidden rounded-xl border border-rule/10 shadow-sm gsap-reveal">
-            <img src={factoryHall} alt="Production floor" className="w-full h-full object-cover select-none pointer-events-none" />
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Quality & Certifications */}
-      <section id="certifications" className="bg-bg border-t border-rule py-20 md:py-28">
-        <div className="container-editorial">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-            <div className="gsap-reveal space-y-4">
-              <span className="eyebrow block">Quality & Standards</span>
-              <h2 className="text-3xl font-light leading-snug text-ink uppercase">
-                Certified for the mainline.
-              </h2>
-            </div>
-            <p className="text-sm text-ink-muted max-w-sm gsap-reveal font-light leading-relaxed">
-              Quality is a documentation practice as much as a manufacturing one. Every assembly carries a route card and a paper trail that outlives the warranty.
-            </p>
+          <div className="mb-16 gsap-reveal space-y-4">
+            <span className="eyebrow block">CORE VALUES</span>
+            <h2 className="text-3xl font-light leading-snug text-ink uppercase">
+              Values that Define Us
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { label: "Management", title: "ISO 9001:2015", desc: "Certified quality management systems for design, manufacturing and service." },
-              { label: "Rail Industry", title: "IRIS Rev. 03", desc: "Compliance with the International Railway Industry Standard for rolling stock." },
-              { label: "Environment", title: "ISO 14001:2015", desc: "Environmental management standards actively governing our production facilities." },
-              { label: "Approval", title: "RDSO", desc: "Approved vendor for Indian Railways Research Designs & Standards Organisation." },
+              { label: "Value 01", title: "Precision Engineering", desc: "Every solution is developed with accuracy, consistency and attention to detail." },
+              { label: "Value 02", title: "Reliability by Design", desc: "Products are engineered to perform consistently in demanding operating environments." },
+              { label: "Value 03", title: "Quality First", desc: "Quality is integrated throughout the engineering, development and delivery process." },
+              { label: "Value 04", title: "Disciplined Execution", desc: "Projects are delivered through structured engineering practices and technical excellence." },
             ].map((c) => (
               <div key={c.title} className="bg-white p-8 border border-rule/15 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 gsap-reveal">
-                <span className="num-mono text-[10px] uppercase tracking-[0.16em] text-ink-muted block mb-6 font-semibold">{c.label}</span>
+                <span className="num-mono text-[13px] uppercase tracking-[0.16em] text-ink-muted block mb-6 font-semibold">{c.label}</span>
                 <h3 className="text-xl font-medium text-ink uppercase">{c.title}</h3>
                 <p className="text-sm text-ink-muted leading-relaxed font-light mt-2">{c.desc}</p>
               </div>
@@ -237,21 +209,20 @@ function About() {
         </div>
       </section>
 
-      {/* 6. Leadership (Future Ready) */}
-      <section id="leadership" className="relative bg-ink text-on-dark border-t border-ink py-24 md:py-36 overflow-hidden">
+      {/* 5. Leadership Philosophy */}
+      <section id="philosophy" className="relative bg-ink text-on-dark border-t border-ink py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={depot} alt="Railway Depot" className="w-full h-full object-cover opacity-20 select-none pointer-events-none" />
         </div>
         <div className="container-editorial relative z-10 flex justify-center">
           <div className="max-w-4xl text-center gsap-reveal space-y-6">
-            <span className="eyebrow !text-white/40 block">Leadership Message</span>
+            <span className="eyebrow !text-white/40 block">OUR PHILOSOPHY</span>
             <span className="text-2xl md:text-4xl font-light leading-snug text-white uppercase block">
-              "When an operator deploys our system on the mainline, they are purchasing peace of mind. Our responsibility is to ensure that trust is never broken."
+              Engineering Trust. <br />Delivering Performance.
             </span>
-            <div className="pt-6 flex flex-col items-center gap-2">
-              <span className="text-lg font-semibold text-white">A. Ramaswamy</span>
-              <span className="num-mono text-[11px] uppercase tracking-[0.16em] text-white/50">Managing Director</span>
-            </div>
+            <p className="text-base md:text-lg text-white/80 leading-relaxed font-light pt-4">
+              We believe trust is earned through reliable engineering, disciplined execution and long-term customer relationships. Every solution we develop reflects our commitment to safety, quality and dependable performance.
+            </p>
           </div>
         </div>
       </section>
@@ -260,10 +231,10 @@ function About() {
       <section className="bg-bg border-t border-rule py-20 md:py-28 text-center">
         <div className="container-editorial flex flex-col items-center gsap-reveal space-y-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-ink uppercase max-w-4xl">
-            Let's engineer the future together.
+            Let's Build Reliable Engineering Together.
           </h2>
           <p className="text-base md:text-lg text-ink-muted font-light leading-relaxed max-w-2xl">
-            Whether your project demands signalling systems, locomotive technologies or mission-critical engineering solutions, LorVen Systems is ready to collaborate.
+            Whether you're developing railway infrastructure, industrial systems or mission-critical technologies, LorVen Systems is ready to collaborate with engineering solutions designed for long-term performance.
           </p>
           <div className="pt-4">
             <Link

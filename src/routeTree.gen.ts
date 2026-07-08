@@ -34,9 +34,8 @@ import { Route as ProductsWagonsWliRouteImport } from './routes/products.wagons.
 import { Route as ProductsWagonsAhabdRouteImport } from './routes/products.wagons.ahabd'
 import { Route as ProductsSntRdpmsRouteImport } from './routes/products.snt.rdpms'
 import { Route as ProductsSntIpsRouteImport } from './routes/products.snt.ips'
-import { Route as ProductsSntIfdRouteImport } from './routes/products.snt.ifd'
 import { Route as ProductsElectricLocomotiveSimulatorsRouteImport } from './routes/products.electric-locomotive.simulators'
-import { Route as ProductsElectricLocomotiveIftRouteImport } from './routes/products.electric-locomotive.ift'
+import { Route as ProductsElectricLocomotiveIfdRouteImport } from './routes/products.electric-locomotive.ifd'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -165,21 +164,16 @@ const ProductsSntIpsRoute = ProductsSntIpsRouteImport.update({
   path: '/ips',
   getParentRoute: () => ProductsSntRoute,
 } as any)
-const ProductsSntIfdRoute = ProductsSntIfdRouteImport.update({
-  id: '/ifd',
-  path: '/ifd',
-  getParentRoute: () => ProductsSntRoute,
-} as any)
 const ProductsElectricLocomotiveSimulatorsRoute =
   ProductsElectricLocomotiveSimulatorsRouteImport.update({
     id: '/simulators',
     path: '/simulators',
     getParentRoute: () => ProductsElectricLocomotiveRoute,
   } as any)
-const ProductsElectricLocomotiveIftRoute =
-  ProductsElectricLocomotiveIftRouteImport.update({
-    id: '/ift',
-    path: '/ift',
+const ProductsElectricLocomotiveIfdRoute =
+  ProductsElectricLocomotiveIfdRouteImport.update({
+    id: '/ifd',
+    path: '/ifd',
     getParentRoute: () => ProductsElectricLocomotiveRoute,
   } as any)
 
@@ -202,9 +196,8 @@ export interface FileRoutesByFullPath {
   '/services/installation': typeof ServicesInstallationRoute
   '/products/': typeof ProductsIndexRoute
   '/services/': typeof ServicesIndexRoute
-  '/products/electric-locomotive/ift': typeof ProductsElectricLocomotiveIftRoute
+  '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
-  '/products/snt/ifd': typeof ProductsSntIfdRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
@@ -227,9 +220,8 @@ export interface FileRoutesByTo {
   '/services/installation': typeof ServicesInstallationRoute
   '/products': typeof ProductsIndexRoute
   '/services': typeof ServicesIndexRoute
-  '/products/electric-locomotive/ift': typeof ProductsElectricLocomotiveIftRoute
+  '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
-  '/products/snt/ifd': typeof ProductsSntIfdRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
@@ -258,9 +250,8 @@ export interface FileRoutesById {
   '/services/installation': typeof ServicesInstallationRoute
   '/products/': typeof ProductsIndexRoute
   '/services/': typeof ServicesIndexRoute
-  '/products/electric-locomotive/ift': typeof ProductsElectricLocomotiveIftRoute
+  '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
-  '/products/snt/ifd': typeof ProductsSntIfdRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
@@ -290,9 +281,8 @@ export interface FileRouteTypes {
     | '/services/installation'
     | '/products/'
     | '/services/'
-    | '/products/electric-locomotive/ift'
+    | '/products/electric-locomotive/ifd'
     | '/products/electric-locomotive/simulators'
-    | '/products/snt/ifd'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
@@ -315,9 +305,8 @@ export interface FileRouteTypes {
     | '/services/installation'
     | '/products'
     | '/services'
-    | '/products/electric-locomotive/ift'
+    | '/products/electric-locomotive/ifd'
     | '/products/electric-locomotive/simulators'
-    | '/products/snt/ifd'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
@@ -345,9 +334,8 @@ export interface FileRouteTypes {
     | '/services/installation'
     | '/products/'
     | '/services/'
-    | '/products/electric-locomotive/ift'
+    | '/products/electric-locomotive/ifd'
     | '/products/electric-locomotive/simulators'
-    | '/products/snt/ifd'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
@@ -547,13 +535,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSntIpsRouteImport
       parentRoute: typeof ProductsSntRoute
     }
-    '/products/snt/ifd': {
-      id: '/products/snt/ifd'
-      path: '/ifd'
-      fullPath: '/products/snt/ifd'
-      preLoaderRoute: typeof ProductsSntIfdRouteImport
-      parentRoute: typeof ProductsSntRoute
-    }
     '/products/electric-locomotive/simulators': {
       id: '/products/electric-locomotive/simulators'
       path: '/simulators'
@@ -561,25 +542,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsElectricLocomotiveSimulatorsRouteImport
       parentRoute: typeof ProductsElectricLocomotiveRoute
     }
-    '/products/electric-locomotive/ift': {
-      id: '/products/electric-locomotive/ift'
-      path: '/ift'
-      fullPath: '/products/electric-locomotive/ift'
-      preLoaderRoute: typeof ProductsElectricLocomotiveIftRouteImport
+    '/products/electric-locomotive/ifd': {
+      id: '/products/electric-locomotive/ifd'
+      path: '/ifd'
+      fullPath: '/products/electric-locomotive/ifd'
+      preLoaderRoute: typeof ProductsElectricLocomotiveIfdRouteImport
       parentRoute: typeof ProductsElectricLocomotiveRoute
     }
   }
 }
 
 interface ProductsElectricLocomotiveRouteChildren {
-  ProductsElectricLocomotiveIftRoute: typeof ProductsElectricLocomotiveIftRoute
+  ProductsElectricLocomotiveIfdRoute: typeof ProductsElectricLocomotiveIfdRoute
   ProductsElectricLocomotiveSimulatorsRoute: typeof ProductsElectricLocomotiveSimulatorsRoute
   ProductsElectricLocomotiveIndexRoute: typeof ProductsElectricLocomotiveIndexRoute
 }
 
 const ProductsElectricLocomotiveRouteChildren: ProductsElectricLocomotiveRouteChildren =
   {
-    ProductsElectricLocomotiveIftRoute: ProductsElectricLocomotiveIftRoute,
+    ProductsElectricLocomotiveIfdRoute: ProductsElectricLocomotiveIfdRoute,
     ProductsElectricLocomotiveSimulatorsRoute:
       ProductsElectricLocomotiveSimulatorsRoute,
     ProductsElectricLocomotiveIndexRoute: ProductsElectricLocomotiveIndexRoute,
@@ -591,14 +572,12 @@ const ProductsElectricLocomotiveRouteWithChildren =
   )
 
 interface ProductsSntRouteChildren {
-  ProductsSntIfdRoute: typeof ProductsSntIfdRoute
   ProductsSntIpsRoute: typeof ProductsSntIpsRoute
   ProductsSntRdpmsRoute: typeof ProductsSntRdpmsRoute
   ProductsSntIndexRoute: typeof ProductsSntIndexRoute
 }
 
 const ProductsSntRouteChildren: ProductsSntRouteChildren = {
-  ProductsSntIfdRoute: ProductsSntIfdRoute,
   ProductsSntIpsRoute: ProductsSntIpsRoute,
   ProductsSntRdpmsRoute: ProductsSntRdpmsRoute,
   ProductsSntIndexRoute: ProductsSntIndexRoute,

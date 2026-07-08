@@ -9,20 +9,20 @@ if (typeof window !== "undefined") {
 }
 
 // Assets
-import coachBuild from "@/assets/coach-build.jpg";
+import pcbMacro from "@/assets/pcb-macro.jpg";
 import depot from "@/assets/depot.jpg";
 
-export const Route = createFileRoute("/products/wagons/wli")({
+export const Route = createFileRoute("/products/electric-locomotive/ifd")({
   head: () => ({
     meta: [
-      { title: "IoT-Based Water Level Indicator (WLI) — LorVen Systems" },
-      { name: "description", content: "Intelligent onboard water tank level monitoring system for passenger coaches." },
+      { title: "Intelligent Field Device (IFD) — LorVen Systems" },
+      { name: "description", content: "Intelligent field monitoring solution for Indian Railway signalling infrastructure." },
     ],
   }),
-  component: WliRoute,
+  component: IfdRoute,
 });
 
-function WliRoute() {
+function IfdRoute() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -47,14 +47,14 @@ function WliRoute() {
   }, { scope: containerRef });
 
   const features = [
-    { title: "Real-Time Water Level Monitoring", desc: "Instantly logs and checks exact water level measurements within onboard LHB coach tanks." },
-    { title: "Continuous Tank Level Monitoring", desc: "Non-stop measurement cycle tracking usage curves and alerting on rapid depletion rates." },
-    { title: "Low Water Level Alerts", desc: "Sends automatic diagnostic trigger alerts to station filling systems when water drops below thresholds." },
-    { title: "IoT-Based Remote Monitoring", desc: "Enables central control servers to verify carriage tank filling statuses remotely." },
-    { title: "Reliable Data Communication", desc: "Utilizes robust cellular/RF modules designed to operate inside metal coach enclosures and tunnels." },
-    { title: "Passenger Coach Integration", desc: "Seamlessly integrates with standard electrical boxes and water piping systems of modern trains." },
-    { title: "Centralized Monitoring Support", desc: "Integrates with railway dashboards to display real-time status across multi-coach formations." },
-    { title: "Improved Maintenance Planning", desc: "Logs historically depleted tanks to optimize cleaning and sensor scaling schedules." }
+    { title: "Real-Time Asset Monitoring", desc: "Performs real-time condition tracking of crucial physical railway equipment and wayside controllers." },
+    { title: "Continuous Health Monitoring", desc: "Supervises electrical and physical parameters non-stop to capture transient operational spikes." },
+    { title: "Local Data Processing", desc: "Edge-based diagnostic algorithms process raw electrical signal inputs locally at the device level." },
+    { title: "Fault Detection & Alerts", desc: "Locally detects threshold crossings and sends high-priority diagnostic alerts instantly." },
+    { title: "Sensor Data Acquisition", desc: "Acquires data from an array of analog, digital, and environmental parameters." },
+    { title: "Remote Communication with RDPMS", desc: "Transmits compressed health telemetry directly to the central diagnostic monitoring platform." },
+    { title: "Predictive Maintenance Support", desc: "Provides historical parameters to predict operational failure windows for critical assets." },
+    { title: "Reliable Field Operation", desc: "Designed inside a ruggedized chassis built to withstand harsh trackside thermal and electrical environments." }
   ];
 
   return (
@@ -65,8 +65,8 @@ function WliRoute() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src={coachBuild}
-            alt="IoT-Based Water Level Indicator (WLI)"
+            src={pcbMacro}
+            alt="Intelligent Field Device (IFD)"
             className="w-full h-full object-cover opacity-45 select-none pointer-events-none"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
@@ -85,14 +85,14 @@ function WliRoute() {
                 <li className="text-white/40 font-light">&gt;</li>
                 <li><Link to="/products" className="hover:text-white transition-colors">Products</Link></li>
                 <li className="text-white/40 font-light">&gt;</li>
-                <li><Link to="/products/wagons" className="hover:text-white transition-colors">Coaches & Wagons</Link></li>
+                <li><Link to="/products/electric-locomotive" className="hover:text-white transition-colors">Electric Locomotive</Link></li>
                 <li className="text-white/40 font-light">&gt;</li>
-                <li className="text-white font-semibold">WLI</li>
+                <li className="text-white font-semibold">IFD</li>
               </ol>
             </nav>
 
             <h1 className="text-3xl md:text-4xl lg:text-[45px] font-light uppercase tracking-tight leading-tight max-w-3xl">
-              IoT-Based Water Level Indicator (WLI)
+              Intelligent Field Device (IFD)
             </h1>
           </div>
         </div>
@@ -104,20 +104,20 @@ function WliRoute() {
           <div className="col-span-12 lg:col-span-6 gsap-reveal space-y-6">
             <span className="eyebrow block">OVERVIEW</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Real-Time Water Level Monitoring <br />for Passenger Coaches
+              Intelligent Field Monitoring <br />for Railway Infrastructure
             </h2>
             <div className="space-y-4 border-t border-rule/20 pt-6">
               <p className="text-base md:text-lg text-black leading-relaxed font-light">
-                The IoT-Based Water Level Indicator (WLI) is an intelligent monitoring system designed for Indian Railway passenger coaches. It continuously monitors the water level in onboard water tanks and provides real-time status updates and low-water alerts, enabling timely refilling and ensuring uninterrupted water availability throughout the journey.
+                The Intelligent Field Device (IFD) is an IoT-enabled monitoring device designed for Indian Railway signalling infrastructure. Equipped with sensors and local processing capabilities, it continuously monitors the health of field assets, detects abnormal operating conditions and communicates real-time diagnostic information to the Remote Diagnostic & Predictive Maintenance System (RDPMS).
               </p>
               <p className="text-base text-black leading-relaxed font-light">
-                Designed for passenger coach applications, the system improves operational efficiency while enhancing passenger comfort and reducing water-related service interruptions.
+                By enabling continuous condition monitoring and early fault detection, IFD supports predictive maintenance and improves the reliability and availability of railway signalling assets.
               </p>
             </div>
           </div>
           <div className="col-span-12 lg:col-span-6 gsap-reveal">
             <div className="aspect-[16/10] w-full overflow-hidden bg-surface rounded-xl border border-rule/10 shadow-sm">
-              <img src={coachBuild} alt="Indian Railway passenger coach work system" className="h-full w-full object-cover select-none pointer-events-none" />
+              <img src={pcbMacro} alt="IFD local processing hardware unit" className="h-full w-full object-cover select-none pointer-events-none" />
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ function WliRoute() {
       <section className="bg-ink text-on-dark py-24 md:py-32 border-t border-ink relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img src={depot} alt="Coach Maintenance Depot" className="w-full h-full object-cover opacity-30 select-none pointer-events-none" />
+          <img src={pcbMacro} alt="IFD Circuitry" className="w-full h-full object-cover opacity-30 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-black/30 z-10" />
         </div>
         {/* Grid overlay */}
@@ -165,10 +165,10 @@ function WliRoute() {
           <div className="max-w-4xl space-y-6 gsap-reveal">
             <span className="eyebrow !text-white/40 block">WHY LORVEN</span>
             <h2 className="text-3xl md:text-5xl font-light leading-tight text-white uppercase">
-              Why Choose LorVen's IoT-Based Water Level Indicator (WLI)
+              Why Choose LorVen's Intelligent Field Device (IFD)
             </h2>
             <p className="text-base md:text-lg text-white/80 leading-relaxed font-light pt-4 max-w-3xl mx-auto">
-              LorVen's IoT-Based Water Level Indicator (WLI) provides continuous visibility into passenger coach water levels, enabling railway operators to maintain reliable onboard water availability through timely monitoring and planned maintenance. Designed for Indian Railway passenger coaches, the system supports operational efficiency while improving passenger comfort and service reliability.
+              LorVen's Intelligent Field Device (IFD) provides continuous monitoring of critical railway signalling assets, enabling early fault detection, real-time diagnostics and centralized condition monitoring. Designed for dependable field operation, it supports predictive maintenance strategies that improve operational reliability and reduce maintenance response time.
             </p>
             <div className="pt-8">
               <Link

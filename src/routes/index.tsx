@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroLocomotive from "@/assets/hero-locomotive.jpg";
 import newBulletTrain from "@/assets/new-bullet-train.png";
 import heroVideo from "@/assets/hero-bg.mp4";
+import slide1Video from "@/assets/bg1-slide1-video.mp4";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,7 +14,7 @@ import aboutVideo from "@/assets/about-video.mp4";
 import factoryHall from "@/assets/factory-hall.jpg";
 import smtLine from "@/assets/smt-line.jpg";
 import pcbMacro from "@/assets/pcb-macro.jpg";
-import engineers from "@/assets/engineers.jpg";
+import engineers from "@/assets/services-hero-premium.jpg";
 import simulator from "@/assets/simulator.jpg";
 import coachBuild from "@/assets/coach-build.jpg";
 import electrical from "@/assets/electrical-cabinet.jpg";
@@ -24,9 +25,10 @@ import { useState, useEffect, useRef } from "react";
 import { PRODUCT_INDEX } from "@/lib/site-data";
 import serviceDesign from "@/assets/service-design.png";
 import serviceInstallation from "@/assets/service-installation.png";
-import sntHero from "@/assets/snt-hero-real.jpg";
-import locoHero from "@/assets/loco-hero-real.jpg";
-import wagonsHero from "@/assets/wagons-hero-real.jpg";
+import sntHero from "@/assets/snt-hero-premium.jpg";
+import locoHero from "@/assets/loco-hero-premium.jpg";
+import wagonsHero from "@/assets/wagons-hero-premium.jpg";
+import installationHero from "@/assets/installation-hero-premium.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -263,21 +265,21 @@ function Hero() {
   const slides = [
     {
       type: "video",
-      src: heroVideo,
-      label: "MISSION-CRITICAL ENGINEERING",
-      title: "Engineering Confidence for Critical Systems.",
-      description: "LorVen Systems develops high-reliability electronic systems for railway transportation, aerospace, defence and industrial infrastructure.",
-      cta: "Explore Solutions",
-      link: "/products",
+      src: slide1Video,
+      label: "Lorven Systems",
+      title: "Engineering Confidence\nfor Critical Systems.",
+      description: "LorVen Systems designs, develops and manufactures high-reliability electronic systems for railway transportation, aerospace, defence and industrial infrastructure.",
+      cta: "About LorVen",
+      link: "/about",
     },
     {
       type: "image",
       src: sntHero,
-      alt: "Signal & Telecommunications systems",
+      alt: "Railway signalling equipment and telecommunications system",
       label: "SIGNAL & TELECOMMUNICATIONS",
-      title: "Signal & Telecommunications",
-      description: "Advanced signalling technologies including RDPMS and IPS for safer, smarter and more reliable railway operations.",
-      cta: "Explore SNT Solutions",
+      title: "S&T\nSignal and Telecommunication.",
+      description: "We develop intelligent signalling and telecommunications solutions that enhance railway safety, operational reliability and network availability through advanced monitoring, power and field technologies.",
+      cta: "Explore Signalling & Telecom",
       link: "/products/snt",
     },
     {
@@ -293,31 +295,31 @@ function Hero() {
     {
       type: "image",
       src: wagonsHero,
-      alt: "Railway coaches and freight wagons",
+      alt: "Coaches and wagons wayside inspection system",
       label: "COACH & WAGON TECHNOLOGIES",
-      title: "Coach & Wagon Technologies",
-      description: "High-performance onboard electronics and intelligent inspection systems including WLI and AHABD designed for safer railway operations.",
-      cta: "Explore Coach & Wagon Solutions",
+      title: "Coaches & Wagons\nIntelligent Systems for Safer Rolling Stock.",
+      description: "We develop advanced inspection and monitoring solutions for coaches and wagons, enabling continuous condition assessment, improved operational safety and reliable asset management throughout the railway lifecycle.",
+      cta: "Explore Coaches & Wagons",
       link: "/products/wagons",
     },
     {
       type: "image",
-      src: electrical,
-      alt: "Industrial electrical panels and power systems",
-      label: "INDUSTRIAL ELECTRICAL SYSTEMS",
-      title: "Industrial Electrical Systems",
-      description: "Reliable electrical engineering solutions supporting transportation, infrastructure and mission-critical industrial environments.",
-      cta: "Explore Electrical Solutions",
+      src: engineers,
+      alt: "Professional railway engineering design and commissioning services",
+      label: "ENGINEERING SERVICES",
+      title: "Designing",
+      description: "We provide comprehensive engineering services including engineering design, system installation, testing and commissioning, ensuring every solution is delivered safely, integrated seamlessly and performs reliably throughout its operational lifecycle.",
+      cta: "Explore Engineering Services",
       link: "/services",
     },
     {
       type: "image",
-      src: engineers,
-      alt: "Engineers collaborating on system designs",
-      label: "ENGINEERING SERVICES",
-      title: "Engineering Services",
-      description: "End-to-end engineering support including system design, manufacturing, installation, testing, commissioning and lifecycle support.",
-      cta: "Our Services",
+      src: installationHero,
+      alt: "On-site installation and commissioning of railway signalling systems",
+      label: "INSTALLATION & COMMISSIONING",
+      title: "Installation",
+      description: "We provide professional installation, system integration, testing and commissioning services to ensure every solution is deployed safely, operates reliably and meets project and railway standards before entering service.",
+      cta: "Explore Installation & Commissioning",
       link: "/services",
     },
   ];
@@ -520,6 +522,7 @@ function Hero() {
         })}
       </div>
       <div className="absolute inset-0 z-5 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/95 pointer-events-none" />
+      <div className="absolute inset-0 z-5 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.4)_25%,transparent_58%)] pointer-events-none" />
 
       {/* Progress bar — subtle, not distracting */}
       <div className="absolute bottom-0 left-0 right-0 z-20 h-[2px] bg-white/8">
@@ -619,17 +622,15 @@ function Hero() {
                   isActive ? "active-text-container pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <p className="eyebrow !text-on-dark/70 hero-text-item delay-0">{slide.label}</p>
-                
-                <h1 className="mt-4 max-w-5xl text-[clamp(2.25rem,5.5vw,5rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible hero-text-item delay-1">
+                <h1 className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4.25rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible whitespace-pre-line hero-text-item delay-1">
                   <span>{slide.title}</span>
                 </h1>
 
-                <div className="mt-8 md:mt-12 grid grid-cols-12 items-end gap-8">
-                  <p className="col-span-12 max-w-xl text-sm md:text-base lg:text-lg leading-relaxed text-on-dark/85 md:col-span-6 hero-text-item delay-2">
+                <div className="mt-8 md:mt-12 max-w-xl flex flex-col items-start gap-6">
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-on-dark/85 hero-text-item delay-2">
                     {slide.description}
                   </p>
-                  <div className="col-span-12 flex items-end justify-start md:justify-end text-xs md:text-sm font-medium tracking-[0.12em] md:col-span-6">
+                  <div className="flex items-center justify-start text-xs md:text-sm font-medium tracking-[0.12em]">
                     <Link
                       to={slide.link}
                       className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer"
@@ -657,35 +658,17 @@ function AboutPreview() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
               <span className="eyebrow block gsap-reveal">ABOUT LORVEN</span>
-              <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light tracking-tight text-ink uppercase leading-[1.1] gsap-reveal">
+              <h2 className="text-2xl md:text-3xl lg:text-[2.25rem] font-light tracking-tight text-ink uppercase leading-[1.1] gsap-reveal">
                 Engineering Confidence <br />
-                Since 2008
+                for Critical Systems.
               </h2>
             </div>
             
             <p className="text-base md:text-lg leading-relaxed text-ink font-light gsap-reveal">
-              For over fifteen years, LorVen Systems has engineered mission-critical electronics for railway transportation, industrial infrastructure and defence applications.
+              LorVen Systems is an engineering and technology company focused on developing high-reliability electronic systems for railway transportation, aerospace, defence and industrial infrastructure. Guided by engineering excellence and disciplined execution, we create dependable solutions where safety, reliability and performance are essential.
             </p>
 
-            {/* Premium statistics / highlights grid */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-8 border-t border-rule/30 pt-8 gsap-reveal">
-              <div>
-                <span className="block text-3xl font-light text-ink tracking-tight">15+</span>
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Years Experience</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-light text-ink tracking-tight">Fail-Safe</span>
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Mission-Critical</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-light text-ink tracking-tight">EN 50155</span>
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Railway Electronics</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-light text-ink tracking-tight">Class 3</span>
-                <span className="block text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted mt-1">Certified Plant</span>
-              </div>
-            </div>
+
             
             <div className="gsap-reveal pt-4">
               <Link
@@ -736,7 +719,7 @@ function AboutPreview() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 relative items-center group">
                 <div className="flex flex-col justify-center gsap-reveal order-2 md:order-1">
                   <div className="flex items-center gap-4 mb-10">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Vision</span>
+                    <span className="text-[15px] font-semibold uppercase tracking-[0.2em] text-black">The Vision</span>
                     <span className="h-px w-12 bg-black/40"></span>
                   </div>
                   <h3 className="text-3xl md:text-4xl lg:text-[2.75rem] font-light leading-[1.15] tracking-tight text-black">
@@ -758,10 +741,10 @@ function AboutPreview() {
                 <div className="flex flex-col justify-center gsap-reveal">
                   <div className="flex items-center gap-4 mb-10 md:justify-end">
                     <span className="h-px w-12 bg-black/40"></span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Mission</span>
+                    <span className="text-[15px] font-semibold uppercase tracking-[0.2em] text-black">The Mission</span>
                   </div>
                   <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-black md:text-right">
-                    To create reliable, innovative, and high-performance products that advance transportation, infrastructure, aerospace, and defence through <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">engineering excellence</span> and <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">disciplined execution</span>.
+                    To create reliable, innovative and high-performance products that advance transportation, infrastructure, aerospace and defence through <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">engineering excellence</span> and <span className="relative inline-block after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-black/30">disciplined execution</span>.
                   </p>
                 </div>
                 {/* Node for timeline */}
@@ -774,12 +757,12 @@ function AboutPreview() {
                 
                 <div className="flex items-center gap-4 mb-12">
                   <span className="h-px w-8 bg-rule"></span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-black">The Purpose</span>
+                  <span className="text-[15px] font-semibold uppercase tracking-[0.2em] text-black">The Purpose</span>
                   <span className="h-px w-8 bg-rule"></span>
                 </div>
                 
                 <p className="text-3xl md:text-4xl lg:text-5xl font-light leading-[1.2] text-black max-w-4xl">
-                  Engineering technology that improves safety, reliability, and performance <br className="hidden md:block"/>
+                  Engineering technology that improves safety, reliability and performance <br className="hidden md:block"/>
                   <span className="font-medium inline-block mt-4 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-black">where failure is not an option.</span>
                 </p>
               </div>
@@ -827,13 +810,6 @@ const PRODUCTS_LIST = [
         desc: "High-fidelity driving simulation platform providing realistic training, route familiarization, and emergency scenarios for locomotive drivers.",
         img: simulator,
         href: "/products/electric-locomotive/simulators",
-      },
-      {
-        code: "IFT",
-        name: "Integrated Functional Tester",
-        desc: "Comprehensive diagnostic platform verifying the electrical and electronic performance of locomotives during commissioning and overhauls.",
-        img: pcbMacro,
-        href: "/products/electric-locomotive/ift",
       }
     ],
   },

@@ -26,7 +26,6 @@ export const PRODUCT_INDEX = [
     children: [
       { slug: "rdpms", number: "01.1", title: "RDPMS", blurb: "" },
       { slug: "ips",   number: "01.2", title: "IPS",   blurb: "" },
-      { slug: "ifd",   number: "01.3", title: "IFD",   blurb: "" },
     ],
   },
   {
@@ -36,7 +35,7 @@ export const PRODUCT_INDEX = [
     blurb: "",
     children: [
       { slug: "simulators", number: "02.1", title: "Driving Simulators", blurb: "" },
-      { slug: "ift",        number: "02.2", title: "IFT",               blurb: "" },
+      { slug: "ifd",        number: "02.2", title: "IFD",               blurb: "" },
     ],
   },
   {

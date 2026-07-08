@@ -77,7 +77,7 @@ function SNTProductPage() {
             items: [
               { label: "All Locomotive", to: "/products/electric-locomotive", active: false },
               { label: "Driving Simulator", to: "/products/electric-locomotive/simulators", active: false },
-              { label: "IFT", to: "/products/electric-locomotive/ift", active: false },
+              { label: "IFD", to: "/products/electric-locomotive/ifd", active: false },
             ],
           },
           {

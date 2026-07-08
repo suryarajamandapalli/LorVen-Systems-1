@@ -71,7 +71,7 @@ export const SERVICES_DATA: Record<string, ServiceDetail> = {
     overviewTitle: "Rigorous onsite deployment and safety commissioning for railway electronics.",
     overviewParagraphs: [
       "Our field service engineers execute physical cabinet mounting, wiring terminations, and final logic check-out inside active station interlocking rooms, depots, and loco sheds. We operate within tight night blocks and possession windows to install systems without disrupting traffic schedules.",
-      "Every installation loop is checked using specialized verification rigs (like the IFT system) to test and log cable insulation, logic routing, and connection integrity before sign-off, guaranteeing immediate operation from day one."
+      "Every installation loop is checked using specialized verification rigs to test and log cable insulation, logic routing, and connection integrity before sign-off, guaranteeing immediate operation from day one."
     ],
     overviewImage: serviceInstallation,
     features: [
@@ -94,7 +94,7 @@ export const SERVICES_DATA: Record<string, ServiceDetail> = {
     ],
     specifications: [
       { label: "Deployment Zones", value: "Electric loco sheds, stations, interlocking cabins, and carriage depots" },
-      { label: "Validation Equipment", value: "Integrated Functional Testers (IFT), Insulation Testers, Logical Loop Analyzers" },
+      { label: "Validation Equipment", value: "Insulation Testers, Logical Loop Analyzers" },
       { label: "Safety Compliance", value: "Certified under Indian Railways safety protocols and track protection rules" },
       { label: "Support Availabilty", value: "24/7 deployment standby during pre-scheduled line shutdown blocks" }
     ],

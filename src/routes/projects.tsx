@@ -105,13 +105,13 @@ const PROJECTS: Project[] = [
   },
   {
     n: "P/29",
-    title: "IFT roll-out at depots",
+    title: "Diagnostic rig roll-out",
     client: "Indian Railways",
     year: 2021,
     sector: "Mainline",
     region: "East",
     img: engineers,
-    copy: "Integrated functional testers commissioned across six electric-loco sheds.",
+    copy: "Diagnostic testing rigs commissioned across six electric-locomotive overhaul yards.",
   },
 ];
 

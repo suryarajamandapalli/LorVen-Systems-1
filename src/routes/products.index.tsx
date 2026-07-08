@@ -7,7 +7,6 @@ import heroImg from "@/assets/factory-hall.jpg";
 import rdpmsImg from "@/assets/pcb-macro.jpg";
 import ipsImg from "@/assets/electrical-cabinet.jpg";
 import simImg from "@/assets/simulator.jpg";
-import iftImg from "@/assets/loco-hero-real.jpg";
 import wliImg from "@/assets/wagons.jpg";
 import ahabdImg from "@/assets/coach-build.jpg";
 
@@ -15,7 +14,6 @@ const PRODUCT_IMAGES: Record<string, string> = {
   rdpms: rdpmsImg,
   ips: ipsImg,
   simulators: simImg,
-  ift: iftImg,
   wli: wliImg,
   ahabd: ahabdImg,
 };
@@ -73,7 +71,7 @@ function ProductsIndex() {
             items: [
               { label: "All Locomotive", to: "/products/electric-locomotive" },
               { label: "Driving Simulator", to: "/products/electric-locomotive/simulators" },
-              { label: "IFT", to: "/products/electric-locomotive/ift" },
+              { label: "IFD", to: "/products/electric-locomotive/ifd" },
             ],
           },
           {

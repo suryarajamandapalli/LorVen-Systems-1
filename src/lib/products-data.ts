@@ -114,10 +114,10 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
   },
   ifd: {
     slug: "ifd",
-    divisionSlug: "snt",
-    divisionTitle: "Signalling & Telecom",
+    divisionSlug: "electric-locomotive",
+    divisionTitle: "Electric Locomotive",
     title: "IFD",
-    category: "SIGNALLING & TELECOM",
+    category: "ELECTRIC LOCOMOTIVE",
     heroImage: sntHeroReal,
     description: "Online Insulation Failure Detector system for continuous real-time monitoring of wayside signaling circuit insulation resistance.",
     
@@ -298,68 +298,7 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
     ]
   },
 
-  // ─────────────────────────────────────────────
-  // 4. IFT
-  // ─────────────────────────────────────────────
-  ift: {
-    slug: "ift",
-    divisionSlug: "electric-locomotive",
-    divisionTitle: "Electric Locomotive",
-    title: "IFT",
-    category: "ELECTRIC LOCOMOTIVE",
-    heroImage: locoHeroReal,
-    description: "Integrated Functional Tester for automated diagnostic verification of locomotive electronic sub-assemblies.",
-    
-    overviewTitle: "Consolidated diagnostic test racks for locomotive overhaul yards.",
-    overviewParagraphs: [
-      "The Integrated Functional Tester (IFT) consolidated electronic testing rig replaces multiple bench instruments with a single automated diagnostic workstation. Built to qualify locomotive traction control cards, vehicle control units (VCU), and driver display modules during scheduled overhauls and manufacturing runs.",
-      "The system runs automated testing scripts that exercise all input/output channels, communication buses, and power supplies. A full pass/fail record is automatically generated and archived against the component's unique serial number."
-    ],
-    overviewImage: engineers,
 
-    features: [
-      {
-        title: "Stimulus Array",
-        desc: "Built-in signal generators output CAN, RS-485, MVB, and PWM waveforms alongside adjustable AC/DC power rails."
-      },
-      {
-        title: "Short-Circuit Protection",
-        desc: "Over-current and reverse-polarity protection circuits prevent test-rig damage if under-test cards short out."
-      },
-      {
-        title: "Scripted Test Sequencer",
-        desc: "Software environment runs predefined validation scripts, locking test sequences to ensure process repeatability."
-      },
-      {
-        title: "Pass/Fail Database",
-        desc: "Stores diagnostic measurements, parameters, and output states, exporting logs directly to network databases."
-      },
-      {
-        title: "Interface Adapters",
-        desc: "Supports modular connector interfaces, enabling fast changeovers between different locomotive PCB families."
-      },
-      {
-        title: "Traceable Standards",
-        desc: "Internal reference voltage and resistance standards are calibratable and traceable to national laboratories."
-      }
-    ],
-
-    specifications: [
-      { label: "Digital I/O Channels", value: "128 independent channels, software configurable thresholds" },
-      { label: "Analog I/O Channels", value: "32 independent measurement and source channels, 16-bit ADC/DAC" },
-      { label: "Buses Supported", value: "CAN 2.0B, Multifunction Vehicle Bus (MVB), RS-485, RS-232, SPI" },
-      { label: "Power Output", value: "0–110V DC programmable supply lines, up to 10A current limit" },
-      { label: "Calibration System", value: "Built-in automated self-calibration loop with traceable reference standard" },
-      { label: "Standards Compliance", value: "IEC 60571 (railway electronic equipment), CE marked" },
-      { label: "Form Factor", value: "Standard 19-inch ruggedized rack cabinet with cooling fans and locking wheels" }
-    ],
-
-    downloads: [
-      { label: "IFT System Technical Specs", size: "2.5 MB", url: "#", type: "Datasheet" },
-      { label: "IFT Script Development Manual", size: "3.9 MB", type: "Manual" },
-      { label: "Loco Depot Case Study Notes", size: "1.7 MB", type: "Brochure" }
-    ]
-  },
 
   // ─────────────────────────────────────────────
   // 5. WLI
@@ -371,12 +310,12 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
     title: "WLI",
     category: "COACHES & WAGONS",
     heroImage: wagonsHero,
-    description: "Onboard Wagon Load Indicator system for real-time axle weight monitoring and payload cargo diagnostics.",
+    description: "IoT-Based Water Level Indicator system for real-time onboard tank monitoring in passenger coaches.",
     
-    overviewTitle: "Continuous onboard axle load telemetry and cargo balance tracking.",
+    overviewTitle: "Real-Time Water Level Monitoring for Passenger Coaches",
     overviewParagraphs: [
-      "The Wagon Load Indicator (WLI) is an onboard payload measurement system that utilizes bogie-mounted strain sensors. Engineered for heavy haul freight wagons, it monitors cargo weight and balance distribution in real time, preventing overloading damage and cargo imbalance derailments.",
-      "The system broadcasts loading data using sub-1GHz wireless links, sending cargo weights directly to yard screens and locomotive cabs without connecting cables between wagon frames. High-visibility external LED displays show cargo level status during bulk loading runs."
+      "The IoT-Based Water Level Indicator (WLI) is an intelligent monitoring system designed for Indian Railway passenger coaches. It continuously monitors the water level in onboard water tanks and provides real-time status updates and low-water alerts, enabling timely refilling and ensuring uninterrupted water availability throughout the journey.",
+      "Designed for passenger coach applications, the system improves operational efficiency while enhancing passenger comfort and reducing water-related service interruptions."
     ],
     overviewImage: wagonsHeroReal,
 
@@ -434,12 +373,12 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
     title: "AHABD",
     category: "COACHES & WAGONS",
     heroImage: coachBuild,
-    description: "Wayside Acoustic Hot Axle Box Detector system identifying bearing defects and micro-fractures in passing trains.",
+    description: "Advanced Hot Axle Box Detector system for wayside non-contact infrared thermal monitoring on passing trains.",
     
-    overviewTitle: "Wayside acoustic diagnostics for bearing defect mitigation.",
+    overviewTitle: "Continuous Thermal Monitoring for Safer Railway Operations",
     overviewParagraphs: [
-      "The Acoustic Hot Axle Box Detector (AHABD) is a wayside safety array that listens to the acoustic signatures of passing train bearings at speed. By utilizing Spatial Filtering and Directional Microphones, it isolates axle sounds to flag micro-fractures, inner race defects, and lubrication spalls weeks before thermal detectors trigger alarms.",
-      "Trackside sensor arrays process bearing noises at speeds up to 120 km/h. Edge processing circuits match acoustic spectral signatures to defect templates, alerting dispatch centers of critical axle numbers requiring routing changes."
+      "The Advanced Hot Axle Box Detector (AHABD) is a wayside condition monitoring system designed to detect overheating axle box bearings on moving trains. Using non-contact infrared temperature sensing technology, the system continuously monitors axle box temperatures at line speed, enabling early detection of bearing abnormalities and supporting proactive maintenance before failures occur.",
+      "Designed for Indian Railway operations, AHABD enhances railway safety, improves rolling stock reliability and helps reduce service disruptions caused by overheating axle bearings."
     ],
     overviewImage: wagonsHeroReal,
 

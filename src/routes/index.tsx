@@ -908,9 +908,8 @@ function ProductsSection() {
               alt={sys.code}
               className="absolute inset-0 h-[108%] w-full -top-[4%] object-cover filter brightness-[0.8] animate-slow-zoom"
             />
-            {/* Clean gradients for maximum image clarity and text legibility */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+            {/* Clean gradients for maximum image clarity and text legibility — deeper on mobile */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95 lg:bg-gradient-to-r lg:from-black/85 lg:via-black/50 lg:to-transparent pointer-events-none" />
           </div>
         ))
       )}
@@ -970,13 +969,13 @@ function ProductsSection() {
                   <div className="pl-9 space-y-5 pt-3 border-t border-white/5">
                     {/* Display both core solutions with description on mobile */}
                     {it.systems.map((sys) => (
-                      <div key={sys.code} className="space-y-2 border-l border-white/10 pl-3">
-                        <div className="text-xs font-semibold text-white/95 uppercase tracking-wide">{sys.code}</div>
-                        <p className="text-xs leading-relaxed text-white/60 font-light max-w-md">{sys.desc}</p>
-                        <div className="pt-1">
+                      <div key={sys.code} className="space-y-2.5 border-l-2 border-white/20 pl-4">
+                        <div className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">{sys.code}</div>
+                        <p className="text-sm sm:text-base leading-relaxed text-white/85 font-light max-w-md">{sys.desc}</p>
+                        <div className="pt-2">
                           <Link
                             to={sys.href as any}
-                            className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.16em] text-white/80 hover:text-white transition-colors"
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-white hover:text-steel transition-colors min-h-[44px]"
                           >
                             Explore Product →
                           </Link>

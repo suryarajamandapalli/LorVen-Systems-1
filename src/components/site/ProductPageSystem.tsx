@@ -1,44 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { PRODUCTS_DATA } from "@/lib/products-data";
-
-// ─────────────────────────────────────────────────────────────
-// DATA INTERFACES
-// ─────────────────────────────────────────────────────────────
-
-export interface ProductSpecItem {
-  label: string;
-  value: string;
-}
-
-export interface ProductFeatureItem {
-  title: string;
-  desc: string;
-}
-
-export interface ProductDownloadItem {
-  label: string;
-  size: string;
-  url: string;
-  type: string;
-}
-
-export interface ProductSystemData {
-  slug: string;
-  divisionSlug: "snt" | "electric-locomotive" | "wagons" | "electrical";
-  divisionTitle: string;
-  title: string;
-  category: string;
-  heroImage: string;
-  description: string;
-  
-  overviewTitle: string;
-  overviewParagraphs: string[];
-  overviewImage: string;
-
-  features: ProductFeatureItem[];
-  specifications: ProductSpecItem[];
-  downloads: ProductDownloadItem[];
-}
+import { PRODUCTS_DATA, ProductSystemData, ProductFeatureItem, ProductSpecItem, ProductDownloadItem } from "@/lib/products-data";
+export type { ProductSystemData, ProductFeatureItem, ProductSpecItem, ProductDownloadItem };
 
 // ─────────────────────────────────────────────────────────────
 // AUTO-DERIVE RELATED PRODUCTS

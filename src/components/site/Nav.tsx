@@ -363,6 +363,8 @@ function MegaPanel({
   );
 }
 
+
+
 function MobileNav({
   open,
   onClose,
@@ -372,52 +374,204 @@ function MobileNav({
   onClose: () => void;
   pathname: string;
 }) {
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
   return (
     <div
-      className={`fixed inset-0 z-50 bg-bg text-ink transition-[clip-path] duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden ${
+      className={`fixed inset-0 z-50 bg-bg text-ink transition-[clip-path] duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] lg:hidden flex flex-col ${
         open ? "[clip-path:inset(0_0_0_0)]" : "[clip-path:inset(0_0_100%_0)]"
       }`}
       aria-hidden={!open}
     >
-      <div className="container-editorial flex h-[64px] items-center justify-between">
+      {/* Fixed mobile header */}
+      <div className="container-editorial flex h-[64px] items-center justify-between shrink-0 border-b border-rule/10">
         <Logo
           idPrefix="mobile-nav"
           className="select-none text-ink"
-          style={{ width: "140px", height: "auto" }}
+          style={{ width: "120px", height: "auto" }}
         />
-        <button onClick={onClose} className="text-[13px] font-medium tracking-[0.08em]">
+        <button onClick={onClose} className="text-[13px] font-semibold tracking-[0.08em] uppercase">
           Close
         </button>
       </div>
-      <div className="hairline" />
-      <nav className="container-editorial mt-10 flex flex-col gap-6 pb-12">
-        {[
-          { to: "/", label: "HOME" },
-          { to: "/about", label: "ABOUT" },
-          { to: "/products", label: "PRODUCTS" },
-          { to: "/services", label: "SERVICES" },
-          { to: "/projects", label: "PROJECTS" },
-          { to: "/careers", label: "CAREERS" },
-          { to: "/contact", label: "CONTACT" },
-        ].map((l, i) => {
-          const active = l.to === "/" ? pathname === "/" : pathname.startsWith(l.to);
-          return (
+
+      {/* Scrollable menu content */}
+      <div className="flex-1 overflow-y-auto">
+        <nav className="container-editorial py-10 flex flex-col gap-5 pb-24">
+          
+          {/* HOME */}
+          <div className="border-t border-rule/20 pt-4">
             <Link
-              key={l.to}
-              to={l.to}
+              to="/"
               onClick={onClose}
-              className="group flex items-baseline justify-between border-t border-rule pt-4"
+              className={`flex items-baseline justify-between ${pathname === "/" ? "text-ink font-semibold" : "text-ink/75"}`}
             >
-              <span className={`text-4xl font-light ${active ? "text-ink" : "text-ink/70"}`}>
-                {l.label}
-              </span>
-              <span className="num-mono text-[11px] text-ink-muted">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <span className="text-3xl font-light">HOME</span>
+              <span className="num-mono text-[10px] text-ink-muted">01</span>
             </Link>
-          );
-        })}
-      </nav>
+          </div>
+
+          {/* ABOUT */}
+          <div className="border-t border-rule/20 pt-4">
+            <Link
+              to="/about"
+              onClick={onClose}
+              className={`flex items-baseline justify-between ${pathname.startsWith("/about") ? "text-ink font-semibold" : "text-ink/75"}`}
+            >
+              <span className="text-3xl font-light">ABOUT</span>
+              <span className="num-mono text-[10px] text-ink-muted">02</span>
+            </Link>
+          </div>
+
+          {/* PRODUCTS (Accordion Dropdown) */}
+          <div className="border-t border-rule/20 pt-4 space-y-4">
+            <button
+              onClick={() => setProductsOpen(!productsOpen)}
+              className="w-full flex items-baseline justify-between text-left focus:outline-none"
+            >
+              <span className={`text-3xl font-light flex items-center gap-3 ${pathname.startsWith("/products") ? "text-ink font-medium" : "text-ink/75"}`}>
+                PRODUCTS
+                <span className="text-base text-ink-muted/60">{productsOpen ? "▲" : "▼"}</span>
+              </span>
+              <span className="num-mono text-[10px] text-ink-muted">03</span>
+            </button>
+
+            {productsOpen && (
+              <div className="pl-4 border-l border-rule/35 space-y-6 pt-2 pb-4">
+                <Link
+                  to="/products"
+                  onClick={onClose}
+                  className="block text-sm font-semibold uppercase tracking-wider text-ink hover:text-steel"
+                >
+                  All Products Index →
+                </Link>
+
+                {/* SNT Division */}
+                <div className="space-y-2">
+                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
+                    Signalling & Telecom
+                  </span>
+                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
+                    <Link to="/products/snt/rdpms" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      RDPMS
+                    </Link>
+                    <Link to="/products/snt/ips" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      IPS
+                    </Link>
+                    <Link to="/products/snt/ifd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      IFD
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Locomotive Division */}
+                <div className="space-y-2">
+                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
+                    Electric Locomotive
+                  </span>
+                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
+                    <Link to="/products/electric-locomotive/simulators" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      Driving Simulators
+                    </Link>
+                    <Link to="/products/electric-locomotive/ift" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      IFT
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Coaches & Wagons Division */}
+                <div className="space-y-2">
+                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
+                    Coaches & Wagons
+                  </span>
+                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
+                    <Link to="/products/wagons/wli" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      WLI
+                    </Link>
+                    <Link to="/products/wagons/ahabd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                      AHABD
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* SERVICES (Accordion Dropdown) */}
+          <div className="border-t border-rule/20 pt-4 space-y-4">
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="w-full flex items-baseline justify-between text-left focus:outline-none"
+            >
+              <span className={`text-3xl font-light flex items-center gap-3 ${pathname.startsWith("/services") ? "text-ink font-medium" : "text-ink/75"}`}>
+                SERVICES
+                <span className="text-base text-ink-muted/60">{servicesOpen ? "▲" : "▼"}</span>
+              </span>
+              <span className="num-mono text-[10px] text-ink-muted">04</span>
+            </button>
+
+            {servicesOpen && (
+              <div className="pl-4 border-l border-rule/35 space-y-4 pt-2 pb-4">
+                <Link
+                  to="/services"
+                  onClick={onClose}
+                  className="block text-sm font-semibold uppercase tracking-wider text-ink hover:text-steel"
+                >
+                  All Services Index →
+                </Link>
+                <div className="space-y-2.5 pl-3 border-l border-rule/15">
+                  <Link to="/services/design" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                    Engineering Design
+                  </Link>
+                  <Link to="/services/installation" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
+                    Site Installation
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* PROJECTS */}
+          <div className="border-t border-rule/20 pt-4">
+            <Link
+              to="/projects"
+              onClick={onClose}
+              className={`flex items-baseline justify-between ${pathname.startsWith("/projects") ? "text-ink font-semibold" : "text-ink/75"}`}
+            >
+              <span className="text-3xl font-light">PROJECTS</span>
+              <span className="num-mono text-[10px] text-ink-muted">05</span>
+            </Link>
+          </div>
+
+          {/* CAREERS */}
+          <div className="border-t border-rule/20 pt-4">
+            <Link
+              to="/careers"
+              onClick={onClose}
+              className={`flex items-baseline justify-between ${pathname.startsWith("/careers") ? "text-ink font-semibold" : "text-ink/75"}`}
+            >
+              <span className="text-3xl font-light">CAREERS</span>
+              <span className="num-mono text-[10px] text-ink-muted">06</span>
+            </Link>
+          </div>
+
+          {/* CONTACT */}
+          <div className="border-t border-rule/20 pt-4">
+            <Link
+              to="/contact"
+              onClick={onClose}
+              className={`flex items-baseline justify-between ${pathname.startsWith("/contact") ? "text-ink font-semibold" : "text-ink/75"}`}
+            >
+              <span className="text-3xl font-light">CONTACT</span>
+              <span className="num-mono text-[10px] text-ink-muted">07</span>
+            </Link>
+          </div>
+
+        </nav>
+      </div>
     </div>
   );
 }
+
+

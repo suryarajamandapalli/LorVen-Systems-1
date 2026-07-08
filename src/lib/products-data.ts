@@ -2,7 +2,38 @@
 // Contains high-fidelity, factual engineering details for all products.
 // No marketing buzzwords, no placeholders, no fake specifications.
 
-import { ProductSystemData } from "@/components/site/ProductPageSystem";
+export interface ProductSpecItem {
+  label: string;
+  value: string;
+}
+
+export interface ProductFeatureItem {
+  title: string;
+  desc: string;
+}
+
+export interface ProductDownloadItem {
+  label: string;
+  size: string;
+  url: string;
+  type: string;
+}
+
+export interface ProductSystemData {
+  slug: string;
+  divisionSlug: "snt" | "electric-locomotive" | "wagons" | "electrical";
+  divisionTitle: string;
+  title: string;
+  category: string;
+  heroImage: string;
+  description: string;
+  overviewTitle: string;
+  overviewParagraphs: string[];
+  overviewImage: string;
+  features: ProductFeatureItem[];
+  specifications: ProductSpecItem[];
+  downloads: ProductDownloadItem[];
+}
 
 // Asset imports for engineering photography
 import elecCabinet from "@/assets/electrical-cabinet.jpg";

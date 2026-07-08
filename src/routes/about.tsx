@@ -18,6 +18,9 @@ import factoryHall from "@/assets/factory-hall.jpg";
 
 import logoLight from "@/assets/logo-light.png";
 
+const domain = "https://lorven-systems-1.vercel.app";
+const absoluteImage = logoLight.startsWith("http") ? logoLight : `${domain}${logoLight}`;
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -30,8 +33,8 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Us — LorVen Systems" },
       { property: "og:description", content: "Engineering Confidence Since 2008." },
       { property: "og:url", content: "/about" },
-      { property: "og:image", content: logoLight },
-      { name: "twitter:image", content: logoLight },
+      { property: "og:image", content: absoluteImage },
+      { name: "twitter:image", content: absoluteImage },
     ],
     links: [{ rel: "canonical", href: "/about" }],
   }),

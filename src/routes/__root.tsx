@@ -72,6 +72,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 import logoLight from "../assets/logo-light.png";
 
+const domain = "https://lorven-systems-1.vercel.app";
+const absoluteImage = logoLight.startsWith("http") ? logoLight : `${domain}${logoLight}`;
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -88,10 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "LorVen Systems — Railway electronics & electrical integration" },
       { property: "og:description", content: "LorVen Systems Pvt. Ltd. designs, manufactures and integrates electronics, electrical systems and rolling-stock components for the railway industry." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: logoLight },
+      { property: "og:image", content: absoluteImage },
       { property: "og:image:alt", content: "LorVen Systems Logo" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: logoLight },
+      { name: "twitter:image", content: absoluteImage },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

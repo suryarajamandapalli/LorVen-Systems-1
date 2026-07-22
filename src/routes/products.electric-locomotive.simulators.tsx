@@ -16,7 +16,7 @@ export const Route = createFileRoute("/products/electric-locomotive/simulators")
   head: () => ({
     meta: [
       { title: "Driving Simulators — LorVen Systems" },
-      { name: "description", content: "High-fidelity driver-training simulators for electric locomotives and EMU/MEMU formations." },
+      { name: "description", content: "For Loco Pilots and Assistant Loco Pilots — three-phase electric locomotives (WAP/WAG) and train sets: EMU, MEMU and Vande Bharat." },
     ],
   }),
   component: SimulatorsRoute,
@@ -48,8 +48,8 @@ function SimulatorsRoute() {
 
   const features = [
     {
-      title: "Realistic Driver Cab Simulation",
-      desc: "Full-scale exact cabin layout replica with operational controls, indicators, gauge displays, and seat ergonomics.",
+      title: "Cab Controls & Displays",
+      desc: "Cab controls, master controller, brake system, instrument panels and cab displays of the selected class.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,35 +57,17 @@ function SimulatorsRoute() {
       )
     },
     {
-      title: "Electric Locomotive & EMU/MEMU Training",
-      desc: "Supports training across electric locomotives (WAP-7, WAP-5, WAG-9) and motor coach formations.",
+      title: "Instructor Station",
+      desc: "Instructor station — scenario authoring, fault injection, real-time monitoring and session control.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M8 6h8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     },
     {
-      title: "Day & Night Driving Scenarios",
-      desc: "Configurable diurnal cycles simulating varying daylight conditions, twilight, and operational night hazards.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Multiple Weather Conditions",
-      desc: "Exercises driving skills under simulated rain, fog, snowfall, lightning storms, and track moisture changes.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Railway Signalling Simulation",
-      desc: "Includes comprehensive route signals, automatic signalling aspects, and wayside sensor responses.",
+      title: "Route Libraries & Signalling",
+      desc: "Route libraries with signalling, gradients, speed restrictions and neutral sections.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M12 2v20M17 5H7M19 12H5M17 19H7" strokeLinecap="round" strokeLinejoin="round" />
@@ -93,17 +75,8 @@ function SimulatorsRoute() {
       )
     },
     {
-      title: "Performance Monitoring & Assessment",
-      desc: "Logs driver reaction times, braking efficiency, speed limit compliance, and energy conservation.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Emergency Scenario Training",
-      desc: "Presents critical faults like signal passing at danger (SPAD), traction failures, and brake pipe leaks.",
+      title: "Operational Scenarios & Troubleshooting",
+      desc: "Normal, degraded and emergency working; fault troubleshooting; energy-efficient driving.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" strokeLinecap="round" strokeLinejoin="round" />
@@ -111,11 +84,11 @@ function SimulatorsRoute() {
       )
     },
     {
-      title: "Instructor Control Station",
-      desc: "Allows instructors to inject faults, control weather conditions, track telemetry, and generate reports.",
+      title: "Objective Performance Evaluation",
+      desc: "Objective performance evaluation and reporting for trainee assessment.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     }
@@ -159,7 +132,7 @@ function SimulatorsRoute() {
             </div>
 
             <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
-              High-fidelity driver-training simulators for electric locomotives and EMU/MEMU formations, providing realistic cab environments for safe operational training.
+              For Loco Pilots and Assistant Loco Pilots — three-phase electric locomotives (WAP/WAG) and train sets: EMU, MEMU and Vande Bharat. Developed in line with RDSO functional requirements for desktop simulators.
             </p>
           </div>
         </div>
@@ -184,10 +157,10 @@ function SimulatorsRoute() {
             </h2>
             <div className="border-t border-rule/20 pt-6 space-y-4">
               <p className="text-lg md:text-xl text-black leading-relaxed font-light">
-                The Locomotive Simulator is a high-fidelity training system designed to enhance the operational skills of Loco Pilots through realistic simulation of electric locomotive and EMU/MEMU driving environments. By replicating real operating conditions, the simulator enables safe, effective and standardized training without disrupting live railway operations.
+                For Loco Pilots and Assistant Loco Pilots — three-phase electric locomotives (WAP/WAG) and train sets: EMU, MEMU and Vande Bharat.
               </p>
-              <p className="text-base text-ink-muted leading-relaxed font-light">
-                It provides a controlled environment for practicing normal operations, emergency scenarios and operational procedures, helping improve safety, passenger comfort, punctuality and energy-efficient train handling.
+              <p className="text-sm text-ink-muted leading-relaxed font-mono uppercase tracking-wider">
+                Developed in line with RDSO functional requirements for desktop simulators.
               </p>
             </div>
           </div>

@@ -3,8 +3,12 @@ import { PageHero } from "@/components/site/PageHero";
 import { PageIndex } from "@/components/site/PageIndex";
 import { CTAStrip } from "@/components/site/CTAStrip";
 import { SERVICE_INDEX } from "@/lib/site-data";
-import serviceDesign from "@/assets/service-design.png";
+import engineers from "@/assets/engineers.jpg";
+import depot from "@/assets/depot.jpg";
+import pcbMacro from "@/assets/pcb-macro.jpg";
 import serviceInstallation from "@/assets/service-installation.png";
+import serviceDesign from "@/assets/service-design.png";
+import electricalCabinet from "@/assets/electrical-cabinet.jpg";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -12,10 +16,10 @@ export const Route = createFileRoute("/services/")({
       { title: "Services — LorVen Systems" },
       {
         name: "description",
-        content: "Design and installation services for railway electronics and electrical systems.",
+        content: "Engineering design, electronics manufacturing, system integration, and turnkey installation services for railways.",
       },
       { property: "og:title", content: "Services — LorVen Systems" },
-      { property: "og:description", content: "Design and installation, in one pair of hands." },
+      { property: "og:description", content: "End-to-end engineering, manufacturing, and field services." },
       { property: "og:url", content: "/services" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
@@ -23,15 +27,22 @@ export const Route = createFileRoute("/services/")({
   component: ServicesIndex,
 });
 
-const IMG = [serviceDesign, serviceInstallation];
+const IMG = [
+  pcbMacro,            // Electronic Product Development
+  engineers,           // Signalling Design Services
+  depot,               // KAVACH Installation & Commissioning
+  electricalCabinet,   // S&T System Integration
+  serviceDesign,       // Electronics Manufacturing Services
+  serviceInstallation  // Installation, Testing & Commissioning
+];
 
 function ServicesIndex() {
   return (
     <>
       <PageHero
         eyebrow="SERVICES"
-        title="Design and installation, in one pair of hands."
-        lede="From the first schematic to the final commissioning sign-off, our engineering team owns the work end-to-end. Two services, one continuous discipline."
+        title="Engineering, Manufacturing & Turnkey Services"
+        lede="From electronic product development and safety-critical signalling design to Kavach ATP setup, custom electronics manufacturing, and full-scale system integration, we deliver end-to-end lifecycle solutions."
         image={serviceDesign}
       />
 
@@ -40,22 +51,22 @@ function ServicesIndex() {
           {
             title: "Engineering & Design",
             items: [
-              { label: "Design Engineering", to: "/services/design" },
+              { label: "Electronic Product Development", to: "/services/product-dev" },
+              { label: "Signalling Design Services", to: "/services/signalling-design" },
             ],
           },
           {
-            title: "Field Operations",
+            title: "Turnkey Installations",
             items: [
-              { label: "Installation", to: "/services/installation" },
-              { label: "Commissioning", href: "#" },
+              { label: "KAVACH Installation", to: "/services/kavach-installation" },
+              { label: "S&T System Integration", to: "/services/system-integration" },
             ],
           },
           {
-            title: "Support & Lifecycle",
+            title: "Manufacturing & Field",
             items: [
-              { label: "Testing", href: "#" },
-              { label: "Maintenance", href: "#" },
-              { label: "Lifecycle Support", href: "#" },
+              { label: "Electronics Manufacturing Services", to: "/services/ems" },
+              { label: "Testing & Commissioning", to: "/services/testing-commissioning" },
             ],
           },
         ]}
@@ -107,7 +118,7 @@ function ServicesIndex() {
         </div>
       </section>
 
-      <CTAStrip eyebrow="Engage" title="Bring us in at design, or at installation." />
+      <CTAStrip eyebrow="Engage" title="Bring us in at development, design, manufacturing, or installation." />
     </>
   );
 }

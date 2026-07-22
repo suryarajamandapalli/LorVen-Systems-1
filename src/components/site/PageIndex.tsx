@@ -21,7 +21,9 @@ export function PageIndex({ columns }: PageIndexProps) {
   return (
     <section className="bg-white border-b border-rule/30 py-4 md:py-6 relative z-20 animate-fade-in">
       <div className="container-editorial">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6 md:gap-y-8">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 md:gap-y-8 ${
+          columns.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+        }`}>
           {columns.map((col, cIdx) => (
             <div key={cIdx} className="space-y-3">
               {/* Thin horizontal divider above category */}

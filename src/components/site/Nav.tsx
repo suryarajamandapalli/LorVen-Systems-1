@@ -297,20 +297,20 @@ function MegaPanel({
                 Index of all products
               </Link>
             </div>
-            <div className="col-span-12 md:col-span-9 grid grid-cols-2 gap-x-10 gap-y-8 md:grid-cols-3">
+            <div className="col-span-12 md:col-span-9 grid grid-cols-2 gap-x-10 gap-y-8 md:grid-cols-4">
               {PRODUCT_INDEX.map((p) => (
                 <div key={p.slug} className="flex flex-col">
-                  <a href={`/products/${p.slug}`} onClick={onClose} className="group block">
-                    <span className="mt-2 block text-lg font-medium text-ink group-hover:text-steel">
+                  <a href={p.to} onClick={onClose} className="group block">
+                    <span className="mt-2 block text-base font-semibold uppercase tracking-wider text-ink group-hover:text-steel">
                       {p.title}
                     </span>
                   </a>
                   {p.children.length > 0 && (
-                    <ul className="mt-4 space-y-3 border-l border-rule pl-4 text-[15px] text-ink-muted">
+                    <ul className="mt-4 space-y-3 border-l border-rule pl-4 text-[14px] text-ink-muted">
                       {p.children.map((c) => (
                         <li key={c.slug}>
                           <a
-                            href={`/products/${p.slug}/${c.slug}`}
+                            href={c.to}
                             onClick={onClose}
                             className="link-underline hover:text-ink"
                           >
@@ -335,23 +335,22 @@ function MegaPanel({
                 End-to-end engineering, from drawing board to commissioning.
               </p>
             </div>
-            <div className="col-span-12 md:col-span-9 grid grid-cols-1 gap-8 md:grid-cols-2">
-              {SERVICE_INDEX.map((s) => (
+            <div className="col-span-12 md:col-span-9 grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
+              {SERVICE_INDEX.map((s, idx) => (
                 <a
                   key={s.slug}
                   href={`/services/${s.slug}`}
                   onClick={onClose}
-                  className="group block border-t border-rule pt-6"
+                  className="group block border-t border-rule pt-4"
                 >
-                  <div className="flex items-baseline justify-end">
-                    <span className="text-[11px] uppercase tracking-[0.16em] text-ink-muted">
-                      Service
+                  <div className="flex justify-between items-start gap-4">
+                    <span className="block text-base font-semibold uppercase tracking-wider text-ink group-hover:text-steel transition-colors leading-tight">
+                      {s.title}
+                    </span>
+                    <span className="num-mono text-[11px] text-ink-muted/60 font-semibold pt-0.5">
+                      {idx + 1}
                     </span>
                   </div>
-                  <h3 className="mt-4 text-3xl font-light text-ink group-hover:text-steel">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 max-w-md text-sm text-ink-muted">{s.blurb}</p>
                 </a>
               ))}
             </div>
@@ -447,50 +446,25 @@ function MobileNav({
                   All Products Index →
                 </Link>
 
-                {/* SNT Division */}
-                <div className="space-y-2">
-                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
-                    Signalling & Telecom
-                  </span>
-                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
-                    <Link to="/products/snt/rdpms" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      RDPMS
-                    </Link>
-                    <Link to="/products/snt/ips" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      IPS
-                    </Link>
+                {PRODUCT_INDEX.map((p) => (
+                  <div key={p.slug} className="space-y-2">
+                    <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
+                      {p.title}
+                    </span>
+                    <div className="pl-3 space-y-2.5 border-l border-rule/15">
+                      {p.children.map((c) => (
+                        <Link
+                          key={c.slug}
+                          to={c.to as any}
+                          onClick={onClose}
+                          className="block text-sm text-ink-muted hover:text-ink font-semibold"
+                        >
+                          {c.title}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                {/* Locomotive Division */}
-                <div className="space-y-2">
-                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
-                    Electric Locomotive
-                  </span>
-                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
-                    <Link to="/products/electric-locomotive/simulators" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      Driving Simulators
-                    </Link>
-                    <Link to="/products/electric-locomotive/ifd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      IFD
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Coaches & Wagons Division */}
-                <div className="space-y-2">
-                  <span className="block text-xs font-bold uppercase tracking-widest text-ink-muted">
-                    Coaches & Wagons
-                  </span>
-                  <div className="pl-3 space-y-2.5 border-l border-rule/15">
-                    <Link to="/products/wagons/wli" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      WLI
-                    </Link>
-                    <Link to="/products/wagons/ahabd" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                      AHABD
-                    </Link>
-                  </div>
-                </div>
+                ))}
               </div>
             )}
           </div>
@@ -518,12 +492,17 @@ function MobileNav({
                   All Services Index →
                 </Link>
                 <div className="space-y-2.5 pl-3 border-l border-rule/15">
-                  <Link to="/services/design" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                    Engineering Design
-                  </Link>
-                  <Link to="/services/installation" onClick={onClose} className="block text-sm text-ink-muted hover:text-ink font-semibold">
-                    Site Installation
-                  </Link>
+                  {SERVICE_INDEX.map((s, idx) => (
+                    <Link
+                      key={s.slug}
+                      to={`/services/${s.slug}`}
+                      onClick={onClose}
+                      className="flex justify-between items-center text-sm text-ink-muted hover:text-ink font-semibold"
+                    >
+                      <span>{s.title}</span>
+                      <span className="num-mono text-[10px] opacity-60">{idx + 1}</span>
+                    </Link>
+                  ))}
                 </div>
               </div>
             )}

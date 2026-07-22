@@ -55,19 +55,20 @@ function WagonsProductPage() {
       <PageIndex
         columns={[
           {
+            title: "IoT & Energy Management",
+            items: [
+              { label: "RDPMS", to: "/products/snt/rdpms", active: false },
+              { label: "IPS", to: "/products/snt/ips", active: false },
+              { label: "IFD", to: "/products/electric-locomotive/ifd", active: false },
+              { label: "WLI", to: "/products/wagons/wli", active: false },
+            ],
+          },
+          {
             title: "Signalling & Telecom",
             items: [
               { label: "All Signalling & Telecom", to: "/products/snt", active: false },
               { label: "RDPMS", to: "/products/snt/rdpms", active: false },
               { label: "IPS", to: "/products/snt/ips", active: false },
-            ],
-          },
-          {
-            title: "Electric Locomotive",
-            items: [
-              { label: "All Locomotive", to: "/products/electric-locomotive", active: false },
-              { label: "Driving Simulator", to: "/products/electric-locomotive/simulators", active: false },
-              { label: "IFD", to: "/products/electric-locomotive/ifd", active: false },
             ],
           },
           {
@@ -77,6 +78,12 @@ function WagonsProductPage() {
               { label: "All Wagons", to: "/products/wagons", active: true },
               { label: "WLI", to: "/products/wagons/wli", active: false },
               { label: "AHABD", to: "/products/wagons/ahabd", active: false },
+            ],
+          },
+          {
+            title: "Training Simulators",
+            items: [
+              { label: "Driving Simulators", to: "/products/electric-locomotive/simulators", active: false },
             ],
           },
         ]}

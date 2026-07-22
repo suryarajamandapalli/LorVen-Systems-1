@@ -21,8 +21,12 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
-import { Route as ServicesInstallationRouteImport } from './routes/services.installation'
-import { Route as ServicesDesignRouteImport } from './routes/services.design'
+import { Route as ServicesTestingCommissioningRouteImport } from './routes/services.testing-commissioning'
+import { Route as ServicesSystemIntegrationRouteImport } from './routes/services.system-integration'
+import { Route as ServicesSignallingDesignRouteImport } from './routes/services.signalling-design'
+import { Route as ServicesProductDevRouteImport } from './routes/services.product-dev'
+import { Route as ServicesKavachInstallationRouteImport } from './routes/services.kavach-installation'
+import { Route as ServicesEmsRouteImport } from './routes/services.ems'
 import { Route as ProductsWagonsRouteImport } from './routes/products.wagons'
 import { Route as ProductsSntRouteImport } from './routes/products.snt'
 import { Route as ProductsElectricLocomotiveRouteImport } from './routes/products.electric-locomotive'
@@ -31,10 +35,13 @@ import { Route as ProductsWagonsIndexRouteImport } from './routes/products.wagon
 import { Route as ProductsSntIndexRouteImport } from './routes/products.snt.index'
 import { Route as ProductsElectricLocomotiveIndexRouteImport } from './routes/products.electric-locomotive.index'
 import { Route as ProductsWagonsWliRouteImport } from './routes/products.wagons.wli'
+import { Route as ProductsWagonsMvisRouteImport } from './routes/products.wagons.mvis'
+import { Route as ProductsWagonsEmcdRouteImport } from './routes/products.wagons.emcd'
 import { Route as ProductsWagonsAhabdRouteImport } from './routes/products.wagons.ahabd'
 import { Route as ProductsSntRdpmsRouteImport } from './routes/products.snt.rdpms'
 import { Route as ProductsSntIpsRouteImport } from './routes/products.snt.ips'
 import { Route as ProductsElectricLocomotiveSimulatorsRouteImport } from './routes/products.electric-locomotive.simulators'
+import { Route as ProductsElectricLocomotiveKavachRouteImport } from './routes/products.electric-locomotive.kavach'
 import { Route as ProductsElectricLocomotiveIfdRouteImport } from './routes/products.electric-locomotive.ifd'
 
 const TermsRoute = TermsRouteImport.update({
@@ -97,14 +104,38 @@ const ProductsIndexRoute = ProductsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProductsRoute,
 } as any)
-const ServicesInstallationRoute = ServicesInstallationRouteImport.update({
-  id: '/installation',
-  path: '/installation',
+const ServicesTestingCommissioningRoute =
+  ServicesTestingCommissioningRouteImport.update({
+    id: '/testing-commissioning',
+    path: '/testing-commissioning',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesSystemIntegrationRoute =
+  ServicesSystemIntegrationRouteImport.update({
+    id: '/system-integration',
+    path: '/system-integration',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesSignallingDesignRoute =
+  ServicesSignallingDesignRouteImport.update({
+    id: '/signalling-design',
+    path: '/signalling-design',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesProductDevRoute = ServicesProductDevRouteImport.update({
+  id: '/product-dev',
+  path: '/product-dev',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesDesignRoute = ServicesDesignRouteImport.update({
-  id: '/design',
-  path: '/design',
+const ServicesKavachInstallationRoute =
+  ServicesKavachInstallationRouteImport.update({
+    id: '/kavach-installation',
+    path: '/kavach-installation',
+    getParentRoute: () => ServicesRoute,
+  } as any)
+const ServicesEmsRoute = ServicesEmsRouteImport.update({
+  id: '/ems',
+  path: '/ems',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ProductsWagonsRoute = ProductsWagonsRouteImport.update({
@@ -149,6 +180,16 @@ const ProductsWagonsWliRoute = ProductsWagonsWliRouteImport.update({
   path: '/wli',
   getParentRoute: () => ProductsWagonsRoute,
 } as any)
+const ProductsWagonsMvisRoute = ProductsWagonsMvisRouteImport.update({
+  id: '/mvis',
+  path: '/mvis',
+  getParentRoute: () => ProductsWagonsRoute,
+} as any)
+const ProductsWagonsEmcdRoute = ProductsWagonsEmcdRouteImport.update({
+  id: '/emcd',
+  path: '/emcd',
+  getParentRoute: () => ProductsWagonsRoute,
+} as any)
 const ProductsWagonsAhabdRoute = ProductsWagonsAhabdRouteImport.update({
   id: '/ahabd',
   path: '/ahabd',
@@ -168,6 +209,12 @@ const ProductsElectricLocomotiveSimulatorsRoute =
   ProductsElectricLocomotiveSimulatorsRouteImport.update({
     id: '/simulators',
     path: '/simulators',
+    getParentRoute: () => ProductsElectricLocomotiveRoute,
+  } as any)
+const ProductsElectricLocomotiveKavachRoute =
+  ProductsElectricLocomotiveKavachRouteImport.update({
+    id: '/kavach',
+    path: '/kavach',
     getParentRoute: () => ProductsElectricLocomotiveRoute,
   } as any)
 const ProductsElectricLocomotiveIfdRoute =
@@ -192,15 +239,22 @@ export interface FileRoutesByFullPath {
   '/products/electric-locomotive': typeof ProductsElectricLocomotiveRouteWithChildren
   '/products/snt': typeof ProductsSntRouteWithChildren
   '/products/wagons': typeof ProductsWagonsRouteWithChildren
-  '/services/design': typeof ServicesDesignRoute
-  '/services/installation': typeof ServicesInstallationRoute
+  '/services/ems': typeof ServicesEmsRoute
+  '/services/kavach-installation': typeof ServicesKavachInstallationRoute
+  '/services/product-dev': typeof ServicesProductDevRoute
+  '/services/signalling-design': typeof ServicesSignallingDesignRoute
+  '/services/system-integration': typeof ServicesSystemIntegrationRoute
+  '/services/testing-commissioning': typeof ServicesTestingCommissioningRoute
   '/products/': typeof ProductsIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
+  '/products/electric-locomotive/kavach': typeof ProductsElectricLocomotiveKavachRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
+  '/products/wagons/emcd': typeof ProductsWagonsEmcdRoute
+  '/products/wagons/mvis': typeof ProductsWagonsMvisRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
   '/products/electric-locomotive/': typeof ProductsElectricLocomotiveIndexRoute
   '/products/snt/': typeof ProductsSntIndexRoute
@@ -216,15 +270,22 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/terms': typeof TermsRoute
   '/products/coaches': typeof ProductsCoachesRoute
-  '/services/design': typeof ServicesDesignRoute
-  '/services/installation': typeof ServicesInstallationRoute
+  '/services/ems': typeof ServicesEmsRoute
+  '/services/kavach-installation': typeof ServicesKavachInstallationRoute
+  '/services/product-dev': typeof ServicesProductDevRoute
+  '/services/signalling-design': typeof ServicesSignallingDesignRoute
+  '/services/system-integration': typeof ServicesSystemIntegrationRoute
+  '/services/testing-commissioning': typeof ServicesTestingCommissioningRoute
   '/products': typeof ProductsIndexRoute
   '/services': typeof ServicesIndexRoute
   '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
+  '/products/electric-locomotive/kavach': typeof ProductsElectricLocomotiveKavachRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
+  '/products/wagons/emcd': typeof ProductsWagonsEmcdRoute
+  '/products/wagons/mvis': typeof ProductsWagonsMvisRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
   '/products/electric-locomotive': typeof ProductsElectricLocomotiveIndexRoute
   '/products/snt': typeof ProductsSntIndexRoute
@@ -246,15 +307,22 @@ export interface FileRoutesById {
   '/products/electric-locomotive': typeof ProductsElectricLocomotiveRouteWithChildren
   '/products/snt': typeof ProductsSntRouteWithChildren
   '/products/wagons': typeof ProductsWagonsRouteWithChildren
-  '/services/design': typeof ServicesDesignRoute
-  '/services/installation': typeof ServicesInstallationRoute
+  '/services/ems': typeof ServicesEmsRoute
+  '/services/kavach-installation': typeof ServicesKavachInstallationRoute
+  '/services/product-dev': typeof ServicesProductDevRoute
+  '/services/signalling-design': typeof ServicesSignallingDesignRoute
+  '/services/system-integration': typeof ServicesSystemIntegrationRoute
+  '/services/testing-commissioning': typeof ServicesTestingCommissioningRoute
   '/products/': typeof ProductsIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/products/electric-locomotive/ifd': typeof ProductsElectricLocomotiveIfdRoute
+  '/products/electric-locomotive/kavach': typeof ProductsElectricLocomotiveKavachRoute
   '/products/electric-locomotive/simulators': typeof ProductsElectricLocomotiveSimulatorsRoute
   '/products/snt/ips': typeof ProductsSntIpsRoute
   '/products/snt/rdpms': typeof ProductsSntRdpmsRoute
   '/products/wagons/ahabd': typeof ProductsWagonsAhabdRoute
+  '/products/wagons/emcd': typeof ProductsWagonsEmcdRoute
+  '/products/wagons/mvis': typeof ProductsWagonsMvisRoute
   '/products/wagons/wli': typeof ProductsWagonsWliRoute
   '/products/electric-locomotive/': typeof ProductsElectricLocomotiveIndexRoute
   '/products/snt/': typeof ProductsSntIndexRoute
@@ -277,15 +345,22 @@ export interface FileRouteTypes {
     | '/products/electric-locomotive'
     | '/products/snt'
     | '/products/wagons'
-    | '/services/design'
-    | '/services/installation'
+    | '/services/ems'
+    | '/services/kavach-installation'
+    | '/services/product-dev'
+    | '/services/signalling-design'
+    | '/services/system-integration'
+    | '/services/testing-commissioning'
     | '/products/'
     | '/services/'
     | '/products/electric-locomotive/ifd'
+    | '/products/electric-locomotive/kavach'
     | '/products/electric-locomotive/simulators'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
+    | '/products/wagons/emcd'
+    | '/products/wagons/mvis'
     | '/products/wagons/wli'
     | '/products/electric-locomotive/'
     | '/products/snt/'
@@ -301,15 +376,22 @@ export interface FileRouteTypes {
     | '/projects'
     | '/terms'
     | '/products/coaches'
-    | '/services/design'
-    | '/services/installation'
+    | '/services/ems'
+    | '/services/kavach-installation'
+    | '/services/product-dev'
+    | '/services/signalling-design'
+    | '/services/system-integration'
+    | '/services/testing-commissioning'
     | '/products'
     | '/services'
     | '/products/electric-locomotive/ifd'
+    | '/products/electric-locomotive/kavach'
     | '/products/electric-locomotive/simulators'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
+    | '/products/wagons/emcd'
+    | '/products/wagons/mvis'
     | '/products/wagons/wli'
     | '/products/electric-locomotive'
     | '/products/snt'
@@ -330,15 +412,22 @@ export interface FileRouteTypes {
     | '/products/electric-locomotive'
     | '/products/snt'
     | '/products/wagons'
-    | '/services/design'
-    | '/services/installation'
+    | '/services/ems'
+    | '/services/kavach-installation'
+    | '/services/product-dev'
+    | '/services/signalling-design'
+    | '/services/system-integration'
+    | '/services/testing-commissioning'
     | '/products/'
     | '/services/'
     | '/products/electric-locomotive/ifd'
+    | '/products/electric-locomotive/kavach'
     | '/products/electric-locomotive/simulators'
     | '/products/snt/ips'
     | '/products/snt/rdpms'
     | '/products/wagons/ahabd'
+    | '/products/wagons/emcd'
+    | '/products/wagons/mvis'
     | '/products/wagons/wli'
     | '/products/electric-locomotive/'
     | '/products/snt/'
@@ -444,18 +533,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexRouteImport
       parentRoute: typeof ProductsRoute
     }
-    '/services/installation': {
-      id: '/services/installation'
-      path: '/installation'
-      fullPath: '/services/installation'
-      preLoaderRoute: typeof ServicesInstallationRouteImport
+    '/services/testing-commissioning': {
+      id: '/services/testing-commissioning'
+      path: '/testing-commissioning'
+      fullPath: '/services/testing-commissioning'
+      preLoaderRoute: typeof ServicesTestingCommissioningRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/design': {
-      id: '/services/design'
-      path: '/design'
-      fullPath: '/services/design'
-      preLoaderRoute: typeof ServicesDesignRouteImport
+    '/services/system-integration': {
+      id: '/services/system-integration'
+      path: '/system-integration'
+      fullPath: '/services/system-integration'
+      preLoaderRoute: typeof ServicesSystemIntegrationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/signalling-design': {
+      id: '/services/signalling-design'
+      path: '/signalling-design'
+      fullPath: '/services/signalling-design'
+      preLoaderRoute: typeof ServicesSignallingDesignRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/product-dev': {
+      id: '/services/product-dev'
+      path: '/product-dev'
+      fullPath: '/services/product-dev'
+      preLoaderRoute: typeof ServicesProductDevRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/kavach-installation': {
+      id: '/services/kavach-installation'
+      path: '/kavach-installation'
+      fullPath: '/services/kavach-installation'
+      preLoaderRoute: typeof ServicesKavachInstallationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ems': {
+      id: '/services/ems'
+      path: '/ems'
+      fullPath: '/services/ems'
+      preLoaderRoute: typeof ServicesEmsRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/products/wagons': {
@@ -514,6 +631,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsWagonsWliRouteImport
       parentRoute: typeof ProductsWagonsRoute
     }
+    '/products/wagons/mvis': {
+      id: '/products/wagons/mvis'
+      path: '/mvis'
+      fullPath: '/products/wagons/mvis'
+      preLoaderRoute: typeof ProductsWagonsMvisRouteImport
+      parentRoute: typeof ProductsWagonsRoute
+    }
+    '/products/wagons/emcd': {
+      id: '/products/wagons/emcd'
+      path: '/emcd'
+      fullPath: '/products/wagons/emcd'
+      preLoaderRoute: typeof ProductsWagonsEmcdRouteImport
+      parentRoute: typeof ProductsWagonsRoute
+    }
     '/products/wagons/ahabd': {
       id: '/products/wagons/ahabd'
       path: '/ahabd'
@@ -542,6 +673,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsElectricLocomotiveSimulatorsRouteImport
       parentRoute: typeof ProductsElectricLocomotiveRoute
     }
+    '/products/electric-locomotive/kavach': {
+      id: '/products/electric-locomotive/kavach'
+      path: '/kavach'
+      fullPath: '/products/electric-locomotive/kavach'
+      preLoaderRoute: typeof ProductsElectricLocomotiveKavachRouteImport
+      parentRoute: typeof ProductsElectricLocomotiveRoute
+    }
     '/products/electric-locomotive/ifd': {
       id: '/products/electric-locomotive/ifd'
       path: '/ifd'
@@ -554,6 +692,7 @@ declare module '@tanstack/react-router' {
 
 interface ProductsElectricLocomotiveRouteChildren {
   ProductsElectricLocomotiveIfdRoute: typeof ProductsElectricLocomotiveIfdRoute
+  ProductsElectricLocomotiveKavachRoute: typeof ProductsElectricLocomotiveKavachRoute
   ProductsElectricLocomotiveSimulatorsRoute: typeof ProductsElectricLocomotiveSimulatorsRoute
   ProductsElectricLocomotiveIndexRoute: typeof ProductsElectricLocomotiveIndexRoute
 }
@@ -561,6 +700,8 @@ interface ProductsElectricLocomotiveRouteChildren {
 const ProductsElectricLocomotiveRouteChildren: ProductsElectricLocomotiveRouteChildren =
   {
     ProductsElectricLocomotiveIfdRoute: ProductsElectricLocomotiveIfdRoute,
+    ProductsElectricLocomotiveKavachRoute:
+      ProductsElectricLocomotiveKavachRoute,
     ProductsElectricLocomotiveSimulatorsRoute:
       ProductsElectricLocomotiveSimulatorsRoute,
     ProductsElectricLocomotiveIndexRoute: ProductsElectricLocomotiveIndexRoute,
@@ -589,12 +730,16 @@ const ProductsSntRouteWithChildren = ProductsSntRoute._addFileChildren(
 
 interface ProductsWagonsRouteChildren {
   ProductsWagonsAhabdRoute: typeof ProductsWagonsAhabdRoute
+  ProductsWagonsEmcdRoute: typeof ProductsWagonsEmcdRoute
+  ProductsWagonsMvisRoute: typeof ProductsWagonsMvisRoute
   ProductsWagonsWliRoute: typeof ProductsWagonsWliRoute
   ProductsWagonsIndexRoute: typeof ProductsWagonsIndexRoute
 }
 
 const ProductsWagonsRouteChildren: ProductsWagonsRouteChildren = {
   ProductsWagonsAhabdRoute: ProductsWagonsAhabdRoute,
+  ProductsWagonsEmcdRoute: ProductsWagonsEmcdRoute,
+  ProductsWagonsMvisRoute: ProductsWagonsMvisRoute,
   ProductsWagonsWliRoute: ProductsWagonsWliRoute,
   ProductsWagonsIndexRoute: ProductsWagonsIndexRoute,
 }
@@ -624,14 +769,22 @@ const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
 )
 
 interface ServicesRouteChildren {
-  ServicesDesignRoute: typeof ServicesDesignRoute
-  ServicesInstallationRoute: typeof ServicesInstallationRoute
+  ServicesEmsRoute: typeof ServicesEmsRoute
+  ServicesKavachInstallationRoute: typeof ServicesKavachInstallationRoute
+  ServicesProductDevRoute: typeof ServicesProductDevRoute
+  ServicesSignallingDesignRoute: typeof ServicesSignallingDesignRoute
+  ServicesSystemIntegrationRoute: typeof ServicesSystemIntegrationRoute
+  ServicesTestingCommissioningRoute: typeof ServicesTestingCommissioningRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
-  ServicesDesignRoute: ServicesDesignRoute,
-  ServicesInstallationRoute: ServicesInstallationRoute,
+  ServicesEmsRoute: ServicesEmsRoute,
+  ServicesKavachInstallationRoute: ServicesKavachInstallationRoute,
+  ServicesProductDevRoute: ServicesProductDevRoute,
+  ServicesSignallingDesignRoute: ServicesSignallingDesignRoute,
+  ServicesSystemIntegrationRoute: ServicesSystemIntegrationRoute,
+  ServicesTestingCommissioningRoute: ServicesTestingCommissioningRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 

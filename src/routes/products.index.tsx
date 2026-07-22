@@ -39,13 +39,18 @@ export const Route = createFileRoute("/products/")({
 });
 
 function ProductsIndex() {
-  const allProducts = PRODUCT_INDEX.flatMap((div) =>
-    div.children.map((prod) => ({
-      ...prod,
-      divisionSlug: div.slug,
-      divisionTitle: div.title,
-    }))
-  );
+  const uniqueProductsMap = new Map<string, typeof PRODUCT_INDEX[number]["children"][number] & { divisionTitle: string }>();
+  PRODUCT_INDEX.forEach((div) => {
+    div.children.forEach((prod) => {
+      if (!uniqueProductsMap.has(prod.slug)) {
+        uniqueProductsMap.set(prod.slug, {
+          ...prod,
+          divisionTitle: div.title,
+        });
+      }
+    });
+  });
+  const allProducts = Array.from(uniqueProductsMap.values());
 
   return (
     <>
@@ -59,7 +64,14 @@ function ProductsIndex() {
       <PageIndex
         columns={[
           {
-            title: "Signalling & Telecom",
+            title: "IoT & Energy Management",
+            items: [
+              { label: "WLI", to: "/products/wagons/wli" },
+              { label: "IFD", to: "/products/electric-locomotive/ifd" },
+            ],
+          },
+          {
+            title: "S & T (Signalling & Telecom)",
             items: [
               { label: "All Signalling & Telecom", to: "/products/snt" },
               { label: "RDPMS", to: "/products/snt/rdpms" },
@@ -67,20 +79,20 @@ function ProductsIndex() {
             ],
           },
           {
-            title: "Electric Locomotive",
-            items: [
-              { label: "All Locomotive", to: "/products/electric-locomotive" },
-              { label: "Driving Simulator", to: "/products/electric-locomotive/simulators" },
-              { label: "IFD", to: "/products/electric-locomotive/ifd" },
-            ],
-          },
-          {
-            title: "Coaches & Wagons",
+            title: "Rolling Stock",
             items: [
               { label: "All Coaches", to: "/products/coaches" },
               { label: "All Wagons", to: "/products/wagons" },
-              { label: "WLI", to: "/products/wagons/wli" },
               { label: "AHABD", to: "/products/wagons/ahabd" },
+              { label: "MVIS", to: "/products/wagons/mvis" },
+              { label: "AI Based EMCD", to: "/products/wagons/emcd" },
+            ],
+          },
+          {
+            title: "Training Simulators",
+            items: [
+              { label: "Driving Simulators", to: "/products/electric-locomotive/simulators" },
+              { label: "Kavach Training Simulators", to: "/products/electric-locomotive/kavach" },
             ],
           },
         ]}
@@ -93,7 +105,7 @@ function ProductsIndex() {
             {allProducts.map((prod) => (
               <Link
                 key={prod.slug}
-                to={`/products/${prod.divisionSlug}/${prod.slug}` as any}
+                to={prod.to as any}
                 className="group/card flex flex-col bg-white overflow-hidden border border-rule/10 hover:border-rule/30 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Image Window */}

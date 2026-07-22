@@ -16,7 +16,7 @@ export const Route = createFileRoute("/products/electric-locomotive/kavach")({
   head: () => ({
     meta: [
       { title: "KAVACH Training Simulators — LorVen Systems" },
-      { name: "description", content: "High-fidelity HIL simulator for train pilot training on the Indian Railways Kavach Automatic Train Protection (ATP) system." },
+      { name: "description", content: "Classroom-safe training at zonal railway training institutes for Station Masters and Loco Pilots." },
     ],
   }),
   component: KavachRoute,
@@ -48,53 +48,8 @@ function KavachRoute() {
 
   const features = [
     {
-      title: "Realistic Kavach DMI Interface",
-      desc: "Emulates the exact driver machine interface (DMI) layout, displaying speed limits, target speeds, and signal status.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Hardware-in-the-Loop Integration",
-      desc: "Integrates physical brake valves, master controllers, and warning alarms to match cabin responses.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M8 6h8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Brake Interface Unit (BIU) Emulation",
-      desc: "Replicates automatic brake application scenarios, including service and emergency braking.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Interactive Scenario Generator",
-      desc: "Allows instructors to inject emergency situations, SOS signals, red-signal passing, and temporary speed limits.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Automated Evaluation & Scoring",
-      desc: "Logs driver reaction times, brake response times, and compliance with Kavach operating rules.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9 19v-6a2 2 0 012-2h2a2 2 0 012 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Desktop & Full-Cab Form Factors",
-      desc: "Available in compact desktop versions for classrooms or full-cab replicas for deep immersion.",
+      title: "Station Master",
+      desc: "Station KAVACH equipment familiarisation; train receiving and dispatch under KAVACH; point failure and crank handle operation; degraded-mode working.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5" strokeLinecap="round" strokeLinejoin="round" />
@@ -102,20 +57,11 @@ function KavachRoute() {
       )
     },
     {
-      title: "RFID Reader Simulation",
-      desc: "Simulates wayside RFID tag updates as the virtual locomotive passes over trackside checkpoints.",
+      title: "Loco Pilot",
+      desc: "DMI indications and acknowledgements; modes of operation; brake interventions; SoS generation and handling — integrated with driving-simulator exercises for combined train-handling and ATP response training.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M7 7h10M7 12h10M7 17h10M12 2v20" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Instructor Operator Station (IOS)",
-      desc: "Provides real-time train tracking, parameter monitoring, and instant scenario controls for instructors.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M8 6h8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     }
@@ -159,7 +105,7 @@ function KavachRoute() {
             </div>
 
             <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
-              High-fidelity HIL simulator for train pilot training on the Indian Railways Kavach Automatic Train Protection (ATP) system.
+              For Station Masters and Loco Pilots — KAVACH per RDSO/SPN/196/2020. Classroom-safe training at zonal railway training institutes, without occupying revenue infrastructure or live KAVACH equipment.
             </p>
           </div>
         </div>
@@ -184,10 +130,10 @@ function KavachRoute() {
             </h2>
             <div className="border-t border-rule/20 pt-6 space-y-4">
               <p className="text-lg md:text-xl text-black leading-relaxed font-light">
-                Kavach is the nationally mandated Automatic Train Protection (ATP) system designed to prevent train collisions on Indian Railways. Replicating this system in an active locomotive requires specialized pilot training. The LorVen Kavach Training Simulator provides an immersive, HIL-integrated environment where pilots learn to navigate DMI prompts, respond to automated braking sequences, and manage emergency overrides safely.
+                For Station Masters and Loco Pilots — KAVACH per RDSO/SPN/196/2020.
               </p>
               <p className="text-base text-ink-muted leading-relaxed font-light">
-                Equipped with real-time feedback loops and customizable weather, track, and routing scenarios, our Kavach trainers guarantee that pilots achieve absolute operational confidence before taking the controls of an active passenger or freight train.
+                Classroom-safe training at zonal railway training institutes, without occupying revenue infrastructure or live KAVACH equipment.
               </p>
             </div>
           </div>

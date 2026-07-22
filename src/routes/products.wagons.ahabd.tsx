@@ -46,7 +46,7 @@ function AhabdRoute() {
     });
   }, { scope: containerRef });
 
-  const capabilities = [
+  const features = [
     {
       title: "Builds on the existing installation",
       desc: "An identity layer over the trackside temperature sensing already in place — it complements it, it does not replace it.",
@@ -123,7 +123,7 @@ function AhabdRoute() {
             </div>
 
             <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
-              Trackside instrumentation records axle temperatures as trains pass. AHABD establishes which coach each temperature reading belongs to — delivering an identified, auditable record.
+              Trackside instrumentation already records every axle's temperature as a train passes — but readings are held against bare axle numbers. AHABD establishes which coach each temperature reading belongs to.
             </p>
           </div>
         </div>
@@ -137,66 +137,61 @@ function AhabdRoute() {
         </div>
       </section>
 
-      {/* 2. Overview Narrative Panels Section */}
+      {/* 2. Overview Section */}
       <section className="bg-bg py-12 md:py-16 border-t border-rule/20">
-        <div className="container-editorial space-y-10">
-          <div className="gsap-reveal space-y-3">
+        <div className="container-editorial grid grid-cols-12 gap-8 md:gap-16 items-center">
+          {/* Left Column */}
+          <div className="col-span-12 lg:col-span-7 gsap-reveal space-y-6">
             <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">PRODUCTS — COACHES & WAGONS</span>
             <h2 className="text-3xl md:text-4xl font-extralight leading-tight text-ink uppercase">
               AHABD — Advanced Hot Axle Box Detection
             </h2>
-            <p className="text-sm text-ink-muted font-mono uppercase tracking-wider">
-              Under staged development — core capability verification in progress
-            </p>
+            <div className="border-t border-rule/20 pt-6 space-y-4">
+              <p className="text-lg md:text-xl text-black leading-relaxed font-light">
+                Trackside instrumentation already records every axle's temperature as a train passes — but readings are held against bare axle numbers. A hot axle box can be seen, yet cannot be reliably tied to a specific, named coach — making it difficult to act on, escalate or retain as a record.
+              </p>
+              <p className="text-base text-ink-muted leading-relaxed font-light">
+                For every train passing a monitoring point, AHABD establishes which coach each temperature reading belongs to — delivering a complete, identified record of the pass: each coach named, each axle temperature attached to it, and overheating flagged for attention.
+              </p>
+              <p className="text-sm text-ink-muted leading-relaxed font-mono uppercase tracking-wider pt-2">
+                Under staged development — core capability verification in progress
+              </p>
+            </div>
           </div>
 
-          {/* Equal-Width Storytelling Panels */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 gsap-reveal">
-            {/* Left Panel: The gap */}
-            <div className="bg-section p-8 md:p-10 border border-rule/25 rounded shadow-sm space-y-4 flex flex-col justify-between group hover:border-steel transition-all duration-300">
-              <div className="space-y-4">
-                <span className="text-xs uppercase tracking-widest text-steel font-bold block">PROBLEM STATEMENT</span>
-                <h3 className="text-2xl font-semibold text-ink uppercase tracking-tight">The gap</h3>
-                <p className="text-sm md:text-base text-ink/90 leading-relaxed font-light border-t border-rule/20 pt-4">
-                  Trackside instrumentation already records every axle's temperature as a train passes — but readings are held against bare axle numbers. A hot axle box can be seen, yet cannot be reliably tied to a specific, named coach — making it difficult to act on, escalate or retain as a record.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Panel: What AHABD does */}
-            <div className="bg-section p-8 md:p-10 border border-rule/25 rounded shadow-sm space-y-4 flex flex-col justify-between group hover:border-steel transition-all duration-300">
-              <div className="space-y-4">
-                <span className="text-xs uppercase tracking-widest text-steel font-bold block">SOLUTION NARRATIVE</span>
-                <h3 className="text-2xl font-semibold text-ink uppercase tracking-tight">What AHABD does</h3>
-                <p className="text-sm md:text-base text-ink/90 leading-relaxed font-light border-t border-rule/20 pt-4">
-                  For every train passing a monitoring point, AHABD establishes which coach each temperature reading belongs to — delivering a complete, identified record of the pass: each coach named, each axle temperature attached to it, and overheating flagged for attention.
-                </p>
-              </div>
+          {/* Right Column */}
+          <div className="col-span-12 lg:col-span-5 gsap-reveal">
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface rounded border border-rule/10 shadow-lg">
+              <img
+                src={wagons}
+                alt="AHABD Wayside Detection System"
+                className="h-full w-full object-cover select-none pointer-events-none"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Core Capabilities Section */}
+      {/* 3. Features Section */}
       <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
         <div className="container-editorial space-y-12">
           <div className="gsap-reveal space-y-4">
             <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CAPABILITIES</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Core Capabilities
+              Features
             </h2>
           </div>
 
           {/* 2x2 Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-            {capabilities.map((cap, idx) => (
+            {features.map((feat, idx) => (
               <div key={idx} className="flex gap-6 items-start gsap-reveal group">
                 <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
-                  {cap.icon}
+                  {feat.icon}
                 </div>
                 <div className="space-y-2 flex-1">
-                  <h3 className="text-lg font-bold text-ink uppercase tracking-wide leading-snug">{cap.title}</h3>
-                  <p className="text-sm text-ink-muted leading-relaxed font-light">{cap.desc}</p>
+                  <h3 className="text-lg font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h3>
+                  <p className="text-sm text-ink-muted leading-relaxed font-light">{feat.desc}</p>
                 </div>
               </div>
             ))}

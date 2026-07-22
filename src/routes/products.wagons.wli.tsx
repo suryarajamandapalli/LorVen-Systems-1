@@ -107,7 +107,7 @@ function WliRoute() {
     <div ref={containerRef} className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[50vh] bg-ink overflow-hidden flex flex-col justify-end pb-16 pt-32">
+      <section className="relative min-h-screen bg-ink overflow-hidden flex flex-col justify-center pb-20 pt-28">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -148,6 +148,14 @@ function WliRoute() {
               Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server — enabling planned watering at nominated stations and reducing en-route watering failures and passenger complaints.
             </p>
           </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/50 text-[9px] uppercase tracking-[0.2em] font-bold select-none pointer-events-none animate-bounce">
+          <span>Scroll Down</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+            <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </section>
 

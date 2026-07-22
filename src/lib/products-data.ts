@@ -362,8 +362,8 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
 
     downloads: [
       { label: "WLI Onboard System Specs", size: "1.6 MB", url: "#", type: "Datasheet" },
-      { label: "WLI Onboard Installation & Calibration Manual", size: "3.2 MB", type: "Manual" },
-      { label: "WLI CRIS System Integration Info", size: "1.4 MB", type: "Brochure" }
+      { label: "WLI Onboard Installation & Calibration Manual", size: "3.2 MB", url: "#", type: "Manual" },
+      { label: "WLI CRIS System Integration Info", size: "1.4 MB", url: "#", type: "Brochure" }
     ]
   },
 

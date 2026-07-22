@@ -62,40 +62,13 @@ function ProductsIndex() {
       />
 
       <PageIndex
-        columns={[
-          {
-            title: "IoT & Energy Management",
-            items: [
-              { label: "WLI", to: "/products/wagons/wli" },
-              { label: "IFD", to: "/products/electric-locomotive/ifd" },
-            ],
-          },
-          {
-            title: "S & T (Signalling & Telecom)",
-            items: [
-              { label: "All Signalling & Telecom", to: "/products/snt" },
-              { label: "RDPMS", to: "/products/snt/rdpms" },
-              { label: "IPS", to: "/products/snt/ips" },
-            ],
-          },
-          {
-            title: "Rolling Stock",
-            items: [
-              { label: "All Coaches", to: "/products/coaches" },
-              { label: "All Wagons", to: "/products/wagons" },
-              { label: "AHABD", to: "/products/wagons/ahabd" },
-              { label: "MVIS", to: "/products/wagons/mvis" },
-              { label: "AI Based EMCD", to: "/products/wagons/emcd" },
-            ],
-          },
-          {
-            title: "Training Simulators",
-            items: [
-              { label: "Driving Simulators", to: "/products/electric-locomotive/simulators" },
-              { label: "Kavach Training Simulators", to: "/products/electric-locomotive/kavach" },
-            ],
-          },
-        ]}
+        columns={PRODUCT_INDEX.map((category) => ({
+          title: category.title,
+          items: category.children.map((child) => ({
+            label: child.title,
+            to: child.to,
+          })),
+        }))}
       />
 
       {/* 2. Old Grid System (Simple 3-Col, Clean White Cards) */}

@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container-editorial py-10 md:py-12">
         <div className="grid grid-cols-12 gap-8 text-xs">
           {/* Column 1: Logo & Address */}
-          <div className="col-span-12 md:col-span-4 flex flex-col">
+          <div className="col-span-12 md:col-span-3 flex flex-col">
             <Logo id="footer-logo" idPrefix="footer" className="text-white w-28 md:w-36 h-auto" />
             <address className="mt-4 not-italic text-xs leading-relaxed opacity-70 max-w-xs">
               <strong>{COMPANY.legal}</strong>
@@ -18,9 +18,9 @@ export function Footer() {
             </address>
           </div>
 
-          {/* Column 2: Products & Services */}
-          <div className="col-span-6 md:col-span-3">
-            <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Products & Services</p>
+          {/* Column 2: Products */}
+          <div className="col-span-6 md:col-span-2">
+            <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Products</p>
             <ul className="mt-4 space-y-2 text-xs">
               {PRODUCT_INDEX.map((p) => (
                 <li key={p.slug}>
@@ -32,6 +32,13 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          <div className="col-span-6 md:col-span-3">
+            <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Services</p>
+            <ul className="mt-4 space-y-2 text-xs">
               {SERVICE_INDEX.map((s) => (
                 <li key={s.slug}>
                   <a
@@ -45,7 +52,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company */}
+          {/* Column 4: Company */}
           <div className="col-span-6 md:col-span-2">
             <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Company</p>
             <ul className="mt-4 space-y-2 text-xs">
@@ -72,8 +79,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Enquiry & Legal */}
-          <div className="col-span-12 md:col-span-3 flex flex-col justify-between">
+          {/* Column 5: Enquiry & Legal */}
+          <div className="col-span-6 md:col-span-2 flex flex-col justify-between">
             <div>
               <p className="eyebrow !text-on-dark/60 !text-[10px] !tracking-[0.12em]">Enquiries</p>
               <div className="mt-4 text-xs space-y-1 opacity-85">
@@ -85,7 +92,6 @@ export function Footer() {
                 </p>
               </div>
             </div>
-
           </div>
         </div>
 

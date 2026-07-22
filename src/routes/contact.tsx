@@ -12,16 +12,13 @@ if (typeof window !== "undefined") {
 import engineers from "@/assets/engineers.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Us — LorVen Systems" },
-      {
-        name: "description",
-        content:
-          "Start your engineering enquiry with LorVen Systems. Direct consultation for railway products, signalling design, KAVACH installation, and electronics manufacturing.",
-      },
-    ],
+  head: () => createSeoMeta({
+    title: "Contact | LorVen Systems",
+    description: "Start your engineering enquiry with LorVen Systems. Direct consultation for railway products, signalling design, KAVACH installation, and electronics manufacturing.",
+    path: "/contact",
   }),
   component: ContactPage,
 });

@@ -13,12 +13,13 @@ import factoryHall from "@/assets/factory-hall.jpg";
 import smtLine from "@/assets/smt-line.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/system-integration")({
-  head: () => ({
-    meta: [
-      { title: "Manufacturing, Integration & Field Services — LorVen Systems" },
-      { name: "description", content: "Electronics Manufacturing Services (EMS), multi-vendor S&T integration engineering, and turnkey installation, testing & commissioning for railway systems." },
-    ],
+  head: () => createSeoMeta({
+    title: "S&T System Integration | LorVen Systems",
+    description: "Electronics Manufacturing Services (EMS), multi-vendor S&T integration engineering, and turnkey installation, testing & commissioning for railway systems.",
+    path: "/services/system-integration",
   }),
   component: SystemIntegrationRoute,
 });

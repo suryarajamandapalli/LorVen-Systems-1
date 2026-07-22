@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import coachBuild from "@/assets/coach-build.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/wagons/wli")({
-  head: () => ({
-    meta: [
-      { title: "WLI — IoT-Based Water Level Indicator — LorVen Systems" },
-      { name: "description", content: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server." },
-    ],
+  head: () => createSeoMeta({
+    title: "WLI – IoT-Based Water Level Indicator | LorVen Systems",
+    description: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server.",
+    path: "/products/wagons/wli",
   }),
   component: WliRoute,
 });

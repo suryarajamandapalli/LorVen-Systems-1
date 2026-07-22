@@ -14,19 +14,13 @@ import smt from "@/assets/smt-line.jpg";
 import wagons from "@/assets/wagons.jpg";
 import engineers from "@/assets/engineers.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects — LorVen Systems" },
-      {
-        name: "description",
-        content:
-          "A selection of recent railway electronics, integration and manufacturing projects.",
-      },
-      { property: "og:title", content: "Projects — LorVen Systems" },
-      { property: "og:url", content: "/projects" },
-    ],
-    links: [{ rel: "canonical", href: "/projects" }],
+  head: () => createSeoMeta({
+    title: "Projects | LorVen Systems",
+    description: "A selection of recent railway electronics, integration and manufacturing projects.",
+    path: "/projects",
   }),
   component: Projects,
 });

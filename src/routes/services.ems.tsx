@@ -13,12 +13,13 @@ import smtLine from "@/assets/smt-line.jpg";
 import factoryHall from "@/assets/factory-hall.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/ems")({
-  head: () => ({
-    meta: [
-      { title: "Electronics Manufacturing Services — LorVen Systems" },
-      { name: "description", content: "SMT and through-hole assembly at our Hyderabad facility, box-build, cable harness assembly, IPC-A-610 workmanship, and ISO 9001:2015 QMS." },
-    ],
+  head: () => createSeoMeta({
+    title: "Electronics Manufacturing Services | LorVen Systems",
+    description: "SMT and through-hole assembly at our Hyderabad facility, box-build, cable harness assembly, IPC-A-610 workmanship, and ISO 9001:2015 QMS.",
+    path: "/services/ems",
   }),
   component: EmsRoute,
 });

@@ -13,12 +13,13 @@ import pcbMacro from "@/assets/pcb-macro.jpg";
 import engineers from "@/assets/engineers.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/quality")({
-  head: () => ({
-    meta: [
-      { title: "Engineering Quality — LorVen Systems" },
-      { name: "description", content: "Safety-critical railway electronics validated through engineering discipline, formal documentation, and rigorous testing." },
-    ],
+  head: () => createSeoMeta({
+    title: "Quality | LorVen Systems",
+    description: "Safety-critical railway electronics validated through engineering discipline, formal documentation, and rigorous testing.",
+    path: "/quality",
   }),
   component: QualityRoute,
 });

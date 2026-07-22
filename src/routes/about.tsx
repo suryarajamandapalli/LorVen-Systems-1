@@ -18,25 +18,13 @@ import factoryHall from "@/assets/factory-hall.jpg";
 
 import logoLight from "@/assets/logo-light.png";
 
-const domain = "https://lorven-systems-1.vercel.app";
-const absoluteImage = logoLight.startsWith("http") ? logoLight : `${domain}${logoLight}`;
+import { createSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us — LorVen Systems" },
-      {
-        name: "description",
-        content:
-          "LorVen Systems is an engineering firm delivering mission-critical electronics and electrical systems for railways, infrastructure, aerospace, and defence.",
-      },
-      { property: "og:title", content: "About Us — LorVen Systems" },
-      { property: "og:description", content: "Engineering Confidence Since 2008." },
-      { property: "og:url", content: "/about" },
-      { property: "og:image", content: absoluteImage },
-      { name: "twitter:image", content: absoluteImage },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
+  head: () => createSeoMeta({
+    title: "About | LorVen Systems",
+    description: "Built for Indian Railways. Validated through engineering discipline, documentation and testing.",
+    path: "/about",
   }),
   component: About,
 });

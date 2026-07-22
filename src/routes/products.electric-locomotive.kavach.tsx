@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import simulator from "@/assets/simulator.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/electric-locomotive/kavach")({
-  head: () => ({
-    meta: [
-      { title: "KAVACH Training Simulators — LorVen Systems" },
-      { name: "description", content: "Classroom-safe training at zonal railway training institutes for Station Masters and Loco Pilots." },
-    ],
+  head: () => createSeoMeta({
+    title: "Kavach Training Simulators | LorVen Systems",
+    description: "Classroom-safe training at zonal railway training institutes for Station Masters and Loco Pilots.",
+    path: "/products/electric-locomotive/kavach",
   }),
   component: KavachRoute,
 });

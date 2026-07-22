@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import serviceInstallation from "@/assets/service-installation.png";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/kavach-installation")({
-  head: () => ({
-    meta: [
-      { title: "KAVACH Installation & Commissioning — LorVen Systems" },
-      { name: "description", content: "Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020." },
-    ],
+  head: () => createSeoMeta({
+    title: "KAVACH Installation & Commissioning | LorVen Systems",
+    description: "Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020.",
+    path: "/services/kavach-installation",
   }),
   component: KavachInstallationRoute,
 });

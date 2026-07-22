@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import pcbMacro from "@/assets/pcb-macro.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/product-dev")({
-  head: () => ({
-    meta: [
-      { title: "Electronic Product Development — LorVen Systems" },
-      { name: "description", content: "End-to-end electronic product development services — from concept through validated design to production for safety-critical railway systems." },
-    ],
+  head: () => createSeoMeta({
+    title: "Electronic Product Development | LorVen Systems",
+    description: "End-to-end electronic product development services — from concept through validated design to production for safety-critical railway systems.",
+    path: "/services/product-dev",
   }),
   component: ProductDevRoute,
 });

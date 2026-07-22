@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import pcbMacro from "@/assets/pcb-macro.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/electric-locomotive/ifd")({
-  head: () => ({
-    meta: [
-      { title: "IFD — Intelligent Field Device for IR-NIYANTRAC — LorVen Systems" },
-      { name: "description", content: "Real-time monitoring, energy metering and remote control of railway electrical assets reporting to IR-NIYANTRAC." },
-    ],
+  head: () => createSeoMeta({
+    title: "IFD – Intelligent Field Device | LorVen Systems",
+    description: "Real-time monitoring, energy metering and remote control of railway electrical assets reporting to IR-NIYANTRAC.",
+    path: "/products/electric-locomotive/ifd",
   }),
   component: IfdRoute,
 });

@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import sntHero from "@/assets/snt-hero-premium.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/snt/rdpms")({
-  head: () => ({
-    meta: [
-      { title: "RDPMS — Remote Diagnostic & Predictive Maintenance System — LorVen Systems" },
-      { name: "description", content: "IoT-based condition monitoring and predictive maintenance for Indian Railways signalling assets." },
-    ],
+  head: () => createSeoMeta({
+    title: "RDPMS – Remote Diagnostic System | LorVen Systems",
+    description: "IoT-based condition monitoring and predictive maintenance for Indian Railways signalling assets.",
+    path: "/products/snt/rdpms",
   }),
   component: RdpmsRoute,
 });

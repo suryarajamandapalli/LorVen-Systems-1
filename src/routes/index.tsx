@@ -30,23 +30,13 @@ import locoHero from "@/assets/loco-hero-premium.jpg";
 import wagonsHero from "@/assets/wagons-hero-premium.jpg";
 import installationHero from "@/assets/installation-hero-premium.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "LorVen Systems — Railway electronics, manufacturing and integration" },
-      {
-        name: "description",
-        content:
-          "Electronics, electrical systems and rolling-stock components engineered for railway service. Design, manufacturing and installation under one roof.",
-      },
-      { property: "og:title", content: "LorVen Systems" },
-      {
-        property: "og:description",
-        content: "Railway electronics, manufacturing and integration.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
+  head: () => createSeoMeta({
+    title: "LorVen Systems Pvt. Ltd.",
+    description: "Engineering Confidence for Critical Systems.",
+    path: "/",
   }),
   component: Home,
 });

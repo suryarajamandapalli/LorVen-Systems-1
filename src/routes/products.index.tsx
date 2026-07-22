@@ -18,22 +18,13 @@ const PRODUCT_IMAGES: Record<string, string> = {
   ahabd: ahabdImg,
 };
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/")({
-  head: () => ({
-    meta: [
-      { title: "Index of All Products — LorVen Systems" },
-      {
-        name: "description",
-        content: "Explore LorVen's complete portfolio of railway engineering solutions.",
-      },
-      { property: "og:title", content: "Index of All Products — LorVen Systems" },
-      {
-        property: "og:description",
-        content: "Explore LorVen's complete portfolio of railway engineering solutions.",
-      },
-      { property: "og:url", content: "/products" },
-    ],
-    links: [{ rel: "canonical", href: "/products" }],
+  head: () => createSeoMeta({
+    title: "Products | LorVen Systems",
+    description: "Explore LorVen's complete portfolio of railway engineering solutions.",
+    path: "/products",
   }),
   component: ProductsIndex,
 });

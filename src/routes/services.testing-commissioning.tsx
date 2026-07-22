@@ -13,12 +13,13 @@ import installationHeroPremium from "@/assets/installation-hero-premium.jpg";
 import engineers from "@/assets/engineers.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/testing-commissioning")({
-  head: () => ({
-    meta: [
-      { title: "Installation, Testing & Commissioning — LorVen Systems" },
-      { name: "description", content: "Turnkey installation, equipment room integration, testing, and commissioning documentation for railway electronic and electrical systems." },
-    ],
+  head: () => createSeoMeta({
+    title: "Installation, Testing & Commissioning | LorVen Systems",
+    description: "Turnkey installation, equipment room integration, testing, and commissioning documentation for railway electronic and electrical systems.",
+    path: "/services/testing-commissioning",
   }),
   component: TestingCommissioningRoute,
 });

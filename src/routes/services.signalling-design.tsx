@@ -13,12 +13,13 @@ import serviceDesign from "@/assets/service-design.png";
 import sntHeroPremium from "@/assets/snt-hero-premium.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/signalling-design")({
-  head: () => ({
-    meta: [
-      { title: "Signalling Design Services — LorVen Systems" },
-      { name: "description", content: "Indian Railways design standards and RDSO specifications — independent checking, formal design documentation." },
-    ],
+  head: () => createSeoMeta({
+    title: "Signalling Design Services | LorVen Systems",
+    description: "Indian Railways design standards and RDSO specifications — independent checking, formal design documentation.",
+    path: "/services/signalling-design",
   }),
   component: SignallingDesignRoute,
 });

@@ -10,19 +10,13 @@ import serviceInstallation from "@/assets/service-installation.png";
 import serviceDesign from "@/assets/service-design.png";
 import electricalCabinet from "@/assets/electrical-cabinet.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/services/")({
-  head: () => ({
-    meta: [
-      { title: "Services — LorVen Systems" },
-      {
-        name: "description",
-        content: "Engineering design, electronics manufacturing, system integration, and turnkey installation services for railways.",
-      },
-      { property: "og:title", content: "Services — LorVen Systems" },
-      { property: "og:description", content: "End-to-end engineering, manufacturing, and field services." },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
+  head: () => createSeoMeta({
+    title: "Services | LorVen Systems",
+    description: "Engineering design, electronics manufacturing, system integration, and turnkey installation services for railways.",
+    path: "/services",
   }),
   component: ServicesIndex,
 });

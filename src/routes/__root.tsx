@@ -72,34 +72,33 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 import logoLight from "../assets/logo-light.png";
 
-const domain = "https://lorven-systems-1.vercel.app";
-const absoluteImage = logoLight.startsWith("http") ? logoLight : `${domain}${logoLight}`;
-
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LorVen Systems — Railway electronics & electrical integration" },
-      {
-        name: "description",
-        content:
-          "LorVen Systems Pvt. Ltd. designs, manufactures and integrates electronics, electrical systems and rolling-stock components for the railway industry.",
-      },
+      { title: "LorVen Systems Pvt. Ltd." },
+      { name: "description", content: "Engineering Confidence for Critical Systems." },
       { name: "author", content: "LorVen Systems" },
       { property: "og:site_name", content: "LorVen Systems" },
-      { property: "og:title", content: "LorVen Systems — Railway electronics & electrical integration" },
-      { property: "og:description", content: "LorVen Systems Pvt. Ltd. designs, manufactures and integrates electronics, electrical systems and rolling-stock components for the railway industry." },
+      { property: "og:title", content: "LorVen Systems Pvt. Ltd." },
+      { property: "og:description", content: "Engineering Confidence for Critical Systems." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: absoluteImage },
-      { property: "og:image:alt", content: "LorVen Systems Logo" },
+      { property: "og:url", content: "https://lorven-systems-1.vercel.app" },
+      { property: "og:image", content: "https://lorven-systems-1.vercel.app/og-image.png" },
+      { property: "og:locale", content: "en_IN" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: absoluteImage },
+      { name: "twitter:title", content: "LorVen Systems Pvt. Ltd." },
+      { name: "twitter:description", content: "Engineering Confidence for Critical Systems." },
+      { name: "twitter:image", content: "https://lorven-systems-1.vercel.app/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon-light.png", media: "(prefers-color-scheme: light)", type: "image/png" },
-      { rel: "icon", href: "/favicon-dark.png", media: "(prefers-color-scheme: dark)", type: "image/png" },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,

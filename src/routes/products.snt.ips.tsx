@@ -12,12 +12,13 @@ if (typeof window !== "undefined") {
 import ipsHero from "@/assets/electrical-cabinet.jpg";
 import depot from "@/assets/depot.jpg";
 
+import { createSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/products/snt/ips")({
-  head: () => ({
-    meta: [
-      { title: "IPS — SMPS-Based Integrated Power Supply — LorVen Systems" },
-      { name: "description", content: "Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas." },
-    ],
+  head: () => createSeoMeta({
+    title: "IPS – Integrated Power Supply | LorVen Systems",
+    description: "Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas.",
+    path: "/products/snt/ips",
   }),
   component: IpsRoute,
 });

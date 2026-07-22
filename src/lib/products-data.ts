@@ -310,56 +310,60 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
     title: "WLI",
     category: "COACHES & WAGONS",
     heroImage: wagonsHero,
-    description: "Onboard Wagon Load Indicator system for real-time axle weight monitoring and payload cargo diagnostics.",
+    description: "IoT-Based Water Level Indicator system for real-time onboard tank monitoring in passenger coaches.",
     
-    overviewTitle: "Continuous Onboard Axle Load Telemetry & Cargo Balance Tracking",
+    overviewTitle: "Real-Time Water Level Monitoring for Passenger Coaches",
     overviewParagraphs: [
-      "The Wagon Load Indicator (WLI) is an onboard payload measurement system that utilizes bogie-mounted strain sensors. Engineered for heavy haul freight wagons, it monitors cargo weight and balance distribution in real time, preventing overloading damage and cargo imbalance derailments.",
-      "The system broadcasts loading data using sub-1GHz wireless links, sending cargo weights directly to yard screens and locomotive cabs without connecting cables between wagon frames. High-visibility external LED displays show cargo level status during bulk loading runs."
+      "The IoT-Based Water Level Indicator (WLI) is an intelligent monitoring system designed for Indian Railway passenger coaches. It continuously monitors the water level in onboard water tanks and provides real-time status updates and low-water alerts, enabling timely refilling and ensuring uninterrupted water availability throughout the journey.",
+      "Developed for Indian Railways with a Specific Technical Requirement (STR) prepared for RDSO, the system reports level and location coach-wise directly to the CRIS server to optimize station watering and reduce en-route passenger complaints."
     ],
     overviewImage: wagonsHeroReal,
 
     features: [
       {
-        title: "Bogie-Mounted Sensors",
-        desc: "Heavy-duty strain sensors are welded or clamped directly to critical bogie support members for direct load path capture."
+        title: "Hydrostatic Level Sensing",
+        desc: "Stainless-steel absolute-pressure transducers on the tank piping — for under-slung tank packs (AC/SCN) and roof tanks (non-AC); level as % of installed capacity with atmospheric-pressure compensation."
       },
       {
-        title: "Wireless Telemetry Hub",
-        desc: "Sub-1GHz wireless RF transmitter links cargo weight telemetry directly to loading yard display terminals."
+        title: "Connected MPU",
+        desc: "32-bit Main Processing Unit with M2M e-SIM on 5G/4G LTE and automatic 3G/2G fallback, plus GPS for real-time train location."
       },
       {
-        title: "External LED Indicators",
-        desc: "IP66 side-mounted display show status parameters directly on the wagon wall during bulk silo loading."
+        title: "CRIS-Integrated Reporting",
+        desc: "Level, location, battery health and timestamp every 15 minutes over HTTPS with token-based security; CMM and ICMS integration for rake-, depot- and zone-wise monitoring."
       },
       {
-        title: "Hermetic Steel Seals",
-        desc: "Sensing hardware is housed in laser-welded stainless steel cases to survive gravel strikes and water washdowns."
+        title: "Automatic Watering Alerts",
+        desc: "Alerts to nominated watering supervisors at upcoming watering stations when any coach falls below the low-water level or runs empty."
       },
       {
-        title: "Low-Power Processor",
-        desc: "Smart power-management core keeps sensors in sleep mode, waking up only when cargo weight shift or motion is registered."
+        title: "Six Months on Battery",
+        desc: "LiFePO4 / LiSOCl2 battery pack designed for a minimum six-month operating life without recharge; GPS-based sleep/wake power management and watchdog supervision."
       },
       {
-        title: "Grade Compensation",
-        desc: "Internal inclinometers measure vehicle angle to dynamically compensate payload figures for track grade."
+        title: "Rolling-Stock Grade",
+        desc: "AISI 304 under-slung enclosure, IP65 (IS/IEC 60529) and IK10 (IS:17050); electronics designed to EN 50155, shock and vibration per EN 61373."
       }
     ],
 
     specifications: [
-      { label: "Weight Accuracy", value: "±0.5% of total wagon cargo load capacity" },
-      { label: "Sensing Array", value: "4 calibrated strain-gauge sensors per bogie assembly" },
-      { label: "Wireless Protocol", value: "Sub-1GHz proprietary RF link, transmission range up to 150m" },
-      { label: "Battery Life", value: "Up to 5 years typical operating life under standard sleep cycles" },
-      { label: "Operating Temperature", value: "-20°C to +70°C ambient operating range" },
-      { label: "Standards Compliance", value: "AAR cargo loading rules, EN 50155 rolling stock electronics" },
-      { label: "Enclosure Sealing", value: "IP68 hermetic rating for bogie sensors, IP66 for side display box" }
+      { label: "Enclosure Housing", value: "AISI 304 under-slung enclosure" },
+      { label: "Ingress Protection", value: "IP65 (IS/IEC 60529)" },
+      { label: "Impact Protection", value: "IK10 (IS:17050)" },
+      { label: "Electronics Standard", value: "Designed to EN 50155" },
+      { label: "Shock & Vibration", value: "Designed to EN 61373" },
+      { label: "Microprocessor", value: "32-bit Main Processing Unit (MPU)" },
+      { label: "Wireless Telemetry", value: "M2M e-SIM on 5G/4G LTE with automatic 3G/2G fallback" },
+      { label: "Location Tracking", value: "Integrated GPS for real-time train location" },
+      { label: "Battery Chemistry", value: "LiFePO4 / LiSOCl2 battery pack" },
+      { label: "Battery Life", value: "Minimum six-month operating life without recharge" },
+      { label: "Reporting Interval", value: "Every 15 minutes over HTTPS with token-based security" }
     ],
 
     downloads: [
       { label: "WLI Onboard System Specs", size: "1.6 MB", url: "#", type: "Datasheet" },
-      { label: "WLI Bogie Installation Guide", size: "3.2 MB", type: "Manual" },
-      { label: "WLI Cargo Yard Integration Info", size: "1.4 MB", type: "Brochure" }
+      { label: "WLI Onboard Installation & Calibration Manual", size: "3.2 MB", type: "Manual" },
+      { label: "WLI CRIS System Integration Info", size: "1.4 MB", type: "Brochure" }
     ]
   },
 

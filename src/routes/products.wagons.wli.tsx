@@ -15,8 +15,8 @@ import depot from "@/assets/depot.jpg";
 export const Route = createFileRoute("/products/wagons/wli")({
   head: () => ({
     meta: [
-      { title: "WLI — Wagon Load Indicator — LorVen Systems" },
-      { name: "description", content: "Onboard Wagon Load Indicator system for real-time axle weight monitoring and payload cargo diagnostics." },
+      { title: "WLI — IoT-Based Water Level Indicator — LorVen Systems" },
+      { name: "description", content: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server." },
     ],
   }),
   component: WliRoute,
@@ -48,8 +48,8 @@ function WliRoute() {
 
   const capabilities = [
     {
-      title: "Bogie-Mounted Sensors",
-      desc: "Heavy-duty strain sensors are welded or clamped directly to critical bogie support members for direct load path capture.",
+      title: "Hydrostatic Level Sensing",
+      desc: "Stainless-steel absolute-pressure transducers on the tank piping — for under-slung tank packs (AC/SCN) and roof tanks (non-AC); level as % of installed capacity with atmospheric-pressure compensation.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M12 2v20M17 5H7M19 12H5M17 19H7" strokeLinecap="round" strokeLinejoin="round" />
@@ -57,26 +57,8 @@ function WliRoute() {
       )
     },
     {
-      title: "Wireless Telemetry Hub",
-      desc: "Sub-1GHz wireless RF transmitter links cargo weight telemetry directly to loading yard display terminals.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M3 12h3l3-9 4 18 3-12h5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "External LED Indicators",
-      desc: "IP66 side-mounted display show status parameters directly on the wagon wall during bulk silo loading.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Hermetic Steel Seals",
-      desc: "Sensing hardware is housed in laser-welded stainless steel cases to survive gravel strikes and water washdowns.",
+      title: "Connected MPU",
+      desc: "32-bit Main Processing Unit with M2M e-SIM on 5G/4G LTE and automatic 3G/2G fallback, plus GPS for real-time train location.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2" strokeLinecap="round" strokeLinejoin="round" />
@@ -84,8 +66,26 @@ function WliRoute() {
       )
     },
     {
-      title: "Low-Power Processor",
-      desc: "Smart power-management core keeps sensors in sleep mode, waking up only when cargo weight shift or motion is registered.",
+      title: "CRIS-Integrated Reporting",
+      desc: "Level, location, battery health and timestamp every 15 minutes over HTTPS with token-based security; CMM and ICMS integration for rake-, depot- and zone-wise monitoring.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M3 12h3l3-9 4 18 3-12h5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Automatic Watering Alerts",
+      desc: "Alerts to nominated watering supervisors at upcoming watering stations when any coach falls below the low-water level or runs empty.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Six Months on Battery",
+      desc: "LiFePO4 / LiSOCl2 battery pack designed for a minimum six-month operating life without recharge; GPS-based sleep/wake power management and watchdog supervision.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
@@ -93,11 +93,11 @@ function WliRoute() {
       )
     },
     {
-      title: "Grade Compensation",
-      desc: "Internal inclinometers measure vehicle angle to dynamically compensate payload figures for track grade.",
+      title: "Rolling-Stock Grade",
+      desc: "AISI 304 under-slung enclosure, IP65 (IS/IEC 60529) and IK10 (IS:17050); electronics designed to EN 50155, shock and vibration per EN 61373.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
     }
@@ -105,8 +105,8 @@ function WliRoute() {
 
   const applications = [
     {
-      title: "Heavy Haul Freight Wagons",
-      desc: "Onboard weight and balance monitoring to prevent overloading and imbalance derailments.",
+      title: "Under-slung Tank Packs",
+      desc: "Specifically configured for AC and SCN passenger coaches with under-carriage tanks.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M19 18H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2zM14 6v12M9 6v12" strokeLinecap="round" strokeLinejoin="round" />
@@ -114,17 +114,8 @@ function WliRoute() {
       )
     },
     {
-      title: "Bulk Cargo Yards & Terminals",
-      desc: "Silo loading optimization using real-time side-mounted LED indicators and terminal links.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M3 21h18M5 21V8l7-5 7 5v13M9 13h6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Locomotive Cabs",
-      desc: "Wireless weight telemetry reception for onboard train operators.",
+      title: "Roof Tanks",
+      desc: "Configured for non-AC passenger coaches utilizing roof-mounted water storage.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M2 17h20M7 17v2M17 17v2M4 8h16v6H4z" strokeLinecap="round" strokeLinejoin="round" />
@@ -132,7 +123,16 @@ function WliRoute() {
       )
     },
     {
-      title: "OEM Wagon Integration",
+      title: "Nominated Watering Stations",
+      desc: "Real-time automated alerts sent to watering supervisors ahead of train arrivals.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M3 21h18M5 21V8l7-5 7 5v13M9 13h6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "OEM Coach Integration",
       desc: "— Integration specification to be updated",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -142,7 +142,7 @@ function WliRoute() {
     },
     {
       title: "Maintenance Depots",
-      desc: "— Maintenance applications to be updated",
+      desc: "— Maintenance depot diagnostic applications to be updated",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round" />
@@ -152,32 +152,32 @@ function WliRoute() {
   ];
 
   const interfaces = [
-    { name: "Sub-1GHz RF", spec: "Proprietary wireless link, range up to 150m" },
+    { name: "5G LTE", spec: "M2M e-SIM with 4G/3G/2G fallback" },
+    { name: "4G LTE", spec: "M2M e-SIM with 3G/2G fallback" },
+    { name: "GPS", spec: "Real-time location tracking for sleep-wake triggers" },
+    { name: "HTTPS", spec: "Token-based secure data uploads" },
     { name: "Ethernet", spec: "— Interface specification to be updated" },
     { name: "RS-485", spec: "— Interface specification to be updated" },
     { name: "CAN Bus", spec: "— Interface specification to be updated" },
     { name: "Wi-Fi", spec: "— Interface specification to be updated" },
-    { name: "4G LTE", spec: "— Interface specification to be updated" },
-    { name: "5G uplink", spec: "— Interface specification to be updated" },
-    { name: "MQTT", spec: "— Protocol specification to be updated" },
-    { name: "Modbus", spec: "— Protocol specification to be updated" }
+    { name: "MQTT", spec: "— Protocol specification to be updated" }
   ];
 
   const compliance = [
-    { title: "EN 50155", std: "Rolling Stock Electronics", desc: "Compliance standard for electronic equipment used on rolling stock applications." },
-    { title: "AAR Cargo Rules", std: "Loading Compliance", desc: "Conforms with Association of American Railroads specifications for cargo weight distribution." },
-    { title: "IP68 Sensor Sealing", std: "Ingress Protection", desc: "Hermetic sealing protecting the bogie strain sensors from continuous immersion and debris strikes." },
-    { title: "IP66 Display Sealing", std: "Ingress Protection", desc: "Weatherproof seal protection for side-mounted display box configurations." },
-    { title: "CRIS Integration", std: "— To be updated", desc: "— Compliance information to be updated" },
-    { title: "IEC Standards", std: "— To be updated", desc: "— Compliance standard to be updated" },
-    { title: "Shock & Vibration", std: "— To be updated", desc: "— Structural testing parameters to be updated" },
-    { title: "Cyber Security", std: "— To be updated", desc: "— Security specifications to be updated" }
+    { title: "RDSO STR Compliant", std: "STR Prepared", desc: "Developed for Indian Railways to comply with Specific Technical Requirements for RDSO." },
+    { title: "CRIS Server Link", std: "HTTPS Telemetry", desc: "Sends location, level, and health data directly to CRIS server every 15 minutes." },
+    { title: "EN 50155", std: "Rolling Stock Electronics", desc: "Designed for hardware reliability under voltage transients and rolling stock environments." },
+    { title: "EN 61373", std: "Shock & Vibration", desc: "Tested to withstand heavy vibration profiles of running coaches." },
+    { title: "IP65 Rating", std: "IS/IEC 60529", desc: "Dustproof and water-jet resistant protection for the under-slung chassis assembly." },
+    { title: "IK10 Rating", std: "IS:17050", desc: "High protection level against mechanical impact on the enclosure frame." },
+    { title: "EMC", std: "— To be updated", desc: "— Compliance standard to be updated" },
+    { title: "Cyber Security", std: "— To be updated", desc: "— Encryption compliance details to be updated" }
   ];
 
   const downloads = [
     { label: "WLI Onboard System Specs", size: "1.6 MB", type: "Datasheet", disabled: false },
-    { label: "WLI Bogie Installation Guide", size: "3.2 MB", type: "Manual", disabled: false },
-    { label: "WLI Cargo Yard Integration Info", size: "1.4 MB", type: "Brochure", disabled: false },
+    { label: "WLI Onboard Installation & Calibration Manual", size: "3.2 MB", type: "Manual", disabled: false },
+    { label: "WLI CRIS System Integration Info", size: "1.4 MB", type: "Brochure", disabled: false },
     { label: "WLI Chassis 2D/3D CAD Layout", size: "—", type: "— CAD drawing to be updated", disabled: true },
     { label: "Embedded Firmware Update Utility", size: "—", type: "— Firmware tool to be updated", disabled: true }
   ];
@@ -191,7 +191,7 @@ function WliRoute() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src={coachBuild}
-            alt="Wagon Load Indicator (WLI)"
+            alt="WLI — IoT-Based Water Level Indicator"
             className="w-full h-full object-cover opacity-25 select-none pointer-events-none"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-transparent z-10" />
@@ -216,23 +216,23 @@ function WliRoute() {
             </nav>
 
             <div className="space-y-4">
-              <span className="eyebrow !text-steel tracking-[0.2em] font-semibold text-xs uppercase block">Onboard Telemetry</span>
+              <span className="eyebrow !text-steel tracking-[0.2em] font-semibold text-xs uppercase block">IoT Diagnostics</span>
               <h1 className="text-4xl md:text-5xl lg:text-[64px] font-extralight uppercase tracking-tight leading-none text-white max-w-3xl">
-                Wagon Load Indicator (WLI)
+                WLI — IoT-Based Water Level Indicator
               </h1>
             </div>
 
             <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light max-w-2xl border-l-2 border-steel/40 pl-6">
-              Continuous onboard axle load telemetry and cargo balance tracking.
+              Developed for Indian Railways — Specific Technical Requirement (STR) prepared for RDSO.
             </p>
 
             {/* Badges Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 max-w-3xl">
               {[
-                { title: "Sub-1GHz RF", desc: "Wireless Link" },
-                { title: "IP68 Hermetic", desc: "Bogie Sensors" },
-                { title: "EN 50155", desc: "Railway Standard" },
-                { title: "±0.5% Accuracy", desc: "Weight Telemetry" }
+                { title: "RDSO STR", desc: "Prepared Requirement" },
+                { title: "CRIS Connected", desc: "HTTPS Telemetry" },
+                { title: "EN 50155", desc: "Rolling Stock Standard" },
+                { title: "IP65 & IK10", desc: "AISI 304 Enclosure" }
               ].map((badge, idx) => (
                 <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded flex flex-col justify-between">
                   <span className="text-xs font-semibold text-white/40 uppercase tracking-widest">{badge.title}</span>
@@ -250,26 +250,26 @@ function WliRoute() {
           <div className="col-span-12 lg:col-span-6 gsap-reveal space-y-6">
             <span className="eyebrow block">OVERVIEW</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Continuous Onboard Axle Load Telemetry & Cargo Balance Tracking
+              Real-Time Water Level Monitoring for Passenger Coaches
             </h2>
             <div className="space-y-6 border-t border-rule/20 pt-6">
               <p className="text-base md:text-lg text-black leading-relaxed font-light">
-                The Wagon Load Indicator (WLI) is an onboard payload measurement system that utilizes bogie-mounted strain sensors. Engineered for heavy haul freight wagons, it monitors cargo weight and balance distribution in real time, preventing overloading damage and cargo imbalance derailments.
+                WLI is an IoT-based system that provides real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server. This enables planned watering at nominated stations, reducing en-route watering failures and passenger complaints.
               </p>
               <p className="text-base text-ink-muted leading-relaxed font-light">
-                The system broadcasts loading data using sub-1GHz wireless links, sending cargo weights directly to yard screens and locomotive cabs without connecting cables between wagon frames. High-visibility external LED displays show cargo level status during bulk loading runs.
+                The system fits under-slung tank packs (AC/SCN) as well as roof tanks (non-AC), utilizing hydrostatic absolute-pressure transducers on the tank piping to measure levels as a percentage of installed capacity.
               </p>
             </div>
           </div>
           <div className="col-span-12 lg:col-span-6 gsap-reveal">
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface rounded border border-rule/10 shadow-lg">
-              <img src={coachBuild} alt="WLI Wagon System" className="h-full w-full object-cover select-none pointer-events-none" />
+              <img src={coachBuild} alt="WLI Water Level Cabinet" className="h-full w-full object-cover select-none pointer-events-none" />
               {/* Technical floating labels */}
               <div className="absolute top-4 left-4 bg-ink/80 text-white text-[10px] uppercase font-mono tracking-widest px-3 py-1.5 rounded backdrop-blur">
-                Bogie Sensors: IP68 Hermetic
+                Enclosure: AISI 304, IP65, IK10
               </div>
               <div className="absolute bottom-4 right-4 bg-steel/90 text-white text-[10px] uppercase font-mono tracking-widest px-3 py-1.5 rounded backdrop-blur">
-                Display Box: IP66 Sealing
+                Uplink: 5G/4G LTE & GPS
               </div>
             </div>
           </div>
@@ -345,18 +345,18 @@ function WliRoute() {
           {/* Architecture Visual Layout */}
           <div className="grid grid-cols-12 gap-8 items-center bg-white border border-rule/20 p-8 md:p-12 rounded">
             <div className="col-span-12 lg:col-span-7 space-y-8 gsap-reveal">
-              <h3 className="text-xl font-semibold text-ink uppercase">Onboard to Wayside Data Pipeline</h3>
+              <h3 className="text-xl font-semibold text-ink uppercase">Water Level Telemetry Pipeline</h3>
               <p className="text-sm text-ink-muted leading-relaxed font-light">
-                The WLI architecture records physical strain loads under rolling stock assemblies and relays telemetry signals directly to terminal yards and locomotive display cabins.
+                The WLI architecture captures fluid volume telemetry directly from absolute-pressure sensors and transfers it securely to CRIS dashboards to optimize watering schedules.
               </p>
               
               {/* Architecture Steps */}
               <div className="space-y-6">
                 {[
-                  { title: "Bogie-Mounted Sensors", desc: "Calibrated strain sensors weld/clamp directly to key bogie structural members." },
-                  { title: "Onboard Telemetry Hub", desc: "Onboard transmitter box samples strain data and converts it to payload readings." },
-                  { title: "Sub-1GHz Wireless Transmitter", desc: "Broadcasters relay load data packages wirelessly up to 150 meters." },
-                  { title: "Locomotive Cab & Yard Displays", desc: "Yard display terminals and locomotive cabin displays read payloads without interconnecting cables." }
+                  { title: "Hydrostatic Probes", desc: "Stainless-steel absolute-pressure transducers mounted directly on the tank piping loops." },
+                  { title: "Connected MPU", desc: "32-bit controller performing atmospheric-pressure compensation, level calculations, and sleep-wake scheduling." },
+                  { title: "5G/4G LTE Transmitter", desc: "Transmits packets securely over HTTPS using token-based authentication and M2M e-SIM links." },
+                  { title: "CRIS Server / Station Alerts", desc: "Centralized server display showing coach-wise levels and triggering alarms for watering supervisors." }
                 ].map((step, idx) => (
                   <div key={idx} className="flex gap-4 items-start">
                     <span className="w-6 h-6 rounded-full bg-steel/10 text-steel font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -377,28 +377,28 @@ function WliRoute() {
                 {/* Block 1 */}
                 <div className="bg-white px-4 py-3 border border-rule rounded shadow-sm w-full text-center">
                   <span className="text-[10px] font-mono text-ink-muted uppercase block">SENSORS</span>
-                  <span className="text-xs font-bold text-ink uppercase">Bogie Strain Sensors</span>
+                  <span className="text-xs font-bold text-ink uppercase">Absolute-Pressure Transducers</span>
                 </div>
                 {/* Connector Arrow */}
                 <div className="text-steel font-bold">↓</div>
                 {/* Block 2 */}
                 <div className="bg-white px-4 py-3 border border-steel/40 rounded shadow-sm w-full text-center">
-                  <span className="text-[10px] font-mono text-steel uppercase block">TRANSMITTER</span>
-                  <span className="text-xs font-bold text-ink uppercase">Wireless Telemetry Hub</span>
+                  <span className="text-[10px] font-mono text-steel uppercase block">MPU LAYER</span>
+                  <span className="text-xs font-bold text-ink uppercase">32-bit Connected MPU</span>
                 </div>
                 {/* Connector Arrow */}
                 <div className="text-steel font-bold">↓</div>
                 {/* Block 3 */}
                 <div className="bg-white px-4 py-3 border border-rule rounded shadow-sm w-full text-center">
-                  <span className="text-[10px] font-mono text-ink-muted uppercase block">RF LINK</span>
-                  <span className="text-xs font-bold text-ink uppercase">Sub-1GHz Wireless Protocol</span>
+                  <span className="text-[10px] font-mono text-ink-muted uppercase block">RF PROTOCOL</span>
+                  <span className="text-xs font-bold text-ink uppercase">5G/4G LTE & HTTPS Token</span>
                 </div>
                 {/* Connector Arrow */}
                 <div className="text-steel font-bold">↓</div>
                 {/* Block 4 */}
                 <div className="bg-white px-4 py-3 border border-rule rounded shadow-sm w-full text-center">
-                  <span className="text-[10px] font-mono text-ink-muted uppercase block">RECEIVERS</span>
-                  <span className="text-xs font-bold text-ink uppercase">Yard Displays & Cabin Terminals</span>
+                  <span className="text-[10px] font-mono text-ink-muted uppercase block">YARD DASHBOARD</span>
+                  <span className="text-xs font-bold text-ink uppercase">CRIS Server & SMS Alarms</span>
                 </div>
               </div>
             </div>
@@ -426,16 +426,18 @@ function WliRoute() {
               </thead>
               <tbody className="divide-y divide-rule/10 text-xs md:text-sm text-ink-muted">
                 {[
-                  { param: "Weight Accuracy", val: "±0.5% of total wagon cargo load capacity" },
-                  { param: "Sensing Array", val: "4 calibrated strain-gauge sensors per bogie assembly" },
-                  { param: "Wireless Protocol", val: "Sub-1GHz proprietary RF link, transmission range up to 150m" },
-                  { param: "Battery Life", val: "Up to 5 years typical operating life under standard sleep cycles" },
-                  { param: "Operating Temperature", val: "-20°C to +70°C ambient operating range" },
-                  { param: "Standards Compliance", val: "AAR cargo loading rules, EN 50155 rolling stock electronics" },
-                  { param: "Enclosure Sealing", val: "IP68 hermetic rating for bogie sensors, IP66 for side display box" },
-                  { param: "Power Supply", val: "— Product specification to be updated" },
-                  { param: "Operating Voltage", val: "— Product specification to be updated" },
-                  { param: "Housing", val: "— Product specification to be updated" },
+                  { param: "Enclosure Housing", val: "AISI 304 under-slung enclosure" },
+                  { param: "Ingress Protection", val: "IP65 (IS/IEC 60529)" },
+                  { param: "Impact Protection", val: "IK10 (IS:17050)" },
+                  { param: "Electronics Standard", val: "Designed to EN 50155" },
+                  { param: "Shock & Vibration", val: "Designed to EN 61373" },
+                  { param: "Microprocessor", val: "32-bit Main Processing Unit (MPU)" },
+                  { param: "Wireless Telemetry", val: "M2M e-SIM on 5G/4G LTE with automatic 3G/2G fallback" },
+                  { param: "Location Tracking", val: "Integrated GPS for real-time train location" },
+                  { param: "Battery Chemistry", val: "LiFePO4 / LiSOCl2 battery pack" },
+                  { param: "Battery Life", val: "Minimum six-month operating life without recharge" },
+                  { param: "Reporting Interval", val: "Every 15 minutes over HTTPS with token-based security" },
+                  { param: "Operating Temperature", val: "— Product specification to be updated" },
                   { param: "Dimensions", val: "— Product specification to be updated" },
                   { param: "Weight", val: "— Product specification to be updated" }
                 ].map((spec, idx) => (
@@ -460,7 +462,7 @@ function WliRoute() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {interfaces.map((iface, idx) => (
               <div key={idx} className="bg-white p-4 border border-rule/15 rounded shadow-sm text-center flex flex-col justify-between min-h-[100px] gsap-reveal">
                 <span className="text-xs font-bold text-ink uppercase tracking-wider block">{iface.name}</span>

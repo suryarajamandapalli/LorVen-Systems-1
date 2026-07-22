@@ -25,7 +25,7 @@ export const PRODUCT_INDEX = [
     to: "/products",
     blurb: "Wayside diagnostics, telemetry, and intelligent remote monitoring platforms.",
     children: [
-      { slug: "wli", number: "01.1", title: "WLI", to: "/products/wagons/wli", blurb: "Wagon Load Indicator for freight wagons" },
+      { slug: "wli", number: "01.1", title: "WLI", to: "/products/wagons/wli", blurb: "IoT-Based Water Level Indicator for passenger coaches" },
       { slug: "ifd", number: "01.2", title: "IFD", to: "/products/electric-locomotive/ifd", blurb: "Intelligent Field Device for cable insulation monitoring" },
     ],
   },

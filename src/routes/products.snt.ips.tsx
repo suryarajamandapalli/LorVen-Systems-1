@@ -10,13 +10,13 @@ if (typeof window !== "undefined") {
 
 // Assets
 import ipsHero from "@/assets/electrical-cabinet.jpg";
-import pcbMacro from "@/assets/pcb-macro.jpg";
+import depot from "@/assets/depot.jpg";
 
 export const Route = createFileRoute("/products/snt/ips")({
   head: () => ({
     meta: [
-      { title: "IPS — Integrated Power Supply System — LorVen Systems" },
-      { name: "description", content: "Fail-safe integrated power supply system for railway signalling installations." },
+      { title: "IPS — SMPS-Based Integrated Power Supply — LorVen Systems" },
+      { name: "description", content: "Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas." },
     ],
   }),
   component: IpsRoute,
@@ -26,7 +26,7 @@ function IpsRoute() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Staggered reveals
+    // GSAP ScrollTrigger reveals
     gsap.utils.toArray(".gsap-reveal").forEach((elem: any) => {
       gsap.fromTo(
         elem,
@@ -46,132 +46,227 @@ function IpsRoute() {
     });
   }, { scope: containerRef });
 
+  const metrics = [
+    {
+      value: "15 kVA",
+      desc: "signalling loads, RE and Non-RE areas"
+    },
+    {
+      value: "60 ms",
+      desc: "main/standby inverter automatic changeover"
+    },
+    {
+      value: "n + 1",
+      desc: "modular architecture, hot-swappable modules"
+    }
+  ];
+
   const features = [
-    { title: "Uninterrupted AC & DC Power Supply", desc: "Ensures continuous supply of safe, regulated power to critical signaling elements under all circumstances." },
-    { title: "Automatic Battery Backup", desc: "Seamlessly switch to battery bank backup during mainline power failures without any voltage drop." },
-    { title: "Intelligent Power Management", desc: "Microprocessor-controlled distribution supervising individual modules and load shedding protocols." },
-    { title: "Stable Voltage Regulation", desc: "Protects sensitive microprocessor interlocking equipment from utility line voltage spikes or sags." },
-    { title: "Automatic Power Changeover", desc: "Instant mechanical/electronic bypass switches between multiple input feeders and standby lines." },
-    { title: "Railway Signalling & Telecom Support", desc: "Tailored to feed station interlocking systems, block instruments, point machines, and station telecom racks." }
+    {
+      title: "Modular power conversion",
+      desc: "Hot-swappable FRBC, Inverter, AC-AC and DC-DC converter modules on active load sharing; automatic fallback to AVR / AC-AC converter.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Battery management",
+      desc: "Auto float/boost charging with temperature compensation, per-cell health monitoring and under-voltage isolation; LMLA, VRLA and other RDSO-approved batteries (110 V; 120/200/300 AH).",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Feeds for every signalling load",
+      desc: "110 V DC fused feeds — relays, axle counters, block circuits, panel indication, data logger, EI, VDU, point machines and KAVACH.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M12 2v20M17 5H7M19 12H5M17 19H7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Monitored, locally and remotely",
+      desc: "Status Monitoring Panel in the ASM's room with staged battery-discharge alarms; module faults and section-wise V/I reported to RDPMS per RDSO/SPN/257/2025.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M19 18H5a2 2 0 01-2-2V8a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2zM9 18v2M15 18v2M12 6V3M12 3L9 5M12 3l3 2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    },
+    {
+      title: "Protected",
+      desc: "Coordinated Type-1/Type-2 surge protection per IEC 61643 and IEC 62305-4; safety and reliability per RDSO/SPN/144.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    }
   ];
 
   return (
     <div ref={containerRef} className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
       
-      {/* 1. Breadcrumb Banner */}
-      <section className="relative h-[40vh] min-h-[340px] max-h-[420px] bg-ink overflow-hidden flex flex-col justify-end pb-12 pt-[56px]">
+      {/* 1. Hero Section */}
+      <section className="relative min-h-screen bg-ink overflow-hidden flex flex-col justify-center pb-20 pt-28">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src={ipsHero}
-            alt="Integrated Power Supply (IPS)"
-            className="w-full h-full object-cover opacity-45 select-none pointer-events-none"
+            alt="IPS — SMPS-Based Integrated Power Supply"
+            className="w-full h-full object-cover opacity-35 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-black/60 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-15" />
-          {/* Fine architectural grid overlay */}
-          <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none z-20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent z-10" />
         </div>
 
         {/* Content */}
-        <div className="container-editorial relative z-30 w-full text-white">
+        <div className="container-editorial relative z-20 w-full text-white">
           <div className="max-w-4xl space-y-4">
             {/* Breadcrumbs */}
-            <nav className="text-sm font-normal text-white/80">
-              <ol className="flex items-center gap-2 flex-wrap">
+            <nav className="text-xs uppercase tracking-wider text-white/50">
+              <ol className="flex items-center gap-2 flex-wrap font-semibold">
                 <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li className="text-white/40 font-light">&gt;</li>
+                <li className="text-white/20 font-light">&gt;</li>
                 <li><Link to="/products" className="hover:text-white transition-colors">Products</Link></li>
-                <li className="text-white/40 font-light">&gt;</li>
+                <li className="text-white/20 font-light">&gt;</li>
                 <li><Link to="/products/snt" className="hover:text-white transition-colors">Signalling & Telecom</Link></li>
-                <li className="text-white/40 font-light">&gt;</li>
-                <li className="text-white font-semibold">IPS</li>
+                <li className="text-white/20 font-light">&gt;</li>
+                <li className="text-white">IPS</li>
               </ol>
             </nav>
 
-            <h1 className="text-3xl md:text-4xl lg:text-[45px] font-light uppercase tracking-tight leading-tight max-w-3xl">
-              Integrated Power Supply (IPS)
-            </h1>
+            <div className="space-y-3">
+              <h1 className="text-3xl md:text-5xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
+                SMPS-Based Integrated Power Supply (IPS)
+              </h1>
+            </div>
+
+            <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
+              Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas — Stations, LC Gates, IBH and Auto Huts.
+            </p>
           </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/50 text-[9px] uppercase tracking-[0.2em] font-bold select-none pointer-events-none animate-bounce">
+          <span>Explore IPS</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+            <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
       </section>
 
       {/* 2. Overview Section */}
-      <section className="bg-bg py-20 md:py-28 border-t border-rule/30">
-        <div className="container-editorial grid grid-cols-12 gap-8 md:gap-12 items-center">
-          <div className="col-span-12 lg:col-span-6 gsap-reveal space-y-6">
-            <span className="eyebrow block">OVERVIEW</span>
-            <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Reliable Power for Continuous <br />Railway Signalling Operations
+      <section className="bg-bg py-12 md:py-16 border-t border-rule/20">
+        <div className="container-editorial grid grid-cols-12 gap-8 md:gap-16 items-center">
+          {/* Left Column */}
+          <div className="col-span-12 lg:col-span-7 gsap-reveal space-y-6">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">PRODUCTS — SIGNALLING & TELECOM</span>
+            <h2 className="text-3xl md:text-4xl font-extralight leading-tight text-ink uppercase">
+              IPS — SMPS-Based Integrated Power Supply
             </h2>
-            <div className="space-y-4 border-t border-rule/20 pt-6">
-              <p className="text-base md:text-lg text-black leading-relaxed font-light">
-                The Integrated Power Supply (IPS) is a centralized power management system designed to provide uninterrupted AC and DC power for Indian Railway signalling and telecommunication systems. It ensures continuous operation of safety-critical equipment during power interruptions through intelligent power management, battery backup and automatic power changeover.
+            <div className="border-t border-rule/20 pt-6">
+              <p className="text-lg md:text-xl text-black leading-relaxed font-light">
+                Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas — Stations, LC Gates, IBH and Auto Huts.
               </p>
-              <p className="text-base text-black leading-relaxed font-light">
-                Designed in accordance with Indian Railway signalling requirements, IPS improves system reliability, minimizes service interruptions and supports the safe operation of railway infrastructure.
+              <p className="text-sm text-ink-muted leading-relaxed font-mono uppercase tracking-wider mt-4">
+                As per RDSO Specification RDSO/SPN/165/2023, Version 4.0
               </p>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-6 gsap-reveal">
-            <div className="aspect-[16/10] w-full overflow-hidden bg-surface rounded-xl border border-rule/10 shadow-sm">
-              <img src={ipsHero} alt="IPS cabinet and electrical panels" className="h-full w-full object-cover select-none pointer-events-none" />
+
+          {/* Right Column */}
+          <div className="col-span-12 lg:col-span-5 gsap-reveal">
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface rounded border border-rule/10 shadow-lg">
+              <img
+                src={ipsHero}
+                alt="IPS Power Cabinet"
+                className="h-full w-full object-cover select-none pointer-events-none"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Key Features */}
-      <section className="bg-section border-t border-rule py-20 md:py-28">
-        <div className="container-editorial space-y-12">
-          <div className="gsap-reveal space-y-4">
-            <span className="eyebrow block">FEATURES</span>
-            <h2 className="text-3xl font-light leading-snug text-ink uppercase">
-              Key Features
-            </h2>
+      {/* 3. Engineering Highlights Section */}
+      <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
+        <div className="container-editorial space-y-16">
+          
+          {/* Metric Highlight Cards */}
+          <div className="space-y-6 gsap-reveal">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">HIGHLIGHTS</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {metrics.map((metric, idx) => (
+                <div key={idx} className="bg-section p-8 border border-rule/25 rounded shadow-sm flex flex-col justify-between group hover:border-steel transition-all duration-300">
+                  <div className="space-y-3">
+                    <span className="text-4xl md:text-5xl font-extralight tracking-tight text-ink uppercase block group-hover:text-steel transition-colors duration-300">
+                      {metric.value}
+                    </span>
+                    <p className="text-xs text-ink-muted leading-relaxed font-light font-mono uppercase tracking-wider">
+                      {metric.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feat, idx) => (
-              <div key={idx} className="bg-white p-8 border border-rule/15 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 gsap-reveal flex gap-5 items-start">
-                <div className="w-5 h-5 flex items-center justify-center border border-rule/40 text-ink text-xs font-semibold flex-shrink-0 mt-1">
-                  ✓
+          {/* Features Grid */}
+          <div className="space-y-12 pt-8 border-t border-rule/10">
+            <div className="gsap-reveal space-y-4">
+              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CAPABILITIES</span>
+              <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
+                Features
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+              {features.map((feat, idx) => (
+                <div key={idx} className="flex gap-6 items-start gsap-reveal group">
+                  <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
+                    {feat.icon}
+                  </div>
+                  <div className="space-y-2 flex-1">
+                    <h3 className="text-lg font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h3>
+                    <p className="text-sm text-ink-muted leading-relaxed font-light">{feat.desc}</p>
+                  </div>
                 </div>
-                <div className="space-y-2 flex-1">
-                  <h3 className="text-lg font-semibold text-ink uppercase leading-snug">{feat.title}</h3>
-                  <p className="text-sm text-ink-muted leading-relaxed font-light">{feat.desc}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 
-      {/* 4. Why Choose LorVen */}
-      <section className="relative bg-ink text-on-dark py-24 md:py-32 border-t border-ink overflow-hidden">
+      {/* 4. Enterprise CTA */}
+      <section className="bg-ink text-on-dark py-16 md:py-20 border-t border-ink relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img src={ipsHero} alt="IPS Systems" className="w-full h-full object-cover opacity-30 select-none pointer-events-none" />
+          <img
+            src={depot}
+            alt="Wayside Maintenance Depot"
+            className="w-full h-full object-cover opacity-30 select-none pointer-events-none"
+          />
           <div className="absolute inset-0 bg-black/30 z-10" />
         </div>
-        {/* Grid overlay */}
-        <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none z-10" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         
         <div className="container-editorial relative z-20 flex justify-center text-center">
           <div className="max-w-4xl space-y-6 gsap-reveal">
-            <span className="eyebrow !text-white/40 block">WHY LORVEN</span>
+            <span className="eyebrow !text-white/40 block">DISCUSS REQUIREMENTS</span>
             <h2 className="text-3xl md:text-5xl font-light leading-tight text-white uppercase">
-              Why Choose LorVen's Integrated Power Supply (IPS)
+              Discuss your deployment requirements with our engineering team
             </h2>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed font-light pt-4 max-w-3xl mx-auto">
-              LorVen's Integrated Power Supply (IPS) delivers reliable and uninterrupted power for railway signalling and telecommunication systems, helping ensure continuous operation of safety-critical infrastructure. Designed for dependable performance, the system supports operational reliability, minimizes downtime and enhances the availability of railway signalling assets.
-            </p>
             <div className="pt-8">
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 border border-white text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-ink transition-colors duration-300 rounded-sm shadow-md"
               >
-                Contact Our Engineering Team →
+                Consult Our Engineers →
               </Link>
             </div>
           </div>

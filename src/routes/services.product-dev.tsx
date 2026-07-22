@@ -16,7 +16,7 @@ export const Route = createFileRoute("/services/product-dev")({
   head: () => ({
     meta: [
       { title: "Electronic Product Development — LorVen Systems" },
-      { name: "description", content: "End-to-end — from concept through validated design to production. Safety-critical railway electronic product development services." },
+      { name: "description", content: "End-to-end electronic product development services — from concept through validated design to production for safety-critical railway systems." },
     ],
   }),
   component: ProductDevRoute,
@@ -46,65 +46,73 @@ function ProductDevRoute() {
     });
   }, { scope: containerRef });
 
-  const lifecycleStages = [
+  const capabilities = [
     {
-      step: "01",
+      num: "01",
       title: "Requirements & compliance",
       desc: "Requirements engineering and feasibility; compliance planning against EN 50155, EN 50121, IEC 60571 and applicable RDSO specifications."
     },
     {
-      step: "02",
+      num: "02",
       title: "Hardware design",
       desc: "Schematic capture and PCB layout — high-reliability practices for vibration, temperature and EMC environments."
     },
     {
-      step: "03",
+      num: "03",
       title: "Embedded firmware",
       desc: "Firmware development with structured lifecycle documentation: requirements, design, verification."
     },
     {
-      step: "04",
+      num: "04",
       title: "Mechanical & enclosure",
       desc: "Packaging and enclosure design, including IP- and IK-rated enclosures for rolling stock and trackside environments."
     },
     {
-      step: "05",
+      num: "05",
       title: "Prototype & DVT",
       desc: "Prototype build, design verification testing and environmental/EMC pre-compliance evaluation."
     },
     {
-      step: "06",
+      num: "06",
       title: "Verification & Validation",
       desc: "Formal V&V plans, test specifications and test reports; third-party type testing at accredited laboratories."
     },
     {
-      step: "07",
+      num: "07",
       title: "Approvals & field trials",
       desc: "Support through vendor and prototype approval with Indian Railways and RDSO — technical documentation, QAP, O&M manuals."
     },
     {
-      step: "08",
+      num: "08",
       title: "Transfer to production",
       desc: "Handover to our in-house EMS facility — a single-point path from concept to supplied product."
     }
   ];
 
-  const engineeringCapabilities = [
+  const processFlow = [
+    { step: "01", label: "Requirements" },
+    { step: "02", label: "Hardware & Firmware" },
+    { step: "03", label: "Prototype & DVT" },
+    { step: "04", label: "Verification & Validation" },
+    { step: "05", label: "Approvals & Production" }
+  ];
+
+  const whyLorVen = [
     {
-      title: "Standards Compliance Planning",
-      desc: "EN 50155, EN 50121, IEC 60571 and applicable RDSO specifications."
+      title: "Complete Lifecycle Management",
+      desc: "End-to-end engineering execution from initial feasibility and compliance planning to full production handover."
     },
     {
-      title: "High-Reliability Hardware Design",
-      desc: "Schematic capture and PCB layout engineered for extreme vibration, thermal cycles and EMC environments."
+      title: "Single Engineering Partner",
+      desc: "Direct handover to our in-house EMS manufacturing facility — providing a seamless single-point path from concept to supplied product."
     },
     {
-      title: "Structured V&V Lifecycle",
-      desc: "Formal V&V documentation, test specifications, and third-party accredited laboratory type testing."
+      title: "Railway Standards Conformance",
+      desc: "Engineered against stringent EN 50155, EN 50121, IEC 60571, and applicable RDSO specifications for railway environments."
     },
     {
-      title: "Single-Point Production Transfer",
-      desc: "Direct handover to our in-house EMS manufacturing facility for seamless execution and QAP adherence."
+      title: "Production-Ready Deliverables",
+      desc: "Complete technical documentation, QAP, O&M manuals, and formal V&V test reports for Indian Railways vendor approval."
     }
   ];
 
@@ -118,7 +126,7 @@ function ProductDevRoute() {
           <img
             src={pcbMacro}
             alt="Electronic Engineering & Design"
-            className="w-full h-full object-cover opacity-30 select-none pointer-events-none"
+            className="w-full h-full object-cover opacity-35 select-none pointer-events-none"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
         </div>
@@ -138,7 +146,7 @@ function ProductDevRoute() {
             </nav>
 
             <div className="space-y-3">
-              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">ENGINEERING SERVICES</span>
+              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SERVICES</span>
               <h1 className="text-3xl md:text-5xl lg:text-[56px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
                 Electronic Product Development
               </h1>
@@ -152,7 +160,7 @@ function ProductDevRoute() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/50 text-[9px] uppercase tracking-[0.2em] font-bold select-none pointer-events-none animate-bounce">
-          <span>Explore Engineering Workflow</span>
+          <span>Explore Capabilities</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
             <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -166,14 +174,14 @@ function ProductDevRoute() {
           <div className="col-span-12 lg:col-span-7 gsap-reveal space-y-6">
             <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">OVERVIEW</span>
             <h2 className="text-3xl md:text-4xl font-extralight leading-tight text-ink uppercase">
-              End-to-End Product Engineering
+              Electronic Product Development
             </h2>
             <div className="border-t border-rule/20 pt-6 space-y-4">
               <p className="text-lg md:text-xl text-black leading-relaxed font-light">
-                LorVen Systems provides full-scope electronic engineering services for railway, transport, and industrial sectors. We guide complex designs from early requirements capture through rigorous type testing and seamless transfer to production.
+                End-to-end — from concept through validated design to production.
               </p>
               <p className="text-base text-ink-muted leading-relaxed font-light">
-                Our engineering methodology ensures strict compliance with safety-critical standards including EN 50155, EN 50121, IEC 60571, and applicable RDSO specifications.
+                LorVen Systems provides full-scope electronic engineering services for railway, transport, and industrial sectors. We guide complex designs from early requirements capture through rigorous type testing and seamless transfer to production.
               </p>
             </div>
           </div>
@@ -191,56 +199,69 @@ function ProductDevRoute() {
         </div>
       </section>
 
-      {/* 3. Development Lifecycle Section (Connected Engineering Process Timeline) */}
+      {/* 3. Engineering Capabilities (2x4 Substantial Cards Grid - Primary Section) */}
       <section className="bg-section border-t border-rule/20 py-20 md:py-28">
         <div className="container-editorial space-y-16">
           <div className="gsap-reveal space-y-4 max-w-3xl">
-            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">METHODOLOGY</span>
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SERVICES</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Development Lifecycle
+              Engineering Capabilities
             </h2>
             <p className="text-base text-ink-muted leading-relaxed font-light">
-              An eight-stage structured engineering workflow ensuring compliance, reliability, and smooth manufacturing transition.
+              Comprehensive electronic engineering disciplines delivering safety-critical railway solutions.
             </p>
           </div>
 
-          {/* Connected Stage Timeline Grid */}
-          <div className="relative">
-            {/* Connecting Vertical Guide Line on Desktop */}
-            <div className="hidden lg:block absolute left-1/2 top-4 bottom-4 w-px bg-rule/30 -translate-x-1/2 z-0" />
-
-            <div className="space-y-8 lg:space-y-12 relative z-10">
-              {lifecycleStages.map((stage, idx) => (
-                <div
-                  key={idx}
-                  className={`grid grid-cols-1 lg:grid-cols-12 gap-6 items-center gsap-reveal ${
-                    idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Left Column for Even Steps, Right for Odd */}
-                  <div className={`col-span-12 lg:col-span-5 ${idx % 2 === 0 ? "lg:text-right" : "lg:order-last lg:text-left"}`}>
-                    <div className="bg-bg p-8 rounded border border-rule/20 shadow-sm space-y-3 hover:border-steel transition-colors duration-300">
-                      <span className="text-xs font-mono font-bold text-steel uppercase tracking-widest block">
-                        STAGE {stage.step}
-                      </span>
-                      <h3 className="text-lg font-bold text-ink uppercase tracking-wide">
-                        {stage.title}
-                      </h3>
-                      <p className="text-sm text-ink-muted leading-relaxed font-light">
-                        {stage.desc}
-                      </p>
-                    </div>
+          {/* 2x4 Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {capabilities.map((cap, idx) => (
+              <div
+                key={idx}
+                className="p-8 bg-bg border border-rule/25 rounded shadow-sm hover:border-steel transition-all duration-300 gsap-reveal flex flex-col justify-between space-y-4 group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-steel tracking-widest uppercase">
+                      CAPABILITY {cap.num}
+                    </span>
                   </div>
+                  <h3 className="text-xl font-bold text-ink uppercase tracking-tight group-hover:text-steel transition-colors duration-300">
+                    {cap.title}
+                  </h3>
+                  <p className="text-sm text-ink-muted leading-relaxed font-light border-t border-rule/15 pt-4">
+                    {cap.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                  {/* Center Node Badge */}
-                  <div className="hidden lg:flex col-span-12 lg:col-span-2 justify-center items-center">
-                    <div className="w-12 h-12 rounded-full bg-steel text-white flex items-center justify-center font-mono text-sm font-bold shadow-md border-4 border-bg">
-                      {stage.step}
-                    </div>
+      {/* 4. Engineering Process (Compact Single-Row Horizontal Flow) */}
+      <section className="bg-bg border-t border-rule/20 py-16 md:py-20">
+        <div className="container-editorial space-y-10">
+          <div className="gsap-reveal space-y-2">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">DELIVERY METHODOLOGY</span>
+            <h2 className="text-2xl md:text-3xl font-light leading-snug text-ink uppercase">
+              Engineering Process
+            </h2>
+          </div>
+
+          {/* Horizontal Process Strip */}
+          <div className="p-8 bg-section border border-rule/20 rounded gsap-reveal">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-center">
+              {processFlow.map((flow, idx) => (
+                <div key={idx} className="flex items-center gap-4 group">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-white border border-rule/20 text-ink font-mono text-xs font-bold flex items-center justify-center group-hover:bg-steel group-hover:text-white transition-colors duration-300">
+                      {flow.step}
+                    </span>
+                    <span className="text-xs font-bold text-ink uppercase tracking-wider">{flow.label}</span>
                   </div>
-
-                  {/* Spacer for opposite column */}
-                  <div className="hidden lg:block col-span-12 lg:col-span-5" />
+                  {idx < processFlow.length - 1 && (
+                    <span className="hidden lg:block text-rule/40 font-light text-lg ml-auto">→</span>
+                  )}
                 </div>
               ))}
             </div>
@@ -248,41 +269,23 @@ function ProductDevRoute() {
         </div>
       </section>
 
-      {/* 4. Engineering Expertise Section */}
-      <section className="bg-bg border-t border-rule/20 py-16 md:py-24">
+      {/* 5. Why LorVen Engineering Section */}
+      <section className="bg-section border-t border-rule/20 py-20 md:py-28">
         <div className="container-editorial space-y-12">
-          <div className="gsap-reveal space-y-4">
-            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CAPABILITIES</span>
+          <div className="gsap-reveal space-y-4 max-w-3xl">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">WHY LORVEN</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Engineering Expertise
+              Engineering Excellence
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {engineeringCapabilities.map((cap, idx) => (
-              <div key={idx} className="p-8 bg-section border border-rule/20 rounded space-y-3 gsap-reveal hover:border-steel transition-colors duration-300">
-                <h3 className="text-base font-bold text-ink uppercase tracking-wide">{cap.title}</h3>
-                <p className="text-sm text-ink-muted leading-relaxed font-light">{cap.desc}</p>
+            {whyLorVen.map((item, idx) => (
+              <div key={idx} className="p-8 bg-bg border border-rule/20 rounded space-y-3 gsap-reveal hover:border-steel transition-colors duration-300">
+                <h3 className="text-base font-bold text-ink uppercase tracking-wide">{item.title}</h3>
+                <p className="text-sm text-ink-muted leading-relaxed font-light">{item.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Why LorVen Engineering Section */}
-      <section className="bg-section border-t border-rule/20 py-16 md:py-24">
-        <div className="container-editorial max-w-4xl space-y-8 gsap-reveal">
-          <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">WHY LORVEN</span>
-          <h2 className="text-3xl md:text-4xl font-light text-ink uppercase leading-snug">
-            Single-Point Path from Concept to Production
-          </h2>
-          <div className="space-y-4 text-base md:text-lg text-ink-muted font-light leading-relaxed border-l-2 border-steel pl-6">
-            <p>
-              By offering a single-point engineering path through our in-house EMS manufacturing facility, LorVen Systems eliminates vendor fragmentation and reduces execution risks for railway electronics.
-            </p>
-            <p className="text-sm font-mono uppercase tracking-wider text-steel pt-2">
-              Full material traceability & ISO 9001:2015 QMS alignment
-            </p>
           </div>
         </div>
       </section>

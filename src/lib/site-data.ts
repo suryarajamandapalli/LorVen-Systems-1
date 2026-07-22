@@ -48,8 +48,8 @@ export const PRODUCT_INDEX = [
     blurb: "Condition-monitoring, vision systems, and non-destructive testing for coaches and wagons.",
     children: [
       { slug: "ahabd", number: "03.1", title: "AHABD", to: "/products/wagons/ahabd", blurb: "Acoustic Hot Axle Box Detector" },
-      { slug: "mvis",  number: "03.2", title: "MVIS",  to: "/products/wagons/mvis",  blurb: "Machine Vision Inspection System" },
-      { slug: "emcd",  number: "03.3", title: "AI Based EMCD", to: "/products/wagons/emcd", blurb: "AI-Based Electromagnetic Crack Detector" },
+      // Phase 2: { slug: "mvis",  number: "03.2", title: "MVIS",  to: "/products/wagons/mvis",  blurb: "Machine Vision Inspection System" },
+      // Phase 2: { slug: "emcd",  number: "03.3", title: "AI Based EMCD", to: "/products/wagons/emcd", blurb: "AI-Based Electromagnetic Crack Detector" },
     ],
   },
   {

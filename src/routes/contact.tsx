@@ -143,7 +143,7 @@ function ContactPage() {
                 <div className="space-y-1">
                   <h4 className="text-sm font-bold text-ink uppercase tracking-wide">Products</h4>
                   <p className="text-xs text-ink-muted font-light leading-relaxed">
-                    WLI, IFD, IPS, RDPMS, AHABD, MVIS, and Driving & KAVACH Training Simulators.
+                    WLI, IFD, IPS, RDPMS, AHABD, and Driving & KAVACH Training Simulators.
                   </p>
                 </div>
                 <div className="space-y-1">

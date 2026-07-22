@@ -46,9 +46,9 @@ function KavachInstallationRoute() {
     });
   }, { scope: containerRef });
 
-  const features = [
+  const onboardFeatures = [
     {
-      title: "Onboard Locomotive Works",
+      title: "Onboard Equipment Installation (WAP/WAG)",
       desc: "Installation of KAVACH onboard equipment on electric locomotives (WAP/WAG): Vital Computer, DMI, brake interface unit, radio and antenna systems, RFID reader and cabling per OEM wiring schedules.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -66,16 +66,19 @@ function KavachInstallationRoute() {
       )
     },
     {
-      title: "Locomotive System Acceptance Testing",
+      title: "Functional Acceptance Testing",
       desc: "Post-installation testing, integration testing with locomotive systems, and commissioning support through onboard functional acceptance tests.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
           <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
-    },
+    }
+  ];
+
+  const tracksideFeatures = [
     {
-      title: "Station & Trackside Works",
+      title: "Station KAVACH & Infrastructure",
       desc: "Installation of Station KAVACH equipment — stationary KAVACH unit, tower and radio infrastructure, interface wiring to interlocking.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -93,7 +96,7 @@ function KavachInstallationRoute() {
       )
     },
     {
-      title: "Independent Tag-Data Field Verification",
+      title: "Independent Tag-Data Verification",
       desc: "Independent tag-data field verification — absolute location, TIN, tag type, unique ID — against approved station data, with formal discrepancy reporting.",
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -175,6 +178,9 @@ function KavachInstallationRoute() {
               <p className="text-lg md:text-xl text-black leading-relaxed font-light">
                 Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020.
               </p>
+              <p className="text-sm text-ink-muted leading-relaxed font-mono uppercase tracking-wider">
+                Compliance: RDSO Specification RDSO/SPN/196/2020 & OEM Documentation
+              </p>
             </div>
           </div>
 
@@ -193,28 +199,56 @@ function KavachInstallationRoute() {
 
       {/* 3. Features Section */}
       <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
-        <div className="container-editorial space-y-12">
-          <div className="gsap-reveal space-y-4">
-            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CAPABILITIES</span>
-            <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Features
-            </h2>
+        <div className="container-editorial space-y-16">
+          
+          {/* Section 1: Onboard Locomotive Works */}
+          <div className="space-y-8">
+            <div className="gsap-reveal space-y-2 border-l-2 border-steel pl-4">
+              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SCOPE OF WORK</span>
+              <h3 className="text-2xl md:text-3xl font-light leading-snug text-ink uppercase">
+                Onboard — Locomotive Works
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {onboardFeatures.map((feat, idx) => (
+                <div key={idx} className="flex flex-col gap-4 p-6 bg-section border border-rule/20 rounded group hover:border-steel transition-all duration-300 gsap-reveal">
+                  <div className="w-12 h-12 rounded bg-white border border-rule/20 flex items-center justify-center text-ink group-hover:bg-steel group-hover:text-white transition-colors duration-300">
+                    {feat.icon}
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="text-base font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h4>
+                    <p className="text-xs text-ink-muted leading-relaxed font-light">{feat.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
-            {features.map((feat, idx) => (
-              <div key={idx} className="flex gap-6 items-start gsap-reveal group">
-                <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
-                  {feat.icon}
+          {/* Section 2: Station & Trackside Works */}
+          <div className="space-y-8 pt-6 border-t border-rule/10">
+            <div className="gsap-reveal space-y-2 border-l-2 border-steel pl-4">
+              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SCOPE OF WORK</span>
+              <h3 className="text-2xl md:text-3xl font-light leading-snug text-ink uppercase">
+                Station & Trackside Works
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+              {tracksideFeatures.map((feat, idx) => (
+                <div key={idx} className="flex gap-6 items-start gsap-reveal group">
+                  <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
+                    {feat.icon}
+                  </div>
+                  <div className="space-y-2 flex-1">
+                    <h4 className="text-base font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h4>
+                    <p className="text-xs text-ink-muted leading-relaxed font-light">{feat.desc}</p>
+                  </div>
                 </div>
-                <div className="space-y-2 flex-1">
-                  <h3 className="text-lg font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h3>
-                  <p className="text-sm text-ink-muted leading-relaxed font-light">{feat.desc}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
         </div>
       </section>
 

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as QualityRouteImport } from './routes/quality'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -52,6 +53,11 @@ const TermsRoute = TermsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualityRoute = QualityRouteImport.update({
+  id: '/quality',
+  path: '/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -233,6 +239,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
   '/projects': typeof ProjectsRoute
+  '/quality': typeof QualityRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/products/coaches': typeof ProductsCoachesRoute
@@ -268,6 +275,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/privacy': typeof PrivacyRoute
   '/projects': typeof ProjectsRoute
+  '/quality': typeof QualityRoute
   '/terms': typeof TermsRoute
   '/products/coaches': typeof ProductsCoachesRoute
   '/services/ems': typeof ServicesEmsRoute
@@ -301,6 +309,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/products': typeof ProductsRouteWithChildren
   '/projects': typeof ProjectsRoute
+  '/quality': typeof QualityRoute
   '/services': typeof ServicesRouteWithChildren
   '/terms': typeof TermsRoute
   '/products/coaches': typeof ProductsCoachesRoute
@@ -339,6 +348,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/products'
     | '/projects'
+    | '/quality'
     | '/services'
     | '/terms'
     | '/products/coaches'
@@ -374,6 +384,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/privacy'
     | '/projects'
+    | '/quality'
     | '/terms'
     | '/products/coaches'
     | '/services/ems'
@@ -406,6 +417,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/products'
     | '/projects'
+    | '/quality'
     | '/services'
     | '/terms'
     | '/products/coaches'
@@ -443,6 +455,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProductsRoute: typeof ProductsRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
+  QualityRoute: typeof QualityRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   TermsRoute: typeof TermsRoute
 }
@@ -461,6 +474,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quality': {
+      id: '/quality'
+      path: '/quality'
+      fullPath: '/quality'
+      preLoaderRoute: typeof QualityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -801,6 +821,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProductsRoute: ProductsRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
+  QualityRoute: QualityRoute,
   ServicesRoute: ServicesRouteWithChildren,
   TermsRoute: TermsRoute,
 }

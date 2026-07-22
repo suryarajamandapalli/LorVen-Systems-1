@@ -72,7 +72,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         {/* Left nav links — slide in from center → left */}
         <nav className="hidden items-center gap-10 text-[11px] lg:text-[13px] font-medium tracking-[0.15em] lg:flex">
           {[
-            <NavLink key="home" to="/" current={pathname} solid={solid}>HOME</NavLink>,
+            // <NavLink key="home" to="/" current={pathname} solid={solid}>HOME</NavLink>,
             <NavLink key="about" to="/about" current={pathname} solid={solid}>ABOUT</NavLink>,
             <NavTrigger key="products" label="PRODUCTS" active={pane === "products" || pathname.startsWith("/products")} onEnter={() => openPane("products")} onClick={() => setPane(pane === "products" ? null : "products")} solid={solid} />,
           ].map((item, i) => (
@@ -114,7 +114,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         <nav className="hidden items-center gap-10 text-[11px] lg:text-[13px] font-medium tracking-[0.15em] lg:flex">
           {[
             <NavTrigger key="services" label="SERVICES" active={pane === "services" || pathname.startsWith("/services")} onEnter={() => openPane("services")} onClick={() => setPane(pane === "services" ? null : "services")} solid={solid} />,
-            <NavLink key="projects" to="/projects" current={pathname} solid={solid}>PROJECTS</NavLink>,
+            // <NavLink key="projects" to="/projects" current={pathname} solid={solid}>PROJECTS</NavLink>,
             <NavLink key="contact" to="/contact" current={pathname} solid={solid}>CONTACT</NavLink>,
           ].map((item, i) => (
             <div
@@ -399,7 +399,7 @@ function MobileNav({
       <div className="flex-1 overflow-y-auto">
         <nav className="container-editorial py-10 flex flex-col gap-5 pb-24">
           
-          {/* HOME */}
+          {/* HOME (Temporarily commented out)
           <div className="border-t border-rule/20 pt-4">
             <Link
               to="/"
@@ -410,6 +410,7 @@ function MobileNav({
               <span className="num-mono text-[10px] text-ink-muted">01</span>
             </Link>
           </div>
+          */}
 
           {/* ABOUT */}
           <div className="border-t border-rule/20 pt-4">
@@ -508,7 +509,7 @@ function MobileNav({
             )}
           </div>
 
-          {/* PROJECTS */}
+          {/* PROJECTS (Temporarily commented out)
           <div className="border-t border-rule/20 pt-4">
             <Link
               to="/projects"
@@ -519,6 +520,7 @@ function MobileNav({
               <span className="num-mono text-[10px] text-ink-muted">05</span>
             </Link>
           </div>
+          */}
 
           {/* CAREERS */}
           <div className="border-t border-rule/20 pt-4">

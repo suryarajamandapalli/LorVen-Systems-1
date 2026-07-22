@@ -74,9 +74,9 @@ function ContactPage() {
           <img
             src={engineers}
             alt="LorVen Railway Engineering Team"
-            className="w-full h-full object-cover opacity-35 select-none pointer-events-none"
+            className="w-full h-full object-cover opacity-65 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/10 z-10" />
         </div>
 
         {/* Content */}
@@ -92,7 +92,6 @@ function ContactPage() {
             </nav>
 
             <div className="space-y-4">
-              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CONTACT</span>
               <h1 className="text-4xl md:text-6xl lg:text-[64px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
                 Tell us about the system you need to build.
               </h1>

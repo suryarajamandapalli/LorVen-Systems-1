@@ -113,9 +113,9 @@ function WliRoute() {
           <img
             src={coachBuild}
             alt="WLI — IoT-Based Water Level Indicator"
-            className="w-full h-full object-cover opacity-20 select-none pointer-events-none"
+            className="w-full h-full object-cover opacity-35 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent z-10" />
         </div>
 
         {/* Content */}
@@ -135,13 +135,9 @@ function WliRoute() {
             </nav>
 
             <div className="space-y-3">
-              <span className="text-xs uppercase tracking-widest text-steel font-bold block">PRODUCTS — COACHES & WAGONS</span>
               <h1 className="text-3xl md:text-5xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
                 IoT-Based Water Level Indicator (WLI)
               </h1>
-              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 font-mono">
-                Developed for Indian Railways — Specific Technical Requirement (STR) prepared for RDSO
-              </p>
             </div>
 
             <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
@@ -152,7 +148,7 @@ function WliRoute() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/50 text-[9px] uppercase tracking-[0.2em] font-bold select-none pointer-events-none animate-bounce">
-          <span>Scroll Down</span>
+          <span>Explore WLI</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
             <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

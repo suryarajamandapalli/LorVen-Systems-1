@@ -310,12 +310,12 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
     title: "WLI",
     category: "COACHES & WAGONS",
     heroImage: wagonsHero,
-    description: "IoT-Based Water Level Indicator system for real-time onboard tank monitoring in passenger coaches.",
+    description: "Onboard Wagon Load Indicator system for real-time axle weight monitoring and payload cargo diagnostics.",
     
-    overviewTitle: "Real-Time Water Level Monitoring for Passenger Coaches",
+    overviewTitle: "Continuous Onboard Axle Load Telemetry & Cargo Balance Tracking",
     overviewParagraphs: [
-      "The IoT-Based Water Level Indicator (WLI) is an intelligent monitoring system designed for Indian Railway passenger coaches. It continuously monitors the water level in onboard water tanks and provides real-time status updates and low-water alerts, enabling timely refilling and ensuring uninterrupted water availability throughout the journey.",
-      "Designed for passenger coach applications, the system improves operational efficiency while enhancing passenger comfort and reducing water-related service interruptions."
+      "The Wagon Load Indicator (WLI) is an onboard payload measurement system that utilizes bogie-mounted strain sensors. Engineered for heavy haul freight wagons, it monitors cargo weight and balance distribution in real time, preventing overloading damage and cargo imbalance derailments.",
+      "The system broadcasts loading data using sub-1GHz wireless links, sending cargo weights directly to yard screens and locomotive cabs without connecting cables between wagon frames. High-visibility external LED displays show cargo level status during bulk loading runs."
     ],
     overviewImage: wagonsHeroReal,
 

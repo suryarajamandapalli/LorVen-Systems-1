@@ -107,7 +107,7 @@ function WliRoute() {
     <div ref={containerRef} className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[40vh] bg-ink overflow-hidden flex flex-col justify-end pb-12 pt-24">
+      <section className="relative min-h-[50vh] bg-ink overflow-hidden flex flex-col justify-end pb-16 pt-32">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -115,7 +115,7 @@ function WliRoute() {
             alt="WLI — IoT-Based Water Level Indicator"
             className="w-full h-full object-cover opacity-20 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
         </div>
 
         {/* Content */}
@@ -134,18 +134,25 @@ function WliRoute() {
               </ol>
             </nav>
 
-            <div className="space-y-2">
-              <span className="text-xs uppercase tracking-wider text-steel font-bold block">PRODUCTS — COACHES & WAGONS</span>
-              <h1 className="text-3xl md:text-5xl font-light uppercase tracking-tight leading-tight text-white max-w-3xl">
-                WLI — IoT-Based Water Level Indicator
+            <div className="space-y-3">
+              <span className="text-xs uppercase tracking-widest text-steel font-bold block">PRODUCTS — COACHES & WAGONS</span>
+              <h1 className="text-3xl md:text-5xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
+                IoT-Based Water Level Indicator (WLI)
               </h1>
+              <p className="text-sm font-semibold uppercase tracking-wider text-white/60 font-mono">
+                Developed for Indian Railways — Specific Technical Requirement (STR) prepared for RDSO
+              </p>
             </div>
+
+            <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
+              Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server — enabling planned watering at nominated stations and reducing en-route watering failures and passenger complaints.
+            </p>
           </div>
         </div>
       </section>
 
       {/* 2. Overview Section */}
-      <section className="bg-bg py-20 md:py-28 border-t border-rule/20">
+      <section className="bg-bg py-12 md:py-16 border-t border-rule/20">
         <div className="container-editorial grid grid-cols-12 gap-8 md:gap-16 items-center">
           {/* Left Column */}
           <div className="col-span-12 lg:col-span-7 gsap-reveal space-y-6">
@@ -177,8 +184,8 @@ function WliRoute() {
       </section>
 
       {/* 3. Features Section */}
-      <section className="bg-bg border-t border-rule/20 py-20 md:py-28">
-        <div className="container-editorial space-y-16">
+      <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
+        <div className="container-editorial space-y-12">
           <div className="gsap-reveal space-y-4">
             <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">CAPABILITIES</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
@@ -187,7 +194,7 @@ function WliRoute() {
           </div>
 
           {/* 2x3 Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
             {features.map((feat, idx) => (
               <div key={idx} className="flex gap-6 items-start gsap-reveal group">
                 <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
@@ -204,7 +211,7 @@ function WliRoute() {
       </section>
 
       {/* 4. Enterprise CTA */}
-      <section className="bg-ink text-on-dark py-24 md:py-32 border-t border-ink relative overflow-hidden">
+      <section className="bg-ink text-on-dark py-16 md:py-20 border-t border-ink relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img

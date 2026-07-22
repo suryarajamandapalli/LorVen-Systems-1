@@ -46,72 +46,44 @@ function KavachInstallationRoute() {
     });
   }, { scope: containerRef });
 
-  const onboardFeatures = [
+  const capabilities = [
     {
-      title: "Onboard Equipment Installation (WAP/WAG)",
-      desc: "Installation of KAVACH onboard equipment on electric locomotives (WAP/WAG): Vital Computer, DMI, brake interface unit, radio and antenna systems, RFID reader and cabling per OEM wiring schedules.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M8 6h8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      num: "01",
+      title: "Onboard — Locomotive Works",
+      bullets: [
+        "Installation of KAVACH onboard equipment on electric locomotives (WAP/WAG): Vital Computer, DMI, brake interface unit, radio and antenna systems, RFID reader and cabling per OEM wiring schedules.",
+        "Cable routing, termination and continuity/insulation verification against released wiring drawings.",
+        "Post-installation testing, integration testing with locomotive systems, and commissioning support through onboard functional acceptance tests."
+      ]
     },
     {
-      title: "Cable Routing & Termination",
-      desc: "Cable routing, termination and continuity/insulation verification against released wiring drawings.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    },
-    {
-      title: "Functional Acceptance Testing",
-      desc: "Post-installation testing, integration testing with locomotive systems, and commissioning support through onboard functional acceptance tests.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      num: "02",
+      title: "Station & Trackside Works",
+      bullets: [
+        "Installation of Station KAVACH equipment — stationary KAVACH unit, tower and radio infrastructure, interface wiring to interlocking.",
+        "RFID tag installation — normal, adjustment line, TIN discrimination and LC gate tags — with programming and placement per approved tag layout (Annexure requirements).",
+        "Independent tag-data field verification — absolute location, TIN, tag type, unique ID — against approved station data, with formal discrepancy reporting.",
+        "Support during IFAT / OFAT and field trials."
+      ]
     }
   ];
 
-  const tracksideFeatures = [
+  const whyLorVen = [
     {
-      title: "Station KAVACH & Infrastructure",
-      desc: "Installation of Station KAVACH equipment — stationary KAVACH unit, tower and radio infrastructure, interface wiring to interlocking.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "RDSO Conformance",
+      desc: "Field installation and testing performed in strict adherence to RDSO/SPN/196/2020 guidelines and OEM wiring schedules."
     },
     {
-      title: "RFID Tag Installation & Placement",
-      desc: "RFID tag installation — normal, adjustment line, TIN discrimination and LC gate tags — with programming and placement per approved tag layout (Annexure requirements).",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M7 7h10M7 12h10M7 17h10M12 2v20" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "Qualified Field Engineers",
+      desc: "Certified engineering teams experienced in high-voltage locomotive cabs, wayside equipment rooms, and trackside radio towers."
     },
     {
-      title: "Independent Tag-Data Verification",
-      desc: "Independent tag-data field verification — absolute location, TIN, tag type, unique ID — against approved station data, with formal discrepancy reporting.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "Independent Data Verification",
+      desc: "Formal field verification of RFID tag locations, unique IDs, and TIN discrimination with discrepancy reporting."
     },
     {
-      title: "IFAT / OFAT & Field Trial Support",
-      desc: "Support during IFAT / OFAT and field trials.",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
+      title: "End-to-End Acceptance Support",
+      desc: "Full technical support during IFAT, OFAT, static testing, dynamic locomotive trials, and commissioning."
     }
   ];
 
@@ -127,12 +99,12 @@ function KavachInstallationRoute() {
             alt="KAVACH Installation & Commissioning"
             className="w-full h-full object-cover opacity-35 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
         </div>
 
         {/* Content */}
         <div className="container-editorial relative z-20 w-full text-white">
-          <div className="max-w-4xl space-y-4">
+          <div className="max-w-4xl space-y-5">
             {/* Breadcrumbs */}
             <nav className="text-xs uppercase tracking-wider text-white/50">
               <ol className="flex items-center gap-2 flex-wrap font-semibold">
@@ -145,20 +117,21 @@ function KavachInstallationRoute() {
             </nav>
 
             <div className="space-y-3">
-              <h1 className="text-3xl md:text-5xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
+              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SERVICES</span>
+              <h1 className="text-3xl md:text-5xl lg:text-[56px] font-light uppercase tracking-tight leading-tight text-white max-w-4xl">
                 KAVACH Installation & Commissioning
               </h1>
             </div>
 
-            <p className="text-base md:text-lg text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel/40 pl-6 pt-2">
-              Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020.
+            <p className="text-base md:text-xl text-white/90 leading-relaxed font-light max-w-3xl border-l-2 border-steel pl-6 pt-2">
+              Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020
             </p>
           </div>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/50 text-[9px] uppercase tracking-[0.2em] font-bold select-none pointer-events-none animate-bounce">
-          <span>Explore KAVACH Services</span>
+          <span>Explore Capabilities</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
             <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -166,11 +139,11 @@ function KavachInstallationRoute() {
       </section>
 
       {/* 2. Overview Section */}
-      <section className="bg-bg py-12 md:py-16 border-t border-rule/20">
+      <section className="bg-bg py-16 md:py-24 border-t border-rule/20">
         <div className="container-editorial grid grid-cols-12 gap-8 md:gap-16 items-center">
           {/* Left Column */}
           <div className="col-span-12 lg:col-span-7 gsap-reveal space-y-6">
-            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SERVICES</span>
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">OVERVIEW</span>
             <h2 className="text-3xl md:text-4xl font-extralight leading-tight text-ink uppercase">
               KAVACH Installation & Commissioning
             </h2>
@@ -178,8 +151,8 @@ function KavachInstallationRoute() {
               <p className="text-lg md:text-xl text-black leading-relaxed font-light">
                 Installation, integration, testing and verification services to KAVACH OEMs and railway units — per OEM documentation and RDSO/SPN/196/2020.
               </p>
-              <p className="text-sm text-ink-muted leading-relaxed font-mono uppercase tracking-wider">
-                Compliance: RDSO Specification RDSO/SPN/196/2020 & OEM Documentation
+              <p className="text-base text-ink-muted leading-relaxed font-light">
+                LorVen Systems provides certified field engineering, equipment mounting, cabling, RFID tag deployment, and system verification services across locomotive and trackside installations.
               </p>
             </div>
           </div>
@@ -189,7 +162,7 @@ function KavachInstallationRoute() {
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface rounded border border-rule/10 shadow-lg">
               <img
                 src={serviceInstallation}
-                alt="KAVACH Field Installation Works"
+                alt="KAVACH Field Installation & Equipment Mounting"
                 className="h-full w-full object-cover select-none pointer-events-none"
               />
             </div>
@@ -197,62 +170,72 @@ function KavachInstallationRoute() {
         </div>
       </section>
 
-      {/* 3. Features Section */}
-      <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
+      {/* 3. Engineering Capabilities (2-Card Substantial Grid matching EPD Template) */}
+      <section className="bg-section border-t border-rule/20 py-20 md:py-28">
         <div className="container-editorial space-y-16">
-          
-          {/* Section 1: Onboard Locomotive Works */}
-          <div className="space-y-8">
-            <div className="gsap-reveal space-y-2 border-l-2 border-steel pl-4">
-              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SCOPE OF WORK</span>
-              <h3 className="text-2xl md:text-3xl font-light leading-snug text-ink uppercase">
-                Onboard — Locomotive Works
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {onboardFeatures.map((feat, idx) => (
-                <div key={idx} className="flex flex-col gap-4 p-6 bg-section border border-rule/20 rounded group hover:border-steel transition-all duration-300 gsap-reveal">
-                  <div className="w-12 h-12 rounded bg-white border border-rule/20 flex items-center justify-center text-ink group-hover:bg-steel group-hover:text-white transition-colors duration-300">
-                    {feat.icon}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-base font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h4>
-                    <p className="text-xs text-ink-muted leading-relaxed font-light">{feat.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="gsap-reveal space-y-4 max-w-3xl">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SERVICES</span>
+            <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
+              Engineering Capabilities
+            </h2>
+            <p className="text-base text-ink-muted leading-relaxed font-light">
+              Turnkey field execution for locomotive onboard systems and station/trackside KAVACH infrastructure.
+            </p>
           </div>
 
-          {/* Section 2: Station & Trackside Works */}
-          <div className="space-y-8 pt-6 border-t border-rule/10">
-            <div className="gsap-reveal space-y-2 border-l-2 border-steel pl-4">
-              <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">SCOPE OF WORK</span>
-              <h3 className="text-2xl md:text-3xl font-light leading-snug text-ink uppercase">
-                Station & Trackside Works
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-              {tracksideFeatures.map((feat, idx) => (
-                <div key={idx} className="flex gap-6 items-start gsap-reveal group">
-                  <div className="w-12 h-12 rounded bg-section border border-rule/20 flex items-center justify-center text-ink flex-shrink-0 group-hover:bg-steel group-hover:text-white transition-colors duration-300">
-                    {feat.icon}
+          {/* 2-Column Substantial Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {capabilities.map((cap, idx) => (
+              <div
+                key={idx}
+                className="p-8 bg-bg border border-rule/25 rounded shadow-sm hover:border-steel transition-all duration-300 gsap-reveal flex flex-col justify-between space-y-4 group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-steel tracking-widest uppercase">
+                      SCOPE {cap.num}
+                    </span>
                   </div>
-                  <div className="space-y-2 flex-1">
-                    <h4 className="text-base font-bold text-ink uppercase tracking-wide leading-snug">{feat.title}</h4>
-                    <p className="text-xs text-ink-muted leading-relaxed font-light">{feat.desc}</p>
-                  </div>
+                  <h3 className="text-xl font-bold text-ink uppercase tracking-tight group-hover:text-steel transition-colors duration-300">
+                    {cap.title}
+                  </h3>
+                  <ul className="space-y-3 border-t border-rule/15 pt-4">
+                    {cap.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-3 text-sm text-ink-muted leading-relaxed font-light">
+                        <span className="text-steel font-bold text-xs mt-1">•</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
 
-      {/* 4. Enterprise CTA */}
+      {/* 4. Why LorVen Engineering Section */}
+      <section className="bg-bg border-t border-rule/20 py-20 md:py-28">
+        <div className="container-editorial space-y-12">
+          <div className="gsap-reveal space-y-4 max-w-3xl">
+            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">WHY LORVEN</span>
+            <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
+              Engineering Excellence
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {whyLorVen.map((item, idx) => (
+              <div key={idx} className="p-8 bg-section border border-rule/20 rounded space-y-3 gsap-reveal hover:border-steel transition-colors duration-300">
+                <h3 className="text-base font-bold text-ink uppercase tracking-wide">{item.title}</h3>
+                <p className="text-sm text-ink-muted leading-relaxed font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Enterprise CTA */}
       <section className="bg-ink text-on-dark py-16 md:py-20 border-t border-ink relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">

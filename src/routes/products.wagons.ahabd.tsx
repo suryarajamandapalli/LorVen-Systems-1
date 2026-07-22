@@ -172,7 +172,30 @@ function AhabdRoute() {
         </div>
       </section>
 
-      {/* 3. Features Section */}
+      {/* 3. Problem → Solution Narrative Panels */}
+      <section className="bg-section border-t border-rule/20 py-12 md:py-16">
+        <div className="container-editorial space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 gsap-reveal">
+            {/* Left Panel: The Gap */}
+            <div className="bg-bg p-8 md:p-10 border border-rule/25 rounded shadow-sm space-y-4 flex flex-col group hover:border-steel transition-all duration-300">
+              <h3 className="text-xl font-bold text-ink uppercase tracking-tight">The gap</h3>
+              <p className="text-sm md:text-base text-ink/80 leading-relaxed font-light border-t border-rule/20 pt-4">
+                Trackside instrumentation already records every axle's temperature as a train passes — but readings are held against bare axle numbers. A hot axle box can be seen, yet cannot be reliably tied to a specific, named coach — making it difficult to act on, escalate or retain as a record.
+              </p>
+            </div>
+
+            {/* Right Panel: What AHABD Does */}
+            <div className="bg-bg p-8 md:p-10 border border-rule/25 rounded shadow-sm space-y-4 flex flex-col group hover:border-steel transition-all duration-300">
+              <h3 className="text-xl font-bold text-ink uppercase tracking-tight">What AHABD does</h3>
+              <p className="text-sm md:text-base text-ink/80 leading-relaxed font-light border-t border-rule/20 pt-4">
+                For every train passing a monitoring point, AHABD establishes which coach each temperature reading belongs to — delivering a complete, identified record of the pass: each coach named, each axle temperature attached to it, and overheating flagged for attention.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Features Section */}
       <section className="bg-bg border-t border-rule/20 py-12 md:py-16">
         <div className="container-editorial space-y-12">
           <div className="gsap-reveal space-y-4">

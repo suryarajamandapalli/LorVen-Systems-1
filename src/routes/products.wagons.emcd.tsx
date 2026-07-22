@@ -49,7 +49,7 @@ function EmcdRoute() {
     <div ref={containerRef} className="bg-bg text-ink selection:bg-ink selection:text-on-dark antialiased">
 
       {/* Full-Screen Coming Soon Hero */}
-      <section className="relative min-h-screen bg-ink overflow-hidden flex flex-col items-center justify-center">
+      <section className="relative min-h-screen bg-ink overflow-hidden flex flex-col items-center justify-center pt-28 pb-20 px-4">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
@@ -61,10 +61,10 @@ function EmcdRoute() {
         </div>
 
         {/* Content */}
-        <div className="relative z-20 flex flex-col items-center text-center px-6 space-y-10">
+        <div className="relative z-20 flex flex-col items-center text-center space-y-6 md:space-y-10 max-w-3xl w-full">
           {/* Breadcrumbs */}
-          <nav className="text-xs uppercase tracking-wider text-white/40">
-            <ol className="flex items-center gap-2 flex-wrap font-semibold justify-center">
+          <nav className="text-[10px] md:text-xs uppercase tracking-wider text-white/40">
+            <ol className="flex items-center gap-1.5 md:gap-2 flex-wrap font-semibold justify-center">
               <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
               <li className="text-white/20 font-light">&gt;</li>
               <li><Link to="/products" className="hover:text-white transition-colors">Products</Link></li>
@@ -79,34 +79,34 @@ function EmcdRoute() {
           <img
             src={logoWhite}
             alt="LorVen Systems"
-            className="w-40 md:w-52 h-auto opacity-80 select-none pointer-events-none"
+            className="w-28 md:w-40 lg:w-52 h-auto opacity-80 select-none pointer-events-none"
           />
 
           {/* Product Title */}
-          <div className="space-y-4 max-w-3xl">
-            <h1 className="text-3xl md:text-5xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white">
+          <div className="space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl lg:text-[54px] font-light uppercase tracking-tight leading-tight text-white">
               AI-Based Electromagnetic Crack Detector (EMCD)
             </h1>
-            <p className="text-base md:text-lg text-white/60 leading-relaxed font-light max-w-2xl mx-auto">
+            <p className="text-sm md:text-lg text-white/60 leading-relaxed font-light max-w-2xl mx-auto">
               Automated non-destructive testing for railway components
             </p>
           </div>
 
           {/* Coming Soon Badge */}
-          <div className="flex flex-col items-center gap-4 pt-4">
-            <span className="inline-block px-6 py-2.5 border border-steel/50 text-steel text-xs font-bold uppercase tracking-[0.25em] rounded-sm">
+          <div className="flex flex-col items-center gap-3 md:gap-4 pt-2 md:pt-4">
+            <span className="inline-block px-5 md:px-6 py-2 md:py-2.5 border border-steel/50 text-steel text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] rounded-sm">
               Coming Soon
             </span>
-            <p className="text-white/40 text-xs font-light tracking-wider uppercase">
+            <p className="text-white/40 text-[10px] md:text-xs font-light tracking-wider uppercase">
               Product details will be available shortly
             </p>
           </div>
 
           {/* CTA */}
-          <div className="pt-6">
+          <div className="pt-4 md:pt-6">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-xs font-bold uppercase tracking-[0.2em] text-white/70 hover:bg-white hover:text-ink transition-colors duration-300 rounded-sm"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border border-white/30 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/70 hover:bg-white hover:text-ink transition-colors duration-300 rounded-sm"
             >
               Discuss Your Requirements →
             </Link>

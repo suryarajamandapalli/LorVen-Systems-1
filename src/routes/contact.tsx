@@ -69,14 +69,14 @@ function ContactPage() {
       
       {/* ── SECTION 1: CINEMATIC HERO ──────────────────────────────────────── */}
       <section className="relative min-h-screen bg-ink overflow-hidden flex flex-col justify-center pb-20 pt-28">
-        {/* Background Image */}
+        {/* Background Image with Left-to-Right Dark Gradient for Text Contrast */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src={engineers}
             alt="LorVen Railway Engineering Team"
-            className="w-full h-full object-cover opacity-65 select-none pointer-events-none"
+            className="w-full h-full object-cover opacity-85 select-none pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/10 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/65 to-black/20 z-10" />
         </div>
 
         {/* Content */}

@@ -258,7 +258,6 @@ function RdpmsRoute() {
 
           {/* Monitored Assets Engineering summary strip */}
           <div className="bg-section border border-rule/20 p-8 rounded gsap-reveal space-y-4">
-            <h3 className="text-xl font-light uppercase tracking-tight text-ink">Assets Monitored</h3>
             
             <div className="flex flex-wrap gap-2.5 pt-2">
               {monitoredAssets.map((asset, idx) => (

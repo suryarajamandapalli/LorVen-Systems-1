@@ -10,7 +10,6 @@ if (typeof window !== "undefined") {
 
 // Assets
 import wagons from "@/assets/wagons.jpg";
-import logoWhite from "@/assets/logo-1-white.svg";
 
 export const Route = createFileRoute("/products/wagons/emcd")({
   head: () => ({
@@ -74,13 +73,6 @@ function EmcdRoute() {
               <li className="text-white/60">EMCD</li>
             </ol>
           </nav>
-
-          {/* Logo */}
-          <img
-            src={logoWhite}
-            alt="LorVen Systems"
-            className="w-28 md:w-40 lg:w-52 h-auto opacity-80 select-none pointer-events-none"
-          />
 
           {/* Product Title */}
           <div className="space-y-3 md:space-y-4">

@@ -659,7 +659,7 @@ This document contains the verbatim content extraction of the LorVen Systems web
 ## Contacts & Lines
 *   **Engineering Support Hotline:** +91 80 4912 3099 (24/7 Priority Assistance Line)
 *   **Engineering Support Email:** support@lorvensystems.com
-*   **Bids & Tenders Email:** bids@lorvensystems.com
+*   **Bids & Tenders Email:** procurement@lorvensystem.in
 *   **Partnership Enquiries Email:** partner@lorvensystems.com
 *   **Project Planning Email:** design@lorvensystems.com
 

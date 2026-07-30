@@ -308,9 +308,8 @@ function ContactPage() {
       <section id="office-location" className="bg-section py-20 border-t border-rule/20">
         <div className="container-editorial space-y-12">
           <div className="gsap-reveal space-y-3 max-w-3xl">
-            <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">OFFICE LOCATION</span>
             <h2 className="text-3xl md:text-4xl font-light leading-snug text-ink uppercase">
-              Corporate Headquarters
+              Office Location
             </h2>
             <div className="text-sm text-ink-muted leading-relaxed font-light">
               <p>Zona Crescent, 8-682/B1 & B2, Road No. 12, Banjara Hills, Hyderabad, Telangana – 500034</p>

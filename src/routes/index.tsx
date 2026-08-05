@@ -951,61 +951,83 @@ function AboutPreview() {
 const PRODUCTS_LIST = [
   {
     n: "01",
+    label: "IoT & Energy Management",
+    img: slideIotEnergy,
+    slug: "iot-energy",
+    systems: [
+      {
+        code: "WLI",
+        name: "Water Level Indicator",
+        desc: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server for planned station watering.",
+        img: slideRollingStock,
+        href: "/products/wagons/wli",
+      },
+      {
+        code: "IFD",
+        name: "Intelligent Field Device",
+        desc: "Real-time monitoring, energy metering, and remote control of railway electrical assets reporting to IR-NIYANTRAC.",
+        img: slideIotEnergy,
+        href: "/products/electric-locomotive/ifd",
+      },
+    ],
+  },
+  {
+    n: "02",
     label: "Signalling & Telecom",
-    img: sntHero,
+    img: slideSnt,
     slug: "snt",
     systems: [
       {
         code: "RDPMS",
         name: "Remote Diagnostics",
-        desc: "Intelligent IoT platform continuously monitoring railway signalling equipment health, analyzing anomalies and generating predictive alerts before failures occur.",
-        img: sntHero,
+        desc: "Intelligent IoT platform continuously monitoring railway signalling equipment health, analyzing anomalies and generating predictive alerts.",
+        img: slideSnt,
         href: "/products/snt/rdpms",
       },
       {
         code: "IPS",
         name: "Integrated Power Supply",
         desc: "Microprocessor-controlled power system delivering uninterrupted, stable, and redundant electricity to critical railway signalling networks.",
-        img: electrical,
+        img: sntHero,
         href: "/products/snt/ips",
-      }
-    ],
-  },
-  {
-    n: "02",
-    label: "Electric Locomotive",
-    img: locoHero,
-    slug: "electric-locomotive",
-    systems: [
-      {
-        code: "Simulator",
-        name: "Driving Simulator",
-        desc: "High-fidelity driving simulation platform providing realistic training, route familiarization, and emergency scenarios for locomotive drivers.",
-        img: simulator,
-        href: "/products/electric-locomotive/simulators",
-      }
+      },
     ],
   },
   {
     n: "03",
-    label: "Coaches & Wagons",
-    img: wagonsHero,
+    label: "Rolling Stock",
+    img: slideRollingStock,
     slug: "wagons",
     systems: [
       {
-        code: "WLI",
-        name: "Wagon Load Indicator",
-        desc: "On-board load monitoring system accurately measuring wagon weight to prevent overloading and ensure railway safety compliance.",
-        img: wagons,
-        href: "/products/wagons/wli",
-      },
-      {
         code: "AHABD",
-        name: "Acoustic Hot Axle Box Detector",
-        desc: "Wayside acoustic detector identifying abnormal bearing temperatures and signatures early to reduce derailment risks.",
+        name: "Hot Axle Box Detector",
+        desc: "Automatic Hot Axle Box Detection establishing axle temperature records per coach to prevent derailments.",
         img: wagonsHero,
         href: "/products/wagons/ahabd",
-      }
+      },
+    ],
+  },
+  {
+    n: "04",
+    label: "Training Simulators",
+    img: slideSimulators,
+    slug: "simulators",
+    systems: [
+      {
+        code: "Driving Simulator",
+        name: "Loco Pilot Driving Simulator",
+        desc: "High-fidelity driving simulation platform providing realistic training, route familiarization, and emergency scenarios for locomotive drivers.",
+        img: simulator,
+        href: "/products/electric-locomotive/simulators",
+      },
+      {
+        code: "KAVACH Simulator",
+        name: "KAVACH ATP Pilot Trainer",
+        desc: "Classroom-safe KAVACH automatic train protection training platform for Station Masters and Loco Pilots.",
+        img: slideKavach,
+        href: "/products/electric-locomotive/kavach",
+      },
     ],
   },
 ];
@@ -1179,7 +1201,7 @@ function ProductsSection() {
                 <span className="text-[10px] uppercase tracking-[0.16em] text-white/40 block mb-3">
                   Core Products
                 </span>
-                <div className="flex gap-8">
+                <div className="flex flex-wrap gap-6">
                   {PRODUCTS_LIST[active].systems.map((sys, idx) => (
                     <Link
                       key={sys.code}
@@ -1229,16 +1251,40 @@ function ServicesSection() {
 
   const SERVICES_LIST = [
     {
-      title: "Design",
-      img: serviceDesign,
-      desc: "Schematic capture, PCB layout, mechanical packaging, and validation testing for rolling stock and trackside electronics under one roof.",
-      to: "/services/design",
+      title: "Electronic Product Development",
+      img: slideProductDev,
+      desc: "Complete embedded hardware design, firmware engineering, rapid prototyping, and validation testing for safety-critical environments.",
+      to: "/services/product-dev",
     },
     {
-      title: "Installation",
-      img: serviceInstallation,
-      desc: "Turnkey installation, cabin integration, commissioning, and depot-level maintenance services deployed directly on the field.",
-      to: "/services/installation",
+      title: "Signalling Design Services",
+      img: slideSignallingDesign,
+      desc: "CAD schematics, interlocking plans, Electronic Interlocking (EI) application logic, and KAVACH circuit designs compliant with RDSO standards.",
+      to: "/services/signalling-design",
+    },
+    {
+      title: "KAVACH Installation & Commissioning",
+      img: slideKavach,
+      desc: "Certified installation, RFID placement, loco equipment integration, and field testing for KAVACH Automatic Train Protection.",
+      to: "/services/kavach-installation",
+    },
+    {
+      title: "S&T System Integration",
+      img: slideSystemIntegration,
+      desc: "Multi-vendor signalling and telecom integration, interface engineering, FAT/SAT testing, and central diagnostic network telemetry.",
+      to: "/services/system-integration",
+    },
+    {
+      title: "Electronics Manufacturing Services (EMS)",
+      img: slideEms,
+      desc: "High-mix SMT assembly, box-build manufacturing, automated optical inspection, and rigorous quality testing under ISO 9001:2015.",
+      to: "/services/ems",
+    },
+    {
+      title: "Installation, Testing & Commissioning",
+      img: slideCommissioning,
+      desc: "Turnkey field installation, safety verification, traffic block execution, and lifecycle technical support across Indian Railways.",
+      to: "/services/testing-commissioning",
     },
   ];
 

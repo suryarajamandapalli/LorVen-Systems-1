@@ -104,9 +104,9 @@ export function ProductPageSystem({ data }: { data: ProductSystemData }) {
             <h2 className="text-2xl md:text-3xl lg:text-[36px] font-light text-ink uppercase tracking-wide leading-tight">
               {data.overviewTitle}
             </h2>
-            <div className="space-y-4 w-full lg:max-w-[720px] border-t border-rule/20 pt-6">
+            <div className="space-y-4 w-full max-w-prose border-t border-rule/20 pt-6">
               {data.overviewParagraphs.map((p, idx) => (
-                <p key={idx} className="text-base md:text-[19px] text-ink font-light leading-[1.8]">
+                <p key={idx} className="text-base md:text-lg text-ink font-light leading-relaxed">
                   {p}
                 </p>
               ))}
@@ -115,7 +115,7 @@ export function ProductPageSystem({ data }: { data: ProductSystemData }) {
 
           {/* Right Column: Visual Image */}
           <div className="lg:col-span-6">
-            <div className="border border-rule/15 overflow-hidden bg-surface aspect-[16/10] w-full">
+            <div className="border border-rule/15 overflow-hidden bg-surface aspect-[16/10] w-full rounded-md shadow-sm">
               <img
                 src={data.overviewImage}
                 alt="Product overview engineering detail"
@@ -148,17 +148,17 @@ export function ProductPageSystem({ data }: { data: ProductSystemData }) {
           {data.features.map((feat, idx) => (
             <div
               key={idx}
-              className="border border-rule/15 p-6 md:p-8 bg-white flex gap-5 items-start rounded-none"
+              className="border border-rule/15 p-6 md:p-8 bg-white flex gap-5 items-start rounded-md shadow-xs hover:border-steel/50 transition-all duration-300"
             >
               {/* Clean Checkmark Icon */}
-              <div className="w-5 h-5 flex items-center justify-center border border-rule/40 text-ink text-xs font-semibold flex-shrink-0 mt-1">
+              <div className="w-5 h-5 flex items-center justify-center border border-steel/40 text-steel text-xs font-bold flex-shrink-0 mt-1 rounded-xs bg-steel/5">
                 ✓
               </div>
               <div className="space-y-2 flex-1">
-                <h3 className="text-lg md:text-[20px] font-semibold text-ink uppercase tracking-normal">
+                <h3 className="text-base md:text-lg font-semibold text-ink uppercase tracking-normal">
                   {feat.title}
                 </h3>
-                <p className="text-sm md:text-base text-ink font-light leading-[1.7]">
+                <p className="text-sm md:text-base text-ink-muted font-light leading-relaxed">
                   {feat.desc}
                 </p>
               </div>

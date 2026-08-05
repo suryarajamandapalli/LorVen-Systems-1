@@ -1035,8 +1035,11 @@ function ProductsSection() {
   const [active, setActive] = useState(0);
   const [subActive, setSubActive] = useState(0);
 
+  const currentCategory = PRODUCTS_LIST[active] || PRODUCTS_LIST[0];
+  const currentSystem = currentCategory.systems[subActive] || currentCategory.systems[0];
+
   return (
-    <section className="relative bg-ink text-on-dark overflow-hidden py-20 md:py-28 flex lg:items-center products-section">
+    <section className="relative bg-ink text-on-dark overflow-hidden py-20 md:py-28 products-section border-b border-white/10">
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes fadeInUp {
           from {
@@ -1064,7 +1067,6 @@ function ProductsSection() {
         }
       `}} />
 
-      {/* Full-screen cinematic background images — crossfade on active and subActive changes */}
       {PRODUCTS_LIST.map((it, i) =>
         it.systems.map((sys, idx) => (
           <div
@@ -1287,124 +1289,101 @@ function ServicesSection() {
     },
   ];
 
+  const currentService = SERVICES_LIST[active] || SERVICES_LIST[0];
+
   return (
-    <section className="relative bg-ink text-on-dark overflow-hidden py-12 md:py-16 border-t border-white/5 services-section">
-      
-      {/* Content layer */}
-      <div className="container-editorial w-full flex flex-col lg:flex-row lg:items-center justify-between gap-12 lg:gap-16">
-
-        {/* Left column — vertical services menu list */}
-        <div className="flex flex-col justify-center w-full lg:w-[56%]">
-          <span className="eyebrow !text-on-dark/50 gsap-reveal">Services</span>
-          <h2 className="mt-4 text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-on-dark mb-10 gsap-reveal">
-            Our Services
-          </h2>
-
-          <ul className="space-y-6 border-t border-white/10 pt-6 gsap-reveal">
-            {SERVICES_LIST.map((it, i) => (
-              <li key={it.title} className="border-b border-white/5 pb-4 last:border-0">
-                <button
-                  type="button"
-                  onMouseEnter={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  className="group w-full text-left flex items-center justify-between py-1"
-                >
-                  <div className="flex items-center gap-4">
-                    {/* Label */}
-                    <span
-                      className={`font-light transition-all duration-400 ${
-                        active === i
-                          ? "text-[clamp(1.25rem,2vw,1.85rem)] text-white"
-                          : "text-[clamp(1.1rem,1.5vw,1.5rem)] text-white/35 group-hover:text-white/60"
-                      }`}
-                    >
-                      {it.title}
-                    </span>
-                  </div>
-
-                  {/* Arrow */}
-                  <span
-                    className={`num-mono text-[13px] shrink-0 transition-all duration-300 ${
-                      active === i ? "opacity-100 translate-x-0 text-white" : "opacity-0 -translate-x-3"
-                    }`}
-                  >
-                    →
-                  </span>
-                </button>
-
-                {/* Mobile blurb — accordion style details */}
-                <div
-                  className={`overflow-hidden transition-all duration-500 lg:hidden ${
-                    active === i ? "max-h-[500px] opacity-100 pb-2 mt-3" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <div className="pl-9 space-y-3 pt-3 border-t border-white/5">
-                    <p className="text-xs leading-relaxed text-white/60 font-light max-w-md">{it.desc}</p>
-                    <div className="pt-1">
-                      <Link
-                        to={it.to as any}
-                        className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.16em] text-white/80 hover:text-white transition-colors"
-                      >
-                        Learn More →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+    <section className="relative bg-bg text-ink py-20 md:py-28 services-section border-b border-rule/20">
+      <div className="container-editorial space-y-12">
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-rule/30">
+          <div className="space-y-3 max-w-3xl">
+            <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-ink-muted gsap-reveal">
+              03 / HOW WE ENGINEER
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light text-ink uppercase tracking-tight leading-tight gsap-reveal">
+              Turnkey Engineering & Field Capabilities.
+            </h2>
+          </div>
+          <div className="shrink-0">
+            <Link
+              to="/services"
+              className="btn-base btn-primary gap-2"
+            >
+              All Engineering Services →
+            </Link>
+          </div>
         </div>
 
-        {/* Right column — Single cinematic photo + placard below (desktop only) */}
-        <div className="hidden lg:flex w-full lg:w-[36%] flex-col justify-between services-parallax-col">
-          <div className="space-y-6">
-            {/* Cinematic Image Container */}
-            <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/25">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div className="lg:col-span-6 space-y-3">
+            {SERVICES_LIST.map((it, i) => (
+              <button
+                key={it.title}
+                type="button"
+                onMouseEnter={() => setActive(i)}
+                onClick={() => setActive(i)}
+                className={`w-full p-5 text-left border transition-all duration-300 rounded-md flex items-center justify-between gap-4 cursor-pointer ${
+                  active === i
+                    ? "border-ink bg-white shadow-md text-ink"
+                    : "border-rule/20 bg-bg hover:border-rule/50 text-ink-muted"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-xs font-mono font-bold text-steel">S/0{i + 1}</span>
+                  <span className={`text-base md:text-lg uppercase tracking-wide ${
+                    active === i ? "font-semibold text-ink" : "font-light"
+                  }`}>
+                    {it.title}
+                  </span>
+                </div>
+                <span className={`text-sm transition-transform ${active === i ? "translate-x-1 text-steel font-bold" : "text-ink/30"}`}>
+                  →
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className="lg:col-span-6 space-y-6">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md bg-surface border border-rule/20 shadow-lg services-parallax-col">
               {SERVICES_LIST.map((it, i) => (
                 <div
                   key={it.title}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                  className={`absolute inset-0 transition-opacity duration-700 ${
                     active === i ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   <img
                     src={it.img}
                     alt={it.title}
-                    className="w-full h-full object-cover filter brightness-[0.8] animate-slow-zoom"
+                    className="w-full h-full object-cover filter brightness-[0.85] animate-slow-zoom"
                   />
-                  {/* Subtle grading vignette gradient over the image */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 </div>
               ))}
-            </div>
 
-            {/* Placard details below the image */}
-            <div className="pt-2">
-              <h3
-                key={`service-title-${active}`}
-                className="text-2xl md:text-3xl font-light text-white tracking-tight mb-3 animate-fade-in-up"
-              >
-                {SERVICES_LIST[active].title}
-              </h3>
-              
-              <p
-                key={`service-desc-${active}`}
-                className="text-sm md:text-base leading-relaxed text-white/70 font-light tracking-wide max-w-md animate-fade-in-up min-h-[80px] mb-6"
-              >
-                {SERVICES_LIST[active].desc}
-              </p>
-
-              <div className="z-20">
-                <Link
-                  key={`service-link-${active}`}
-                  to={SERVICES_LIST[active].to as any}
-                  className="link-underline inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.12em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
-                >
-                  Learn More →
-                </Link>
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-3 z-10">
+                <span className="text-xs font-mono font-bold text-steel tracking-widest uppercase">
+                  Service Detail — S/0{active + 1}
+                </span>
+                <h3 className="text-2xl font-light uppercase tracking-tight text-white">
+                  {currentService.title}
+                </h3>
+                <p className="text-sm text-white/80 font-light leading-relaxed max-w-md">
+                  {currentService.desc}
+                </p>
+                <div className="pt-2">
+                  <Link
+                    to={currentService.to as any}
+                    className="btn-base btn-dark py-2.5 px-5 text-xs gap-2"
+                  >
+                    View Capability →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
       </div>

@@ -514,7 +514,7 @@ function Hero() {
 
   // 2. Autoplay progress tracking
   useEffect(() => {
-    if (!isCurrentlyPlaying) return;
+    if (!isPlaying) return;
 
     setProgress(0);
     let animFrame: number;
@@ -551,7 +551,7 @@ function Hero() {
     return () => {
       cancelAnimationFrame(animFrame);
     };
-  }, [activeSlide, slides.length, isCurrentlyPlaying]);
+  }, [activeSlide, slides.length, isPlaying]);
 
   return (
     <section

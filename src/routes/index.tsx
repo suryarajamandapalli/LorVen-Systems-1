@@ -228,6 +228,7 @@ function Hero() {
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const lastActiveSlideRef = useRef(0);
 
   const touchStartXRef = useRef(0);
   const touchStartYRef = useRef(0);

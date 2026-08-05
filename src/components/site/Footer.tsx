@@ -64,13 +64,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="link-underline opacity-85 hover:opacity-100">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link to="/careers" className="link-underline opacity-85 hover:opacity-100">
-                  Careers
+                <Link to="/quality" className="link-underline opacity-85 hover:opacity-100">
+                  Quality
                 </Link>
               </li>
               <li>

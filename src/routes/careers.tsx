@@ -1,33 +1,66 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
-import { PageIndex } from "@/components/site/PageIndex";
-import { CTAStrip } from "@/components/site/CTAStrip";
 import engineers from "@/assets/engineers.jpg";
+import { createSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/careers")({
-  head: () => ({
-    meta: [
-      { title: "Careers — LorVen Systems" },
-      {
-        name: "description",
-        content:
-          "Engineering roles at a quiet, specialist firm in railway electronics and electrical integration.",
-      },
-      { property: "og:title", content: "Careers — LorVen Systems" },
-      { property: "og:url", content: "/careers" },
-    ],
-    links: [{ rel: "canonical", href: "/careers" }],
+  head: () => createSeoMeta({
+    title: "Careers | LorVen Systems",
+    description: "Careers information currently under update.",
+    path: "/careers",
   }),
   component: Careers,
 });
 
+function Careers() {
+  return (
+    <div className="bg-bg text-ink min-h-[70vh] flex flex-col justify-between">
+      {/* Header */}
+      <PageHero
+        eyebrow="CAREERS"
+        title="Careers at LorVen"
+        lede="This section is currently being updated with new opportunities and role details."
+        image={engineers}
+        path={[{ label: "CAREERS" }]}
+      />
+
+      {/* Main Notice */}
+      <section className="bg-section border-t border-b border-rule/20 py-20 md:py-28">
+        <div className="container-editorial flex flex-col items-center text-center space-y-6 max-w-2xl mx-auto">
+          <span className="eyebrow block text-steel font-bold tracking-widest text-xs uppercase">
+            PAGE UNDER UPDATE
+          </span>
+          <h2 className="text-3xl md:text-4xl font-light uppercase tracking-tight leading-tight text-ink">
+            Careers Section Updating
+          </h2>
+          <p className="text-base text-ink-muted leading-relaxed font-light">
+            We are currently updating our careers portal and role listings. For general career inquiries or resume submissions, please feel free to reach out to our team directly.
+          </p>
+
+          <div className="pt-4 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center bg-ink text-white hover:bg-steel px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 rounded-sm shadow-md"
+            >
+              Contact Our Team →
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center border border-ink/40 text-ink hover:border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-colors duration-300 rounded-sm"
+            >
+              Return to Home
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/*
+// PREVIOUS CAREERS IMPLEMENTATION (RESERVED FOR FUTURE UPDATE):
 const OPENINGS = [
-  {
-    n: "C/01",
-    role: "Senior Hardware Engineer — Rail electronics",
-    loc: "Hyderabad",
-    type: "Permanent",
-  },
+  { n: "C/01", role: "Senior Hardware Engineer — Rail electronics", loc: "Hyderabad", type: "Permanent" },
   { n: "C/02", role: "PCB Layout Engineer", loc: "Hyderabad", type: "Permanent" },
   { n: "C/03", role: "Firmware Engineer — RTOS", loc: "Hyderabad", type: "Permanent" },
   { n: "C/04", role: "SMT Process Engineer", loc: "Bengaluru", type: "Permanent" },
@@ -35,93 +68,4 @@ const OPENINGS = [
   { n: "C/06", role: "Site Installation Engineer", loc: "Pan-India", type: "Permanent" },
   { n: "C/07", role: "Procurement Specialist — Electronics", loc: "Hyderabad", type: "Permanent" },
 ];
-
-function Careers() {
-  return (
-    <>
-      <PageHero
-        eyebrow="CAREERS"
-        title="Slow work. Long careers."
-        lede="LorVen is a specialist firm of engineers, technicians and machinists. We hire for patience as much as for skill. Most of our team has been with us for over a decade."
-        image={engineers}
-        path={[{ label: "CAREERS" }]}
-      />
-
-      <PageIndex
-        columns={[
-          {
-            title: "LorVen Culture",
-            items: [
-              { label: "Our Philosophy", href: "#culture" },
-              { label: "Benefits & Growth", href: "#culture" },
-            ],
-          },
-          {
-            title: "Join the Team",
-            items: [
-              { label: "Open Positions", href: "#openings" },
-              { label: "Graduate Program", href: "#openings" },
-            ],
-          },
-          {
-            title: "Inquiries",
-            items: [
-              { label: "Send Resume", href: "mailto:careers@lorvensystems.com" },
-            ],
-          },
-        ]}
-      />
-
-      <section id="culture" className="border-t border-rule bg-bg">
-        <div className="container-editorial grid grid-cols-12 gap-8 py-24">
-          <div className="col-span-12 md:col-span-3">
-            <span className="eyebrow">Culture</span>
-          </div>
-          <div className="col-span-12 md:col-span-9">
-            <p className="reveal max-w-3xl text-2xl font-light leading-snug text-ink md:text-3xl">
-              We are not in a hurry. The railway operates on twenty-year horizons, and so do we. Our
-              engineers are expected to learn one subsystem deeply, then teach it to the next
-              person.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="openings" className="border-t border-rule bg-section">
-        <div className="container-editorial py-16">
-          <div className="flex items-baseline justify-between">
-            <span className="eyebrow">Open roles</span>
-            <span className="num-mono text-[11px] text-ink-muted">{OPENINGS.length} positions</span>
-          </div>
-          <ul className="mt-10 border-t border-rule">
-            {OPENINGS.map((o) => (
-              <li key={o.n} className="reveal border-b border-rule">
-                <a
-                  href={`mailto:careers@lorvensystems.com?subject=${encodeURIComponent(o.role)}`}
-                  className="group grid grid-cols-12 items-baseline gap-4 py-6"
-                >
-                  <span className="col-span-12 text-2xl font-light text-ink group-hover:text-steel md:col-span-8 md:text-3xl">
-                    {o.role}
-                  </span>
-                  <span className="col-span-6 text-[11px] uppercase tracking-[0.16em] text-ink-muted md:col-span-2">
-                    {o.loc}
-                  </span>
-                  <span className="col-span-6 text-right text-[11px] uppercase tracking-[0.16em] text-ink-muted md:col-span-2">
-                    {o.type} →
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <CTAStrip
-        eyebrow="Apply"
-        title="Send a short note and a CV."
-        cta="careers@lorvensystems.com"
-        to="/contact"
-      />
-    </>
-  );
-}
+*/

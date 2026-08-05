@@ -217,6 +217,7 @@ function Home() {
       <AboutPreview />
       <ProductsSection />
       <ServicesSection />
+      <TrustSection />
       <HomeCTA />
     </>
   );
@@ -227,9 +228,6 @@ function Hero() {
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const lastActiveSlideRef = useRef(activeSlide);
-
-  const isCurrentlyPlaying = isPlaying;
 
   const touchStartXRef = useRef(0);
   const touchStartYRef = useRef(0);
@@ -249,12 +247,13 @@ function Hero() {
   };
 
   const onTouchEnd = () => {
-    const xDistance = touchStartXRef.current - touchEndXRef.current;
-    const yDistance = touchStartYRef.current - touchEndYRef.current;
-    const minSwipeDistance = 50;
+    const deltaX = touchEndXRef.current - touchStartXRef.current;
+    const deltaY = touchEndYRef.current - touchStartYRef.current;
 
-    if (Math.abs(xDistance) > Math.abs(yDistance) && Math.abs(xDistance) > minSwipeDistance) {
-      if (xDistance > 0) {
+    // Horizontal swipe threshold 40px, ensure horizontal motion dominates vertical scroll
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      if (deltaX < 0) {
+        // Swiped Left -> Next Slide
         setActiveSlide((prev) => (prev + 1) % slides.length);
         setProgress(0);
       } else {

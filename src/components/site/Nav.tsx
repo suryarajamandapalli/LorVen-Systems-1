@@ -474,13 +474,13 @@ function ProductsDropdownPortal({
                 onMouseEnter={() => setActiveCategory(cat.slug)}
                 onFocus={() => setActiveCategory(cat.slug)}
                 onClick={() => onNavigate(cat.to)}
-                className={`w-full flex items-center justify-between px-[16px] h-[46px] min-h-[46px] text-[15px] font-medium rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none ${
+                className={`group w-full flex items-center justify-between px-[16px] h-[46px] min-h-[46px] text-[15px] font-medium rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none ${
                   isActive
                     ? "bg-[#F5F6F8] text-[#111111] font-semibold"
                     : "text-[#111111]/85 hover:text-[#111111] hover:bg-[#F5F6F8]"
                 }`}
               >
-                <span>{cat.title}</span>
+                <span className="link-underline">{cat.title}</span>
                 <span className="text-[14px] text-black/30 select-none ml-2">›</span>
               </button>
             );
@@ -511,9 +511,9 @@ function ProductsDropdownPortal({
                 key={child.slug}
                 type="button"
                 onClick={() => onNavigate(child.to)}
-                className="w-full flex items-center px-[16px] h-[44px] min-h-[44px] text-[14.5px] font-medium text-[#111111]/85 hover:text-steel hover:bg-[#F5F6F8] rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none"
+                className="group w-full flex items-center px-[16px] h-[44px] min-h-[44px] text-[14.5px] font-medium text-[#111111]/85 hover:text-steel hover:bg-[#F5F6F8] rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none"
               >
-                {child.title}
+                <span className="link-underline">{child.title}</span>
               </button>
             ))}
           </div>
@@ -611,9 +611,9 @@ function ServicesDropdownPortal({
             key={s.slug}
             type="button"
             onClick={() => onNavigate(`/services/${s.slug}`)}
-            className="w-full flex items-center px-[16px] h-[46px] min-h-[46px] text-[15px] font-medium text-[#111111]/85 hover:text-steel hover:bg-[#F5F6F8] rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none"
+            className="group w-full flex items-center px-[16px] h-[46px] min-h-[46px] text-[15px] font-medium text-[#111111]/85 hover:text-steel hover:bg-[#F5F6F8] rounded-[6px] transition-colors duration-[150ms] ease-out text-left cursor-pointer border-none outline-none"
           >
-            {s.title}
+            <span className="link-underline">{s.title}</span>
           </button>
         ))}
       </div>

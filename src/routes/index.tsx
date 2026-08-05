@@ -1391,6 +1391,57 @@ function ServicesSection() {
   );
 }
 
+function TrustSection() {
+  return (
+    <section className="relative bg-white text-ink py-20 md:py-28 border-b border-rule/20">
+      <div className="container-editorial space-y-12">
+        <div className="max-w-3xl space-y-3">
+          <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-ink-muted gsap-reveal">
+            04 / ENGINEERING CONFIDENCE & QUALITY
+          </span>
+          <h2 className="text-3xl md:text-5xl font-light text-ink uppercase tracking-tight leading-tight gsap-reveal">
+            Built for Mission-Critical Reliability.
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-6">
+          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
+            <div className="text-3xl font-mono font-bold text-ink">ISO 9001:2015</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Quality Certification</div>
+            <p className="text-sm text-ink-muted font-light leading-relaxed">
+              Certified quality management framework governing hardware design, assembly, and field deployments.
+            </p>
+          </div>
+
+          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
+            <div className="text-3xl font-mono font-bold text-ink">IPC Class 3</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Assembly Standard</div>
+            <p className="text-sm text-ink-muted font-light leading-relaxed">
+              High-reliability SMT electronics manufacturing built specifically for harsh industrial operating environments.
+            </p>
+          </div>
+
+          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
+            <div className="text-3xl font-mono font-bold text-ink">RDSO</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Specification Compliance</div>
+            <p className="text-sm text-ink-muted font-light leading-relaxed">
+              Full compliance with Research Designs & Standards Organisation technical specifications for Indian Railways.
+            </p>
+          </div>
+
+          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
+            <div className="text-3xl font-mono font-bold text-ink">Pan-India</div>
+            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Field Execution</div>
+            <p className="text-sm text-ink-muted font-light leading-relaxed">
+              Round-the-clock technical support, field testing, and maintenance engineering across all railway zones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function HomeCTA() {
   return (
     <section className="relative overflow-hidden bg-zinc-950 text-white border-t border-white/5 w-full py-20 md:py-28 flex items-center cta-section">

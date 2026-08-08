@@ -14,7 +14,7 @@ import aboutVideo from "@/assets/about-video.mp4";
 import factoryHall from "@/assets/factory-hall.jpg";
 import smtLine from "@/assets/smt-line.jpg";
 import pcbMacro from "@/assets/pcb-macro.jpg";
-import engineers from "@/assets/services-hero-premium.jpg";
+import engineers from "@/assets/engineers.jpg";
 import simulator from "@/assets/simulator.jpg";
 import coachBuild from "@/assets/coach-build.jpg";
 import electrical from "@/assets/electrical-cabinet.jpg";
@@ -25,19 +25,21 @@ import { useState, useEffect, useRef } from "react";
 import { PRODUCT_INDEX } from "@/lib/site-data";
 import serviceDesign from "@/assets/service-design.png";
 import serviceInstallation from "@/assets/service-installation.png";
-import sntHero from "@/assets/snt-hero-premium.jpg";
+import sntHero from "@/assets/snt.jpg";
 import locoHero from "@/assets/loco-hero-premium.jpg";
-import wagonsHero from "@/assets/wagons-hero-premium.jpg";
+import wagonsHero from "file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/tengyart--p3O4-iNUM4-unsplash.jpg";
 import installationHero from "@/assets/installation-hero-premium.jpg";
-import slideMission from "@/assets/slide-mission.jpg";
-import slideVision from "@/assets/slide-vision.jpg";
-import slideIotEnergy from "@/assets/slide-iot-energy.jpg";
+import slideMission from "file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/businessman-big-office.jpg";
+import slideVision from "file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/skyline-cityscape-building-sunrise-twilight.jpg";
+import slideIotEnergy from "@/assets/slide-ifd-signal.jpg";
 import slideSnt from "@/assets/slide-snt.jpg";
-import slideRollingStock from "@/assets/slide-rolling-stock.jpg";
-import slideSimulators from "@/assets/slide-simulators.jpg";
+import slideRdpmsSmt from "@/assets/slide-rdpms-smt.jpg";
+import slideRollingStock from "file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/ranjatm-transportation-system-3351330.jpg";
+import slideSimulators from "file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/ChatGPT%20Image%20Aug%205,%202026,%2012_35_24%20PM.png";
 import slideProductDev from "@/assets/slide-product-dev.jpg";
 import slideSignallingDesign from "@/assets/slide-signalling-design.jpg";
 import slideKavach from "@/assets/slide-kavach.jpg";
+import slideKavachEngineer from "@/assets/slide-kavach-engineer.jpg";
 import slideSystemIntegration from "@/assets/slide-system-integration.jpg";
 import slideEms from "@/assets/slide-ems.jpg";
 import slideCommissioning from "@/assets/slide-commissioning.jpg";
@@ -217,7 +219,6 @@ function Home() {
       <AboutPreview />
       <ProductsSection />
       <ServicesSection />
-      <TrustSection />
       <HomeCTA />
     </>
   );
@@ -228,7 +229,9 @@ function Hero() {
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const lastActiveSlideRef = useRef(0);
+  const lastActiveSlideRef = useRef(activeSlide);
+
+  const isCurrentlyPlaying = isPlaying;
 
   const touchStartXRef = useRef(0);
   const touchStartYRef = useRef(0);
@@ -248,13 +251,12 @@ function Hero() {
   };
 
   const onTouchEnd = () => {
-    const deltaX = touchEndXRef.current - touchStartXRef.current;
-    const deltaY = touchEndYRef.current - touchStartYRef.current;
+    const xDistance = touchStartXRef.current - touchEndXRef.current;
+    const yDistance = touchStartYRef.current - touchEndYRef.current;
+    const minSwipeDistance = 50;
 
-    // Horizontal swipe threshold 40px, ensure horizontal motion dominates vertical scroll
-    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
-      if (deltaX < 0) {
-        // Swiped Left -> Next Slide
+    if (Math.abs(xDistance) > Math.abs(yDistance) && Math.abs(xDistance) > minSwipeDistance) {
+      if (xDistance > 0) {
         setActiveSlide((prev) => (prev + 1) % slides.length);
         setProgress(0);
       } else {
@@ -265,13 +267,13 @@ function Hero() {
   };
 
   const slides = [
-    // 1. Engineering Confidence for Critical Systems
+    // 1. Railway Electronics & IoT Solutions
     {
       type: "video",
       src: slide1Video,
       label: "Lorven Systems",
-      title: "Engineering Confidence\nfor Critical Systems",
-      description: "LorVen Systems designs, develops, and manufactures highly reliable electronic systems for railway transportation and industrial infrastructure.",
+      title: "Railway Electronics\n& IoT Solutions",
+      description: "LorVen Systems designs, develops, and manufactures electronic systems for railway transportation and industrial infrastructure.",
       cta: "About LorVen",
       link: "/about",
     },
@@ -280,9 +282,9 @@ function Hero() {
       type: "image",
       src: slideMission,
       alt: "Indian railway control centre engineers monitoring live train network",
-      label: "OUR MISSION",
-      title: "Our Mission",
-      description: "To design, develop, manufacture, install, and commission reliable electronic systems that improve the safety, efficiency, and reliability of critical railway infrastructure.",
+      label: "COMPANY SCOPE",
+      title: "Manufacturing & Services",
+      description: "Designing, manufacturing, installing, and commissioning electronic systems for railway infrastructure in India.",
       cta: "About LorVen",
       link: "/about",
     },
@@ -291,9 +293,9 @@ function Hero() {
       type: "image",
       src: slideVision,
       alt: "Futuristic connected Indian railway network at golden hour",
-      label: "OUR VISION",
-      title: "Our Vision",
-      description: "To become a trusted technology partner delivering innovative and reliable engineering solutions for transportation and industrial infrastructure.",
+      label: "ENGINEERING OPERATIONS",
+      title: "Engineering Operations",
+      description: "Engineering and manufacturing IoT products, signalling gears, electric locomotive subsystems, and railway simulators.",
       cta: "About LorVen",
       link: "/about",
     },
@@ -304,18 +306,18 @@ function Hero() {
       alt: "Railway signalling equipment and telecommunications system",
       label: "SIGNAL & TELECOMMUNICATIONS",
       title: "Signalling \n& Telecommunication",
-      description: "We develop intelligent signalling and telecommunications solutions that enhance railway safety, operational reliability and network availability through advanced monitoring, power and field technologies.",
+      description: "Signalling and telecommunications equipment for train monitoring, power supplies, and trackside gears.",
       cta: "Explore Signalling & Telecom",
       link: "/products/snt",
     },
-    // 5. Rolling Stock — Intelligent Systems for Safer Operations
+    // 5. Rolling Stock — Inspection & Monitoring
     {
       type: "image",
       src: wagonsHero,
       alt: "Rolling stock wayside inspection and monitoring systems",
       label: "ROLLING STOCK",
-      title: "Rolling Stock\nIntelligent Systems for Safer Operations",
-      description: "We develop advanced inspection and monitoring solutions for coaches and wagons, enabling continuous condition assessment, improved operational safety, and reliable asset management throughout the railway lifecycle.",
+      title: "Rolling Stock\nInspection & Monitoring",
+      description: "Wayside inspection and monitoring solutions for passenger coaches and freight wagons.",
       cta: "Explore Rolling Stock",
       link: "/products/wagons",
     },
@@ -366,7 +368,7 @@ function Hero() {
     // 10. RDPMS Product Slide (NEW)
     {
       type: "image",
-      src: slideSnt,
+      src: slideRdpmsSmt,
       alt: "RDPMS — Remote Diagnostic & Predictive Maintenance System",
       label: "PRODUCTS — SIGNALLING & TELECOM",
       title: "RDPMS — Remote Diagnostic\n& Predictive Maintenance",
@@ -410,7 +412,7 @@ function Hero() {
     // 14. KAVACH Training Simulators Product Slide (NEW)
     {
       type: "image",
-      src: slideKavach,
+      src: slideKavachEngineer,
       alt: "KAVACH Training Simulators for Station Masters and Loco Pilots",
       label: "PRODUCTS — TRAINING SIMULATORS",
       title: "KAVACH Training\nSimulators",
@@ -515,7 +517,7 @@ function Hero() {
 
   // 2. Autoplay progress tracking
   useEffect(() => {
-    if (!isPlaying) return;
+    if (!isCurrentlyPlaying) return;
 
     setProgress(0);
     let animFrame: number;
@@ -552,7 +554,7 @@ function Hero() {
     return () => {
       cancelAnimationFrame(animFrame);
     };
-  }, [activeSlide, slides.length, isPlaying]);
+  }, [activeSlide, slides.length, isCurrentlyPlaying]);
 
   return (
     <section
@@ -579,7 +581,7 @@ function Hero() {
         
         .hero-slide.active {
           opacity: 1;
-          filter: brightness(0.85) blur(0px);
+          filter: brightness(1) blur(0px);
           z-index: 2;
           pointer-events: auto;
         }
@@ -635,7 +637,7 @@ function Hero() {
           position: absolute;
           inset: 0;
           z-index: -1;
-          background: radial-gradient(circle at left center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 70%);
+          background: radial-gradient(circle at left center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 40%, transparent 70%);
           opacity: 0;
           transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none;
@@ -649,7 +651,7 @@ function Hero() {
           position: absolute;
           inset: 0;
           z-index: -1;
-          background: radial-gradient(circle at right center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 70%);
+          background: radial-gradient(circle at right center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 40%, transparent 70%);
           opacity: 0;
           transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none;
@@ -694,8 +696,17 @@ function Hero() {
           );
         })}
       </div>
-      <div className="absolute inset-0 z-5 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/95 pointer-events-none" />
-      <div className="absolute inset-0 z-5 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.4)_25%,transparent_58%)] pointer-events-none" />
+      {/* Professional Corporate Left-Bottom Asymmetrical Gradient Overlay (Siemens/ABB/Hitachi Rail style) */}
+      <div
+        className="absolute inset-0 z-[5] pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 18%),
+            radial-gradient(ellipse 180% 140% at 0% 100%, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.58) 18%, rgba(0,0,0,0.42) 35%, rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.08) 68%, rgba(0,0,0,0) 82%),
+            linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.22) 22%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0) 65%)
+          `
+        }}
+      />
 
       {/* Progress bar — subtle, not distracting */}
       <div className="absolute bottom-0 left-0 right-0 z-20 h-[2px] bg-white/8">
@@ -823,12 +834,12 @@ function Hero() {
 
 function AboutPreview() {
   return (
-    <section className="border-t border-rule bg-bg py-20 md:py-28 overflow-hidden about-section">
+    <section className="bg-bg py-20 md:py-28 overflow-hidden about-section">
       <div className="container-editorial">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Content (40-45% width) */}
-          <div className="lg:col-span-5 space-y-8">
+          {/* Left Column: Content */}
+          <div className="lg:col-span-6 space-y-8">
             <div className="space-y-4">
               <span className="eyebrow block gsap-reveal">ABOUT LORVEN</span>
               <h2 className="text-2xl md:text-3xl lg:text-[2.25rem] font-light tracking-tight text-ink uppercase leading-[1.1] gsap-reveal">
@@ -841,8 +852,6 @@ function AboutPreview() {
               LorVen Systems is an engineering and technology company focused on developing high-reliability electronic systems for railway transportation, aerospace, defence and industrial infrastructure. Guided by engineering excellence and disciplined execution, we create dependable solutions where safety, reliability and performance are essential.
             </p>
 
-
-            
             <div className="gsap-reveal pt-4">
               <Link
                 to="/about"
@@ -853,23 +862,35 @@ function AboutPreview() {
             </div>
           </div>
 
-          {/* Right Column: Immersive Image (55-60% width) */}
-          <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] lg:aspect-[1.4] w-full overflow-hidden rounded-xl bg-surface border border-rule/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.15)] gsap-reveal about-video-card">
-              <img
-                src={smtLine}
-                alt="SMT PCB Production Line"
+          {/* Right Column: Immersive Video with Apple macOS clean card styling */}
+          <div className="lg:col-span-6 flex justify-center">
+            <div
+              className="relative aspect-[16/10] w-full max-w-[580px] overflow-hidden gsap-reveal about-video-card"
+              style={{
+                borderRadius: "28px",
+                background: "rgba(255, 255, 255, 0.96)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                boxShadow: "0 18px 50px rgba(0,0,0,0.10), 0 6px 18px rgba(0,0,0,0.05)",
+                backgroundClip: "padding-box",
+                backdropFilter: "none",
+                WebkitBackdropFilter: "none",
+              }}
+            >
+              <video
+                src={aboutVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover transition-transform duration-[1200ms] hover:scale-105"
-                loading="lazy"
+                style={{ borderRadius: "28px" }}
               />
-              {/* Subtle Dark Overlay to give it a cinematic grade */}
-              <div className="absolute inset-0 bg-black/[0.04] pointer-events-none" />
             </div>
           </div>
         </div>
 
         {/* Vision, Mission, Purpose — Editorial Experience */}
-        <div className="mt-12 relative py-14 md:py-20 border-t border-rule overflow-hidden vmp-section">
+        <div className="mt-12 relative py-14 md:py-20 overflow-hidden vmp-section">
           
           {/* Subtle Industrial Background */}
           <div className="absolute inset-0 z-0 pointer-events-none">
@@ -1036,11 +1057,8 @@ function ProductsSection() {
   const [active, setActive] = useState(0);
   const [subActive, setSubActive] = useState(0);
 
-  const currentCategory = PRODUCTS_LIST[active] || PRODUCTS_LIST[0];
-  const currentSystem = currentCategory.systems[subActive] || currentCategory.systems[0];
-
   return (
-    <section className="relative bg-ink text-on-dark overflow-hidden py-20 md:py-28 products-section border-b border-white/10">
+    <section className="relative bg-ink text-on-dark overflow-hidden min-h-[100vh] py-16 lg:py-24 flex items-center products-section">
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes fadeInUp {
           from {
@@ -1068,6 +1086,7 @@ function ProductsSection() {
         }
       `}} />
 
+      {/* Full-screen cinematic background images — crossfade on active and subActive changes */}
       {PRODUCTS_LIST.map((it, i) =>
         it.systems.map((sys, idx) => (
           <div
@@ -1091,13 +1110,13 @@ function ProductsSection() {
       <div className="relative z-10 container-editorial w-full flex flex-col lg:flex-row lg:items-center justify-between gap-12">
 
         {/* Left column — label list */}
-        <div className="flex flex-col justify-center w-full lg:w-1/2 lg:pr-8">
+        <div className="flex flex-col justify-center w-full lg:w-[48%] lg:pr-6">
           <span className="eyebrow !text-on-dark/50 gsap-reveal">Products</span>
           <h2 className="mt-4 text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-on-dark gsap-reveal">
-            What we build.
+            Products We Build
           </h2>
 
-          <ul className="mt-10 border-t border-white/15 gsap-reveal">
+          <ul className="mt-6 border-t border-white/15 gsap-reveal">
             {PRODUCTS_LIST.map((it, i) => (
               <li key={it.label} className="border-b border-white/15">
                 <button
@@ -1110,14 +1129,14 @@ function ProductsSection() {
                     setActive(i);
                     setSubActive(0);
                   }}
-                  className="group w-full text-left py-6 flex items-center justify-between gap-6"
+                  className="group w-full text-left py-3.5 flex items-center justify-between gap-4"
                 >
-                  {/* Label — scales up when active */}
+                  {/* Label — scaled down for balanced page hierarchy */}
                   <span
-                    className={`flex-1 font-light transition-all duration-400 ${
+                    className={`flex-1 font-light leading-snug transition-all duration-400 ${
                       active === i
-                        ? "text-[clamp(1.5rem,3vw,2.5rem)] text-white"
-                        : "text-[clamp(1.25rem,2vw,1.85rem)] text-white/35 group-hover:text-white/60"
+                        ? "text-[clamp(1.2rem,2.2vw,1.85rem)] text-white"
+                        : "text-[clamp(0.98rem,1.5vw,1.3rem)] text-white/30 group-hover:text-white/65"
                     }`}
                   >
                     {it.label}
@@ -1161,7 +1180,7 @@ function ProductsSection() {
             ))}
           </ul>
 
-          <div className="mt-10">
+          <div className="mt-6">
             <Link
               to="/products"
               className="link-underline inline-flex items-center text-xs md:text-sm font-semibold tracking-[0.12em] text-white/50 hover:text-white transition-colors py-3 px-4 -my-3 -mx-4 min-h-[44px]"
@@ -1173,7 +1192,7 @@ function ProductsSection() {
 
         {/* Right column — Single clean translucent information card (desktop only) */}
         <div
-          className="hidden lg:flex relative w-full lg:w-[44%] min-h-[400px] h-auto border border-white/10 rounded-xl flex-col justify-between p-8 md:p-10 backdrop-blur-md"
+          className="hidden lg:flex relative w-full lg:w-[48%] min-h-[400px] h-auto border border-white/10 rounded-xl flex-col justify-between p-8 md:p-10 backdrop-blur-md"
           style={{
             background: "linear-gradient(135deg, rgba(20, 20, 20, 0.3) 0%, rgba(5, 5, 5, 0.15) 100%)"
           }}
@@ -1290,67 +1309,82 @@ function ServicesSection() {
     },
   ];
 
-  const currentService = SERVICES_LIST[active] || SERVICES_LIST[0];
-
   return (
-    <section className="relative bg-bg text-ink py-20 md:py-28 services-section border-b border-rule/20">
-      <div className="container-editorial space-y-12">
-        
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-rule/30">
-          <div className="space-y-3 max-w-3xl">
-            <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-ink-muted gsap-reveal">
-              03 / HOW WE ENGINEER
-            </span>
-            <h2 className="text-3xl md:text-5xl font-light text-ink uppercase tracking-tight leading-tight gsap-reveal">
-              Turnkey Engineering & Field Capabilities.
-            </h2>
-          </div>
-          <div className="shrink-0">
-            <Link
-              to="/services"
-              className="btn-base btn-primary gap-2"
-            >
-              All Engineering Services →
-            </Link>
-          </div>
+    <section className="relative bg-ink text-on-dark overflow-hidden min-h-[100vh] py-16 lg:py-24 flex items-center border-t border-white/5 services-section">
+      
+      {/* Content layer */}
+      <div className="container-editorial w-full flex flex-col lg:flex-row lg:items-center justify-between gap-12 lg:gap-16">
+
+        {/* Left column — vertical services menu list */}
+        <div className="flex flex-col justify-center w-full lg:w-[48%]">
+          <h2 className="text-[clamp(2rem,3.5vw,3.25rem)] font-light leading-tight text-on-dark mb-6 gsap-reveal">
+            Our Services
+          </h2>
+
+          <ul className="space-y-2.5 border-t border-white/10 pt-4 gsap-reveal">
+            {SERVICES_LIST.map((it, i) => (
+              <li key={it.title} className="border-b border-white/5 pb-2.5 last:border-0">
+                <button
+                  type="button"
+                  onMouseEnter={() => setActive(i)}
+                  onClick={() => setActive(i)}
+                  className="group w-full text-left flex items-center justify-between py-1.5"
+                >
+                  <div className="flex items-center gap-4">
+                    {/* Label */}
+                    <span
+                      className={`font-light leading-snug transition-all duration-400 ${
+                        active === i
+                          ? "text-[clamp(1.05rem,1.4vw,1.35rem)] text-white"
+                          : "text-[clamp(0.88rem,1.1vw,1.02rem)] text-white/30 group-hover:text-white/65"
+                      }`}
+                    >
+                      {it.title}
+                    </span>
+                  </div>
+
+                  {/* Arrow */}
+                  <span
+                    className={`num-mono text-[13px] shrink-0 transition-all duration-300 ${
+                      active === i ? "opacity-100 translate-x-0 text-white" : "opacity-0 -translate-x-3"
+                    }`}
+                  >
+                    →
+                  </span>
+                </button>
+
+                {/* Mobile blurb — accordion style details */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 lg:hidden ${
+                    active === i ? "max-h-[500px] opacity-100 pb-2 mt-3" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="pl-9 space-y-3 pt-3 border-t border-white/5">
+                    <p className="text-xs leading-relaxed text-white/60 font-light max-w-md">{it.desc}</p>
+                    <div className="pt-1">
+                      <Link
+                        to={it.to as any}
+                        className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.16em] text-white/80 hover:text-white transition-colors"
+                      >
+                        Learn More →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-6 space-y-3">
-            {SERVICES_LIST.map((it, i) => (
-              <button
-                key={it.title}
-                type="button"
-                onMouseEnter={() => setActive(i)}
-                onClick={() => setActive(i)}
-                className={`w-full p-5 text-left border transition-all duration-300 rounded-md flex items-center justify-between gap-4 cursor-pointer ${
-                  active === i
-                    ? "border-ink bg-white shadow-md text-ink"
-                    : "border-rule/20 bg-bg hover:border-rule/50 text-ink-muted"
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-xs font-mono font-bold text-steel">S/0{i + 1}</span>
-                  <span className={`text-base md:text-lg uppercase tracking-wide ${
-                    active === i ? "font-semibold text-ink" : "font-light"
-                  }`}>
-                    {it.title}
-                  </span>
-                </div>
-                <span className={`text-sm transition-transform ${active === i ? "translate-x-1 text-steel font-bold" : "text-ink/30"}`}>
-                  →
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <div className="lg:col-span-6 space-y-6">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md bg-surface border border-rule/20 shadow-lg services-parallax-col">
+        {/* Right column — Single photo + details card below (desktop only) */}
+        <div className="hidden lg:flex w-full lg:w-[42.5%] flex-col justify-center services-parallax-col">
+          <div className="space-y-4 max-w-[490px]">
+            {/* Image Container */}
+            <div className="relative w-full aspect-[16/9.2] rounded-xl overflow-hidden border border-white/10 shadow-xl bg-black/25">
               {SERVICES_LIST.map((it, i) => (
                 <div
                   key={it.title}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
                     active === i ? "opacity-100" : "opacity-0"
                   }`}
                 >
@@ -1359,85 +1393,41 @@ function ServicesSection() {
                     alt={it.title}
                     className="w-full h-full object-cover filter brightness-[0.85] animate-slow-zoom"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  {/* Subtle grading vignette gradient over the image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                 </div>
               ))}
+            </div>
 
-              <div className="absolute bottom-6 left-6 right-6 text-white space-y-3 z-10">
-                <span className="text-xs font-mono font-bold text-steel tracking-widest uppercase">
-                  Service Detail — S/0{active + 1}
-                </span>
-                <h3 className="text-2xl font-light uppercase tracking-tight text-white">
-                  {currentService.title}
-                </h3>
-                <p className="text-sm text-white/80 font-light leading-relaxed max-w-md">
-                  {currentService.desc}
-                </p>
-                <div className="pt-2">
-                  <Link
-                    to={currentService.to as any}
-                    className="btn-base btn-dark py-2.5 px-5 text-xs gap-2"
-                  >
-                    View Capability →
-                  </Link>
-                </div>
+            {/* Placard details below the image */}
+            <div className="pt-1">
+              <h3
+                key={`service-title-${active}`}
+                className="text-xl md:text-2xl font-light text-white tracking-tight mb-2 animate-fade-in-up"
+              >
+                {SERVICES_LIST[active].title}
+              </h3>
+              
+              <p
+                key={`service-desc-${active}`}
+                className="text-sm leading-relaxed text-white/75 font-light tracking-wide max-w-md animate-fade-in-up min-h-[64px] mb-4"
+              >
+                {SERVICES_LIST[active].desc}
+              </p>
+
+              <div className="z-20">
+                <Link
+                  key={`service-link-${active}`}
+                  to={SERVICES_LIST[active].to as any}
+                  className="link-underline inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold uppercase tracking-[0.12em] text-white hover:text-white transition-colors pb-0.5 animate-fade-in-up"
+                >
+                  Learn More →
+                </Link>
               </div>
             </div>
           </div>
-
         </div>
 
-      </div>
-    </section>
-  );
-}
-
-function TrustSection() {
-  return (
-    <section className="relative bg-white text-ink py-20 md:py-28 border-b border-rule/20">
-      <div className="container-editorial space-y-12">
-        <div className="max-w-3xl space-y-3">
-          <span className="text-xs font-mono font-bold tracking-[0.2em] uppercase text-ink-muted gsap-reveal">
-            04 / ENGINEERING CONFIDENCE & QUALITY
-          </span>
-          <h2 className="text-3xl md:text-5xl font-light text-ink uppercase tracking-tight leading-tight gsap-reveal">
-            Built for Mission-Critical Reliability.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-6">
-          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
-            <div className="text-3xl font-mono font-bold text-ink">ISO 9001:2015</div>
-            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Quality Certification</div>
-            <p className="text-sm text-ink-muted font-light leading-relaxed">
-              Certified quality management framework governing hardware design, assembly, and field deployments.
-            </p>
-          </div>
-
-          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
-            <div className="text-3xl font-mono font-bold text-ink">IPC Class 3</div>
-            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Assembly Standard</div>
-            <p className="text-sm text-ink-muted font-light leading-relaxed">
-              High-reliability SMT electronics manufacturing built specifically for harsh industrial operating environments.
-            </p>
-          </div>
-
-          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
-            <div className="text-3xl font-mono font-bold text-ink">RDSO</div>
-            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Specification Compliance</div>
-            <p className="text-sm text-ink-muted font-light leading-relaxed">
-              Full compliance with Research Designs & Standards Organisation technical specifications for Indian Railways.
-            </p>
-          </div>
-
-          <div className="border border-rule/20 p-8 rounded-md bg-bg space-y-3">
-            <div className="text-3xl font-mono font-bold text-ink">Pan-India</div>
-            <div className="text-xs font-mono uppercase tracking-wider text-steel font-bold">Field Execution</div>
-            <p className="text-sm text-ink-muted font-light leading-relaxed">
-              Round-the-clock technical support, field testing, and maintenance engineering across all railway zones.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );

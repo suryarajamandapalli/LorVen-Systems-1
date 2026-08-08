@@ -425,8 +425,8 @@ export const PRODUCTS_DATA: Record<string, ProductSystemData> = {
 
     downloads: [
       { label: "AHABD Wayside Array Specs", size: "2.8 MB", url: "#", type: "Datasheet" },
-      { label: "AHABD Trackside Installation Guide", size: "4.1 MB", type: "Manual" },
-      { label: "AHABD Acoustic DSP Analysis Note", size: "1.5 MB", type: "Brochure" }
+      { label: "AHABD Trackside Installation Guide", size: "4.1 MB", url: "#", type: "Manual" },
+      { label: "AHABD Acoustic DSP Analysis Note", size: "1.5 MB", url: "#", type: "Brochure" }
     ]
   }
 };

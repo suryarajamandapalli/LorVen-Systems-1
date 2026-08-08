@@ -21,7 +21,6 @@ function Projects() {
         title="Featured Projects"
         lede="This section is currently being updated with our latest project case studies and deployment highlights."
         image={depot}
-        path={[{ label: "PROJECTS" }]}
       />
 
       {/* Main Notice */}

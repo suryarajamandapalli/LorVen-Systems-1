@@ -28,8 +28,18 @@
   --color-rule: var(--rule);
   --color-steel: var(--steel);
   --color-forest: var(--forest);
-  --color-on-dark: var(--on-dark);
+  --color-on-dark: var(--on-dark); /* near-white on dark */
+}
 
+/* Security & Trust — Print Protection for Official Documents */
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+@theme inline {
   /* Shadcn compatibility shims */
   --color-background: var(--bg);
   --color-foreground: var(--ink);

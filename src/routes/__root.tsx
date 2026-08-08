@@ -15,6 +15,7 @@ import { Nav } from "../components/site/Nav";
 import { Footer } from "../components/site/Footer";
 import { SmoothScroll } from "../components/site/SmoothScroll";
 import { Preloader } from "../components/site/Preloader";
+import { BackToTop } from "../components/site/BackToTop";
 import { useAutoReveal } from "../hooks/use-reveal";
 import { useScrollbarHover } from "../hooks/use-scrollbar-hover";
 
@@ -168,6 +169,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <BackToTop />
     </QueryClientProvider>
   );
 }

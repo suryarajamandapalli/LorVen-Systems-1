@@ -35,8 +35,8 @@ function ServicesIndex() {
     <>
       <PageHero
         eyebrow="SERVICES"
-        title="Engineering, Manufacturing & Turnkey Services"
-        lede="From electronic product development and safety-critical signalling design to Kavach ATP setup, custom electronics manufacturing, and full-scale system integration, we deliver end-to-end lifecycle solutions."
+        title="Engineering Services"
+        lede="Electronic product development, signalling design, KAVACH installation, S&T system integration, electronics manufacturing (EMS), and field testing and commissioning."
         image={serviceDesign}
       />
 

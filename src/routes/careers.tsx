@@ -21,7 +21,6 @@ function Careers() {
         title="Careers at LorVen"
         lede="This section is currently being updated with new opportunities and role details."
         image={engineers}
-        path={[{ label: "CAREERS" }]}
       />
 
       {/* Main Notice */}

@@ -18,6 +18,8 @@ export function SmoothScroll() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+
+    (window as any).__lenis = lenis;
     
     let rafId = 0;
     const raf = (time: number) => {

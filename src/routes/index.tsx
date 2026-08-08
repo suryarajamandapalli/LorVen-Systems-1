@@ -272,7 +272,7 @@ function Hero() {
       type: "video",
       src: slide1Video,
       label: "Lorven Systems",
-      title: "Railway Electronics\n& IoT Solutions",
+      title: "Engineering Confidence\nfor Critical Systems.",
       description: "LorVen Systems designs, develops, and manufactures electronic systems for railway transportation and industrial infrastructure.",
       cta: "About LorVen",
       link: "/about",

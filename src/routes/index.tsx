@@ -30,17 +30,17 @@ import locoHero from "@/assets/loco-hero-premium.jpg";
 import wagonsHero from "@/assets/wagons-hero-premium.jpg";
 import installationHero from "@/assets/installation-hero-premium.jpg";
 import heroSlide01Video from "@/assets/Hero Images/Slide_01_Engineering_Confidence_for_Critical_Systems.mp4";
-import heroSlide02Img from "@/assets/Hero Images/Slide_02_Our_Mission.jpg";
+import heroSlide02Img from "@/assets/Hero Images/Slide_02_Our_Mission.png";
 import heroSlide03Img from "@/assets/Hero Images/Slide_03_Our_Vision.jpg";
-import heroSlide04Img from "@/assets/Hero Images/Slide_04_IoT_Energy_Management.jpg";
+import heroSlide04Img from "@/assets/Hero Images/Slide_04_IoT_Energy_Management.png";
 import heroSlide05Img from "@/assets/Hero Images/Slide_05_Signalling_Telecom.jpg";
 import heroSlide06Img from "@/assets/Hero Images/Slide_06_Rolling_Stock.jpg";
 import heroSlide07Img from "@/assets/Hero Images/Slide_07_Training_Simulators.jpg";
-import heroSlide08Img from "@/assets/Hero Images/Slide_08_Water_Level_Indicator.jpg";
+import heroSlide08Img from "@/assets/Hero Images/Slide_08_Water_Level_Indicator.png";
 import heroSlide09Img from "@/assets/Hero Images/Slide_09_Intelligent_Field_Device_for_IR_NIYANTRAC.jpg";
 import heroSlide10Img from "@/assets/Hero Images/Slide_10_RDPMS.jpg";
 import heroSlide11Img from "@/assets/Hero Images/Slide_11_IPS.jpg";
-import heroSlide12Img from "@/assets/Hero Images/Slide_12_Advanced_Hot_Axle_Box_Detection.jpg";
+import heroSlide12Img from "@/assets/Hero Images/Slide_12_Advanced_Hot_Axle_Box_Detection.png";
 import heroSlide13Img from "@/assets/Hero Images/Slide_13_Driving_Simulators.jpg";
 import heroSlide14Img from "@/assets/Hero Images/Slide_14_KAVACH_Training_Simulators.jpg";
 import heroSlide15Img from "@/assets/Hero Images/Slide_15_Electronic_Product_Development.jpg";
@@ -48,7 +48,7 @@ import heroSlide16Img from "@/assets/Hero Images/Slide_16_Signalling_Design_Serv
 import heroSlide17Img from "@/assets/Hero Images/Slide_17_KAVACH_Installation_Commissioning.jpg";
 import heroSlide18Img from "@/assets/Hero Images/Slide_18_ST_System_Integration.jpg";
 import heroSlide19Img from "@/assets/Hero Images/Slide_19_Electronics_Manufacturing_Services.jpg";
-import heroSlide20Img from "@/assets/Hero Images/Slide_20_Installation_Testing_Commissioning.jpg";
+import heroSlide20Img from "@/assets/Hero Images/Slide_20_Installation_Testing_Commissioning.png";
 
 import { createSeoMeta } from "@/lib/seo";
 

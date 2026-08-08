@@ -30,7 +30,7 @@ import locoHero from "@/assets/loco-hero-premium.jpg";
 import wagonsHero from "@/assets/wagons-hero-premium.jpg";
 import installationHero from "@/assets/installation-hero-premium.jpg";
 import heroSlide01Video from "@/assets/Hero Images/Slide_01_Engineering_Confidence_for_Critical_Systems.mp4";
-import heroSlide02Img from "@/assets/Hero Images/Slide_02_Our_Mission.png";
+import heroSlide02Img from "@/assets/Hero Images/Slide_02_Our_Mission.jpg";
 import heroSlide03Img from "@/assets/Hero Images/Slide_03_Our_Vision.jpg";
 import heroSlide04Img from "@/assets/Hero Images/Slide_04_IoT_Energy_Management.png";
 import heroSlide05Img from "@/assets/Hero Images/Slide_05_Signalling_Telecom.jpg";
@@ -693,14 +693,14 @@ function Hero() {
           );
         })}
       </div>
-      {/* Professional Corporate Left-Bottom Asymmetrical Gradient Overlay */}
+      {/* Professional Corporate Left-Bottom Asymmetrical Gradient Overlay (Siemens/ABB/Hitachi Rail style) */}
       <div
         className="absolute inset-0 z-[5] pointer-events-none"
         style={{
           background: `
-            linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 22%),
-            radial-gradient(ellipse 190% 160% at 0% 100%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.70) 25%, rgba(0,0,0,0.52) 45%, rgba(0,0,0,0.28) 65%, rgba(0,0,0,0.08) 80%, rgba(0,0,0,0) 95%),
-            linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.36) 25%, rgba(0,0,0,0.16) 48%, rgba(0,0,0,0) 72%)
+            linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 18%),
+            radial-gradient(ellipse 180% 140% at 0% 100%, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.58) 18%, rgba(0,0,0,0.42) 35%, rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.08) 68%, rgba(0,0,0,0) 82%),
+            linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.22) 22%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0) 65%)
           `
         }}
       />
@@ -715,8 +715,13 @@ function Hero() {
 
       {/* Navigation and Controls Bar */}
       <div className="absolute bottom-10 right-[clamp(1.25rem,4vw,3rem)] z-40 flex items-center gap-6 pointer-events-auto select-none">
-        {/* Pagination dots */}
-        <div className="flex items-center gap-3">
+        {/* Mobile Slide Counter (Replaces cluttered dashes on small screens) */}
+        <span className="sm:hidden text-xs font-mono text-white/80 tracking-widest bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
+          {String(activeSlide + 1).padStart(2, "0")} / {slides.length}
+        </span>
+
+        {/* Pagination dots (Hidden on mobile for clean UI) */}
+        <div className="hidden sm:flex items-center gap-3">
           {slides.map((_, idx) => {
             const isActive = idx === activeSlide;
             return (
@@ -738,7 +743,7 @@ function Hero() {
         {/* Play/Pause Control */}
         <button
           onClick={() => setIsPlaying(!isPlaying)}
-          className="w-6 h-6 flex items-center justify-center text-white/45 hover:text-white transition-colors duration-300 cursor-pointer"
+          className="w-6 h-6 flex items-center justify-center text-white/60 hover:text-white transition-colors duration-300 cursor-pointer"
           aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
         >
           {isPlaying ? (
@@ -756,14 +761,15 @@ function Hero() {
         </button>
       </div>
 
-      {/* Controls — Navigation Arrows */}
+      {/* Navigation Arrows on Left/Right */}
       <button
         onClick={() => setActiveSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
-        className="hero-prev-btn absolute left-4 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer border border-white/10 hover:border-white/30 bg-black/20 hover:bg-black/40 backdrop-blur-sm"
+        className="hero-prev-btn left-0 flex items-start justify-start pt-[36vh] px-4 md:px-8 group"
         aria-label="Previous slide"
       >
         <svg
-          className="w-5 h-5 md:w-6 md:h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-10 h-10 md:w-16 md:h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -772,14 +778,14 @@ function Hero() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
-
       <button
         onClick={() => setActiveSlide((prev) => (prev + 1) % slides.length)}
-        className="hero-next-btn absolute right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer border border-white/10 hover:border-white/30 bg-black/20 hover:bg-black/40 backdrop-blur-sm"
+        className="hero-next-btn right-0 flex items-start justify-end pt-[36vh] px-4 md:px-8 group"
         aria-label="Next slide"
       >
         <svg
-          className="w-5 h-5 md:w-6 md:h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-10 h-10 md:w-16 md:h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -802,25 +808,18 @@ function Hero() {
                   isActive ? "active-text-container pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <h1
-                  className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4.25rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible whitespace-pre-line hero-text-item delay-1 text-white"
-                  style={{ textShadow: "0 2px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9)" }}
-                >
+                <h1 className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4.25rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible whitespace-pre-line hero-text-item delay-1">
                   <span>{slide.title}</span>
                 </h1>
 
                 <div className="mt-8 md:mt-12 max-w-xl flex flex-col items-start gap-6">
-                  <p
-                    className="text-sm md:text-base lg:text-lg leading-relaxed text-white/95 hero-text-item delay-2"
-                    style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.95)" }}
-                  >
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-on-dark/85 hero-text-item delay-2">
                     {slide.description}
                   </p>
                   <div className="flex items-center justify-start text-xs md:text-sm font-medium tracking-[0.12em]">
                     <Link
                       to={slide.link}
-                      className="link-underline opacity-95 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer text-white"
-                      style={{ textShadow: "0 1px 6px rgba(0,0,0,0.8)" }}
+                      className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer"
                     >
                       {slide.cta} →
                     </Link>

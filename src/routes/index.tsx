@@ -578,7 +578,7 @@ function Hero() {
         
         .hero-slide.active {
           opacity: 1;
-          filter: brightness(0.78) contrast(1.05) blur(0px);
+          filter: brightness(1) blur(0px);
           z-index: 2;
           pointer-events: auto;
         }
@@ -603,7 +603,6 @@ function Hero() {
         .hero-text-item {
           opacity: 0;
           filter: blur(10px);
-          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
           transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
@@ -694,14 +693,14 @@ function Hero() {
           );
         })}
       </div>
-      {/* Heavy Professional Corporate Dark Gradient Overlay for Maximum Text Visibility */}
+      {/* Professional Corporate Left-Bottom Asymmetrical Gradient Overlay */}
       <div
         className="absolute inset-0 z-[5] pointer-events-none"
         style={{
           background: `
-            linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.40) 18%, rgba(0,0,0,0.15) 35%, transparent 50%),
-            radial-gradient(ellipse 160% 130% at 0% 100%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.78) 25%, rgba(0,0,0,0.60) 45%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.10) 80%, transparent 95%),
-            linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 25%, rgba(0,0,0,0.40) 45%, rgba(0,0,0,0.15) 65%, transparent 85%)
+            linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 22%),
+            radial-gradient(ellipse 190% 160% at 0% 100%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.70) 25%, rgba(0,0,0,0.52) 45%, rgba(0,0,0,0.28) 65%, rgba(0,0,0,0.08) 80%, rgba(0,0,0,0) 95%),
+            linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.36) 25%, rgba(0,0,0,0.16) 48%, rgba(0,0,0,0) 72%)
           `
         }}
       />
@@ -757,15 +756,14 @@ function Hero() {
         </button>
       </div>
 
-      {/* Navigation Arrows on Left/Right */}
+      {/* Controls — Navigation Arrows */}
       <button
         onClick={() => setActiveSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
-        className="hero-prev-btn left-0 flex items-start justify-start pt-[36vh] px-4 md:px-8 group"
+        className="hero-prev-btn absolute left-4 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer border border-white/10 hover:border-white/30 bg-black/20 hover:bg-black/40 backdrop-blur-sm"
         aria-label="Previous slide"
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-10 h-10 md:w-16 md:h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
+          className="w-5 h-5 md:w-6 md:h-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -774,14 +772,14 @@ function Hero() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
+
       <button
         onClick={() => setActiveSlide((prev) => (prev + 1) % slides.length)}
-        className="hero-next-btn right-0 flex items-start justify-end pt-[36vh] px-4 md:px-8 group"
+        className="hero-next-btn absolute right-4 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all cursor-pointer border border-white/10 hover:border-white/30 bg-black/20 hover:bg-black/40 backdrop-blur-sm"
         aria-label="Next slide"
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-10 h-10 md:w-16 md:h-16 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg"
+          className="w-5 h-5 md:w-6 md:h-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -804,18 +802,25 @@ function Hero() {
                   isActive ? "active-text-container pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <h1 className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4.25rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible whitespace-pre-line hero-text-item delay-1">
+                <h1
+                  className="mt-4 max-w-5xl text-[clamp(2rem,4.8vw,4.25rem)] font-light leading-[1.06] tracking-[-0.03em] overflow-visible whitespace-pre-line hero-text-item delay-1 text-white"
+                  style={{ textShadow: "0 2px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9)" }}
+                >
                   <span>{slide.title}</span>
                 </h1>
 
                 <div className="mt-8 md:mt-12 max-w-xl flex flex-col items-start gap-6">
-                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-on-dark/85 hero-text-item delay-2">
+                  <p
+                    className="text-sm md:text-base lg:text-lg leading-relaxed text-white/95 hero-text-item delay-2"
+                    style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.95)" }}
+                  >
                     {slide.description}
                   </p>
                   <div className="flex items-center justify-start text-xs md:text-sm font-medium tracking-[0.12em]">
                     <Link
                       to={slide.link}
-                      className="link-underline opacity-90 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer"
+                      className="link-underline opacity-95 hover:opacity-100 transition-all hero-text-item delay-3 font-medium cursor-pointer text-white"
+                      style={{ textShadow: "0 1px 6px rgba(0,0,0,0.8)" }}
                     >
                       {slide.cta} →
                     </Link>

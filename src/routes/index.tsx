@@ -267,235 +267,242 @@ function Hero() {
   };
 
   const slides = [
-    // 1. Railway Electronics & IoT Solutions
+    // --- COMPANY ---
+    // Slide 1: Engineering Confidence for Critical Systems
     {
       type: "video",
       src: slide1Video,
-      label: "Lorven Systems",
+      label: "LorVen Systems",
       title: "Engineering Confidence\nfor Critical Systems.",
       description: "LorVen Systems designs, develops, and manufactures electronic systems for railway transportation and industrial infrastructure.",
       cta: "About LorVen",
       link: "/about",
     },
-    // 2. Our Mission
+    // Slide 2: Our Mission
     {
       type: "image",
       src: slideMission,
       alt: "Indian railway control centre engineers monitoring live train network",
-      label: "COMPANY SCOPE",
-      title: "Manufacturing & Services",
+      label: "COMPANY — MISSION",
+      title: "Our Mission",
       description: "Designing, manufacturing, installing, and commissioning electronic systems for railway infrastructure in India.",
       cta: "About LorVen",
       link: "/about",
     },
-    // 3. Our Vision
+    // Slide 3: Our Vision
     {
       type: "image",
       src: slideVision,
       alt: "Futuristic connected Indian railway network at golden hour",
-      label: "ENGINEERING OPERATIONS",
-      title: "Engineering Operations",
-      description: "Engineering and manufacturing IoT products, signalling gears, electric locomotive subsystems, and railway simulators.",
+      label: "COMPANY — VISION",
+      title: "Our Vision",
+      description: "To build a globally respected technology company delivering world-class systems for safety-critical and mission-critical industries.",
       cta: "About LorVen",
       link: "/about",
     },
-    // 4. Signalling & Telecommunication
+
+    // --- PRODUCTS ---
+    // Slide 4: IoT & Energy Management
     {
       type: "image",
-      src: sntHero,
-      alt: "Railway signalling equipment and telecommunications system",
-      label: "SIGNAL & TELECOMMUNICATIONS",
-      title: "Signalling \n& Telecommunication",
-      description: "Signalling and telecommunications equipment for train monitoring, power supplies, and trackside gears.",
-      cta: "Explore Signalling & Telecom",
-      link: "/products/snt",
+      src: slideIotEnergy,
+      alt: "IoT & Energy Management system for railway infrastructure",
+      label: "PRODUCTS",
+      title: "IoT & Energy\nManagement",
+      description: "Smart IoT telemetry, energy metering, and remote asset control across railway sub-stations, yards, and stations.",
+      cta: "Explore Products",
+      link: "/products",
     },
-    // 5. Rolling Stock — Inspection & Monitoring
-    {
-      type: "image",
-      src: wagonsHero,
-      alt: "Rolling stock wayside inspection and monitoring systems",
-      label: "ROLLING STOCK",
-      title: "Rolling Stock\nInspection & Monitoring",
-      description: "Wayside inspection and monitoring solutions for passenger coaches and freight wagons.",
-      cta: "Explore Rolling Stock",
-      link: "/products/wagons",
-    },
-    // 6. Engineering Services
-    {
-      type: "image",
-      src: engineers,
-      alt: "Professional railway engineering design and commissioning services",
-      label: "ENGINEERING SERVICES",
-      title: "Engineering Services",
-      description: "We provide comprehensive engineering services including design, system installation, testing, and commissioning, ensuring every solution is delivered safely, integrated seamlessly, and performs reliably throughout its operational lifecycle.",
-      cta: "Explore Engineering Services",
-      link: "/services",
-    },
-    // 7. Training Simulators
-    {
-      type: "image",
-      src: slideSimulators,
-      alt: "Modern locomotive driving simulator cockpit with widescreen displays",
-      label: "TRAINING SIMULATORS",
-      title: "Training\nSimulators",
-      description: "Immersive simulation platforms for railway operator and KAVACH training — Driving Simulators and KAVACH Training Simulators.",
-      cta: "Explore Simulators",
-      link: "/products/electric-locomotive",
-    },
-    // 8. WLI Product Slide (NEW)
+    // Slide 5: Water Level Indicator (WLI)
     {
       type: "image",
       src: slideRollingStock,
-      alt: "WLI — IoT-Based Water Level Indicator for passenger coaches",
+      alt: "WLI — Water Level Indicator for passenger coaches",
       label: "PRODUCTS — ROLLING STOCK",
-      title: "WLI — IoT-Based\nWater Level Indicator",
-      description: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server — enabling planned watering at nominated stations and reducing en-route watering failures and passenger complaints.",
+      title: "Water Level\nIndicator (WLI)",
+      description: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to CRIS — enabling planned watering and eliminating en-route shortages.",
       cta: "Explore WLI",
       link: "/products/wagons/wli",
     },
-    // 9. IFD Product Slide (NEW)
+    // Slide 6: Integrated Fault Detector (IFD)
     {
       type: "image",
       src: slideIotEnergy,
       alt: "IFD — Intelligent Field Device for IR-NIYANTRAC",
-      label: "PRODUCTS — IoT & ENERGY MANAGEMENT",
-      title: "IFD — Intelligent Field Device\nfor IR-NIYANTRAC",
-      description: "Real-time monitoring, energy metering and remote control of railway electrical assets — lifts, escalators, platform lighting, pumps, solar plants, high masts and DG sets — reporting to IR-NIYANTRAC over the oneM2M Common Service Platform.",
+      label: "PRODUCTS — IoT & ENERGY",
+      title: "Integrated Fault\nDetector (IFD)",
+      description: "Real-time monitoring, energy metering, and remote control of railway electrical assets — reporting to IR-NIYANTRAC over the oneM2M platform.",
       cta: "Explore IFD",
       link: "/products/electric-locomotive/ifd",
     },
-    // 10. RDPMS Product Slide (NEW)
+    // Slide 7: Signalling & Telecom
+    {
+      type: "image",
+      src: sntHero,
+      alt: "Railway signalling equipment and telecommunications system",
+      label: "PRODUCTS",
+      title: "Signalling\n& Telecom",
+      description: "Advanced signalling and telecommunication systems for train control, power management, and trackside safety.",
+      cta: "Explore Signalling & Telecom",
+      link: "/products/snt",
+    },
+    // Slide 8: Remote Data Performance Monitoring System (RDPMS)
     {
       type: "image",
       src: slideRdpmsSmt,
       alt: "RDPMS — Remote Diagnostic & Predictive Maintenance System",
       label: "PRODUCTS — SIGNALLING & TELECOM",
-      title: "RDPMS — Remote Diagnostic\n& Predictive Maintenance",
-      description: "IoT-based telemetry platform designed to monitor the operational health of railway signaling gears, intercepting analog current signatures, voltage thresholds, and contact resistance levels.",
+      title: "Remote Data Performance\nMonitoring System (RDPMS)",
+      description: "IoT-based telemetry platform to monitor signalling gear health, capturing current signatures, voltage thresholds, and contact resistance.",
       cta: "Explore RDPMS",
       link: "/products/snt/rdpms",
     },
-    // 11. IPS Product Slide (NEW)
+    // Slide 9: Integrated Power Supply (IPS)
     {
       type: "image",
       src: sntHero,
       alt: "IPS — SMPS-Based Integrated Power Supply",
       label: "PRODUCTS — SIGNALLING & TELECOM",
-      title: "IPS — SMPS-Based\nIntegrated Power Supply",
-      description: "Continuous, regulated AC and DC power for railway signalling circuits in RE and Non-RE areas — Stations, LC Gates, IBH and Auto Huts as per RDSO Specification RDSO/SPN/165/2023.",
+      title: "Integrated Power\nSupply (IPS)",
+      description: "Continuous, regulated AC and DC power for railway signalling circuits in RE & Non-RE areas per RDSO specification RDSO/SPN/165/2023.",
       cta: "Explore IPS",
       link: "/products/snt/ips",
     },
-    // 12. AHABD Product Slide (NEW)
+    // Slide 10: Rolling Stock
+    {
+      type: "image",
+      src: wagonsHero,
+      alt: "Rolling stock wayside inspection and monitoring systems",
+      label: "PRODUCTS",
+      title: "Rolling Stock",
+      description: "Wayside inspection, thermal axle analytics, and onboard electronic systems for passenger coaches and freight wagons.",
+      cta: "Explore Rolling Stock",
+      link: "/products/wagons",
+    },
+    // Slide 11: Automatic Hot Axle Box Detection (AHABD)
     {
       type: "image",
       src: wagonsHero,
       alt: "AHABD — Automatic Hot Axle Box Detection",
       label: "PRODUCTS — ROLLING STOCK",
-      title: "AHABD — Automatic\nHot Axle Box Detection",
-      description: "For every train passing a monitoring point, AHABD establishes which coach each temperature reading belongs to — delivering a complete, identified record of the pass and flagging overheating.",
+      title: "Automatic Hot Axle\nBox Detection (AHABD)",
+      description: "Automated wayside infrared axle temperature sensing that identifies passing coaches/wagons and flags overheating risks in real-time.",
       cta: "Explore AHABD",
       link: "/products/wagons/ahabd",
     },
-    // 13. Driving Simulators Product Slide (NEW)
+    // Slide 12: Training Simulators
+    {
+      type: "image",
+      src: slideSimulators,
+      alt: "Modern locomotive driving simulator cockpit with widescreen displays",
+      label: "PRODUCTS",
+      title: "Training Simulators",
+      description: "High-fidelity simulation cockpits and software platforms for loco pilot training and KAVACH operator instruction.",
+      cta: "Explore Simulators",
+      link: "/products/electric-locomotive",
+    },
+    // Slide 13: Driving Simulators
     {
       type: "image",
       src: slideSimulators,
       alt: "Driving Simulators for Loco Pilots",
-      label: "PRODUCTS — TRAINING SIMULATORS",
-      title: "Driving Simulators\nfor Loco Pilots",
-      description: "For Loco Pilots and Assistant Loco Pilots — three-phase electric locomotives (WAP/WAG) and train sets (EMU, MEMU, Vande Bharat) developed in line with RDSO functional requirements.",
+      label: "PRODUCTS — SIMULATORS",
+      title: "Driving Simulators",
+      description: "Realistic full-cab and desktop driving simulators for three-phase electric locomotives (WAP/WAG) and EMU/Vande Bharat trainsets.",
       cta: "Explore Driving Simulators",
       link: "/products/electric-locomotive/simulators",
     },
-    // 14. KAVACH Training Simulators Product Slide (NEW)
+    // Slide 14: KAVACH Training Simulators
     {
       type: "image",
       src: slideKavachEngineer,
       alt: "KAVACH Training Simulators for Station Masters and Loco Pilots",
-      label: "PRODUCTS — TRAINING SIMULATORS",
+      label: "PRODUCTS — SIMULATORS",
       title: "KAVACH Training\nSimulators",
-      description: "For Station Masters and Loco Pilots — KAVACH per RDSO/SPN/196/2020. Classroom-safe training at zonal railway training institutes, without occupying revenue infrastructure.",
+      description: "Comprehensive KAVACH simulator setups for Station Masters and Loco Pilots per RDSO/SPN/196/2020 for zonal training institutes.",
       cta: "Explore KAVACH Simulators",
       link: "/products/electric-locomotive/kavach",
     },
-    // 15. Engineering Services
-    {
-      type: "image",
-      src: engineers,
-      alt: "Professional railway engineering design and commissioning services",
-      label: "ENGINEERING SERVICES",
-      title: "Engineering Services",
-      description: "We provide comprehensive engineering services including design, system installation, testing, and commissioning, ensuring every solution is delivered safely, integrated seamlessly, and performs reliably throughout its operational lifecycle.",
-      cta: "Explore Engineering Services",
-      link: "/services",
-    },
-    // 16. Electronic Product Development
+
+    // --- SERVICES ---
+    // Slide 15: Electronic Product Development
     {
       type: "image",
       src: slideProductDev,
       alt: "Professional electronics engineering laboratory with PCB design workstations",
-      label: "ELECTRONIC PRODUCT DEVELOPMENT",
+      label: "SERVICES",
       title: "Electronic Product\nDevelopment",
-      description: "Complete product engineering from concept and hardware design to firmware, validation, approvals, and production.",
-      cta: "Explore Services",
+      description: "End-to-end electronic product design — hardware design, embedded firmware, SIL compliance, prototyping, and RDSO approval.",
+      cta: "Explore Product Development",
       link: "/services/product-dev",
     },
-    // 17. Signalling Design Services
+    // Slide 16: Signalling Design Services
     {
       type: "image",
       src: slideSignallingDesign,
       alt: "Railway signalling CAD design office with engineering workstations",
-      label: "SIGNALLING DESIGN SERVICES",
+      label: "SERVICES",
       title: "Signalling Design\nServices",
-      description: "Professional signalling designs, EI application logic, MSDAC, and KAVACH engineering services.",
-      cta: "Explore Services",
+      description: "Signal engineering, Electronic Interlocking (EI) logic, SIP/SIP-ALT diagrams, MSDAC track plans, and KAVACH trackside design.",
+      cta: "Explore Signalling Design",
       link: "/services/signalling-design",
     },
-    // 18. KAVACH Installation & Commissioning
+    // Slide 17: KAVACH Installation & Commissioning
     {
       type: "image",
       src: slideKavach,
       alt: "Engineers installing KAVACH ATP equipment on locomotive and trackside",
-      label: "KAVACH INSTALLATION & COMMISSIONING",
+      label: "SERVICES",
       title: "KAVACH Installation\n& Commissioning",
-      description: "Installation, testing, integration, and commissioning of KAVACH systems for Indian Railways.",
-      cta: "Explore Services",
+      description: "Turnkey installation, RFID tag programming, loco unit mounting, stationary KAVACH setup, and field testing for Indian Railways.",
+      cta: "Explore KAVACH Installation",
       link: "/services/kavach-installation",
     },
-    // 19. S&T System Integration
+    // Slide 18: S&T System Integration
     {
       type: "image",
       src: slideSystemIntegration,
       alt: "High-tech railway operations control room with live network monitoring",
-      label: "S&T SYSTEM INTEGRATION",
+      label: "SERVICES",
       title: "S&T System\nIntegration",
-      description: "Multi-vendor signalling and telecom integration with FAT, SAT, and interface engineering.",
-      cta: "Explore Services",
+      description: "Turnkey integration of signalling, telecommunication, telemetry, and power systems into unified railway control networks.",
+      cta: "Explore System Integration",
       link: "/services/system-integration",
     },
-    // 20. Electronics Manufacturing Services
+    // Slide 19: Electronics Manufacturing Services
     {
       type: "image",
       src: slideEms,
       alt: "Modern SMT electronics manufacturing production line with automated assembly",
-      label: "ELECTRONICS MANUFACTURING SERVICES",
-      title: "Electronics\nManufacturing",
-      description: "SMT assembly, box-build manufacturing, testing, and production under stringent quality processes.",
-      cta: "Explore Services",
+      label: "SERVICES",
+      title: "Electronics Manufacturing\nServices (EMS)",
+      description: "High-reliability SMT assembly, PCB soldering, environmental stress screening, and industrial box-build manufacturing.",
+      cta: "Explore EMS",
       link: "/services/ems",
     },
-    // 21. Installation, Testing & Commissioning
+    // Slide 20: Installation, Testing & Commissioning
     {
       type: "image",
       src: slideCommissioning,
       alt: "Railway field engineers commissioning signalling equipment on-site",
-      label: "INSTALLATION, TESTING & COMMISSIONING",
+      label: "SERVICES",
       title: "Installation, Testing\n& Commissioning",
-      description: "End-to-end installation, integration, testing, commissioning, and maintenance of railway electronic systems.",
-      cta: "Explore Services",
+      description: "Field deployment, site acceptance testing (SAT), factory acceptance testing (FAT), and lifecycle maintenance for railway electronics.",
+      cta: "Explore Testing & Commissioning",
       link: "/services/testing-commissioning",
+    },
+
+    // --- FINAL CTA ---
+    // Slide 21: Let's Build Reliable Railway Systems Together
+    {
+      type: "image",
+      src: locoHero,
+      alt: "Modern electric locomotive hauling freight train across scenic railway bridge",
+      label: "PARTNER WITH LORVEN",
+      title: "Let's Build Reliable\nRailway Systems Together",
+      description: "Partner with LorVen Systems for safety-critical railway electronics, signalling engineering, and turnkey field commissioning.",
+      cta: "Contact Our Engineering Team",
+      link: "/contact",
     },
   ];
 

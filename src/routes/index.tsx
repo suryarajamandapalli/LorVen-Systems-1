@@ -29,20 +29,26 @@ import sntHero from "@/assets/snt.jpg";
 import locoHero from "@/assets/loco-hero-premium.jpg";
 import wagonsHero from "@/assets/wagons-hero-premium.jpg";
 import installationHero from "@/assets/installation-hero-premium.jpg";
-import slideMission from "@/assets/slide-mission.jpg";
-import slideVision from "@/assets/slide-vision.jpg";
-import slideIotEnergy from "@/assets/slide-ifd-signal.jpg";
-import slideSnt from "@/assets/slide-snt.jpg";
-import slideRdpmsSmt from "@/assets/slide-rdpms-smt.jpg";
-import slideRollingStock from "@/assets/slide-rolling-stock.jpg";
-import slideSimulators from "@/assets/slide-simulators.jpg";
-import slideProductDev from "@/assets/slide-product-dev.jpg";
-import slideSignallingDesign from "@/assets/slide-signalling-design.jpg";
-import slideKavach from "@/assets/slide-kavach.jpg";
-import slideKavachEngineer from "@/assets/slide-kavach-engineer.jpg";
-import slideSystemIntegration from "@/assets/slide-system-integration.jpg";
-import slideEms from "@/assets/slide-ems.jpg";
-import slideCommissioning from "@/assets/slide-commissioning.jpg";
+import heroSlide01Video from "@/assets/Hero Images/Slide_01_Engineering_Confidence_for_Critical_Systems.mp4";
+import heroSlide02Img from "@/assets/Hero Images/Slide_02_Our_Mission.jpg";
+import heroSlide03Img from "@/assets/Hero Images/Slide_03_Our_Vision.jpg";
+import heroSlide04Img from "@/assets/Hero Images/Slide_04_IoT_Energy_Management.jpg";
+import heroSlide05Img from "@/assets/Hero Images/Slide_05_Signalling_Telecom.jpg";
+import heroSlide06Img from "@/assets/Hero Images/Slide_06_Rolling_Stock.jpg";
+import heroSlide07Img from "@/assets/Hero Images/Slide_07_Training_Simulators.jpg";
+import heroSlide08Img from "@/assets/Hero Images/Slide_08_Water_Level_Indicator.jpg";
+import heroSlide09Img from "@/assets/Hero Images/Slide_09_Intelligent_Field_Device_for_IR_NIYANTRAC.jpg";
+import heroSlide10Img from "@/assets/Hero Images/Slide_10_RDPMS.jpg";
+import heroSlide11Img from "@/assets/Hero Images/Slide_11_IPS.jpg";
+import heroSlide12Img from "@/assets/Hero Images/Slide_12_Advanced_Hot_Axle_Box_Detection.jpg";
+import heroSlide13Img from "@/assets/Hero Images/Slide_13_Driving_Simulators.jpg";
+import heroSlide14Img from "@/assets/Hero Images/Slide_14_KAVACH_Training_Simulators.jpg";
+import heroSlide15Img from "@/assets/Hero Images/Slide_15_Electronic_Product_Development.jpg";
+import heroSlide16Img from "@/assets/Hero Images/Slide_16_Signalling_Design_Services.jpg";
+import heroSlide17Img from "@/assets/Hero Images/Slide_17_KAVACH_Installation_Commissioning.jpg";
+import heroSlide18Img from "@/assets/Hero Images/Slide_18_ST_System_Integration.jpg";
+import heroSlide19Img from "@/assets/Hero Images/Slide_19_Electronics_Manufacturing_Services.jpg";
+import heroSlide20Img from "@/assets/Hero Images/Slide_20_Installation_Testing_Commissioning.jpg";
 
 import { createSeoMeta } from "@/lib/seo";
 
@@ -270,7 +276,7 @@ function Hero() {
     // 1. Engineering Confidence for Critical Systems
     {
       type: "video",
-      src: slide1Video,
+      src: heroSlide01Video,
       label: "LORVEN SYSTEMS",
       title: "Engineering Confidence\nfor Critical Systems.",
       description: "Design, development, manufacturing, installation, and commissioning of highly reliable electronic systems for railway transportation and industrial infrastructure.",
@@ -280,7 +286,7 @@ function Hero() {
     // 2. Our Mission
     {
       type: "image",
-      src: slideMission,
+      src: heroSlide02Img,
       alt: "Indian railway control centre engineers monitoring live train network",
       label: "COMPANY",
       title: "Our Mission",
@@ -291,7 +297,7 @@ function Hero() {
     // 3. Our Vision
     {
       type: "image",
-      src: slideVision,
+      src: heroSlide03Img,
       alt: "Futuristic connected Indian railway network at golden hour",
       label: "COMPANY",
       title: "Our Vision",
@@ -303,7 +309,7 @@ function Hero() {
     // 4. IoT & Energy Management
     {
       type: "image",
-      src: slideIotEnergy,
+      src: heroSlide04Img,
       alt: "IoT & Energy Management system for railway electrical assets",
       label: "PRODUCTS",
       title: "IoT & Energy\nManagement",
@@ -314,7 +320,7 @@ function Hero() {
     // 5. S & T (Signalling & Telecom)
     {
       type: "image",
-      src: sntHero,
+      src: heroSlide05Img,
       alt: "Railway signalling equipment and telecommunications system",
       label: "PRODUCTS",
       title: "Signalling\n& Telecom",
@@ -325,7 +331,7 @@ function Hero() {
     // 6. Rolling Stock
     {
       type: "image",
-      src: wagonsHero,
+      src: heroSlide06Img,
       alt: "Rolling stock wayside inspection and monitoring systems",
       label: "PRODUCTS",
       title: "Rolling Stock",
@@ -336,7 +342,7 @@ function Hero() {
     // 7. Training Simulators
     {
       type: "image",
-      src: slideSimulators,
+      src: heroSlide07Img,
       alt: "Modern locomotive driving simulator cockpit with widescreen displays",
       label: "PRODUCTS",
       title: "Training\nSimulators",
@@ -347,7 +353,7 @@ function Hero() {
     // 8. WLI
     {
       type: "image",
-      src: slideRollingStock,
+      src: heroSlide08Img,
       alt: "WLI — IoT-Based Water Level Indicator for passenger coaches",
       label: "PRODUCTS — COACHES & WAGONS",
       title: "Water Level\nIndicator",
@@ -358,7 +364,7 @@ function Hero() {
     // 9. IFD
     {
       type: "image",
-      src: slideIotEnergy,
+      src: heroSlide09Img,
       alt: "IFD — Intelligent Field Device for IR-NIYANTRAC",
       label: "PRODUCTS — IoT & ENERGY MANAGEMENT",
       title: "Intelligent Field Device\nfor IR-NIYANTRAC",
@@ -369,7 +375,7 @@ function Hero() {
     // 10. RDPMS
     {
       type: "image",
-      src: slideRdpmsSmt,
+      src: heroSlide10Img,
       alt: "RDPMS — Remote Diagnostic & Predictive Maintenance System",
       label: "PRODUCTS — SIGNALLING & TELECOM",
       title: "RDPMS",
@@ -380,7 +386,7 @@ function Hero() {
     // 11. IPS
     {
       type: "image",
-      src: sntHero,
+      src: heroSlide11Img,
       alt: "IPS — SMPS-Based Integrated Power Supply",
       label: "PRODUCTS — SIGNALLING & TELECOM",
       title: "IPS",
@@ -391,7 +397,7 @@ function Hero() {
     // 12. AHABD
     {
       type: "image",
-      src: wagonsHero,
+      src: heroSlide12Img,
       alt: "AHABD — Automatic Hot Axle Box Detection",
       label: "PRODUCTS — COACHES & WAGONS",
       title: "Advanced Hot Axle\nBox Detection",
@@ -402,7 +408,7 @@ function Hero() {
     // 13. Driving Simulators
     {
       type: "image",
-      src: slideSimulators,
+      src: heroSlide13Img,
       alt: "Driving Simulators for Loco Pilots",
       label: "PRODUCTS — TRAINING SIMULATORS",
       title: "Driving Simulators",
@@ -413,7 +419,7 @@ function Hero() {
     // 14. KAVACH Training Simulators
     {
       type: "image",
-      src: slideKavachEngineer,
+      src: heroSlide14Img,
       alt: "KAVACH Training Simulators for Station Masters and Loco Pilots",
       label: "PRODUCTS — TRAINING SIMULATORS",
       title: "KAVACH Training\nSimulators",
@@ -425,7 +431,7 @@ function Hero() {
     // 15. Electronic Product Development
     {
       type: "image",
-      src: slideProductDev,
+      src: heroSlide15Img,
       alt: "Professional electronics engineering laboratory with PCB design workstations",
       label: "SERVICES",
       title: "Electronic Product\nDevelopment",
@@ -436,7 +442,7 @@ function Hero() {
     // 16. Signalling Design Services
     {
       type: "image",
-      src: slideSignallingDesign,
+      src: heroSlide16Img,
       alt: "Railway signalling CAD design office with engineering workstations",
       label: "SERVICES",
       title: "Signalling Design\nServices",
@@ -447,7 +453,7 @@ function Hero() {
     // 17. KAVACH Installation & Commissioning
     {
       type: "image",
-      src: slideKavach,
+      src: heroSlide17Img,
       alt: "Engineers installing KAVACH ATP equipment on locomotive and trackside",
       label: "SERVICES",
       title: "KAVACH Installation\n& Commissioning",
@@ -458,7 +464,7 @@ function Hero() {
     // 18. S&T System Integration
     {
       type: "image",
-      src: slideSystemIntegration,
+      src: heroSlide18Img,
       alt: "High-tech railway operations control room with live network monitoring",
       label: "SERVICES",
       title: "S&T System\nIntegration",
@@ -469,7 +475,7 @@ function Hero() {
     // 19. Electronics Manufacturing Services
     {
       type: "image",
-      src: slideEms,
+      src: heroSlide19Img,
       alt: "Modern SMT electronics manufacturing production line with automated assembly",
       label: "SERVICES",
       title: "Electronics Manufacturing\nServices (EMS)",
@@ -480,7 +486,7 @@ function Hero() {
     // 20. Installation, Testing & Commissioning
     {
       type: "image",
-      src: slideCommissioning,
+      src: heroSlide20Img,
       alt: "Railway field engineers commissioning signalling equipment on-site",
       label: "SERVICES",
       title: "Installation, Testing\n& Commissioning",

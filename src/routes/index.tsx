@@ -970,21 +970,21 @@ const PRODUCTS_LIST = [
   {
     n: "01",
     label: "IoT & Energy Management",
-    img: slideIotEnergy,
+    img: heroSlide04Img,
     slug: "iot-energy",
     systems: [
       {
         code: "WLI",
         name: "Water Level Indicator",
         desc: "Real-time water-tank level measurement for passenger coaches, reported coach-wise to the CRIS server for planned station watering.",
-        img: slideRollingStock,
+        img: heroSlide08Img,
         href: "/products/wagons/wli",
       },
       {
         code: "IFD",
         name: "Intelligent Field Device",
         desc: "Real-time monitoring, energy metering, and remote control of railway electrical assets reporting to IR-NIYANTRAC.",
-        img: slideIotEnergy,
+        img: heroSlide09Img,
         href: "/products/electric-locomotive/ifd",
       },
     ],
@@ -992,21 +992,21 @@ const PRODUCTS_LIST = [
   {
     n: "02",
     label: "Signalling & Telecom",
-    img: slideSnt,
+    img: heroSlide05Img,
     slug: "snt",
     systems: [
       {
         code: "RDPMS",
         name: "Remote Diagnostics",
         desc: "Intelligent IoT platform continuously monitoring railway signalling equipment health, analyzing anomalies and generating predictive alerts.",
-        img: slideSnt,
+        img: heroSlide10Img,
         href: "/products/snt/rdpms",
       },
       {
         code: "IPS",
         name: "Integrated Power Supply",
         desc: "Microprocessor-controlled power system delivering uninterrupted, stable, and redundant electricity to critical railway signalling networks.",
-        img: sntHero,
+        img: heroSlide11Img,
         href: "/products/snt/ips",
       },
     ],
@@ -1014,14 +1014,14 @@ const PRODUCTS_LIST = [
   {
     n: "03",
     label: "Rolling Stock",
-    img: slideRollingStock,
+    img: heroSlide06Img,
     slug: "wagons",
     systems: [
       {
         code: "AHABD",
         name: "Hot Axle Box Detector",
         desc: "Automatic Hot Axle Box Detection establishing axle temperature records per coach to prevent derailments.",
-        img: wagonsHero,
+        img: heroSlide12Img,
         href: "/products/wagons/ahabd",
       },
     ],
@@ -1029,21 +1029,21 @@ const PRODUCTS_LIST = [
   {
     n: "04",
     label: "Training Simulators",
-    img: slideSimulators,
+    img: heroSlide07Img,
     slug: "simulators",
     systems: [
       {
         code: "Driving Simulator",
         name: "Loco Pilot Driving Simulator",
         desc: "High-fidelity driving simulation platform providing realistic training, route familiarization, and emergency scenarios for locomotive drivers.",
-        img: simulator,
+        img: heroSlide13Img,
         href: "/products/electric-locomotive/simulators",
       },
       {
         code: "KAVACH Simulator",
         name: "KAVACH ATP Pilot Trainer",
         desc: "Classroom-safe KAVACH automatic train protection training platform for Station Masters and Loco Pilots.",
-        img: slideKavach,
+        img: heroSlide14Img,
         href: "/products/electric-locomotive/kavach",
       },
     ],
@@ -1058,22 +1058,10 @@ function ProductsSection() {
     <section className="relative bg-ink text-on-dark overflow-hidden min-h-[100vh] py-16 lg:py-24 flex items-center products-section">
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-up {
-          animation: fadeInUp 600ms cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-        }
-        @keyframes slowZoom {
-          from {
-            transform: scale(1.0);
-          }
           to {
             transform: scale(1.03);
           }
@@ -1270,37 +1258,37 @@ function ServicesSection() {
   const SERVICES_LIST = [
     {
       title: "Electronic Product Development",
-      img: slideProductDev,
+      img: heroSlide15Img,
       desc: "Complete embedded hardware design, firmware engineering, rapid prototyping, and validation testing for safety-critical environments.",
       to: "/services/product-dev",
     },
     {
       title: "Signalling Design Services",
-      img: slideSignallingDesign,
+      img: heroSlide16Img,
       desc: "CAD schematics, interlocking plans, Electronic Interlocking (EI) application logic, and KAVACH circuit designs compliant with RDSO standards.",
       to: "/services/signalling-design",
     },
     {
       title: "KAVACH Installation & Commissioning",
-      img: slideKavach,
+      img: heroSlide17Img,
       desc: "Certified installation, RFID placement, loco equipment integration, and field testing for KAVACH Automatic Train Protection.",
       to: "/services/kavach-installation",
     },
     {
       title: "S&T System Integration",
-      img: slideSystemIntegration,
+      img: heroSlide18Img,
       desc: "Multi-vendor signalling and telecom integration, interface engineering, FAT/SAT testing, and central diagnostic network telemetry.",
       to: "/services/system-integration",
     },
     {
       title: "Electronics Manufacturing Services (EMS)",
-      img: slideEms,
+      img: heroSlide19Img,
       desc: "High-mix SMT assembly, box-build manufacturing, automated optical inspection, and rigorous quality testing under ISO 9001:2015.",
       to: "/services/ems",
     },
     {
       title: "Installation, Testing & Commissioning",
-      img: slideCommissioning,
+      img: heroSlide20Img,
       desc: "Turnkey field installation, safety verification, traffic block execution, and lifecycle technical support across Indian Railways.",
       to: "/services/testing-commissioning",
     },

@@ -578,7 +578,7 @@ function Hero() {
         
         .hero-slide.active {
           opacity: 1;
-          filter: brightness(1) blur(0px);
+          filter: brightness(0.78) contrast(1.05) blur(0px);
           z-index: 2;
           pointer-events: auto;
         }
@@ -603,6 +603,7 @@ function Hero() {
         .hero-text-item {
           opacity: 0;
           filter: blur(10px);
+          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
           transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
@@ -693,14 +694,14 @@ function Hero() {
           );
         })}
       </div>
-      {/* Professional Corporate Left-Bottom Asymmetrical Gradient Overlay (Siemens/ABB/Hitachi Rail style) */}
+      {/* Heavy Professional Corporate Dark Gradient Overlay for Maximum Text Visibility */}
       <div
         className="absolute inset-0 z-[5] pointer-events-none"
         style={{
           background: `
-            linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 18%),
-            radial-gradient(ellipse 180% 140% at 0% 100%, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.58) 18%, rgba(0,0,0,0.42) 35%, rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.08) 68%, rgba(0,0,0,0) 82%),
-            linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.22) 22%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0) 65%)
+            linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.40) 18%, rgba(0,0,0,0.15) 35%, transparent 50%),
+            radial-gradient(ellipse 160% 130% at 0% 100%, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.78) 25%, rgba(0,0,0,0.60) 45%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.10) 80%, transparent 95%),
+            linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.65) 25%, rgba(0,0,0,0.40) 45%, rgba(0,0,0,0.15) 65%, transparent 85%)
           `
         }}
       />
